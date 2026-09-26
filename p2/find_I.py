@@ -365,7 +365,18 @@ GROUPS = {
     "inv3": [[1, 0, 3, 2, 5, 4, 6, 7, 8]],                          # (0 1)(2 3)(4 5)
     "c3x1": [[1, 2, 0, 3, 4, 5, 6, 7, 8]],                          # (0 1 2)
     "c3x2": [[1, 2, 0, 4, 5, 3, 6, 7, 8]],                          # (0 1 2)(3 4 5)
+    "c5": [[1, 2, 3, 4, 0, 5, 6, 7, 8]],                            # (0 1 2 3 4)
+    "c7": [[1, 2, 3, 4, 5, 6, 0, 7, 8]],                            # (0 1 2 3 4 5 6)
 }
+# Coverage. Every nontrivial group H of automorphisms x -> pi(x) + t contains an element g of
+# prime order p in {2, 3, 5, 7} (the primes dividing 2^9 * 9!), and an H-invariant I is
+# g-invariant. g^p = id means N t = 0 with N = 1 + pi + ... + pi^(p-1); g has a fixed point iff
+# t is in the image of 1 + pi, and then g is conjugate (by a translation) to pi. On the cycles
+# of pi, F_2^9 is a free F_2[C_p]-module, where ker N = im(1 + pi); on coordinates fixed by pi,
+# N = p. So for odd p, t = 0 there and g is conjugate to a coordinate permutation; for p = 2, g
+# has no fixed point iff t is nonzero on a coordinate fixed by pi, and then every orbit has size
+# 2, impossible for odd |I| = 235. Hence inv1-4, c3x1, c3x2, rot3, c5, c7 cover every nontrivial
+# symmetry group that a set with |I| = 235 can have.
 # Up to conjugacy in Aut(Q_9), the involutions with fixed points are the coordinate involutions
 # inv1..inv4 (a translation part is either conjugated away or kills all fixed points; groups
 # without fixed points have only even orbits, incompatible with odd |I| = 235).
