@@ -25,6 +25,7 @@ Usage:
   python find_I.py ls  --d 9 --k 235 --minutes 120
   python find_I.py sat --d 9 --k 235
   python find_I.py sat --d 6 --k 27      # validation on small d
+  python find_I.py sat --d 9 --k 236 --group z9   # I invariant under a symmetry group
 """
 import argparse
 import json
@@ -350,13 +351,52 @@ def cycles_in_complement(I, d):
     return [list(c) for c in cycles]
 
 
+# Symmetry groups for d = 9, given by generating coordinate permutations (perm[j] = image of
+# coordinate j). With --group, x_v <=> x_g(v) is added for each generator g, so I is a union of
+# orbits and every clause on a cycle C also covers h(C) for all h in the group (the solver
+# collapses the equalities: effectively one variable per orbit).
+GROUPS = {
+    "z9": [[(j + 1) % 9 for j in range(9)]],                        # cyclic shift of 9 coords
+    "z3blocks": [[(j + 3) % 9 for j in range(9)]],                  # shift of blocks 012,345,678
+    "rot3": [[3 * (j // 3) + (j % 3 + 1) % 3 for j in range(9)]],   # (0 1 2)(3 4 5)(6 7 8)
+    "inv4": [[1, 0, 3, 2, 5, 4, 7, 6, 8]],                          # (0 1)(2 3)(4 5)(6 7)
+    "inv2": [[1, 0, 3, 2, 4, 5, 6, 7, 8]],                          # (0 1)(2 3)
+    "inv1": [[1, 0, 2, 3, 4, 5, 6, 7, 8]],                          # (0 1)
+}
+# Note: z3blocks = (0 3 6)(1 4 7)(2 5 8) is conjugate to rot3 in S_9 (both are three disjoint
+# 3-cycles), hence equivalent up to an automorphism of Q_9; z9 contains z3blocks (z9^3).
+
+
+def permute_coords(v, perm):
+    return sum(((v >> j) & 1) << perm[j] for j in range(len(perm)))
+
+
+def orbit_sizes(d, gens):
+    """Sizes of the orbits of <gens> on the vertices (closure under the generators)."""
+    seen, sizes = set(), []
+    for v in range(2 ** d):
+        if v in seen:
+            continue
+        orbit, stack = {v}, [v]
+        while stack:
+            w = stack.pop()
+            for g in gens:
+                u = permute_coords(w, g)
+                if u not in orbit:
+                    orbit.add(u)
+                    stack.append(u)
+        seen |= orbit
+        sizes.append(len(orbit))
+    return sizes
+
+
 def random_automorphism(d, rng):
     perm, flip = list(range(d)), rng.randrange(2 ** d)
     rng.shuffle(perm)
     return lambda v: sum(((v >> j) & 1) << perm[j] for j in range(d)) ^ flip
 
 
-def run_sat(d, k, symmetry, solver_name, encoding, images, minutes, seed):
+def run_sat(d, k, symmetry, solver_name, encoding, images, minutes, seed, group=None):
     from pysat.card import CardEnc, EncType
     from pysat.formula import IDPool
     from pysat.solvers import Solver
@@ -379,28 +419,37 @@ def run_sat(d, k, symmetry, solver_name, encoding, images, minutes, seed):
                 if not (v >> i) & 1 and not (v >> j) & 1:
                     solver.add_clause([x(v), x(v ^ 1 << i), x(v ^ 1 << i ^ 1 << j), x(v ^ 1 << j)])
                     n4 += 1
+    if group:  # I must be a union of orbits; the fixed vertices below would not be sound
+        gens = GROUPS[group]
+        for g in gens:
+            for v in range(n):
+                solver.add_clause([-x(v), x(permute_coords(v, g))])
+        sizes = orbit_sizes(d, gens)
+        print(f"group {group}: {len(sizes)} orbits, sizes {sorted(set(sizes))}", flush=True)
+        symmetry = False
     fixed = symmetry_fixed_vertices(d) if symmetry else []
     for v in fixed:
         solver.add_clause([x(v)])
-    print(f"SAT Q{d} |I| <= {k} (c = {forest_c(d, k)}): {n4} 4-cycle clauses, fixed {fixed}, "
+    tag = f" group={group}" if group else ""
+    print(f"SAT Q{d} |I| <= {k} (c = {forest_c(d, k)}){tag}: {n4} 4-cycle clauses, fixed {fixed}, "
           f"solver {solver_name}, card {encoding}", flush=True)
     deadline, it, cuts, t0 = time.time() + 60 * minutes, 0, 0, time.time()
     seen = set()
     while time.time() < deadline:
         t = time.time()
         if not solver.solve():
-            msg = (f"UNSAT: no independent decycling set of Q{d} with |I| <= {k}"
+            msg = (f"UNSAT: no independent decycling set of Q{d} with |I| <= {k}{tag}"
                    f"{' (with proven symmetry breaking)' if symmetry else ''}; "
                    f"{it} iterations, {cuts} cuts, {time.time() - t0:.0f}s")
             print(msg, flush=True)
-            log({"source": "find_I sat", "d": d, "k": k, "result": "UNSAT", "iters": it,
+            log({"source": "find_I sat", "d": d, "k": k, "group": group, "result": "UNSAT", "iters": it,
                  "cuts": cuts, "secs": time.time() - t0})
             return
         model = solver.get_model()
         I = [v for v in range(n) if model[v] > 0]
         cycles = cycles_in_complement(I, d)
         if not cycles:
-            found(I, d, "sat")
+            found(I, d, f"sat{tag}")
             return
         new = 0
         for cyc in cycles:
@@ -418,9 +467,11 @@ def run_sat(d, k, symmetry, solver_name, encoding, images, minutes, seed):
                   f"(lengths {sorted({len(c) for c in cycles})}), +{new} cuts, total {cuts}, "
                   f"solve {time.time() - t:.1f}s, elapsed {time.time() - t0:.0f}s", flush=True)
         if it % 50 == 0:
-            log({"source": "find_I sat", "d": d, "k": k, "iters": it, "cuts": cuts,
+            log({"source": "find_I sat", "d": d, "k": k, "group": group, "iters": it, "cuts": cuts,
                  "last_cycles": len(cycles), "secs": time.time() - t0})
-    print(f"timeout after {it} iterations, {cuts} cuts", flush=True)
+    print(f"timeout after {it} iterations, {cuts} cuts{tag}", flush=True)
+    log({"source": "find_I sat", "d": d, "k": k, "group": group, "result": "timeout",
+         "iters": it, "cuts": cuts, "secs": time.time() - t0})
 
 
 if __name__ == "__main__":
@@ -437,6 +488,7 @@ if __name__ == "__main__":
     p.add_argument("--tabu", type=int, default=10)
     p.add_argument("--kick", type=int, default=10, help="ls: max random swaps before a restart")
     p.add_argument("--no-symmetry", action="store_true")
+    p.add_argument("--group", choices=sorted(GROUPS), help="sat: require I invariant under this group")
     p.add_argument("--solver", default="cadical195")
     p.add_argument("--encoding", default="seqcounter")
     p.add_argument("--images", type=int, default=8, help="sat: random automorphic images per cut")
@@ -446,4 +498,5 @@ if __name__ == "__main__":
     if a.method == "ls":
         run_ls(a.d, a.k, a.minutes, a.seed, a.iters, a.T0, a.T1, a.lam, a.tabu, a.kick)
     else:
-        run_sat(a.d, a.k, not a.no_symmetry, a.solver, a.encoding, a.images, a.minutes, a.seed)
+        run_sat(a.d, a.k, not a.no_symmetry, a.solver, a.encoding, a.images, a.minutes, a.seed,
+                a.group)
