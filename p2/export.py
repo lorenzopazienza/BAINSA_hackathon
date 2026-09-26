@@ -7,7 +7,7 @@ Usage: python export.py            # every d with a stored best
 import sys
 from pathlib import Path
 
-from evaluator import count_uphill, score_file, to_strings
+from evaluator import BIT_ORDER_NOTE, count_uphill, score_file, to_strings
 from store import BEST_DIR, load_best
 
 OUT = Path(__file__).parent / "submissions"
@@ -22,7 +22,7 @@ def export(d):
     assert score == best["score"], f"Q{d}: stored score {best['score']} != evaluator {score}"
     OUT.mkdir(exist_ok=True)
     path = OUT / f"Q{d}_best.txt"
-    path.write_text("\n".join(to_strings(best["order"], d)) + "\n")
+    path.write_text("\n".join([BIT_ORDER_NOTE] + to_strings(best["order"], d)) + "\n")
     d_file, score_file_ = score_file(path)  # verify the file exactly as it will be submitted
     assert (d_file, score_file_) == (d, score)
     print(f"Q{d}: {score} uphill paths -> {path}  (source: {best['source']})")

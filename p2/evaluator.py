@@ -50,14 +50,19 @@ def count_uphill_bruteforce(order, d):
     return count
 
 
+BIT_ORDER_NOTE = ("# Vertices in increasing label order (first line = smallest label). "
+                  "Bit order: the string is the vertex index in binary, most significant bit "
+                  "first, i.e. character i (0-based, left to right) is coordinate x_{d-1-i}.")
+
+
 def to_strings(order, d):
     """Submission format: one d-bit 0/1 string per vertex, increasing label."""
     return [format(v, f"0{d}b") for v in order]
 
 
 def from_strings(lines):
-    """Inverse of to_strings. Returns (order, d)."""
-    lines = [s.strip() for s in lines if s.strip()]
+    """Inverse of to_strings; skips blank and '#' lines. Returns (order, d)."""
+    lines = [s.strip() for s in lines if s.strip() and not s.lstrip().startswith("#")]
     d = len(lines[0])
     if any(len(s) != d or set(s) - {"0", "1"} for s in lines):
         raise ValueError("every line must be a 0/1 string of equal length")

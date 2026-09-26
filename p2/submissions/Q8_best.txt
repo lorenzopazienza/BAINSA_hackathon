@@ -1,3 +1,4 @@
+# Vertices in increasing label order (first line = smallest label). Bit order: the string is the vertex index in binary, most significant bit first, i.e. character i (0-based, left to right) is coordinate x_{d-1-i}.
 10001010
 11100001
 01101011
