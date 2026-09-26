@@ -1,6 +1,6 @@
 # BAINSA Hackathon 2026: Track 3 "Climbing to the Frontier"
 
-**Team:** Lorenzo Pazienza (lead), Seby, Teo, Niccolò
+**Team:** Lorenzo Pazienza (lead), Teo Volpini, Niccolò Biscotti, Serban Lazar
 
 **The hand-in is in [`BAINSA_team_submission/`](BAINSA_team_submission/)**, with one folder per cell (`P<problem>_C<cell>`). Each folder holds the write-up PDF, its LaTeX source, and the code and logs for every computation the proof relies on.
 

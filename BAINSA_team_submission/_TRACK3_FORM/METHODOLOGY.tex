@@ -6,7 +6,7 @@
 \begin{document}
 \begin{center}
 {\Large\bfseries Climbing to the Frontier --- METHODOLOGY}\\[2pt]
-BAINSA Hackathon, Track 3 (Anthropic), 26 September 2026 --- Team: Lorenzo Pazienza (lead), Seby, Teo, Niccol\`o
+BAINSA Hackathon, Track 3 (Anthropic), 26 September 2026 --- Team: Lorenzo Pazienza (lead), Teo Volpini, Niccol\`o Biscotti, Serban Lazar
 \end{center}
 
 \section*{1. Game plan}
@@ -19,7 +19,7 @@ BAINSA Hackathon, Track 3 (Anthropic), 26 September 2026 --- Team: Lorenzo Pazie
 \section*{2. Correctness: nothing is accepted on one model's word}
 \begin{itemize}
 \item \textbf{Exact evaluators outside the model.} Scores such as the uphill-path counts come from a small evaluator with two independent counting methods, a DP and brute-force enumeration. No number in a write-up comes from the model's own arithmetic.
-\item \textbf{Two independent implementations for every certificate.} In P4 the SAT pipeline (Codex) and the DFS pipeline (Teo) were written separately. Their survivor lists agree element by element, with the same SHA-256, for all $k\le16$. In P2 the SAT lemmas were run with CaDiCaL and Glucose, and re-implemented from scratch by a different agent that shared no code with the first. Sanity runs at the feasible sizes show the encodings are not vacuous.
+\item \textbf{Two independent implementations for every certificate.} In P4 the SAT pipeline (Codex) and the DFS pipeline (Teo Volpini) were written separately. Their survivor lists agree element by element, with the same SHA-256, for all $k\le16$. In P2 the SAT lemmas were run with CaDiCaL and Glucose, and re-implemented from scratch by a different agent that shared no code with the first. Sanity runs at the feasible sizes show the encodings are not vacuous.
 \item \textbf{Adversarial review by a different agent than the author.} Examples:
   \begin{itemize}
   \item P1~C5 (the cycle lemma) was reviewed line by line by Codex and by Claude, with numerical stress tests (40k random cycles, $10^6$ points for the key inequality).

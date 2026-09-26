@@ -1,4 +1,4 @@
-# BAINSA Hackathon 2026, Track 3: team submission (Lorenzo Pazienza, Seby, Teo, Niccolò)
+# BAINSA Hackathon 2026, Track 3: team submission (Lorenzo Pazienza, Teo Volpini, Niccolò Biscotti, Serban Lazar)
 
 One folder per cell (`P<problem>_C<cell>`). Each folder contains:
 - the write-up PDF (`p<i>_c<j>.pdf`) and its LaTeX source;
