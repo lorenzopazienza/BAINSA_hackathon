@@ -1,0 +1,5 @@
+model: Mac14,6
+cpu: Apple M2 Max, 12 cores (8 performance + 4 efficiency)
+ram: 32 GB
+os: macOS 27.0 (26A428), arm64
+python: 3.12.6 | numpy: 2.5.3 | python-sat: 1.9.dev15

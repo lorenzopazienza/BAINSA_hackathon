@@ -1,0 +1,207 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\begin{document}
+\title{Problem 1, Cell 6: $N$ lines in $\mathbb R^d$ (partial)}
+\date{26 September 2026}
+\maketitle
+
+\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{\textbf{Official statement (Cell 6, open
+question).} ``Fejes T\'oth's conjecture from the Setting, for every $N$ and every $d$. For $N$ lines in
+$\mathbb R^d$, write $N=qd+s$ with $0\le s<d$, and let $M(N,d)=s\binom{q+1}2+(d-s)\binom q2$. Prove or
+disprove: every $N$ lines in $\mathbb R^d$ satisfy $S\le\bigl(\binom N2-M(N,d)\bigr)\cdot\pi/2$. This is
+the value attained by splitting the lines as evenly as possible among $d$ mutually orthogonal
+directions. Settling any infinite family not already covered above counts as partial progress.''}}
+\medskip
+
+\paragraph{Status: Partial.} \emph{Proved:}
+(i)~the conjecture for $N=6$ lines in $\mathbb R^3$ (Theorem~\ref{thm:63}), by averaging Cell~4/5;
+(ii)~the exact list of what subset averaging can give from the cases proved so far. For $d\ge3$ and
+$N\ge d+3$ it is the single pair $(6,3)$, so averaging yields \emph{no} new infinite family
+(Proposition~\ref{prop:avg});
+(iii)~a structural reduction of the case $N=d+3$ for all $d$. At a saturated minimiser, every
+component of the non-orthogonality graph is settled, except components of rank $\ge4$, nullity
+$\ge3$, maximum degree $3$ and cyclomatic number $\ge2$ (Theorem~\ref{thm:red}).
+\emph{Not proved:} the conjecture in general, and the case $N=d+3$ for any $d\ge4$. The first open
+instance is $7$ lines in $\mathbb R^4$. We do \emph{not} claim a new infinite family.
+
+\section{Setting and known cases}
+Lines are given by unit vectors $x_1,\dots,x_N\in\mathbb R^d$, $g_{ij}=\langle x_i,x_j\rangle$,
+\[
+A(x)=\sum_{i<j}\arcsin|g_{ij}|,\qquad S=\binom N2\frac\pi2-A .
+\]
+So the conjecture reads $A\ge M(N,d)\,\pi/2$. For earlier work on the problem see \cite{FVZ16,BM19}. Writing $n_1,\dots,n_d$ for the sizes of an even split,
+$M(N,d)=\sum_i\binom{n_i}2$. Hence $M(N,d)\ge N-d$ (since $\binom n2\ge n-1$ for integers
+$n\ge0$), and $M(N,d)=\max(0,N-d)$ for $N\le 2d$. Also $A$ only increases when lines are added, since all
+terms are $\ge0$. The following cases are proved in our earlier cells and used here.
+\begin{itemize}
+\item[(C1)] $d=2$, all $N$: $A\ge M(N,2)\pi/2$.
+\item[(C3)] $N=d+1$, all $d\ge1$: $A\ge\pi/2$.
+\item[(C5)] $N=d+2$, all $d\ge1$: $A\ge\pi$. This contains C4 (five lines in $\mathbb R^3$, six in
+  $\mathbb R^4$).
+\end{itemize}
+From C5 we also use the orthogonality-saturation proposition, the path lemma, the block-structure
+lemma and the cycle lemma (C5, Prop.~1 and Lemmas~2--4). These give a minimiser of $A$ in which each
+vertex of the non-orthogonality graph $J$ ($ij\in J$ iff $g_{ij}\ne0$) is either isolated or has
+orthogonal partners spanning $\ge d-1$ dimensions. For $N=d+k$: every vertex of $J$ has degree
+$\le k$. Distinct components $C$ of $J$ span orthogonal subspaces of dimensions $r_C$ with
+$\sum_Cr_C\le d$, and $A=\sum_CA_C$. A vertex of $C$ of degree $\delta\ge1$ forces
+$r_C\le m_C-\delta$, where $m_C=|C|$. Write $\nu_C=m_C-r_C$ (the \emph{nullity} of $C$).
+
+\section{Subset averaging}
+
+\begin{lemma}[Averaging]\label{lem:avg}
+If every $n$ lines in $\mathbb R^d$ satisfy $A\ge B\,\pi/2$, then every $N\ge n$ lines in
+$\mathbb R^d$ satisfy
+\[
+A\ \ge\ \frac{N(N-1)}{n(n-1)}\,B\,\frac\pi2 .
+\]
+\end{lemma}
+\begin{proof}
+Sum $A$ over the $\binom Nn$ subsets of size $n$. Each pair $\{i,j\}$ lies in $\binom{N-2}{n-2}$
+of them, so $\binom{N-2}{n-2}A\ge\binom NnB\frac\pi2$, and
+$\binom Nn/\binom{N-2}{n-2}=\frac{N(N-1)}{n(n-1)}$.
+\end{proof}
+
+\begin{theorem}\label{thm:63}
+Any $6$ lines in $\mathbb R^3$ satisfy $A\ge3\pi/2=M(6,3)\,\pi/2$, i.e.\ $S\le12\cdot\frac\pi2=6\pi$.
+Equality holds for three orthogonal directions, each taken twice.
+\end{theorem}
+\begin{proof}
+By C4/C5, every $5$ lines in $\mathbb R^3$ have $A\ge\pi$. There are $\binom65=6$ five-subsets, and each
+pair lies in $\binom43=4$ of them. So $4A\ge6\pi$, and $A\ge\frac32\pi$. Here $M(6,3)$ has $q=2$, $s=0$,
+so $M=3\binom22=3$. Also $\binom62-3=12$. For three orthogonal doubled directions, the three
+coincident pairs give $A=3\cdot\frac\pi2$.
+\end{proof}
+
+\begin{proposition}[Averaging gives no infinite family]\label{prop:avg}
+Let $d\ge3$ and $N\ge d+3$. Averaging (Lemma~\ref{lem:avg}) from any of the cases proved in
+\textup{C3}, \textup{C5} or Theorem~\ref{thm:63} gives $A\ge M(N,d)\pi/2$ only for $(N,d)=(6,3)$.
+\end{proposition}
+\begin{proof}
+For $d\ge3$ the available sources are $n\le d$ ($B=0$, useless), $n=d+1$ ($B=1$), $n=d+2$ ($B=2$),
+and $(6,3)$ with $B=3$. C1 concerns $\mathbb R^2$ and does not apply to lines spanning more. The
+averaged bound is $\frac{N(N-1)}{n(n-1)}B$. Its coefficient $B/(n(n-1))$ is
+$\frac1{d(d+1)}$, $\frac2{(d+1)(d+2)}$ and (for $d=3$) $\frac3{30}=\frac2{20}$. For $d\ge2$ the second
+is the largest ($2d\ge d+2$). So we must decide when
+\[
+\beta(N,d):=\frac{2N(N-1)}{(d+1)(d+2)}\ \ge\ M(N,d).
+\]
+\emph{Range $d+3\le N\le2d$.} Here $M=N-d$. Put $N=d+k$, $3\le k\le d$. The condition is
+$f(k):=2(d+k)(d+k-1)-k(d+1)(d+2)\ge0$, and $f$ is convex in $k$. We have
+$f(3)=(d+2)(3-d)$ and $f(d)=d\bigl(8d-4-(d+1)(d+2)\bigr)=-d(d-2)(d-3)$. For $d\ge4$ both are
+negative, so $f<0$ on $[3,d]$. For $d=3$ only $k=3$ occurs, and $f(3)=0$: this is $(6,3)$, with
+equality.
+
+\emph{Range $N\ge2d+1$.} By convexity $M(N,d)\ge d\binom{N/d}2=\frac{N(N-d)}{2d}$. It suffices that
+$4d(N-1)<(d+1)(d+2)(N-d)$, i.e.\ $(d^2-d+2)N>d(d+1)(d+2)-4d$. The left side increases with $N$. At
+$N=2d+1$ the difference of the two sides is $d^3-4d^2+5d+2=d(d-2)^2+d+2>0$. So $\beta<M$ for all
+$N\ge2d+1$.
+\end{proof}
+
+\begin{remark}
+Averaging can also use sources with a different $n$ at once. This does not help, because the averaged
+bound from the case $(N',d)$ just obtained is at most the bound from the original source (the factors
+$\frac{N(N-1)}{n(n-1)}$ multiply). The script \texttt{averaging\_search.py} checks
+Proposition~\ref{prop:avg} in exact arithmetic for $3\le d\le60$, $d+3\le N\le400$. It prints the
+single pair $(6,3)$.
+\end{remark}
+
+\section{The case $N=d+3$: reduction to hard components}
+
+\begin{lemma}[PSD forcing]\label{lem:force}
+Let $C$ be a connected graph on vertex set $[m]$, and let $x_1,\dots,x_m$ be unit vectors with
+$\langle x_u,x_v\rangle\ne0$ iff $uv\in E(C)$ ($u\ne v$). Let $\nu=m-\dim\operatorname{span}(x_v)$.
+If $C$ is a tree, then $\nu\le1$. If $C$ has exactly one cycle, then $\nu\le2$.
+\end{lemma}
+\begin{proof}
+$\nu$ is the dimension of $Z=\{c\in\mathbb R^m:\sum_vc_vx_v=0\}$. Call a set $B$ \emph{forcing} if every
+$c\in Z$ vanishing on $B$ vanishes everywhere; then $c\mapsto c|_B$ is injective on $Z$, so
+$\nu\le|B|$. \emph{Forcing rule.} Let $c\in Z$ vanish on $B$, and let $K$ be a component of $C-B$.
+Vectors in different components of $C-B$ are orthogonal. So the vectors
+$\sum_{v\in K}c_vx_v$ (one for each $K$) are pairwise orthogonal and add up to $0$, hence each is $0$. If
+$w\in B$ has exactly one neighbour $u$ in $K$, then
+$0=\langle x_w,\sum_{v\in K}c_vx_v\rangle=c_ug_{wu}$, so $c_u=0$ and $u$ may be added to $B$.
+
+\emph{Tree:} $B=\{\text{root}\}$. A vertex of $B$ has exactly one neighbour (its child) in each
+subtree hanging below it, so its children are forced, and by induction every vertex is.
+\emph{One cycle} $v_1\cdots v_\ell$ ($\ell\ge3$) with trees attached: $B=\{v_1,v_2\}$. Removing $B$, the
+vertex $v_\ell$ lies in a component in which $v_1$ has no other neighbour. So $v_\ell$ is forced, then
+$v_{\ell-1}$ by $v_\ell$, and so on around the cycle. The attached trees are forced as in the tree
+case. Hence $\nu\le|B|$ in both cases.
+\end{proof}
+
+\begin{theorem}[Reduction for $N=d+3$]\label{thm:red}
+Let $x$ be a saturated minimiser of $A$ for $d+3$ lines in $\mathbb R^d$ (C5, Prop.~1). Then
+$A\ge3\pi/2$, unless $J$ has a component $C$ with $r_C\ge4$, $\nu_C\ge3$, a vertex of degree $3$
+(and maximum degree $3$), and cyclomatic number $|E(C)|-m_C+1\ge2$.
+\end{theorem}
+\begin{proof}
+$\sum_C\nu_C=N-\sum_Cr_C\ge3$. We show $A_C\ge\min(\nu_C,3)\frac\pi2$ for every component that is not of
+the excluded type. Since $\min(a,3)+\min(b,3)\ge\min(a+b,3)$, this gives $A\ge\frac32\pi$ whenever no
+excluded component exists.
+
+\emph{$\nu_C\le2$.} The $m_C=r_C+\nu_C$ lines lie in $V_C\cong\mathbb R^{r_C}$. By C3 ($\nu_C=1$) and C5
+($\nu_C=2$), $A_C\ge\nu_C\frac\pi2$.
+
+\emph{$r_C\le3$.} If $r_C\le2$: C1 in $\mathbb R^{r_C}$ (or coincident lines when $r_C=1$) gives
+$A_C\ge M(m_C,r_C)\frac\pi2\ge(m_C-r_C)\frac\pi2=\nu_C\frac\pi2$. If $r_C=3$ and $\nu_C\ge3$: any $6$ of the
+$m_C\ge6$ lines satisfy Theorem~\ref{thm:63}, and $A_C\ge\frac32\pi$ by monotonicity.
+
+\emph{The rest}: $r_C\ge4$ and $\nu_C\ge3$. Degrees are $\le3$ (block lemma, $k=3$). If $C$ had maximum
+degree $\le2$, it would be an edge, a path or a cycle. The C5 analysis then gives $\nu_C\le2$ (a path on
+$\ge3$ vertices is impossible; a triangle or cycle has $\nu=2$). So $C$ has a vertex of degree $3$. By
+Lemma~\ref{lem:force}, $\nu_C\ge3$ excludes trees and unicyclic graphs, so the cyclomatic number is
+$\ge2$. This is exactly the excluded type.
+\end{proof}
+
+\begin{corollary}
+The conjecture holds for $N=d+3$ when $d\le3$, and for every configuration of $d+3$ lines whose
+saturated minimiser has no excluded component. Since $\sum r_C\le d$ and an excluded component needs
+$r_C\ge4$ and $m_C\ge7$, the first open case is $7$ lines in $\mathbb R^4$ with $J$ connected.
+\end{corollary}
+
+For $d\le3$ this is not new: $d=2$ is C1 and $d=3$ is Theorem~\ref{thm:63}. The corollary settles no
+new infinite family.
+
+\section{Why the general case stays open}
+For the excluded components there is no analogue of the cycle lemma. It would have to be an inequality
+$A_C\ge\frac32\pi$ for vector families whose non-orthogonality graph has cyclomatic number $\ge2$ and
+maximum degree $3$. The script \texttt{scan7.py} looks at the first open case, $7$ lines in
+$\mathbb R^4$. It lists the $41$ connected graphs on $7$ vertices with maximum degree $\le3$ and
+cyclomatic number $\ge2$. For each, it minimises $A$ with the orthogonality pattern imposed (penalty
+method, $4$ random starts). In \emph{every} pattern the infimum found is $1.5\pi=M(7,4)\frac\pi2$. It is
+approached only as some prescribed non-zero inner products tend to $0$, i.e.\ at the boundary of the
+pattern, where the block structure changes. So no interior local minimum with connected $J$ appeared
+below $\frac32\pi$. This is consistent with the conjecture, but it is evidence only. A proof would need
+a potential (like $\Phi$ in C5) for graphs with two independent cycles.
+
+\begin{remark}[What we could not reproduce]
+Our working notes mentioned a rank-$4$, $7$-line configuration with $A\approx1.702\pi$ as a witness that
+the hard components are genuinely different. The file describing it (\texttt{p1\_c6\_codex.md}) was not
+available when this cell was written, and we did not reconstruct it. We therefore make no claim about it.
+\end{remark}
+
+\section*{Scripts}
+\begin{itemize}
+\item \texttt{averaging\_search.py}: Proposition~\ref{prop:avg}, exact arithmetic, $\approx3$\,s.
+\item \texttt{scan7.py}: the pattern scan for $7$ lines in $\mathbb R^4$ (numerical, not a proof),
+  a few minutes.
+\item \texttt{search7.py}: unconstrained local minimisation for $7$ lines in $\mathbb R^4$ ($150$ random
+  starts). Every run ends at $1.5\pi$, with $J$ split into components of sizes $(1,2,2,2)$ or
+  $(2,2,3)$.
+\end{itemize}
+
+\begin{thebibliography}{9}
+\bibitem{FVZ16} F.~Fodor, V.~V\'igh, T.~Zarn\'ocz, On the angle sum of lines, \emph{Arch.\ Math.} 106
+(2016) 91--100.
+\bibitem{BM19} D.~Bilyk, R.~Matzke, On the Fejes T\'oth problem about the sum of angles between lines,
+\emph{Proc.\ Amer.\ Math.\ Soc.} 147 (2019), arXiv:1801.07837.
+\end{thebibliography}
+\end{document}

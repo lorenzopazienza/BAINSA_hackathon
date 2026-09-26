@@ -1,0 +1,255 @@
+% ===== uphill/p2_c1.tex  (Problem 2, track 1) =====
+% Written directly as a body file (not produced by tools/convert_cell.py).
+% Title: Problem 2, Cell 1: $U(Q_3)$ and $U(Q_4)$
+% Body only: packages, theorem environments and macros are in preamble.tex.
+% Labels are prefixed with "p2c1:".
+% Bibliography (1 entry) in paper/bib/p2_c1.tex -> references.tex.
+% Sections 1-5 are the common framework of Problem 2; cells 2-6 refer to them.
+% Labellings: generated and counted by code/uphill_construct.py (files uphill/labellings/Q<d>.txt).
+
+\paragraph{Official setting.}
+\begin{quote}
+Let $G$ be a finite simple graph on $n$ vertices. A \emph{labelling} of $G$ is a bijection $f$
+from $V(G)$ to $\{1,2,\dots,n\}$. Fix a labelling. A vertex $v$ is a \emph{valley} if every
+neighbour $w$ of $v$ has $f(w)>f(v)$; an isolated vertex counts as a valley. An \emph{uphill path}
+is a sequence $(v_1,v_2,\dots,v_k)$ with $k\ge1$ in which $v_1$ is a valley, $v_i$ and $v_{i+1}$
+are adjacent for each $i$, and $f(v_1)<f(v_2)<\dots<f(v_k)$. A valley on its own ($k=1$) counts as
+an uphill path. Let $U(G)$ be the smallest possible number of uphill paths, taken over all
+labellings of $G$. (IMO 2022 Problem~6 asks for $U$ of the $n\times n$ grid graph; the answer is
+$2n^2-2n+1$.) The $d$-dimensional hypercube $Q_d$ has vertex set $\{0,1\}^d$, and two vertices are
+adjacent when they differ in exactly one coordinate; $Q_d$ has $2^d$ vertices and $d\cdot2^{d-1}$
+edges. For C1 to C4, hand in the values and, for each value, an explicit labelling that attains
+it, as a list of the $2^d$ vertices in increasing label order, written as $0/1$ strings.
+\end{quote}
+
+\begin{statement}
+Determine $U(Q_3)$ and $U(Q_4)$, and give a labelling attaining each value.
+\end{statement}
+
+\paragraph{Status.} \textbf{Solved}, by hand. No computation is needed; the labellings were
+also counted mechanically (\texttt{code/uphill\_eval.py}).
+
+\paragraph{Answer and where it is proved.}
+\begin{itemize}
+\item $U(Q_3)=14$ and $U(Q_4)=34$ (Theorem~\ref{p2c1:thm:main}); labellings in
+  \S\ref{p2c1:sec:lab}.
+\item The proof rests on an exact formula for the number of uphill paths
+  (Proposition~\ref{p2c1:prop:formula}). It gives $U(Q_d)\ge 2^d+(d-1)\nabla(Q_d)$ for every $d$,
+  where $\nabla$ is the decycling number (Theorem~\ref{p2c1:thm:lower}). In the other direction,
+  every even-weight code with minimum distance $4$ gives a labelling
+  (Proposition~\ref{p2c1:prop:code}).
+\item Sections~\ref{p2c1:sec:count}--\ref{p2c1:sec:nabla} hold for every $d$ and are used by all
+  the later cells of this problem.
+\end{itemize}
+
+% ===========================================================================
+\subsubsection{Counting uphill paths}\label{p2c1:sec:count}
+
+Fix a graph $G$ and a labelling $f$. A \emph{lower neighbour} of $v$ is a neighbour $w$ with
+$f(w)<f(v)$, and a \emph{higher neighbour} is a neighbour $w$ with $f(w)>f(v)$. Write $\mathrm{out}(v)$ for the number of
+higher neighbours of $v$. So $v$ is a valley if and only if it has no lower neighbour. Let
+$N(v)=N_f(v)$ be the number of uphill paths whose last vertex is $v$, and $P(f)=\sum_vN(v)$ the
+number of uphill paths. Then $U(G)=\min_fP(f)$.
+
+\begin{lemma}[Recursion]\label{p2c1:lem:rec}
+$N(v)=1$ if $v$ is a valley, and $N(v)=\sum_{w}N(w)$, summed over the lower neighbours $w$ of $v$,
+otherwise. In particular $N(v)\ge1$ for every $v$.
+\end{lemma}
+
+\begin{proof}
+If $(v_1,\dots,v_k)$ is an uphill path with $v_k=v$ and $k\ge2$, then $v_{k-1}$ is a lower
+neighbour of $v$ and $(v_1,\dots,v_{k-1})$ is an uphill path ending at $v_{k-1}$. Conversely, if
+$w$ is a lower neighbour of $v$, then every uphill path ending at $w$ extends by $v$ to an uphill
+path ending at $v$. These two maps are inverse to each other. The one-vertex sequence $(v)$ is an
+uphill path if and only if $v$ is a valley, and a valley has no lower neighbours. The inequality
+$N(v)\ge1$ follows by induction on $f(v)$: a non-valley has at least one lower neighbour.
+\end{proof}
+
+% ===========================================================================
+\subsubsection{Vertices with a single uphill path}\label{p2c1:sec:S}
+
+Put $S=S_f=\{v:N(v)=1\}$ and $R=R_f=\{v:N(v)\ge2\}$. Write $G[X]$ for the subgraph induced by
+$X$, and $e(X)$ for its number of edges.
+
+\begin{lemma}\label{p2c1:lem:S}
+\begin{enumerate}[label=(\alph*)]
+\item If $w$ is a lower neighbour of $v$, then $N(v)\ge N(w)$. A vertex of $S$ that is not a
+  valley has exactly one lower neighbour, and it lies in $S$.
+\item Every edge between $s\in S$ and $u\in R$ satisfies $f(s)<f(u)$. Every higher neighbour of
+  a vertex of $R$ lies in $R$.
+\item $G[S]$ is a forest. Every valley of $G$ lies in $S$, and every component of $G[S]$
+  contains exactly one valley.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) By Lemma~\ref{p2c1:lem:rec}, $N(v)$ is a sum of terms $\ge1$ that includes $N(w)$. If $v\in S$
+is not a valley, then this sum equals $1$, so it has a single term, equal to $1$.
+
+(b) If $f(u)<f(s)$, then $u$ is a lower neighbour of $s$ and (a) gives $N(s)\ge N(u)\ge2$, a
+contradiction. Likewise, a higher neighbour $v$ of $u\in R$ has $N(v)\ge N(u)\ge2$.
+
+(c) Valleys have $N=1$. Every edge of $G[S]$ has a higher end $v$, and by (a) the lower end is the
+unique lower neighbour of $v$. So $e(S)$ equals the number of non-valleys in $S$. Let $K$ be a
+component of $G[S]$, with $n_K$ vertices. Its vertex of smallest label has no lower neighbour in
+$K$. By (a) it has no lower neighbour in $G$ at all, so it is a valley. Counting as above inside
+$K$, $e(K)=n_K-(\text{number of valleys in }K)\le n_K-1$. A connected graph has $e(K)\ge n_K-1$.
+Hence $K$ is a tree and contains exactly one valley.
+\end{proof}
+
+% ===========================================================================
+\subsubsection{An exact formula}\label{p2c1:sec:formula}
+
+\begin{proposition}[Exact formula]\label{p2c1:prop:formula}
+For every graph $G$ and every labelling $f$,
+\[
+  P(f)\;=\;|V(G)|+\sum_{u\in R}\bigl(\deg u-1\bigr)+\sum_{u\in R}\bigl(N(u)-2\bigr)\,\mathrm{out}(u).
+\]
+All terms of the last sum are $\ge0$. In particular, if $G$ is $d$-regular, then
+$P(f)\ge|V(G)|+(d-1)\,|R_f|$.
+\end{proposition}
+
+\begin{proof}
+Sum the recursion of Lemma~\ref{p2c1:lem:rec} over all $v$. Each pair ($w$, higher neighbour
+$v$ of $w$) contributes $N(w)$ once, so
+\[
+  P(f)=\#\{\text{valleys}\}+\sum_wN(w)\,\mathrm{out}(w).
+\]
+Let $c$ be the number of components of $G[S]$. By Lemma~\ref{p2c1:lem:S}(c), there are $c$ valleys
+and $e(S)=|S|-c$. For $w\in S$ we have $N(w)=1$. Moreover, $\sum_{w\in S}\mathrm{out}(w)=e(S)+e(S,R)$,
+because each edge inside $S$ is counted at its lower end, each $S$--$R$ edge is counted at its end
+in $S$ (Lemma~\ref{p2c1:lem:S}(b)), and edges inside $R$ are not counted. For $w\in R$, all
+higher neighbours lie in $R$ (Lemma~\ref{p2c1:lem:S}(b)), so $\sum_{w\in R}\mathrm{out}(w)=e(R)$.
+Using $e(S,R)=\sum_{u\in R}\deg u-2e(R)$, we get
+\[
+  P(f)=c+(|S|-c)+e(S,R)+\sum_{u\in R}N(u)\,\mathrm{out}(u)
+      =|S|+\sum_{u\in R}\deg u+\sum_{u\in R}\bigl(N(u)-2\bigr)\mathrm{out}(u),
+\]
+and $|S|=|V(G)|-|R|$. Finally $N(u)\ge2$ on $R$.
+\end{proof}
+
+% ===========================================================================
+\subsubsection{Decycling sets}\label{p2c1:sec:dec}
+
+A set $R\subseteq V(G)$ is a \emph{decycling set} (or feedback vertex set) if $G-R=G[V\setminus R]$ is a
+forest. The \emph{decycling number} $\nabla(G)$ is the smallest size of a decycling set. By
+Lemma~\ref{p2c1:lem:S}(c), $R_f$ is a decycling set for every labelling $f$.
+
+\begin{theorem}[Lower bound]\label{p2c1:thm:lower}
+If $G$ is $d$-regular, then $U(G)\ge|V(G)|+(d-1)\nabla(G)$. In particular,
+$U(Q_d)\ge2^d+(d-1)\nabla(Q_d)$ for every $d\ge1$.
+\end{theorem}
+
+\begin{proof}
+Proposition~\ref{p2c1:prop:formula} and $|R_f|\ge\nabla(G)$.
+\end{proof}
+
+\begin{proposition}[Upper bound]\label{p2c1:prop:indep}
+Let $G$ be $d$-regular and let $R$ be a decycling set that is independent (no edge inside
+$R$). Then some labelling has exactly $|V(G)|+(d-1)|R|$ uphill paths. Consequently, if $Q_d$ has
+an independent decycling set of size $\nabla(Q_d)$, then $U(Q_d)=2^d+(d-1)\nabla(Q_d)$.
+\end{proposition}
+
+\begin{proof}
+Give the smallest labels to $V\setminus R$, tree by tree. Inside each tree of the forest
+$G-R$, use breadth-first order from a root. Then give the remaining labels to $R$, in any order.
+The neighbours of a vertex $v\notin R$ are its tree neighbours and some vertices of $R$, and the
+latter come later. In breadth-first order, a non-root vertex comes after its parent and before its
+children. So a root is a valley, and a non-root vertex has exactly one lower neighbour, its parent.
+By induction along the order, $N(v)=1$ for all $v\notin R$. A vertex $u\in R$ has all its $d$
+neighbours outside $R$, all labelled earlier, so $N(u)=d$. The total is
+$(|V|-|R|)+d|R|$. The last sentence then follows from Theorem~\ref{p2c1:thm:lower}.
+\end{proof}
+
+% ===========================================================================
+\subsubsection{Code labellings}\label{p2c1:sec:code}
+
+For $x\in\{0,1\}^d$, let $|x|$ be its weight (number of ones). Let $E_d$ and $O_d$ be the sets of
+vertices of even and of odd weight. Every edge of $Q_d$ joins $E_d$ to $O_d$, so both sets are
+independent and have size $2^{d-1}$. The distance $|x\oplus y|$ of two vertices of $E_d$ is even.
+
+\begin{proposition}[Code labelling]\label{p2c1:prop:code}
+Let $d\ge2$, and let $C\subseteq E_d$ have pairwise distances $\ge4$. Consider the labelling $L_C$
+that lists first the vertices of $C$, then all of $O_d$, then $E_d\setminus C$ (each block in any
+order). It has exactly
+\[
+  P(L_C)=2^d+(d-1)\bigl(2^{d-1}-|C|\bigr)
+\]
+uphill paths. Moreover, $E_d\setminus C$ is an independent decycling set of $Q_d$. Hence
+$\nabla(Q_d)\le2^{d-1}-|C|$ and $U(Q_d)\le2^d+(d-1)(2^{d-1}-|C|)$.
+\end{proposition}
+
+\begin{proof}
+We use Lemma~\ref{p2c1:lem:rec}. A codeword has only odd neighbours, all labelled later, so it is
+a valley: $N=1$. The earlier neighbours of an odd vertex $x$ are exactly its neighbours in $C$. Two
+of them would be at distance $2$ from each other, so there is at most one. Hence $N(x)=1$: either
+$x$ is a valley, or it has a single lower neighbour, with $N=1$. A vertex $y\in E_d\setminus C$ has
+$d$ odd neighbours, all labelled earlier, so $N(y)=d$. Summing,
+$P=|C|+2^{d-1}+d(2^{d-1}-|C|)$. In this labelling $R_{L_C}=E_d\setminus C$ (as $d\ge2$), which is
+decycling by Lemma~\ref{p2c1:lem:S}(c) and independent since it lies in $E_d$.
+\end{proof}
+
+% ===========================================================================
+\subsubsection{A counting bound for the decycling number}\label{p2c1:sec:nabla}
+
+\begin{lemma}\label{p2c1:lem:count}
+Let $G$ be $d$-regular with $n$ vertices and $m$ edges, and let $R\ne V(G)$ be a decycling set.
+Let $c$ be the number of components of $G-R$. Then
+\[
+  (d-1)|R|=m-n+c+e(R)\;\ge\;m-n+1.
+\]
+For $Q_d$ this reads $(d-1)|R|\ge(d-2)2^{d-1}+1$.
+\end{lemma}
+
+\begin{proof}
+$G-R$ is a forest with $n-|R|$ vertices and $c$ components, so it has $n-|R|-c$ edges. The edges
+meeting $R$ number $d|R|-e(R)$. Adding up gives $m=n-|R|-c+d|R|-e(R)$.
+\end{proof}
+
+% ===========================================================================
+\subsubsection{$Q_3$ and $Q_4$}\label{p2c1:sec:main}
+
+\begin{theorem}\label{p2c1:thm:main}
+$U(Q_3)=14$ and $U(Q_4)=34$. Also $\nabla(Q_3)=3$ and $\nabla(Q_4)=6$.
+\end{theorem}
+
+\begin{proof}
+$d=3$: Lemma~\ref{p2c1:lem:count} gives $2\nabla(Q_3)\ge5$, so $\nabla(Q_3)\ge3$, and
+Theorem~\ref{p2c1:thm:lower} gives $U(Q_3)\ge8+2\cdot3=14$. The code $C=\{000\}$ in
+Proposition~\ref{p2c1:prop:code} gives a labelling with $8+2\cdot(4-1)=14$ uphill paths and a
+decycling set of size $3$.
+
+$d=4$: Lemma~\ref{p2c1:lem:count} gives $3\nabla(Q_4)\ge17$, so $\nabla(Q_4)\ge6$ and
+$U(Q_4)\ge16+3\cdot6=34$. The code $C=\{0000,1111\}$ (distance $4$) gives
+$16+3\cdot(8-2)=34$ and a decycling set of size $6$.
+\end{proof}
+
+\begin{remark}
+An exhaustive check over all $8!=40\,320$ labellings of $Q_3$ (\texttt{uphill\_eval.py --brute 3})
+also returns $14$. The proof above does not use it. For $d=2$ the same argument gives
+$U(Q_2)=U(C_4)=5$. In words, Proposition~\ref{p2c1:prop:formula} says that an optimal labelling
+must make few vertices ``expensive'' ($N\ge2$), and those vertices must still break every cycle.
+For an arbitrary graph, the edge count in the proof of Lemma~\ref{p2c1:lem:count} reads
+$|E|=|S|-c+\sum_{u\in R}\deg u-e(R)$. Combined with Proposition~\ref{p2c1:prop:formula}, it gives
+$P(f)\ge|E|+c+e(R)\ge|E|+1$. This is the lower bound $2n^2-2n+1$ of the grid problem
+\cite{IMO22}.
+\end{remark}
+
+% ===========================================================================
+\subsubsection{The labellings}\label{p2c1:sec:lab}
+
+Vertices in increasing label order (the number before each row is the label of its first
+entry). The labellings are $L_C$ of Proposition~\ref{p2c1:prop:code}: first the codewords, then
+the odd vertices, then the remaining even vertices, each block in increasing binary order.
+
+\medskip\noindent$Q_3$, $C=\{000\}$, $14$ uphill paths:
+\begin{flushleft}\small\ttfamily
+\makebox[2.4em][r]{\textrm{1:}}\ 000\ 001\ 010\ 100\ 111\ 011\ 101\ 110\\
+\end{flushleft}
+\noindent$Q_4$, $C=\{0000,1111\}$, $34$ uphill paths:
+\begin{flushleft}\small\ttfamily
+\makebox[2.4em][r]{\textrm{1:}}\ 0000\ 1111\ 0001\ 0010\ 0100\ 0111\ 1000\ 1011\\
+\makebox[2.4em][r]{\textrm{9:}}\ 1101\ 1110\ 0011\ 0101\ 0110\ 1001\ 1010\ 1100\\
+\end{flushleft}
+Both counts were confirmed with the exact evaluator \texttt{code/uphill\_eval.py}, which applies
+Lemma~\ref{p2c1:lem:rec} directly.

@@ -1,0 +1,85 @@
+% ===== uphill/p2_c2.tex  (Problem 2, track 2) =====
+% Written directly as a body file (not produced by tools/convert_cell.py).
+% Title: Problem 2, Cell 2: $U(Q_5)$
+% Body only: packages, theorem environments and macros are in preamble.tex.
+% Labels are prefixed with "p2c2:".  Uses the framework of cell 1 (labels p2c1:*).
+% Code: code/uphill_lower.py (claim L5), code/uphill_construct.py, code/uphill_eval.py.
+
+\paragraph{Official setting.} As in Cell~1 (\S\ref{p2c1:sec:count}): $U(G)$ is the least number
+of uphill paths over all labellings of $G$. Values are handed in together with an explicit
+labelling, listed as the $2^d$ vertices in increasing label order.
+
+\begin{statement}
+Determine $U(Q_5)$, and give a labelling attaining it.
+\end{statement}
+
+\paragraph{Status.} \textbf{Solved}. The upper bound is by hand. The lower bound is
+\textbf{computer-assisted}: one SAT computation, below one second, repeated with two solvers.
+
+\paragraph{Answer.} $U(Q_5)=88$, and $\nabla(Q_5)=14$ (Theorem~\ref{p2c2:thm:main}).
+The labelling is in \S\ref{p2c2:sec:lab}.
+
+\subsubsection{The decycling number of $Q_5$}
+
+The counting bound of Lemma~\ref{p2c1:lem:count} gives only $4\nabla(Q_5)\ge3\cdot16+1$, that is,
+$\nabla(Q_5)\ge13$, and so $U(Q_5)\ge84$. This bound is not attained.
+
+\begin{lemma}[computer-assisted]\label{p2c2:lem:L5}
+$Q_5$ has no decycling set with $13$ or fewer vertices. Hence $\nabla(Q_5)\ge14$.
+\end{lemma}
+
+\begin{proof}[Method, and why the computation proves the lemma]
+This is claim (L5) of \texttt{code/uphill\_lower.py}. The variables are $x_v$ ($v\in V(Q_5)$),
+with $x_v$ meaning $v\in R$. The formula $F$ contains:
+\begin{enumerate}[label=(\alph*)]
+\item a CNF encoding (sequential counter) of $\sum_vx_v\le13$;
+\item for every $4$-cycle $K$ of $Q_5$, the clause $\bigvee_{v\in K}x_v$;
+\item the clauses $\bigvee_{v\in K}x_v$ for cycles $K$ found during the loop below.
+\end{enumerate}
+Each clause of type (b) or (c) says that $R$ meets the cycle $K$, and every decycling set does
+this. So every decycling set of size at most $13$ satisfies $F$ at every stage.
+
+\emph{Loop.} The solver returns a model $R$, or reports UNSAT. If it returns $R$, we compute
+$Q_5-R$ with \texttt{networkx}. If this graph has a cycle, we add the clauses of a cycle basis of
+every cyclic component (type (c)) and ask again. The new clauses are violated by the current
+model, so no model is returned twice. Hence the loop ends, after finitely many rounds. It ends in
+one of two ways: a model $R$ for which $Q_5-R$ is a forest (a decycling set of size $\le13$), or
+UNSAT.
+
+\emph{Result.} UNSAT, after $348$ rounds in $0.4$\,s with CaDiCaL~1.5.3, and after $357$ rounds in
+$0.3$\,s with Glucose~4, both through \texttt{python-sat}. Since every decycling set of size
+$\le13$ would be a model, none exists. The only facts used are the correctness of the
+cardinality encoding and of the SAT solvers. Running two independent solvers guards against a
+solver bug.
+\end{proof}
+
+\begin{theorem}\label{p2c2:thm:main}
+$\nabla(Q_5)=14$ and $U(Q_5)=88$.
+\end{theorem}
+
+\begin{proof}
+Lower bound: Lemma~\ref{p2c2:lem:L5} and Theorem~\ref{p2c1:thm:lower} give
+$U(Q_5)\ge32+4\cdot14=88$. Upper bound: $C=\{00000,11110\}$ lies in $E_5$ and has distance $4$.
+By Proposition~\ref{p2c1:prop:code}, $E_5\setminus C$ is a decycling set of size $16-2=14$, and
+the labelling $L_C$ has $32+4\cdot14=88$ uphill paths.
+\end{proof}
+
+\begin{remark}
+A set $C\subseteq E_5$ with pairwise distances $\ge4$ has at most two elements. Suppose it had three.
+Translating by one of them (an even vector, which preserves $E_5$ and all distances), we may assume
+$C=\{0,a,b\}$. Then $|a|=|b|=4$, so $a$ and $b$ are $4$-subsets of a $5$-set and meet in at least
+$3$ coordinates. This gives $|a\oplus b|\le2$, a contradiction. So Proposition~\ref{p2c1:prop:code}
+cannot give less than $88$, and Lemma~\ref{p2c2:lem:L5} shows that no labelling can.
+\end{remark}
+
+\subsubsection{The labelling}\label{p2c2:sec:lab}
+
+$L_C$ with $C=\{00000,11110\}$: codewords, then the $16$ odd vertices, then the remaining $14$
+even vertices, each block in increasing binary order. It has $88$ uphill paths (checked with
+\texttt{code/uphill\_eval.py}).
+\begin{flushleft}\small\ttfamily
+\makebox[2.4em][r]{\textrm{1:}}\ 00000\ 11110\ 00001\ 00010\ 00100\ 00111\ 01000\ 01011\\
+\makebox[2.4em][r]{\textrm{9:}}\ 01101\ 01110\ 10000\ 10011\ 10101\ 10110\ 11001\ 11010\\
+\makebox[2.4em][r]{\textrm{17:}}\ 11100\ 11111\ 00011\ 00101\ 00110\ 01001\ 01010\ 01100\\
+\makebox[2.4em][r]{\textrm{25:}}\ 01111\ 10001\ 10010\ 10100\ 10111\ 11000\ 11011\ 11101\\
+\end{flushleft}

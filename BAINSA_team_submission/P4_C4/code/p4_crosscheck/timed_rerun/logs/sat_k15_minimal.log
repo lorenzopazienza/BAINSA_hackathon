@@ -1,0 +1,16 @@
+{"k": 15, "processed": 10000, "wall_seconds": 18.024}
+{"k": 15, "processed": 20000, "wall_seconds": 27.164}
+{"k": 15, "processed": 30000, "wall_seconds": 35.294}
+{"k": 15, "processed": 40000, "wall_seconds": 63.31}
+{"k": 15, "processed": 50000, "wall_seconds": 75.21}
+{"k": 15, "processed": 60000, "wall_seconds": 86.188}
+{"k": 15, "processed": 70000, "wall_seconds": 107.869}
+{"k": 15, "processed": 80000, "wall_seconds": 117.888}
+{"k": 15, "processed": 90000, "wall_seconds": 127.175}
+{"k": 15, "processed": 100000, "wall_seconds": 136.344}
+{"k": 15, "processed": 110000, "wall_seconds": 146.009}
+{"k": 15, "processed": 120000, "wall_seconds": 173.451}
+{"k": 15, "processed": 130000, "wall_seconds": 198.185}
+{"k": 15, "processed": 140000, "wall_seconds": 208.679}
+{"k": 15, "processed": 150000, "wall_seconds": 251.755}
+{"candidate_count": 155890, "distribution": {"3": 132232, "4": 5478, "5": 2030, "6": 9153, "7": 3007, "8": 872, "9": 3113, "10": 1, "12": 4}, "k": 15, "seeded_decisions": 80712, "selector_sat_calls": 460139, "unique_decisions": 285394, "unique_witnesses": 164041, "wall_seconds": 280.166}

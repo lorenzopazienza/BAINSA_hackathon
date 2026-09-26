@@ -1,0 +1,53 @@
+{
+  "k": 3,
+  "gcd_upper_bound": 3,
+  "L": 6,
+  "candidate_divisors": 3,
+  "all_divisor_multisets": 10,
+  "density_prefix_prune": true,
+  "status": "COMPLETE",
+  "counts": {
+    "multisets_after_gcd": 4,
+    "multisets_after_density": 2,
+    "multisets_after_normal_form": 1,
+    "sat_calls": 1,
+    "SAT": 1,
+    "UNSAT": 0,
+    "nodes_visited": 12
+  },
+  "survivor_sha256": "049fcc3d9cc6d5b18add6522464dfc19ef6bc3242f2abb1432305f15c0c21266",
+  "survivors": [
+    {
+      "moduli": [
+        3,
+        3,
+        3
+      ],
+      "decision": "SAT",
+      "residues": [
+        0,
+        1,
+        2
+      ],
+      "verified_over_Z_mod_L": true
+    }
+  ],
+  "last_prefix_at_timeout": null,
+  "wall_seconds": 0.001,
+  "solver": "CaDiCaL 1.5.3 via python-sat 1.9.dev15",
+  "minimal_parts": {
+    "status": "COMPLETE",
+    "records_file": "minimal_parts_k3_vacuity.jsonl.gz",
+    "records_sha256": "ac73670af3abed54ac6fb4695131f4099be9fbe39d6076c5d0264a6bbdae9d83",
+    "witness_file": "minimal_witnesses_k3_vacuity.jsonl.gz",
+    "witness_sha256": "ac73670af3abed54ac6fb4695131f4099be9fbe39d6076c5d0264a6bbdae9d83",
+    "k": 3,
+    "candidate_count": 0,
+    "distribution": {},
+    "unique_decisions": 0,
+    "seeded_decisions": 0,
+    "unique_witnesses": 0,
+    "selector_sat_calls": 0,
+    "wall_seconds": 0.0
+  }
+}

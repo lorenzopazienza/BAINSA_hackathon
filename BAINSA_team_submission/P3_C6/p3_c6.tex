@@ -1,0 +1,477 @@
+\documentclass[11pt]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{observation}[theorem]{Numerical observation}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\dB}{d_{\mathcal{B}}}
+\newcommand{\DB}{D_{\mathcal{B}}}
+\renewcommand{\le}{\leqslant}
+\renewcommand{\ge}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\newcommand{\NMAX}{80}
+\newcommand{\KMAX}{12}
+\newcommand{\TOTALSEC}{300.8\,\mathrm{s}}
+\newcommand{\LASTSEC}{40\,\mathrm{s}}
+\newcommand{\LAPTOP}{Apple M3 Max, CPython 3.12, one core}
+\author{Problem 3 team}
+
+\title{Problem 3 (Bulgarian solitaire), Cell 6:\\ the whole function $n\mapsto\DB(n)$}
+\date{}
+\begin{document}
+\maketitle
+
+\paragraph{Official setting.}
+\begin{quote}
+A partition of a positive integer $n$ is a weakly decreasing sequence $\lambda=(\lambda_1,\dots,\lambda_s)$ of
+positive integers with $\lambda_1+\cdots+\lambda_s=n$.  The shift $\B(\lambda)$ is the partition whose parts are the
+positive numbers among $\lambda_1-1,\dots,\lambda_s-1$ together with one extra part equal to $s$.  Call $\lambda$
+cyclic if $\B^i(\lambda)=\lambda$ for some $i\ge1$, and let $\dB(\lambda)=\min\{\,i\ge0:\B^i(\lambda)\text{ is cyclic}\,\}$,
+$\DB(n)=\max\{\,\dB(\lambda):\lambda\text{ is a partition of }n\,\}$.  Write $T_k=k(k+1)/2$ and
+$\delta_k=(k,k-1,\dots,2,1)$.  Every $n\ge1$ satisfies $T_{k-1}<n\le T_k$ for exactly one $k$, which we call the
+rank of $n$.
+\end{quote}
+
+\paragraph{Official statement of the cell (13 points, open question).}
+\begin{center}
+\fbox{\begin{minipage}{0.93\textwidth}
+\vspace{2pt}
+Finally, the whole function $n\mapsto\DB(n)$.  Determine $\DB(n)$ for every $n$.
+\vspace{2pt}
+\end{minipage}}
+\end{center}
+
+\paragraph{Status.}
+\textbf{Partial.}  The cell asks for a closed form for $\DB(n)$ valid for \emph{every} $n$; we do not have one, and
+we do not claim one.  What this document contains is, precisely:
+\begin{itemize}
+\item[(a)] \emph{Proved, for all $k$ in the stated ranges}: the four columns $r\in\{1,2,k-1,k\}$ of the array
+$\DB(T_{k-1}+r)$ (Cells 2--5), the general upper bound $\DB(n)\le k^2-2k-1$ for non-triangular $n$ (Cell 3), and one
+new step proved here: the exact value $\dB(1^n)=n-k+1$ for every $n\ge3$, which gives the lower bound of
+Conjecture~\ref{conj:gh47} in the two \emph{middle} columns $r\in\{a,a+1\}$, $a=\lfloor (k-1)/2\rfloor$
+(Theorem~\ref{thm:onen}, Corollary~\ref{cor:middle}).
+\item[(b)] \emph{Computer-checked only}: $\DB(n)$ is computed exhaustively and \emph{exactly} for every
+$n\le \NMAX$, and it agrees with the Griggs--Ho Conjecture~\ref{conj:gh47} formula for every $n$ with
+$3\le n\le \NMAX$.  There is \textbf{no disagreement} anywhere in that range.  This covers all ranks $k\le \KMAX$
+(i.e.\ past $T_{11}=66$ and $T_{12}=78$).  Wall clock and hardware are reported in
+Section~\ref{sec:comp}; the run is a single exhaustive pass, $\TOTALSEC$ on a laptop.
+\item[(c)] \emph{Open}: the columns $3\le r\le k-2$ other than the two middle ones, and the \emph{upper} bound in
+the two middle columns.  Equivalently: Conjecture~\ref{conj:gh47} is now reduced, in the middle columns, to an
+upper bound, and is untouched by us elsewhere in that range.
+\end{itemize}
+Section~\ref{sec:status} states this again, item by item, at the end.
+
+\paragraph{Answer, as far as it goes.}
+Write $n=T_{k-1}+r$ with $1\le r\le k$ and put $a=\lfloor(k-1)/2\rfloor$.  The conjectured answer, which we confirm
+for all $n\le\NMAX$ and prove in the columns listed above, is
+\[
+\DB(T_{k-1}+r)\;=\;
+\begin{cases}
+(k-3-r)k+r+2, & 1\le r\le a-1,\\[2pt]
+n-k+1\;=\;T_{k-1}+r-k+1, & r\in\{a,\,a+1\},\\[2pt]
+(r-2)k+r, & a+2\le r\le k.
+\end{cases}
+\]
+
+\section{Setting, notation, and what we quote}\label{sec:defs}
+
+Throughout, $T_m=m(m+1)/2$ for $m\ge0$ (so $T_0=0$), and a \emph{partition} of $n\ge1$ is a finite non-increasing
+sequence of positive integers with sum $n$; we identify partitions with multisets of positive integers, which is
+legitimate because $\B$ depends only on the multiset.  We write $\ell(\lambda)$ for the number of parts,
+$\delta_m=(m,m-1,\dots,1)$, and $1^n=(1,1,\dots,1)$ ($n$ parts).  For a partition $\lambda$ with
+$\ell(\lambda)=s$,
+\[
+\B(\lambda)\;=\;\{\lambda_i-1:\ \lambda_i\ge2\}\ \cup\ \{s\}\qquad(\text{as a multiset}).
+\]
+Since there are finitely many partitions of $n$ and $\B$ maps partitions of $n$ to partitions of $n$, every orbit
+$\lambda,\B(\lambda),\B^2(\lambda),\dots$ is eventually periodic, so $\dB(\lambda)$ is well defined; $\dB(\lambda)$
+is exactly the length of the tail of that orbit, i.e.\ the distance from $\lambda$ to the set of cyclic partitions
+in the functional graph of $\B$.  Every $n\ge1$ has a unique \emph{rank} $k$ with $T_{k-1}<n\le T_k$, and we always
+write $n=T_{k-1}+r$ with $1\le r\le k$.  Full proofs of these two facts are Lemma 1.1 and Lemma 1.2 of
+\texttt{P3\_C2/p3\_c2.tex}, and are repeated verbatim in Cells 3--5; we do not repeat them here.
+
+The only external input we use is Brandt's description of the cyclic partitions.
+
+\begin{theorem}[Brandt \cite{Brandt82}; see also {\cite[\S2]{GH98}}]\label{thm:brandt}
+Let $n=T_{k-1}+r$ with $1\le r\le k$.  A partition $\lambda\vdash n$ is cyclic if and only if
+\[
+\lambda\;=\;\{\,i+e_i:\ 0\le i\le k-1,\ i+e_i>0\,\},\qquad e_i\in\{0,1\},\quad \textstyle\sum_{i=0}^{k-1}e_i=r .
+\]
+In particular every cyclic partition of $n$ has all parts $\le k$, has $k$ or $k-1$ parts, and $\B$ permutes this
+set cyclically in orbits whose lengths divide $k$.
+\end{theorem}
+
+A proof is in \texttt{P3\_C2/p3\_c2.tex}, Theorem 2.6 (repeated as Theorem 2.6 of Cells 3--5).  We use only the
+displayed characterisation and the consequence \emph{``cyclic $\Rightarrow$ all parts $\le k$''}.
+
+\section{The conjectured answer}\label{sec:conj}
+
+Griggs and Ho \cite[Thm.~4.5]{GH98} construct, for every $n\ge3$, a partition of $n$ with a prescribed value of
+$\dB$, obtaining a lower bound for $\DB(n)$; they conjecture that this lower bound is the truth.
+
+\begin{conjecture}[Griggs--Ho {\cite[Conj.~4.7]{GH98}}]\label{conj:gh47}
+Let $n\ge3$, let $k$ be the rank of $n$, write $n=T_{k-1}+r$ with $1\le r\le k$, and put $a=\lfloor(k-1)/2\rfloor$.
+Then
+\[
+\DB(n)\;=\;G(n)\;:=\;
+\begin{cases}
+(k-3-r)k+r+2, & 1\le r\le a-1,\\[2pt]
+n-k+1, & r\in\{a,\,a+1\},\\[2pt]
+(r-2)k+r, & a+2\le r\le k.
+\end{cases}
+\]
+\end{conjecture}
+
+The three branches are exactly the three witness families of \cite[Thm.~4.5]{GH98}; the inequality $\DB(n)\ge G(n)$
+is their theorem, the equality is the conjecture.  Griggs and Ho verified the equality for $n\le36$ and proved it
+for $r\in\{k-1,k\}$.  Two remarks on the shape of $G$, both immediate from the display:
+$G$ decreases by $k-1$ as $r$ increases by $1$ in the first branch, is flat-to-$+1$ across the two middle values,
+and increases by $k+1$ per step in the third branch; and the three branches agree with the four proved columns
+recalled in Section~\ref{sec:proved} (e.g.\ $r=k$ gives $(k-2)k+k=k^2-k$, $r=k-1$ gives $(k-3)k+k-1=k^2-2k-1$,
+$r=1$ gives $(k-4)k+3=(k-1)(k-3)$ when $a\ge2$, $r=2$ gives $(k-5)k+4=(k-1)(k-4)$ when $a\ge3$).
+
+\section{What is already proved, and by which cell}\label{sec:proved}
+
+The four extreme columns of the array $\DB(T_{k-1}+r)$ are settled in Cells 2--5, with complete proofs of both
+bounds.  We restate them here in the $(k,r)$ coordinates of this cell; no proof is repeated, each is a pointer.
+
+\begin{theorem}[Cell 2, $r=k$: triangular $n$]\label{thm:c2}
+$\DB(T_k)=k^2-k$ for every $k\ge1$.
+\end{theorem}
+\noindent(\texttt{P3\_C2/p3\_c2.tex}, Theorem 5.1; lower bound by the explicit family
+$\lambda^{[k]}=(k-1,k-1,k-2,\dots,2,1,1)$, upper bound the Igusa--Etienne theorem as proved there following
+\cite[Thm.~3.7]{GH98}.)
+
+\begin{theorem}[Cell 3, general upper bound and $r=k-1$]\label{thm:c3}
+For every $k\ge4$ and every non-triangular $n$ with $T_{k-1}<n<T_k$ one has $\DB(n)\le k^2-2k-1$; and
+$\DB(T_k-1)=k^2-2k-1$ for every $k\ge4$, attained by
+$\lambda^{\langle k\rangle}=(k-1,k-2,k-2,k-3,\dots,2,1,1)$.
+\end{theorem}
+\noindent(\texttt{P3\_C3/p3\_c3.tex}, Theorems 5.1 and 5.2, following \cite[Thm.~4.4]{GH98}.)  This is the only
+bound we have that applies to \emph{all} the columns $1\le r\le k-1$ at once, and it is exactly the obstacle: it
+is sharp only at $r=k-1$, and for $r$ in the middle it overshoots $G(n)$ by roughly $k^2/2$.
+
+\begin{theorem}[Cell 4, $r=1$]\label{thm:c4}
+$\DB(T_{k-1}+1)=(k-1)(k-3)$ for every $k\ge5$.
+\end{theorem}
+\noindent(\texttt{P3\_C4/p3\_c4.tex}, Corollary 6.2.  This is the case $r=1$ of Conjecture~\ref{conj:gh47}.)
+
+\begin{theorem}[Cell 5, $r=2$]\label{thm:c5}
+$\DB(T_{k-1}+2)=(k-1)(k-4)$ for every $k\ge7$, and
+$\DB(T_{k-1}+2)=\max\{(k-1)(k-4),\,T_{k-2}+2\}$ for every $k\ge2$.
+\end{theorem}
+\noindent(\texttt{P3\_C5/p3\_c5.tex}, Theorem 6.1.  This is the case $r=2$ of Conjecture~\ref{conj:gh47}; note that
+for $3\le k\le6$ one has $r=2\in\{a,a+1\}$, and the second branch of $G$ gives $T_{k-2}+2=n-k+1$, so the two
+displays agree; for $k=2$ the third branch gives $\DB(3)=2$, again as stated.)
+
+\begin{corollary}\label{cor:proved-columns}
+Conjecture~\ref{conj:gh47} holds for $r\in\{1,2,k-1,k\}$ (in the ranges of
+Theorems~\ref{thm:c2}--\ref{thm:c5}); for every $k$ this is $4$ of the $k$ columns.
+\end{corollary}
+
+\section{The exhaustive computation}\label{sec:comp}
+
+\paragraph{What is computed.}  For each $n$ in turn, the script \texttt{p3\_c6\_DB.py} enumerates \emph{all} $p(n)$
+partitions of $n$, builds the functional graph of $\B$ on them, finds the cyclic partitions as the vertices lying on
+a cycle of that graph (Brandt's theorem is \emph{not} used: the cyclic set is found by the definition, as a vertex
+$\lambda$ with $\B^i(\lambda)=\lambda$ for some $i\ge1$), computes $\dB(\lambda)$ for every $\lambda$ as the
+distance to that set, and returns $\DB(n)=\max_\lambda \dB(\lambda)$.  It then compares with $G(n)$.
+
+\paragraph{Why it gets past $n=60$.}  The version used in Cells 2--5 (\texttt{bs.py}) stores every partition as a
+tuple, in a dictionary and in several per-partition lists, which is what stops it around $n=60$.  Here a partition is stored as its integer rank: with
+$P[m][M]=\#\{\mu\vdash m:\mu_1\le M\}$ precomputed, listing the partitions of $m$ with parts $\le M$ by decreasing
+first part lets one skip a whole block in $O(1)$, so a partition is ranked in $O(\ell(\lambda))$ time and the graph
+is two integer arrays of length $p(n)$.
+
+\paragraph{Honest statement of the range and the timing.}  The run reported in \texttt{p3\_c6\_DB.log} covers
+$1\le n\le\NMAX$ and took \textbf{$\TOTALSEC$ of wall clock} on the laptop used for the hand-in
+(\LAPTOP), i.e.\ inside the $10$-minute limit of the hand-in rules.  The script takes a time budget as
+its second argument and stops before starting an $n$ that would break it, so the range is reproducible.  The last
+few values of $n$ dominate: $n=\NMAX$ alone accounts for about $\LASTSEC$.  Going further is only a matter of
+budget, not of method, but $p(n)$ grows by a factor $\approx1.15$ per unit of $n$, so each further $+5$ in $n$
+roughly doubles the run.
+
+\paragraph{Cross-check.}  For $n\le28$ the same run recomputes $\DB(n)$ by the naive method (iterate $\B$ from every
+single partition until a partition repeats, straight from the definition, as in \texttt{p3\_small\_cases.py}) and
+checks that the two agree; they do.  Independently, all values with $n\le60$ agree with the earlier
+\texttt{bs.py} run recorded in \texttt{bs\_output\_60.txt}, which was produced by a different implementation and is
+also cross-checked there against Brandt's theorem, against the counts of cycles, and against the witnesses of
+Cells 2--5.
+
+\begin{theorem}[computer-checked]\label{thm:comp}
+For every $n$ with $3\le n\le\NMAX$, $\DB(n)=G(n)$.  In particular Conjecture~\ref{conj:gh47} holds for all
+$n\le\NMAX$, i.e.\ for all ranks $k\le\KMAX$, and \textbf{no disagreement with the Griggs--Ho formula was found
+anywhere in that range}.
+\end{theorem}
+
+\begin{proof}
+Exhaustive computation; see the discussion above and the log \texttt{p3\_c6\_DB.log}.  This is a
+machine verification, not a proof in the mathematical sense, and it is used nowhere in
+Sections~\ref{sec:proved} and \ref{sec:new}.
+\end{proof}
+
+\noindent The values, arranged as the array $\DB(T_{k-1}+r)$ (row $k$, column $r=1,\dots,k$):
+
+\begin{center}\small\setlength{\tabcolsep}{3pt}
+\begin{tabular}{rrrrrrrrrrrrr}
+\hline
+$\DB$ & $r=1$ & $r=2$ & $r=3$ & $r=4$ & $r=5$ & $r=6$ & $r=7$ & $r=8$ & $r=9$ & $r=10$ & $r=11$ & $r=12$ \\
+\hline
+$k=1$ & $0$ &  &  &  &  &  &  &  &  &  &  &  \\
+$k=2$ & $0$ & $2$ &  &  &  &  &  &  &  &  &  &  \\
+$k=3$ & $\boxed{2}$ & $\boxed{3}$ & $6$ &  &  &  &  &  &  &  &  &  \\
+$k=4$ & $\boxed{4}$ & $\boxed{5}$ & $7$ & $12$ &  &  &  &  &  &  &  &  \\
+$k=5$ & $8$ & $\boxed{8}$ & $\boxed{9}$ & $14$ & $20$ &  &  &  &  &  &  &  \\
+$k=6$ & $15$ & $\boxed{12}$ & $\boxed{13}$ & $16$ & $23$ & $30$ &  &  &  &  &  &  \\
+$k=7$ & $24$ & $18$ & $\boxed{18}$ & $\boxed{19}$ & $26$ & $34$ & $42$ &  &  &  &  &  \\
+$k=8$ & $35$ & $28$ & $\boxed{24}$ & $\boxed{25}$ & $29$ & $38$ & $47$ & $56$ &  &  &  &  \\
+$k=9$ & $48$ & $40$ & $32$ & $\boxed{32}$ & $\boxed{33}$ & $42$ & $52$ & $62$ & $72$ &  &  &  \\
+$k=10$ & $63$ & $54$ & $45$ & $\boxed{40}$ & $\boxed{41}$ & $46$ & $57$ & $68$ & $79$ & $90$ &  &  \\
+$k=11$ & $80$ & $70$ & $60$ & $50$ & $\boxed{50}$ & $\boxed{51}$ & $62$ & $74$ & $86$ & $98$ & $110$ &  \\
+$k=12$ & $99$ & $88$ & $77$ & $66$ & $\boxed{60}$ & $\boxed{61}$ & $67$ & $80$ & $93$ & $106$ & $119$ & $132$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\noindent Read along a row: the value falls by $k-1$ per step, flattens at the two middle entries (boxed), then
+rises by $k+1$ per step.  The four columns proved in Cells 2--5 are $r=1,2$ (left) and $r=k-1,k$ (right end of each
+row); Section~\ref{sec:new} adds the lower bound at the two boxed entries.
+
+\section{One new step: the orbit of $1^n$ and the middle columns}\label{sec:new}
+
+The middle branch $G(n)=n-k+1$ of Conjecture~\ref{conj:gh47} has a witness that is much simpler than the witnesses
+of the other two branches, and it can be analysed completely.  Everything in this section is proved; nothing in it
+uses the computation of Section~\ref{sec:comp}.
+
+\begin{lemma}[one step of the staircase]\label{lem:step}
+Let $j\ge0$ and $m\ge j+2$ be integers.  Then, as multisets,
+\[
+\B^{\,j+1}\bigl(\{m\}\cup\delta_j\bigr)\;=\;\{m-j-1\}\cup\delta_{j+1},
+\]
+and for $1\le i\le j$ the intermediate partitions are
+\[
+\B^{\,i}\bigl(\{m\}\cup\delta_j\bigr)\;=\;\{m-i\}\cup\{j+1\}\cup\bigl(\delta_j\setminus\{j+1-i\}\bigr).
+\tag{$S_i$}
+\]
+(Here $\delta_0=\varnothing$, and $\delta_j\setminus\{x\}$ means: delete one part equal to $x$.)
+\end{lemma}
+
+\begin{proof}
+Put $S_0=\{m\}\cup\delta_j$ and let $S_i$ be the right-hand side of $(S_i)$ for $1\le i\le j$, and
+$S_{j+1}=\{m-j-1\}\cup\delta_{j+1}$.  Each $S_i$ with $0\le i\le j$ has exactly $j+1$ parts: $S_0$ has $1+j$; and
+for $1\le i\le j$ it has $1+1+(j-1)=j+1$ parts, because $1\le j+1-i\le j$ so exactly one part is deleted from
+$\delta_j$.  All parts are positive: the only part that could vanish is $m-i\ge m-j-1\ge1$.  It therefore suffices
+to check $\B(S_i)=S_{i+1}$ for $0\le i\le j$, and $\B$ on a partition with $j+1$ parts subtracts $1$ from every
+part, deletes the resulting zeros, and adjoins one part equal to $j+1$.
+
+\smallskip
+\noindent$i=0$: subtracting $1$ turns $\{m\}\cup\delta_j$ into $\{m-1\}\cup\{j-1,j-2,\dots,1,0\}$; deleting the $0$
+and adjoining $j+1$ gives $\{m-1\}\cup\{j+1\}\cup(\delta_j\setminus\{j\})$, which is $S_1$.
+
+\smallskip
+\noindent$1\le i\le j-1$: subtracting $1$ turns
+$\{m-i\}\cup\{j+1\}\cup(\{j,\dots,1\}\setminus\{j+1-i\})$ into
+$\{m-i-1\}\cup\{j\}\cup(\{j-1,\dots,0\}\setminus\{j-i\})$.  Since $i\le j-1$ we have $j-i\ge1$, so the part $0$ is
+present exactly once and is deleted, leaving
+$\{m-i-1\}\cup\{j\}\cup(\{j-1,\dots,1\}\setminus\{j-i\})$; adjoining $j+1$ gives
+$\{m-i-1\}\cup\{j+1\}\cup(\{j,\dots,1\}\setminus\{j-i\})=S_{i+1}$, as $j-i\le j-1$.
+
+\smallskip
+\noindent$i=j$: here $S_j=\{m-j\}\cup\{j+1\}\cup\{j,j-1,\dots,2\}$ (the part $1$ is the deleted one).  Subtracting
+$1$ gives $\{m-j-1\}\cup\{j\}\cup\{j-1,\dots,1\}$, with no zero to delete; adjoining $j+1$ gives
+$\{m-j-1\}\cup\delta_{j+1}=S_{j+1}$.
+\end{proof}
+
+\begin{lemma}[the staircase orbit of a single pile]\label{lem:pile}
+Let $n\ge1$ and let $j\ge0$ be such that $n>T_j$.  Then $\B^{T_j}\bigl((n)\bigr)=\{n-T_j\}\cup\delta_j$.
+\end{lemma}
+
+\begin{proof}
+Induction on $j$, the case $j=0$ being $\B^0((n))=(n)$.  Assume the statement for $j$ and let $n>T_{j+1}$.  Then
+also $n>T_j$, so $\B^{T_j}((n))=\{m\}\cup\delta_j$ with $m=n-T_j>T_{j+1}-T_j=j+1$, i.e.\ $m\ge j+2$.
+Lemma~\ref{lem:step} gives $\B^{T_j+j+1}((n))=\{m-j-1\}\cup\delta_{j+1}$, and $T_j+j+1=T_{j+1}$,
+$m-j-1=n-T_{j+1}$.
+\end{proof}
+
+\begin{theorem}\label{thm:onen}
+Let $n\ge3$, let $k$ be its rank and write $n=T_{k-1}+r$ with $1\le r\le k$.  Then
+\[
+\dB\bigl((n)\bigr)=n-k \qquad\text{and}\qquad \dB\bigl(1^n\bigr)=n-k+1 .
+\]
+Moreover $\B^{\,n-k}\bigl((n)\bigr)=\delta_k\setminus\{k-r\}$ (which for $r=k$ reads $\delta_k$).
+\end{theorem}
+
+\begin{proof}
+Note first $k\ge2$ and $n-k=T_{k-2}+(r-1)$, because $T_{k-1}-(k-1)=T_{k-2}$.
+
+\smallskip
+\noindent\emph{Step 1: identification of $\B^{\,n-k}((n))$.}  Since $n>T_{k-1}\ge T_{k-2}$, Lemma~\ref{lem:pile}
+gives $\B^{T_{k-2}}((n))=\{m\}\cup\delta_{k-2}$ with $m=n-T_{k-2}=k-1+r$.  As $m\ge k=(k-2)+2$, we may apply
+Lemma~\ref{lem:step} with $j=k-2$.  If $1\le r-1\le k-2$, formula $(S_{r-1})$ with $i=r-1$ gives
+\[
+\B^{T_{k-2}+r-1}\bigl((n)\bigr)=\{k\}\cup\{k-1\}\cup\bigl(\delta_{k-2}\setminus\{k-r\}\bigr)=\delta_k\setminus\{k-r\};
+\]
+if $r-1=0$ it is $S_0=\{k\}\cup\delta_{k-2}=\delta_k\setminus\{k-1\}$, the same formula; and if $r-1=k-1$
+(i.e.\ $r=k$, $n=T_k$) it is $S_{(k-2)+1}=\{m-k+1\}\cup\delta_{k-1}=\{k\}\cup\delta_{k-1}=\delta_k$, again the same
+formula with $k-r=0$.  In all cases
+$\B^{\,n-k}((n))=\delta_k\setminus\{k-r\}$.
+
+\smallskip
+\noindent\emph{Step 2: this partition is cyclic.}  Apply Theorem~\ref{thm:brandt} with
+$e_i=1$ for $k-r\le i\le k-1$ and $e_i=0$ for $0\le i\le k-r-1$ (so $\sum e_i=r$): the resulting multiset is
+$\{k,k-1,\dots,k-r+1\}\cup\{k-r-1,k-r-2,\dots,1\}=\delta_k\setminus\{k-r\}$.  Hence it is cyclic.
+
+\smallskip
+\noindent\emph{Step 3: nothing earlier is cyclic.}  We show that $\B^t((n))$ has a part $\ge k+1$ for every
+$0\le t<n-k$; by Theorem~\ref{thm:brandt} such a partition cannot be cyclic.  Let $t<n-k=T_{k-2}+r-1$.
+
+If $T_{k-2}\le t$, write $t=T_{k-2}+i$ with $0\le i<r-1$; by Step 1 the partition $\B^t((n))$ is
+$S_i$ (in the notation of Lemma~\ref{lem:step} with $j=k-2$, $m=k-1+r$), which contains the part
+$m-i=k-1+r-i\ge k+1$.
+
+If $t<T_{k-2}$, let $j\le k-3$ be maximal with $T_j\le t$ and put $i=t-T_j$, so $0\le i\le j$ (indeed
+$t<T_{j+1}=T_j+j+1$).  Since $n>T_{k-1}>T_{j}$, Lemma~\ref{lem:pile} applies and $\B^{T_j}((n))=\{m'\}\cup\delta_j$
+with $m'=n-T_j\ge j+2$; by Lemma~\ref{lem:step}, $\B^t((n))$ contains the part $m'-i=n-T_j-i=n-t$.  As
+$t<T_{k-2}$ we get $n-t>n-T_{k-2}=k-1+r\ge k$, i.e.\ $n-t\ge k+1$.
+
+Hence $\dB((n))=n-k$.
+
+\smallskip
+\noindent\emph{Step 4: from $(n)$ to $1^n$.}  $\B(1^n)=(n)$, because every part $1$ becomes $0$ and is deleted and
+one part equal to $\ell(1^n)=n$ is adjoined.  Since $n\ge3$ we have $n>k$, so $\dB((n))=n-k\ge1$ and $(n)$ is not
+cyclic; a fortiori $1^n$ is not cyclic, since $\B$ maps cyclic partitions to cyclic partitions.  Therefore
+$\dB(1^n)=1+\dB((n))=n-k+1$.
+\end{proof}
+
+\begin{corollary}\label{cor:middle}
+For every $n\ge3$ of rank $k$, $\DB(n)\ge n-k+1$.  In particular, for $r\in\{a,a+1\}$ with
+$a=\lfloor(k-1)/2\rfloor$, the \emph{lower} bound of Conjecture~\ref{conj:gh47} holds:
+$\DB(T_{k-1}+r)\ge G(T_{k-1}+r)=n-k+1$.  Consequently, in the two middle columns Conjecture~\ref{conj:gh47} is
+equivalent to the single inequality $\DB(n)\le n-k+1$.
+\end{corollary}
+
+\begin{proof}
+Immediate from Theorem~\ref{thm:onen} and the definition of $\DB$, together with the middle branch of $G$.
+\end{proof}
+
+\begin{remark}
+What this does \emph{not} do.  The upper bound in the middle columns is not proved, and it is the hard half: the
+only general upper bound available is $k^2-2k-1$ (Theorem~\ref{thm:c3}), whereas $n-k+1\approx k^2/2$, so the gap
+is about $k^2/2$ --- of the same order as the answer.  The Cell~4 and Cell~5 upper bounds do not extend: their
+entry lemmas classify how an orbit enters the cycle using that the cyclic partitions of $T_{k-1}+r$ are indexed by
+$r$-subsets of $\{0,\dots,k-1\}$, and for $r\approx k/2$ the number of entry types is $\binom{k}{r}$, which is
+exponential in $k$, not $O(k)$ as for $r=1,2$.  Section~\ref{sec:status} says where we think the next step lies.
+\end{remark}
+
+\begin{remark}[relation to the literature]
+Theorem~\ref{thm:onen} is the third witness family of \cite[Thm.~4.5]{GH98}, for which they state the value without
+a detailed proof of the tail length; we give a complete proof here, and the exact identification
+$\B^{\,n-k}((n))=\delta_k\setminus\{k-r\}$ of the cyclic partition that the single pile falls into appears to be
+slightly more precise than what is stated there.  We make no novelty claim beyond that: the same caveat as in
+Cells 4 and 5 applies (we checked the sources cited here and three later ones, but did not survey the literature
+exhaustively).
+\end{remark}
+
+\section{Numerical evidence (not proofs)}\label{sec:numerics}
+
+Everything in this section is an observation about the computed range $n\le\NMAX$ only.  It is recorded because it
+says where to look next, and it is kept strictly separate from Sections~\ref{sec:proved} and \ref{sec:new}.
+
+\begin{observation}\label{obs:onen}
+For $4\le n\le\NMAX$, the partition $1^n$ is extremal (i.e.\ $\dB(1^n)=\DB(n)$) \emph{exactly} when
+$r\in\{a,a+1\}$; the single exception $n=3$ is an accidental coincidence of two branches of $G$.  The extremal
+\emph{sets} were computed only for $n\le60$ (\texttt{bs\_output\_60.txt}); there, $1^n$ is the \emph{unique}
+extremal partition for every $k$ with $5\le k\le10$ in the column $r=a+1$ ($n=13,18,25,32,41,50$), and also in the
+column $r=a$ when $k$ is even ($n=17,31,49$), whereas for $r=a$ with $k$ odd the extremal set is large
+($2$ partitions for $n=12$, $31$ for $n=24$, $821$ for $n=40$, $16653$ for $n=60$).
+\end{observation}
+\noindent This is the sharpest structural hint we have: at $r=a+1$ the maximum is attained only by the single
+``flattest'' partition, so an upper-bound proof there should be able to argue by ``any partition other than $1^n$
+loses at least one step'', which is not how the Cell~2--5 upper bounds are organised.
+
+\begin{observation}\label{obs:cols}
+The columns $r=3$ and $r=k-2$, the natural next targets, behave exactly as $G$ predicts:
+$\DB(T_{k-1}+3)=(k-6)k+5=(k-1)(k-5)$ for all $k$ with $9\le k\le12$ (and $\DB(T_{k-1}+3)=n-k+1$ for
+$5\le k\le8$, where $3\in\{a,a+1\}$), and $\DB(T_k-2)=(k-4)k+k-2=k^2-3k-2$ for all $k$ with $6\le k\le12$.
+We did not find a proof of either within this cell.
+\end{observation}
+
+\begin{observation}\label{obs:c3gap}
+The Cell~3 bound $k^2-2k-1$ is attained only at $r=k-1$; the deficit $k^2-2k-1-G(n)$ is $0$ at $r=k-1$, $k+1$ at
+$r=k-2$, and grows to roughly $k^2/2$ in the middle of the row.  So a proof of Conjecture~\ref{conj:gh47} cannot be
+a perturbation of the Cell~3 argument except very near the right end of the row; this matches what Cell~5 already
+found for $r=2$ at the left end.
+\end{observation}
+
+\section{Status: partial}\label{sec:status}
+
+\paragraph{Proved (no computer used).}
+\begin{itemize}
+\item $\DB(T_k)=k^2-k$, all $k\ge1$ (Theorem~\ref{thm:c2}, Cell 2).
+\item $\DB(n)\le k^2-2k-1$ for all non-triangular $n$ of rank $k\ge4$, and $\DB(T_k-1)=k^2-2k-1$ for all $k\ge4$
+(Theorem~\ref{thm:c3}, Cell 3).
+\item $\DB(T_{k-1}+1)=(k-1)(k-3)$, all $k\ge5$ (Theorem~\ref{thm:c4}, Cell 4).
+\item $\DB(T_{k-1}+2)=\max\{(k-1)(k-4),T_{k-2}+2\}$, all $k\ge2$ (Theorem~\ref{thm:c5}, Cell 5).
+\item New here: $\dB((n))=n-k$ and $\dB(1^n)=n-k+1$ for every $n\ge3$, with the explicit landing point
+$\B^{n-k}((n))=\delta_k\setminus\{k-r\}$ (Theorem~\ref{thm:onen}); hence $\DB(n)\ge n-k+1$ always, which is the
+lower half of Conjecture~\ref{conj:gh47} in the two middle columns $r\in\{a,a+1\}$ (Corollary~\ref{cor:middle}).
+\end{itemize}
+Small values used by Cells 3 and 5 for a bounded set of $k$ (namely $k=4$ in Cell 3 and $2\le k\le6$ in Cell 5) are
+exhaustive computations, as declared in those cells.
+
+\paragraph{Computer-checked only.}
+$\DB(n)$ is known exactly for every $n\le\NMAX$, and equals $G(n)$ for every $n$ with $3\le n\le\NMAX$
+(Theorem~\ref{thm:comp}); no disagreement with Conjecture~\ref{conj:gh47} occurs in that range.  This is an
+exhaustive computation over all $p(n)$ partitions, $\TOTALSEC$ of wall clock in total, cross-checked against a
+naive implementation for $n\le28$ and against the independent \texttt{bs.py} run for $n\le60$.  Nothing in
+Sections~\ref{sec:proved} and \ref{sec:new} depends on it.
+
+\paragraph{Open.}
+\begin{itemize}
+\item The value of $\DB(T_{k-1}+r)$ for $3\le r\le k-2$ with $r\notin\{a,a+1\}$: nothing is proved, for any single
+such $(k,r)$ with $k$ unbounded.
+\item The upper bound $\DB(T_{k-1}+r)\le n-k+1$ for $r\in\{a,a+1\}$: the lower bound is now proved
+(Corollary~\ref{cor:middle}), the upper bound is not.
+\item Therefore Conjecture~\ref{conj:gh47}, hence the official question of this cell, is \textbf{not} answered.  We
+have $4$ columns out of $k$ proved, $2$ more with the lower bound proved, and the whole array confirmed
+numerically up to $n=\NMAX$.
+\end{itemize}
+
+\paragraph{Where we would go next.}  Observation~\ref{obs:onen} (uniqueness of the extremal partition at $r=a+1$)
+suggests attacking $r=a+1$ before $r=3$: uniqueness usually means a rigid orbit, and the orbit of $1^n$ is
+completely described by Lemma~\ref{lem:step}.  The obstruction identified in the Remark after
+Corollary~\ref{cor:middle} --- that the entry classification used in Cells 4 and 5 has $\binom{k}{r}$ types --- is
+what has to be replaced, presumably by an argument that bounds the tail by a potential function on the orbit rather
+than by its entry point.
+
+\appendix
+\section{Code}\label{app:code}
+
+\texttt{p3\_c6\_DB.py} (delivered with this document, together with its output \texttt{p3\_c6\_DB.log}) computes
+$\DB(n)$ exhaustively for $n=1,\dots,\NMAX$ as described in Section~\ref{sec:comp}, compares each value with
+$G(n)$, cross-checks against a naive orbit-by-orbit computation for $n\le28$, and prints the array of
+Section~\ref{sec:comp}.  Usage: \texttt{python3} \texttt{p3\_c6\_DB.py} \texttt{[NMAX]} \texttt{[BUDGET\_SECONDS]}; the run
+delivered here is
+\texttt{python3 p3\_c6\_DB.py 80 480}, wall clock $\TOTALSEC$.  The earlier and independent \texttt{bs.py}
+(delivered with Cells 2--5, output \texttt{bs\_output\_60.txt}) covers $n\le60$ and additionally verifies Brandt's
+theorem, the cycle counts, and every witness and characterisation used in Cells 2--5.
+
+\begin{thebibliography}{Brandt82}
+\bibitem[Brandt82]{Brandt82} J.~Brandt, Cycles of partitions, \emph{Proc.\ Amer.\ Math.\ Soc.} \textbf{85} (1982),
+483--486.
+\bibitem[GH98]{GH98} J.~R.~Griggs and C.-C.~Ho, The cycling of partitions and compositions under repeated shifts,
+\emph{Adv.\ Appl.\ Math.} \textbf{21} (1998), 205--227.
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,2 @@
+residual example: SAT at 40? True  SAT at 41? False
+300 random placements: SAT optimum <= min(B1,B2) everywhere; tightest (0, {1: [2, 5, 7, 31, 37], 2: [3, 11, 29], 3: [13, 23, 41]}, 13, 13)

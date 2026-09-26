@@ -1,0 +1,2 @@
+TIME 3.2s exit=0 :: p4_codex checker.py + minimal_cert.py, k=3..12
+TIME 82.7s exit=0 :: p4_dfs sun_dfs.py 3..13 (enumeration + decisions)

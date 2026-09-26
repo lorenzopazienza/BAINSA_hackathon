@@ -1,0 +1,135 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=2.5cm]{geometry}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{definition}
+\newtheorem*{statement}{Official statement}
+
+\title{Problem 4, Cell 2: Sun's conjecture for $k=4$}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{statement}
+For integers $a$ and $m\ge1$ write $a\ (\mathrm{mod}\ m)=\{a+mt:t\in\mathbb{Z}\}$. A finite family
+of classes $a_1\ (\mathrm{mod}\ m_1),\dots,a_k\ (\mathrm{mod}\ m_k)$ is pairwise disjoint if
+$a_i\ (\mathrm{mod}\ m_i)\cap a_j\ (\mathrm{mod}\ m_j)=\emptyset$ whenever $i<j$. Nothing is assumed
+about the moduli beyond $m_i\ge1$: they may repeat, and the residues $a_i$ may repeat as well. By the
+Chinese remainder theorem,
+\[
+  a_i\ (\mathrm{mod}\ m_i)\cap a_j\ (\mathrm{mod}\ m_j)\neq\emptyset\iff\gcd(m_i,m_j)\mid a_i-a_j.\tag{$*$}
+\]
+\emph{Question.} Let $k\ge2$ and let $a_1\ (\mathrm{mod}\ m_1),\dots,a_k\ (\mathrm{mod}\ m_k)$ be
+pairwise disjoint. Must there be a pair $i<j$ with $\gcd(m_i,m_j)\ge k$?
+
+The same question for four classes. Prove the statement for $k=4$.
+\end{statement}
+
+\noindent Theorem~\ref{thm:main} below is exactly this statement. The notation $a\bmod m$ below is the class
+$a\ (\mathrm{mod}\ m)$ of the statement. Lemma~\ref{lem:crt} is $(*)$, proved for completeness.
+
+\paragraph{Known result.} The question is Sun's disjoint congruence classes conjecture~\cite{Sun06}.
+O'Bryant~\cite{OBr07} proved it for all $k\le20$, so this case is known. The proof below is an
+independent proof and is self-contained.
+
+For an integer $m\ge1$ and $a\in\mathbb{Z}$ write $a\bmod m=\{x\in\mathbb{Z}: x\equiv a\pmod m\}$.
+A family of residue classes is \emph{disjoint} if its members are pairwise disjoint.
+
+\begin{theorem}\label{thm:main}
+Let $a_1\bmod m_1,\dots,a_4\bmod m_4$ be four pairwise disjoint residue classes. Then
+$\gcd(m_i,m_j)\ge4$ for some $i\ne j$.
+\end{theorem}
+
+\section{When do two classes meet?}
+
+\begin{lemma}\label{lem:crt}
+Let $m,n\ge1$, $a,b\in\mathbb{Z}$ and $g=\gcd(m,n)$. Then
+$(a\bmod m)\cap(b\bmod n)\ne\emptyset$ if and only if $g\mid a-b$.
+\end{lemma}
+
+\begin{proof}
+($\Rightarrow$) If $x\equiv a\pmod m$ and $x\equiv b\pmod n$, then $g\mid m$ and $g\mid n$ give
+$a\equiv x\equiv b\pmod g$.
+
+($\Leftarrow$) By B\'ezout there are $u,v\in\mathbb{Z}$ with $um+vn=g$. Write $a-b=gt$ and set
+$x=a-umt$. Then $x\equiv a\pmod m$, and $x=a-(g-vn)t=b+vnt\equiv b\pmod n$.
+\end{proof}
+
+\begin{corollary}\label{cor:small}
+If $a\bmod m$ and $b\bmod n$ are disjoint and $g=\gcd(m,n)$, then $g\ge2$ and $a\not\equiv b\pmod g$.
+\end{corollary}
+
+\begin{proof}
+By Lemma~\ref{lem:crt}, disjointness means $g\nmid a-b$, and this forces $g\ne1$.
+\end{proof}
+
+\section{Proof of Theorem~\ref{thm:main}}
+
+Suppose, for contradiction, that $\gcd(m_i,m_j)\le3$ for all $i\ne j$. Write $g_{ij}=\gcd(m_i,m_j)$
+and $[4]=\{1,2,3,4\}$. By Corollary~\ref{cor:small},
+\begin{equation}\label{eq:23}
+  g_{ij}\in\{2,3\}\qquad\text{for all } i\ne j .
+\end{equation}
+Let
+\[
+  E=\{i\in[4]: 2\mid m_i\},\qquad T=\{i\in[4]: 3\mid m_i\}.
+\]
+
+\paragraph{Step 1: $E\cup T=[4]$ and $|E\cap T|\le1$.}
+Given $i$, pick any $j\ne i$. By \eqref{eq:23}, $g_{ij}$ is $2$ or $3$ and divides $m_i$, so
+$i\in E\cup T$. If two distinct indices $i,j$ were both in $E\cap T$, then $6\mid m_i$ and $6\mid m_j$.
+This would give $g_{ij}\ge6$, contradicting \eqref{eq:23}.
+
+\paragraph{Step 2: every pair lies in $E$ or in $T$.}
+If $g_{ij}=2$, then $2\mid m_i$ and $2\mid m_j$, so $i,j\in E$. If $g_{ij}=3$, then $i,j\in T$.
+
+\paragraph{Step 3: $E\setminus T=\emptyset$ or $T\setminus E=\emptyset$.}
+Suppose $i\in E\setminus T$ and $j\in T\setminus E$. By Step~2, either $i,j\in E$, contradicting
+$j\notin E$, or $i,j\in T$, contradicting $i\notin T$.
+
+\paragraph{Step 4: conclusion.}
+By Step~3 and Step~1, one of two cases holds.
+
+\emph{Case A: $T\setminus E=\emptyset$.} Then $[4]=E\cup T=E$. If some pair had $g_{ij}=3$, Step~2
+would put $i,j\in T\cap E$. That contradicts $|E\cap T|\le1$ from Step~1. So by \eqref{eq:23},
+$g_{ij}=2$ for every pair $i\ne j$. Corollary~\ref{cor:small} then gives $a_i\not\equiv a_j\pmod2$
+for all $i\ne j$. So the four integers $a_1,\dots,a_4$ would be pairwise incongruent modulo $2$,
+which the pigeonhole principle forbids (only $2<4$ classes).
+
+\emph{Case B: $E\setminus T=\emptyset$.} Then $[4]=T$. If some pair had $g_{ij}=2$, Step~2 would put
+$i,j\in E\cap T$, again contradicting Step~1. So $g_{ij}=3$ for every pair. Corollary~\ref{cor:small}
+then gives that $a_1,\dots,a_4$ are pairwise incongruent modulo $3$. This is impossible by
+pigeonhole (only $3<4$ classes).
+
+Both cases are contradictory. Hence $g_{ij}\ge4$ for some $i\ne j$. \qed
+
+\begin{remark}
+\begin{enumerate}
+\item The bound is sharp: $r\bmod4$ for $r=0,1,2,3$ are disjoint and all pairwise gcds equal $4$.
+\item The argument does not use the density bound $\sum_i 1/m_i\le1$. Only the arithmetic of
+  the primes $2$ and $3$ is needed. Moduli $m_i=1$ are excluded automatically by \eqref{eq:23}.
+\item \emph{Computer sanity check, not part of the proof.} The script \texttt{check\_p4.py} searched
+  all moduli $m_1\le\dots\le m_4\le60$ with all pairwise gcds $\le3$ (214\,078 tuples), and all
+  residues (with $a_1=0$, by translation). It found no disjoint system, which agrees with the theorem.
+  Disjointness is checked literally, from the definition, and not via $(*)$: the classes $a\bmod m$
+  and $b\bmod n$ meet iff $b-a\equiv mt\pmod n$ for some $t$, and the set $\{mt\bmod n:0\le t<n\}$ is
+  listed explicitly. For moduli $\le20$ the search was repeated with an element-by-element
+  comparison over one period.
+\end{enumerate}
+\end{remark}
+
+\begin{thebibliography}{9}
+\bibitem{OBr07} K.~O'Bryant, \emph{On Z.-W.\ Sun's disjoint congruence classes conjecture}, in
+  \emph{Combinatorial Number Theory}, de Gruyter, Berlin, 2007, pp.~403--411; arXiv:math/0604347.
+\bibitem{Sun06} Z.-W.~Sun, \emph{Finite covers of groups by cosets or subgroups}, Internat.\ J.\ Math.\
+  \textbf{17} (2006), 1047--1064; arXiv:math/0501451.
+\end{thebibliography}
+
+\end{document}

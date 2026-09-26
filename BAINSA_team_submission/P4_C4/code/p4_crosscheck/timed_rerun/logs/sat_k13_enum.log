@@ -1,0 +1,1 @@
+{"counts": {"SAT": 0, "UNSAT": 4395, "multisets_after_density": 223883, "multisets_after_gcd": 14850581, "multisets_after_normal_form": 4395, "nodes_visited": 4994364, "sat_calls": 4395}, "gcd_upper_bound": 12, "k": 13, "status": "COMPLETE", "survivor_sha256": "3721e09f9ba6a3403259ee1bb3e36d6b2cf659654ee186348c47ff1440ebd687", "wall_seconds": 6.77}

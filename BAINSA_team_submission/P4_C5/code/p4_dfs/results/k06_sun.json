@@ -1,0 +1,41 @@
+{
+ "k": 6,
+ "status": "COMPLETE",
+ "enumeration_finished": true,
+ "first_column_subtrees_completed": 6,
+ "gcd_bound": [
+  2,
+  5
+ ],
+ "L": 60,
+ "primes_processing_order": [
+  5,
+  3,
+  2
+ ],
+ "options": {
+  "gcd_prune": true,
+  "coprime_prune": true,
+  "forced_even_prune": true,
+  "late_nf": false,
+  "plain_decide": false,
+  "interchange": true
+ },
+ "counts": {
+  "enumeration_nodes": 133,
+  "complete_exponent_matrices(leaves)": 8,
+  "gcd_in_range_and_normal_form": 8,
+  "survivors(density<=1)": 0,
+  "SAT": 0,
+  "UNSAT": 0,
+  "UNDECIDED": 0,
+  "decision_nodes": 0
+ },
+ "wall_clock_s": {
+  "enumeration": 0.001,
+  "decision": 0.0,
+  "total": 0.001
+ },
+ "survivors_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+ "survivors": []
+}

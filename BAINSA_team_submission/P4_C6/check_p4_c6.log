@@ -1,0 +1,66 @@
+k=32  s=4                              max bound  16  <  k-s =  28 ? yes
+k=32  s=5                              max bound  12  <  k-s =  27 ? yes
+k=32  s=6                              max bound   9  <  k-s =  26 ? yes
+k=32  s=7                              max bound   6  <  k-s =  25 ? yes
+k=32  s=8                              max bound   4  <  k-s =  24 ? yes
+k=32  s=9                              max bound   2  <  k-s =  23 ? yes
+k=32  s=10                             max bound   1  <  k-s =  22 ? yes
+k=32  s=3 (a)                          max bound  20  <  k-s =  29 ? yes
+k=32  s=3 (b) [58975 distributions]    max bound  26  <  k-s =  29 ? yes
+k=32  worst distribution in case (b): P1=[2, 17, 19] P2=[3, 11, 13] P3=[5, 7, 23, 29] B1=26 B2=26
+k=32  ALL INEQUALITIES HOLD
+
+k=38  s=4                              max bound  20  <  k-s =  34 ? yes
+k=38  s=5                              max bound  16  <  k-s =  33 ? yes
+k=38  s=6                              max bound  12  <  k-s =  32 ? yes
+k=38  s=7                              max bound   9  <  k-s =  31 ? yes
+k=38  s=8                              max bound   6  <  k-s =  30 ? yes
+k=38  s=9                              max bound   4  <  k-s =  29 ? yes
+k=38  s=10                             max bound   2  <  k-s =  28 ? yes
+k=38  s=11                             max bound   1  <  k-s =  27 ? yes
+k=38  s=3 (a)                          max bound  25  <  k-s =  35 ? yes
+k=38  s=3 (b) [242461 distributions]   max bound  31  <  k-s =  35 ? yes
+k=38  worst distribution in case (b): P1=[2, 13, 19, 23, 29, 31] P2=[3, 7] P3=[5, 11, 17] B1=31 B2=31
+k=38  ALL INEQUALITIES HOLD
+
+k=42  s=4                              max bound  25  <  k-s =  38 ? yes
+k=42  s=5                              max bound  20  <  k-s =  37 ? yes
+k=42  s=6                              max bound  16  <  k-s =  36 ? yes
+k=42  s=7                              max bound  12  <  k-s =  35 ? yes
+k=42  s=8                              max bound   9  <  k-s =  34 ? yes
+k=42  s=9                              max bound   6  <  k-s =  33 ? yes
+k=42  s=10                             max bound   4  <  k-s =  32 ? yes
+k=42  s=11                             max bound   2  <  k-s =  31 ? yes
+k=42  s=12                             max bound   1  <  k-s =  30 ? yes
+k=42  s=3 (a)                          max bound  30  <  k-s =  39 ? yes
+k=42  s=3 (b) [989527 distributions]   max bound  38  <  k-s =  39 ? yes
+k=42  worst distribution in case (b): P1=[2, 17, 23, 29, 31, 37] P2=[3, 7] P3=[5, 11, 13, 19] B1=38 B2=38
+k=42  ALL INEQUALITIES HOLD
+
+k=44  s=4                              max bound  30  <  k-s =  40 ? yes
+k=44  s=5                              max bound  25  <  k-s =  39 ? yes
+k=44  s=6                              max bound  20  <  k-s =  38 ? yes
+k=44  s=7                              max bound  16  <  k-s =  37 ? yes
+k=44  s=8                              max bound  12  <  k-s =  36 ? yes
+k=44  s=9                              max bound   9  <  k-s =  35 ? yes
+k=44  s=10                             max bound   6  <  k-s =  34 ? yes
+k=44  s=11                             max bound   4  <  k-s =  33 ? yes
+k=44  s=12                             max bound   2  <  k-s =  32 ? yes
+k=44  s=13                             max bound   1  <  k-s =  31 ? yes
+k=44  s=3 (a)                          max bound  36  <  k-s =  41 ? yes
+k=44  CASE I AND s>=4 INEQUALITIES HOLD (Case II: sat_residual.py)
+
+k=48  s=4                              max bound  36  <  k-s =  44 ? yes
+k=48  s=5                              max bound  30  <  k-s =  43 ? yes
+k=48  s=6                              max bound  25  <  k-s =  42 ? yes
+k=48  s=7                              max bound  20  <  k-s =  41 ? yes
+k=48  s=8                              max bound  16  <  k-s =  40 ? yes
+k=48  s=9                              max bound  12  <  k-s =  39 ? yes
+k=48  s=10                             max bound   9  <  k-s =  38 ? yes
+k=48  s=11                             max bound   6  <  k-s =  37 ? yes
+k=48  s=12                             max bound   4  <  k-s =  36 ? yes
+k=48  s=13                             max bound   2  <  k-s =  35 ? yes
+k=48  s=14                             max bound   1  <  k-s =  34 ? yes
+k=48  s=3 (a)                          max bound  42  <  k-s =  45 ? yes
+k=48  CASE I AND s>=4 INEQUALITIES HOLD (Case II: sat_residual.py)
+

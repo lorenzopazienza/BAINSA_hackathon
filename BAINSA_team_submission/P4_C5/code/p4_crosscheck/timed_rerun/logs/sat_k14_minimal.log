@@ -1,0 +1,2 @@
+{"k": 14, "processed": 10000, "wall_seconds": 79.077}
+{"candidate_count": 19880, "distribution": {"3": 11007, "4": 2405, "5": 1325, "6": 2369, "7": 1842, "8": 638, "9": 294}, "k": 14, "seeded_decisions": 0, "selector_sat_calls": 203832, "unique_decisions": 107844, "unique_witnesses": 76108, "wall_seconds": 127.82}

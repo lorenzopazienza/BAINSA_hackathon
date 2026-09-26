@@ -1,0 +1,104 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\newtheorem{proposition}{Proposition}
+\begin{document}
+\noindent\textbf{Official statement (Cell 3).}
+\emph{Any $d+1$ lines in $\mathbb R^d$ satisfy
+$S\leq\bigl(\binom{d+1}{2}-1\bigr)\pi/2$, i.e. $A\geq\pi/2$.}
+
+\bigskip
+\noindent Here $S$ is the sum of the acute angles between all pairs
+of lines.  For unit representatives $x_1,\ldots,x_N$, write
+\[
+ A=\sum_{i<j}\arcsin|\langle x_i,x_j\rangle|.
+\]
+Since $S=\binom N2\pi/2-A$, the official statement is equivalent to
+$A\geq\pi/2$ when $N=d+1$.
+
+\begin{proposition}[Orthogonality saturation]
+For fixed $N$ and $d\geq2$, there is a maximizer of $S$ such that
+each line is either orthogonal to every other line, or the lines
+orthogonal to it span a subspace of dimension at least $d-1$.
+\end{proposition}
+\begin{proof}
+The space of $N$-tuples of lines is a product of compact projective
+spheres, and $S$ is continuous.  Choose a maximizer with as many
+orthogonal pairs as possible.  Fix its line $\ell_i$ and let $W$ be
+the span of the representatives of all lines orthogonal to $\ell_i$.
+Suppose $\dim W\leq d-2$ and $\ell_i$ is not orthogonal to every other
+line.  A unit representative $x_i$ lies in $W^\perp$, whose dimension
+is at least two.  Choose a two-dimensional plane $U\subset W^\perp$
+containing $x_i$ such that the inner product with one nonorthogonal
+line varies along its unit circle.  Such a plane exists: the
+projection of that line onto $W^\perp$ is nonzero, and one can choose
+the other direction of $U$ accordingly.  Rotate only $x_i$ in $U$.
+
+Consider the closed interval between the two consecutive positions
+where a new orthogonality occurs, one on either side of the original
+position.  There are such positions because the varying nonzero
+inner product is sinusoidal and has zeros.  Throughout the open
+interval, every previously nonorthogonal inner product has fixed
+sign.  After a possible sign change, its corresponding angle term
+has the form
+\[
+ f(t)=\arccos\bigl(r\cos(t-\phi)\bigr),\qquad
+ 0\leq r\leq1,\quad \cos(t-\phi)>0.
+\]
+For $0<r<1$, direct differentiation gives
+\[
+ f''(t)=\frac{r(1-r^2)\cos(t-\phi)}
+ {(1-r^2\cos^2(t-\phi))^{3/2}}\geq0.
+\]
+For $r=0$ the term is constant; for $r=1$ it is affine away from
+coincidence, with a convex corner at coincidence.  Thus the sum of
+all varying angle terms is convex on this interval, including any
+coincidence points.  At least one endpoint has value at least the
+value at the original position.  Global maximality makes that
+endpoint another maximizer.  Every old orthogonality involving
+$\ell_i$ persists because the rotation stays in $W^\perp$, while
+an additional orthogonal pair appears.  This contradicts our choice
+of maximizer.  Hence the stated alternative holds for every line.
+\end{proof}
+
+\begin{proposition}[Cell 3]
+For every $d\geq1$, any $d+1$ lines in $\mathbb R^d$ satisfy
+\[
+ A\geq\frac\pi2,
+ \qquad
+ S\leq\left(\binom{d+1}{2}-1\right)\frac\pi2.
+\]
+\end{proposition}
+\begin{proof}
+For $d=1$, the two lines coincide, so $A=\pi/2$.  Suppose $d\geq2$.
+It is enough to prove the inequality at a maximum of $S$; choose
+the saturated maximizer furnished by the preceding proposition.
+Let $J$ join two indices exactly when their lines are
+\emph{not} orthogonal.  A vertex adjacent in $J$ to nobody is
+harmless.  At every other vertex, the orthogonality neighbors span
+dimension at least $d-1$, so there are at least $d-1$ of them among
+the other $d$ vertices.  Consequently $J$ has maximum degree one:
+it is a matching, together with isolated vertices.
+
+Distinct connected components of $J$ are mutually orthogonal.
+Each component consists of one line or a pair of nonorthogonal lines;
+it has rank one or two, with a pair having rank one precisely when
+the two lines coincide.  If every component had rank equal to its
+number of lines, their mutually orthogonal spans would have total
+rank $d+1$, impossible in $\mathbb R^d$.  Therefore one paired
+component has rank one.  Its two coincident lines contribute
+$\arcsin1=\pi/2$ to $A$.  All other contributions are nonnegative,
+giving the claim.
+\end{proof}
+
+\paragraph{Sharpness and equality at a saturated maximizer.}
+Take an orthonormal basis of $\mathbb R^d$ and repeat one basis line.
+There is exactly one nonorthogonal pair, which contributes $\pi/2$;
+thus equality holds.  Conversely, the matching argument shows that
+every \emph{saturated maximizer} with equality has exactly this form,
+up to an orthogonal transformation and relabeling: its required
+coincident pair exhausts the $A$-budget, so every other pair is
+orthogonal.  This does not assert that arbitrary equality
+configurations have this form; for instance, equality for three
+distinct lines in a plane is also possible.
+\end{document}

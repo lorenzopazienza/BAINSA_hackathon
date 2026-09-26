@@ -1,0 +1,17 @@
+{
+  "k": 4,
+  "max_modulus": 36,
+  "status": "COMPLETE",
+  "counts": {
+    "all_moduli_multisets": 82251,
+    "gcd_eligible_multisets": 651,
+    "residue_tuples_tested_after_translation": 5418823,
+    "brute_SAT": 0,
+    "sat_calls": 651,
+    "SAT_agreements": 0,
+    "UNSAT_agreements": 651
+  },
+  "decision_sha256": "d3e552192687c48379e96714941e7261c2faebf68996b60278bcc0752c9ab7fd",
+  "wall_seconds": 3.287,
+  "method": "all residue tuples after common translation; no R1/R2 reduction"
+}

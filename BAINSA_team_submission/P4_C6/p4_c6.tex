@@ -1,0 +1,499 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=2.5cm]{geometry}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\pr}{\operatorname{pr}}
+
+\title{Problem 4, Cell 6(a): the sizes $k=32$, $38$, $42$ (computer-assisted finite check) ($k=44$: evidence only, not claimed)}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{\textbf{Official statement (Cell 6).} ``(a) Decide a size $k \ge 25$.''}}
+\medskip
+
+\noindent Throughout, ``decide'' is used as in Cell~5: to decide a size $k$ means to show that $k$ is not
+the least size at which the conjecture fails.
+
+\paragraph{Conjecture (Sun).} If $k\ge2$ residue classes $a_1\bmod m_1,\dots,a_k\bmod m_k$ are
+pairwise disjoint, then $\gcd(m_i,m_j)\ge k$ for some $i\ne j$. We say the conjecture
+\emph{holds at $k$} if this is true for that $k$.
+
+\paragraph{Result.}
+\begin{theorem}\label{thm:main}
+Let $k\in\{32,38,42\}$. If the conjecture holds at $k-1$, then it holds at $k$.
+\end{theorem}
+
+\begin{remark}[$k=44$: computer-assisted evidence, \textbf{not claimed}]\label{thm:44}
+Section~\ref{sec:44} reduces the step ``the conjecture at $43$ implies it at $44$'' to $481$ finite
+configurations, and a SAT solver answers UNSAT on all of them (\texttt{sat\_residual.log}). An
+exhaustiveness certificate in the sense of the hand-in rules (in particular the smallest forcing
+part for each configuration) has \emph{not} been completed, so we do \textbf{not} claim $k=44$.
+\end{remark}
+
+\begin{corollary}\label{cor:main}
+If the conjecture fails for some $k$, the least such $k$ is not $32$, $38$ or $42$.
+\end{corollary}
+\begin{proof}
+If $k$ is the least failing size, the conjecture holds at $k-1$, and Theorem~\ref{thm:main} gives a
+contradiction.
+\end{proof}
+
+\paragraph{Status of the hypothesis.} The corollary is unconditional. Theorem~\ref{thm:main} by
+itself does \emph{not} establish the conjecture at $32$, $38$ or $42$, because the hypothesis
+at $k-1=31,37,41$ is \textbf{not} established by our certified computation. That computation
+covers $k-1\le16$ only. O'Bryant (2007, Theorem~3) states the conjecture for $k\le20$; we neither
+assume nor use that result, and it also stops below $31$.
+
+\paragraph{$k=48$.} Not decided; see Remark~\ref{rem:48}.
+
+\paragraph{Credit.} The method is O'Bryant's: \emph{On Z.-W.\ Sun's disjoint congruence classes
+conjecture} (2007, arXiv:math/0604347), proof of Lemma~6. Cell~5 used it for $k=24,30$. That
+argument needs three distinct primes dividing one gcd to force $\gcd\ge30>p$. This fails once
+$p=k-1\ge31$, since $\gcd=30$ is then allowed. The new ingredients are:
+\begin{itemize}
+\item two-coordinate projections in place of the full injection (Lemma~\ref{lem:proj});
+\item a residue-counting bound on the classes whose gcd with each other is exactly $30$
+  (Lemma~\ref{lem:mult});
+\item an exact enumeration of the resulting integer inequalities over all distributions of the
+  primes (script \texttt{check\_p4\_c6.py});
+\item for $k=44$, a sharper joint count for the two light triples $\{2,3,5\}$ and $\{2,3,7\}$
+  (Lemma~\ref{lem:mult44}), and a SAT check of the residual configurations
+  (\texttt{sat\_residual.py}).
+\end{itemize}
+
+% ===========================================================================
+\section{Tools}
+
+\begin{lemma}\label{lem:crt}
+$a\bmod m$ and $b\bmod n$ are disjoint if and only if $\gcd(m,n)\nmid a-b$.
+\end{lemma}
+\begin{proof}
+If $x$ lies in both, then $a\equiv x\equiv b\pmod{\gcd(m,n)}$. Conversely, suppose
+$g=\gcd(m,n)$ divides $a-b=gt$, and take $um+vn=g$. Then $x=a-umt=b+vnt$ lies in both.
+\end{proof}
+
+Fix a pairwise disjoint family $a_i\bmod m_i$ ($i\in[k]$) and write $g_{ij}=\gcd(m_i,m_j)$. Let
+$\pr(n)$ be the set of primes dividing $n$. By Lemma~\ref{lem:crt}, every $g_{ij}\ge2$ and
+$a_i\not\equiv a_j\pmod{g_{ij}}$. Put
+$\pi(i)=\{q \text{ prime}: q\mid g_{ij}\text{ for some }j\ne i\}$. Every prime in $\pi(i)$
+divides $m_i$.
+
+\begin{lemma}\label{lem:channel}
+For $i\ne j$, $\pr(g_{ij})=\pi(i)\cap\pi(j)$. In particular $\pi(i)\cap\pi(j)\ne\emptyset$, and
+$\prod_{q\in\pi(i)\cap\pi(j)}q$ divides $g_{ij}$.
+\end{lemma}
+\begin{proof}
+$\subseteq$ is clear. If $q\in\pi(i)\cap\pi(j)$, then $q\mid m_i$ and $q\mid m_j$, so
+$q\mid g_{ij}$. The last claim holds because distinct primes dividing $g_{ij}$ have their product
+dividing $g_{ij}$.
+\end{proof}
+
+% ===========================================================================
+\section{Setting}
+
+Throughout, $k\in\{32,38,42\}$ and $p=k-1\in\{31,37,41\}$ is prime. Let $r$ be the number of primes
+below $p$, so $r=10,11,12$. Suppose, for contradiction, that the conjecture holds at $k-1$, that
+the family above is pairwise disjoint, and that $g_{ij}\le p$ for all $i\ne j$.
+
+\paragraph{The set $S$ (as in Cell~5, Steps 1--4).} Let $S=\{i:p\in\pi(i)\}$ and $s=|S|$.
+\begin{enumerate}
+\item For $i\ne j$ in $S$ we have $p\mid g_{ij}\le p$, so $g_{ij}=p$ and
+  $\pi(i)\cap\pi(j)=\{p\}$ (Lemma~\ref{lem:channel}). A pair has gcd $p$ only if both
+  members lie in $S$.
+\item $s\ge3$. Remove any index $x$. The remaining $k-1$ classes are pairwise disjoint, so by the
+  hypothesis at $k-1$ some pair among them has gcd $\ge k-1=p$, hence exactly $p$. That pair
+  lies in $S\setminus\{x\}$. So $|S\setminus\{x\}|\ge2$ for every $x$, and $s\ge3$.
+\item $S\ne[k]$. Otherwise the $k$ residues $a_i$ would be pairwise incongruent modulo $p$, which
+  is impossible since $k>p$. Put $O=[k]\setminus S$, so $|O|=k-s\ge1$.
+\item Number $S=\{i_1,\dots,i_s\}$ and let $P_j=\pi(i_j)\setminus\{p\}$. By item~1 the $P_j$ are
+  pairwise disjoint. They consist of primes $<p$, because each prime in $\pi(i_j)$ divides some
+  $g\le p$. For $l\in O$, $p\notin\pi(l)$, since otherwise $l\in S$. So by
+  Lemma~\ref{lem:channel},
+  \begin{equation}\label{eq:chan}
+    \pr(g_{l,i_j})=\pi(l)\cap\pi(i_j)=\pi(l)\cap P_j\ne\emptyset .
+  \end{equation}
+  In particular every $P_j$ is nonempty (as $O\ne\emptyset$), $\sum_j|P_j|\le r$, and $s\le r$.
+\end{enumerate}
+Call $P_1,\dots,P_s$ the \emph{blocks}. Since the blocks are disjoint and nonempty and lie in the
+set of $r$ primes below $p$, any $s'$ of them have total size at most $r-(s-s')$.
+
+\paragraph{Choice functions.} A \emph{choice function} is a map $\omega:O\to P_1\times\dots\times P_s$
+with $\omega_j(l)\in\pi(l)\cap P_j$ for all $l,j$. Such a map exists by \eqref{eq:chan}.
+
+\begin{lemma}[agreement]\label{lem:agree}
+Let $\omega$ be a choice function, let $l\ne l'$ be in $O$, and let $A=\{j:\omega_j(l)=\omega_j(l')\}$.
+Then $\prod_{j\in A}\omega_j(l)$ divides $g_{ll'}$. In particular it is $\le p$.
+\end{lemma}
+\begin{proof}
+For $j\in A$ the prime $q=\omega_j(l)$ lies in $\pi(l)\cap\pi(l')$, so $q\mid g_{ll'}$
+(Lemma~\ref{lem:channel}). These primes are distinct because the blocks are disjoint.
+\end{proof}
+
+Call a set of distinct primes \emph{light} if its product is $\le p$.
+
+\begin{lemma}[light sets, $p\in\{31,37,41\}$]\label{lem:light}
+\begin{enumerate}
+\item No light set has $4$ or more elements. The only light $3$-set is $\{2,3,5\}$.
+\item A light $2$-set of primes $\ge5$ is $\{5,7\}$, and this set is light only when $p\ge35$.
+\item Every light set containing a prime $q$ with $2q>p$ is $\{q\}$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+$2\cdot3\cdot5\cdot7=210>p$ and $2\cdot3\cdot7=42>p$. Every other $3$-set has product
+$\ge2\cdot3\cdot11>p$ or $\ge2\cdot5\cdot7>p$. For (2): $5\cdot11=55>p$, so only
+$5\cdot7=35$ can be light. For (3): the product is at least $2q>p$. (The script re-checks (1)
+and (2) mechanically.)
+\end{proof}
+
+\begin{lemma}[projection]\label{lem:proj}
+Let $\omega$ be a choice function and let $j\ne j'$. Suppose $l\ne l'$ in $O$ satisfy
+$\omega_j(l)=\omega_j(l')=x$ and $\omega_{j'}(l)=\omega_{j'}(l')=y$. Then $\{x,y\}$ is light. If,
+in addition, they agree in a third coordinate $z$, then $\{x,y,z\}=\{2,3,5\}$ and
+$g_{ll'}=30$.
+\end{lemma}
+\begin{proof}
+Apply Lemma~\ref{lem:agree}, then Lemma~\ref{lem:light}. In the last case $30\mid g_{ll'}\le p<60$.
+\end{proof}
+
+% ===========================================================================
+\section{Proof of Theorem~\ref{thm:main}}
+
+We show $|O|<k-s$ in every case, which contradicts $|O|=k-s$.
+
+\subsection*{Case I: two blocks avoiding $2$ and $3$ (all $s\ge4$, and $s=3$ except Case II)}
+
+\begin{lemma}\label{lem:caseI}
+Suppose two blocks $P_\alpha,P_\beta$ contain neither $2$ nor $3$. Then:
+\begin{enumerate}
+\item if $\{5,7\}$ is not split between $P_\alpha$ and $P_\beta$, or $p<35$, then
+  $|O|\le|P_\alpha||P_\beta|$;
+\item otherwise $|O|\le|P_\alpha||P_\beta|-1+|P_\gamma|$ for every third block $P_\gamma$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Take any choice function and project $l\mapsto(\omega_\alpha(l),\omega_\beta(l))$. Both
+coordinates are primes $\ge5$. By Lemmas~\ref{lem:proj} and \ref{lem:light}(2), two distinct
+elements of $O$ with the same image $(x,y)$ need $\{x,y\}=\{5,7\}$ and $p\ge35$. This proves~(1).
+In case~(2), only the fibre over the pair $(5,7)$ can have more than one element. Two elements
+of that fibre cannot also agree in coordinate $\gamma$, by Lemma~\ref{lem:proj}, because
+$\{5,7,z\}$ is never light. So the fibre injects into $P_\gamma$, and
+$|O|\le(|P_\alpha||P_\beta|-1)+|P_\gamma|$.
+\end{proof}
+
+\emph{Application.}
+\begin{itemize}
+\item \emph{$s\ge5$.} At least $s-2\ge3$ blocks avoid $\{2,3\}$. Among three of them at most one
+  pair is split by $\{5,7\}$, so we choose a pair that is not split. Then
+  $|O|\le|P_\alpha||P_\beta|$ with $|P_\alpha|+|P_\beta|\le r-(s-2)$.
+\item \emph{$s=4$.} If $2$ and $3$ lie in different blocks, exactly two blocks avoid $\{2,3\}$.
+  Otherwise at least three do. Either Lemma~\ref{lem:caseI}(1) applies with
+  $|P_\alpha|+|P_\beta|\le r-2$, or (2) applies with $|P_\alpha|+|P_\beta|+|P_\gamma|\le r-1$.
+\item \emph{$s=3$, where $2$ and $3$ do not lie in two different blocks} (they share a block,
+  or one of them lies in no block). Then two blocks avoid $\{2,3\}$, and
+  $|P_\alpha|+|P_\beta|+|P_\gamma|\le r$.
+\end{itemize}
+The script maximises $ab$ subject to $a+b\le r-(s-2)$, and $ab-1+c$ (when $p\ge35$), over
+positive integers. It confirms that the maximum is below $k-s$:
+
+\begin{center}\small\setlength{\tabcolsep}{3pt}
+\begin{tabular}{c|ccccccccc|c}
+ & $s=4$&5&6&7&8&9&10&11&12& $s=3$ (Case I)\\\hline
+$k=32$: bound / $k-s$ & 16/28&12/27&9/26&6/25&4/24&2/23&1/22&--&--& 20/29\\
+$k=38$: bound / $k-s$ & 20/34&16/33&12/32&9/31&6/30&4/29&2/28&1/27&--& 25/35\\
+$k=42$: bound / $k-s$ & 25/38&20/37&16/36&12/35&9/34&6/33&4/32&2/31&1/30& 30/39
+\end{tabular}
+\end{center}
+For instance, for $k=42$ and $s=4$ we get $\max(5\cdot5,\ 5\cdot5-1+1)=25<38$; and for $s=3$ we get
+$\max_{a+b+c\le12}(ab+c-1)=5\cdot6+0=30<39$.
+
+\subsection*{Case II: $s=3$ with $2$ and $3$ in different blocks}
+
+Renumber so that $2\in P_1$ and $3\in P_2$. Then $P_3$ contains neither $2$ nor $3$. Write
+$a=|P_1|$, $b=|P_2|$, $c=|P_3|$, so $a+b+c\le r$.
+
+\paragraph{The choice function.} Put $R=\{2,3\}\cup(\{5\}\cap P_3)$. (If $5$ lies in $P_1$ or
+$P_2$, it is \emph{not} in $R$.) Define $\omega_j(l)=\min(\pi(l)\cap P_j\setminus R)$ if this set
+is nonempty, and $\omega_j(l)=\min(\pi(l)\cap P_j)$ otherwise. Since $R\cap P_1=\{2\}$,
+$R\cap P_2=\{3\}$ and $R\cap P_3\subseteq\{5\}$, we get:
+\begin{equation}\label{eq:rule}
+  \omega_1(l)=2\iff\pi(l)\cap P_1=\{2\},\quad
+  \omega_2(l)=3\iff\pi(l)\cap P_2=\{3\},\quad
+  \omega_3(l)=5\iff\pi(l)\cap P_3=\{5\}
+\end{equation}
+(the last one when $5\in P_3$).
+
+\begin{lemma}[multiplicity of $(2,3,5)$]\label{lem:mult}
+Suppose $5\in P_3$, and let $L=\{l\in O:\omega(l)=(2,3,5)\}$. Then $|L|\le11$.
+\end{lemma}
+\begin{proof}
+Let $l\in L$. By \eqref{eq:rule} and \eqref{eq:chan}, $\pr(g_{l,i_1})=\{2\}$,
+$\pr(g_{l,i_2})=\{3\}$ and $\pr(g_{l,i_3})=\{5\}$. So $g_{l,i_1}=2^{e}$, $g_{l,i_2}=3^{f}$ and
+$g_{l,i_3}=5^{h}$, with $e,f,h\ge1$.
+
+Let $l\ne l'$ in $L$. By Lemma~\ref{lem:proj}, $g_{ll'}=30$. By Lemma~\ref{lem:crt},
+$a_l\not\equiv a_{l'}\pmod{30}$. Moreover $4$ does not divide both $m_l$ and $m_{l'}$, since
+otherwise $4\mid g_{ll'}$. The same holds for $9$ and for $25$. Hence the set
+\[
+E=\{l\in L:\ 4\mid m_l\ \text{or}\ 9\mid m_l\ \text{or}\ 25\mid m_l\}
+\]
+has at most $3$ elements.
+
+For $l\in L\setminus E$, $g_{l,i_1}=2^e$ divides $m_l$ and $4\nmid m_l$, so $g_{l,i_1}=2$.
+Likewise $g_{l,i_2}=3$ and $g_{l,i_3}=5$. Lemma~\ref{lem:crt} gives
+$a_l\not\equiv a_{i_1}\pmod2$, $a_l\not\equiv a_{i_2}\pmod3$ and $a_l\not\equiv a_{i_3}\pmod5$. By the
+Chinese remainder theorem, exactly $1\cdot2\cdot4=8$ residues modulo $30$ meet these three
+conditions. The elements of $L\setminus E$ have pairwise distinct residues modulo $30$, so
+$|L\setminus E|\le8$ and $|L|\le 8+3=11$.
+\end{proof}
+
+Put $\varepsilon=10$ if $5\in P_3$ and $\varepsilon=0$ otherwise, so that $\varepsilon\ge|L|-1$
+whenever $L$ is defined. Let
+$\Lambda=\{(y,x)\in P_2\times P_3: yx\le p\}$ and
+$\Lambda'=\{(q,x)\in(P_1\setminus\{2\})\times P_3: qx\le p\}$. Call a prime $q$ \emph{small} if
+$2q\le p$ and \emph{big} otherwise. Let $\sigma_2$ and $\sigma_3$ be the numbers of small primes
+in $P_2$ and $P_3$, and let $\beta_2=b-\sigma_2$ and $\beta_3=c-\sigma_3$.
+
+\begin{lemma}[first bound]\label{lem:B1}
+$|O|\le B_1:=bc+|\Lambda|(a-1)+\varepsilon$.
+\end{lemma}
+\begin{proof}
+Partition $O$ into the fibres $F(y,x)=\{l:\omega_2(l)=y,\ \omega_3(l)=x\}$ for
+$(y,x)\in P_2\times P_3$. If $(y,x)\notin\Lambda$, then $|F(y,x)|\le1$ by Lemma~\ref{lem:proj}.
+
+Let $(y,x)\in\Lambda$. Two elements of $F(y,x)$ with the same $\omega_1$ agree in three
+coordinates. By Lemma~\ref{lem:proj} this forces $\{\omega_1,y,x\}=\{2,3,5\}$, that is, $y=3$,
+$x=5$ and $\omega_1=2$. So the elements of $F(y,x)$ have pairwise distinct $\omega_1$, except
+that the value $2$ may repeat in $F(3,5)$, where the elements with $\omega_1=2$ form exactly $L$.
+Hence $|F(y,x)|\le a$, and $|F(3,5)|\le(a-1)+|L|\le a+\varepsilon$. Summing over all fibres gives
+$|O|\le(bc-|\Lambda|)+a|\Lambda|+\varepsilon$.
+\end{proof}
+
+\begin{lemma}[second bound]\label{lem:B2}
+$|O|\le B_2:=\min\bigl(bc,\ \sigma_2\sigma_3+\beta_2+\beta_3\bigr)+\varepsilon+(a-1)c+|\Lambda'|(b-1)$.
+\end{lemma}
+\begin{proof}
+Split $O=T\cup U$, where $T=\{l:\omega_1(l)=2\}$ and $U=O\setminus T$.
+
+\emph{$T$.} Map $l\in T$ to the cell $(\omega_2(l),\omega_3(l))\in P_2\times P_3$. Two elements of
+$T$ in the same cell $(y,x)$ agree in all three coordinates. By Lemma~\ref{lem:proj} this can
+happen only for the cell $(3,5)$, whose content is $L$. So $|T|\le bc-1+|L|\le bc+\varepsilon$.
+
+Next, suppose $y\in P_2$ is big. Two elements of $T$ in row $y$ agree on $\{2,y\}$, which is not
+light (Lemma~\ref{lem:light}(3)). So row $y$ contains at most one element of $T$. Likewise, a big
+column $x\in P_3$ contains at most one element of $T$. Every element of $T$ lies in a big row, or
+in a small row and a big column, or in a small row and a small column. Hence
+$|T|\le\beta_2+\beta_3+\sigma_2\sigma_3+\varepsilon$, since a cell outside $(3,5)$ holds at most one
+element.
+
+\emph{$U$.} Map $l\in U$ to $(\omega_1(l),\omega_3(l))\in(P_1\setminus\{2\})\times P_3$. Both
+coordinates are primes $\ge5$, because $3\in P_2$. If $(q,x)\notin\Lambda'$, the fibre has at most
+one element (Lemma~\ref{lem:proj}). If $(q,x)\in\Lambda'$, two elements of the fibre cannot also
+agree in $\omega_2$, since $\{q,x,y\}$ with $q,x\ge5$ is not light. So the fibre injects into
+$P_2$ and has at most $b$ elements. Hence $|U|\le(a-1)c+|\Lambda'|(b-1)$.
+\end{proof}
+
+\paragraph{Conclusion of Case II.} $|O|\le\min(B_1,B_2)$. Both bounds depend only on which
+primes lie in $P_1\ni2$, $P_2\ni3$ and $P_3$. The script \texttt{check\_p4\_c6.py} enumerates
+every placement of each prime $5\le q<p$ into $P_1$, $P_2$, $P_3$ or no block: $4^{r-2}$
+placements, of which $58\,975$, $242\,461$ and $989\,527$ have $P_3\ne\emptyset$ for
+$k=32,38,42$. It evaluates $\min(B_1,B_2)$ in exact integer arithmetic for each one. The maxima are:
+\begin{center}
+\begin{tabular}{c|c|c|l}
+$k$ & $\max\min(B_1,B_2)$ & $k-3$ & a worst placement\\\hline
+32 & 26 & 29 & $P_1=\{2,17,19\}$, $P_2=\{3,11,13\}$, $P_3=\{5,7,23,29\}$\\
+38 & 31 & 35 & $P_1=\{2,13,19,23,29,31\}$, $P_2=\{3,7\}$, $P_3=\{5,11,17\}$\\
+42 & 38 & 39 & $P_1=\{2,17,23,29,31,37\}$, $P_2=\{3,7\}$, $P_3=\{5,11,13,19\}$
+\end{tabular}
+\end{center}
+So $|O|<k-3$ in every placement. We check the worst case for $k=42$ by hand: $a=6$,
+$b=2$, $c=4$, and $\Lambda=\{(3,5),(3,11),(3,13),(7,5)\}$. This gives
+$B_1=8+4\cdot5+10=38$. Also $\sigma_2=2$, $\sigma_3=4$ and $\Lambda'=\emptyset$, so
+$B_2=\min(8,8)+10+5\cdot4+0=38$.
+
+All cases lead to $|O|<k-s=|O|$, a contradiction. This proves Theorem~\ref{thm:main}. \qed
+
+% ===========================================================================
+\section{The size $k=44$ (computer-assisted, certificate incomplete)}\label{sec:44}
+
+Now $p=43$ and $r=13$. We follow Sections~2--3 and list only the changes. Suppose the conjecture
+holds at $43$, and the family is disjoint with all $g_{ij}\le43$. Define $S$, $s\ge3$, $O$, the
+blocks and choice functions exactly as before. Lemmas~\ref{lem:crt}--\ref{lem:agree} are unchanged.
+
+\paragraph{Light sets for $p=43$.} Lemma~\ref{lem:light} holds with one change: the light
+$3$-sets are $\{2,3,5\}$ and $\{2,3,7\}$ ($42\le43$). The other claims are unchanged:
+\begin{itemize}
+\item $210>43$ and $2\cdot3\cdot11=66>43$, and every other $3$-set has product $\ge2\cdot5\cdot7=70$;
+\item $5\cdot11=55>43$, so $\{5,7\}$ is the only light pair of primes $\ge5$;
+\item a light set containing $q$ with $2q>43$ is $\{q\}$.
+\end{itemize}
+The script asserts these facts. Accordingly, Lemma~\ref{lem:proj} now says: agreement in three
+coordinates forces $\{2,3,5\}$ with $g_{ll'}=30$, or $\{2,3,7\}$ with $g_{ll'}=42$. Here $30\mid g$
+or $42\mid g$, and $g\le43<60$.
+
+\paragraph{Case I} ($s\ge4$; and $s=3$ with $2,3$ not in two different blocks).
+Lemma~\ref{lem:caseI} and its application go through verbatim: $\{5,7,z\}$ is still never light.
+The resulting bounds (from \texttt{check\_p4\_c6.py}) are, for $s=4,\dots,13$:
+$30,25,20,16,12,9,6,4,2,1$, against $k-s=40,\dots,31$. For $s=3$ in Case~I the bound is $36<41$.
+
+\paragraph{Case II} ($s=3$, $2\in P_1$, $3\in P_2$). Let $T_3=\{5,7\}\cap P_3$ and
+$R=\{2,3\}\cup T_3$, and define $\omega$ by the rule of Section~3 with this $R$. Then
+$R\cap P_1=\{2\}$ and $R\cap P_2=\{3\}$, so the first two equivalences in \eqref{eq:rule} still
+hold. For $t\in T_3$ put $L_t=\{l\in O:\omega(l)=(2,3,t)\}$. For $l\in L_t$ we have
+$\pi(l)\cap P_3\subseteq T_3$ and $\min(\pi(l)\cap P_3)=t$. Hence
+\[
+  \pi(l)\cap P_3=\{7\}\ \text{ for } l\in L_7,\qquad
+  \pi(l)\cap P_3\in\bigl\{\{5\},\{5,7\}\bigr\}\ \text{ for } l\in L_5 .
+\]
+
+\begin{lemma}[multiplicities for $p=43$]\label{lem:mult44}
+\begin{enumerate}
+\item If $5\in P_3$, then $|L_5|\le12$; if moreover $7\notin P_3$, then $|L_5|\le11$.
+\item If $7\in P_3$, then $|L_7|\le15$.
+\item If $5,7\in P_3$, then $|L_5|+|L_7|\le18$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+For $l\in L_5\cup L_7$, \eqref{eq:chan} gives $g_{l,i_1}=2^{e}$ and $g_{l,i_2}=3^{f}$ with
+$e,f\ge1$. Also $g_{l,i_3}=7^{h}$ if $l\in L_7$, and $g_{l,i_3}=5^{h}$ if $l\in L_5$ and
+$7\notin\pi(l)$.
+
+(1) Let $l\ne l'$ in $L_5$. Then $g_{ll'}=30$, so $a_l\not\equiv a_{l'}\pmod{30}$. Also
+$7\nmid g_{ll'}$, so at most one element of $L_5$ has $7\in\pi(l)$ (since $7\in\pi(l)$ implies
+$7\mid m_l$). Likewise at most one element has $4\mid m_l$, at most one has $9\mid m_l$, and at
+most one has $25\mid m_l$. Call $l$ \emph{exceptional} if $4\mid m_l$, $9\mid m_l$ or
+$25\mid m_l$, or if $7\in P_3$ and $7\in\pi(l)$. There are at most $4$ exceptional elements, and at
+most $3$ if $7\notin P_3$. (If $7\notin P_3$ then $\pi(l)\cap P_3=\{5\}$, so $7$ plays no role in
+$g_{l,i_3}$.) A non-exceptional $l$ has
+$g_{l,i_1}=2$, $g_{l,i_2}=3$ and $g_{l,i_3}=5$, so $a_l\bmod30$ lies in a fixed set of
+$1\cdot2\cdot4=8$ residues. Hence $|L_5|\le8+4$, and $|L_5|\le8+3$ if $7\notin P_3$.
+
+(2) Let $l\ne l'$ in $L_7$. Then $g_{ll'}=42$. The exceptional elements, those with $4\mid m_l$,
+$9\mid m_l$ or $49\mid m_l$, number at most $3$. A non-exceptional $l$ has $g_{l,i_3}=7$, so
+$a_l\bmod42$ lies in a fixed set of $1\cdot2\cdot6=12$ residues, pairwise distinct. So
+$|L_7|\le15$.
+
+(3) Let $\mathcal R$ be the set of the two residues $x\bmod6$ with $x\not\equiv a_{i_1}\pmod2$
+and $x\not\equiv a_{i_2}\pmod3$. Every non-exceptional element of $L_5\cup L_7$ has
+$a_l\bmod6\in\mathcal R$.
+
+\emph{Claim.} If $l\in L_5$ with $7\notin\pi(l)$ and $l'\in L_7$ is non-exceptional, then
+$g_{ll'}=6$, and hence $a_l\not\equiv a_{l'}\pmod 6$.
+
+\emph{Proof of the claim.} By Lemma~\ref{lem:channel}, $\pr(g_{ll'})=\pi(l)\cap\pi(l')$, which
+contains $2$ and $3$. We have $5\notin\pi(l')$, because $\pi(l')\cap P_3=\{7\}$ and $5\in P_3$.
+Also $7\notin\pi(l)$. Any other shared prime $q\ge11$ would give $6q>43$. So
+$\pr(g_{ll'})=\{2,3\}$. Since $4\nmid m_{l'}$ and $9\nmid m_{l'}$, we get $g_{ll'}=6$, and
+Lemma~\ref{lem:crt} applies.
+
+Now let $n_5(\rho)$ and $n_7(\rho)$ be the numbers of non-exceptional elements of $L_5$ and $L_7$
+with residue $\rho\in\mathcal R$ modulo $6$. By the claim, $n_5(\rho)\,n_7(\rho)=0$. By (1) and
+(2), $n_5(\rho)\le4$ (distinct residues mod $30$ above $\rho$, avoiding $a_{i_3}\bmod5$) and
+$n_7(\rho)\le6$.
+\begin{itemize}
+\item \emph{Case A: $n_7(\rho)>0$ for both $\rho\in\mathcal R$.} Then no non-exceptional element
+  of $L_5$ exists. Let $l\in L_5$ with $7\notin\pi(l)$. By the claim, $a_l\bmod6$ differs from
+  both elements of $\mathcal R$. So $a_l\equiv a_{i_1}\pmod2$, which needs $g_{l,i_1}\ne2$ and
+  hence $4\mid m_l$; or $a_l\equiv a_{i_2}\pmod3$, which needs $9\mid m_l$. At most one element
+  of $L_5$ has $4\mid m_l$, at most one has $9\mid m_l$, and at most one has $7\in\pi(l)$. So
+  $|L_5|\le3$ and $|L_5|+|L_7|\le3+15=18$.
+\item \emph{Case B: $n_7(\rho_0)=0$ for some $\rho_0\in\mathcal R$.} The non-exceptional elements
+  number at most $n_5(\rho_0)+\max(n_5(\rho_1),n_7(\rho_1))\le4+6=10$. Adding at most $4+3$
+  exceptional elements gives $|L_5|+|L_7|\le17$.\qedhere
+\end{itemize}
+\end{proof}
+
+Put $\varepsilon=10,14,16$ according as $T_3=\{5\},\{7\},\{5,7\}$, and $\varepsilon=0$ if
+$T_3=\emptyset$. By Lemma~\ref{lem:mult44}, $\sum_{t\in T_3}\max(|L_t|-1,0)\le\varepsilon$ in each
+case. For $\{5,7\}$ this follows from $|L_5|+|L_7|\le18$, $|L_5|\le12$ and $|L_7|\le15$.
+
+Lemmas~\ref{lem:B1} and \ref{lem:B2} hold verbatim with this $\varepsilon$. In their proofs the
+only fibres, or cells, holding a repeated $\omega$-value are $(3,t)$ with $t\in T_3$, whose
+repeated part is $L_t$. Also, $\{q,x,y\}$ with $q,x\ge5$ is still never light.
+
+\paragraph{The code relaxation.} Consider the multiset $\Phi=\{\omega(l):l\in O\}$ of tuples in
+$P_1\times P_2\times P_3$. It satisfies the following.
+\begin{enumerate}
+\item[(C1)] If $l\ne l'$ and $\omega(l)\ne\omega(l')$, the primes on which they agree form a light set
+  (Lemma~\ref{lem:agree}).
+\item[(C2)] Only the tuples $(2,3,t)$ with $t\in T_3$ can occur more than once
+  (Lemma~\ref{lem:proj}).
+\item[(C3)] Their multiplicities obey Lemma~\ref{lem:mult44}.
+\end{enumerate}
+So $|O|=|\Phi|$ is at most the largest size $N$ of a multiset obeying (C1)--(C3).
+
+\paragraph{The computation} (\texttt{sat\_residual.py}, output in \texttt{sat\_residual.log}).
+\begin{enumerate}
+\item Enumerate the placements of the primes $5,\dots,41$ into $P_1$, $P_2$, $P_3$ or no block,
+  with $P_3\ne\emptyset$. The primes $17,19$ satisfy $2q\le43<3q$; call them the \emph{H}-primes.
+  The primes $23,\dots,41$ satisfy $2q>43$; call them the \emph{B}-primes.
+
+  Permuting the H-primes among themselves, or the B-primes among themselves, preserves
+  lightness of every set. A set containing an H-prime $h$ is light iff it is $\{h\}$ or
+  $\{2,h\}$; one containing a B-prime is light iff it is a singleton. So such a permutation
+  preserves $B_1$, $B_2$ and $N$. It therefore suffices to place $5,7,11,13$ individually and
+  only the \emph{numbers} of H- and B-primes in each block: $133\,154$ placements.
+\item In $132\,673$ of them, $\min(B_1,B_2)\le40<41=k-3$.
+\item For each of the remaining $481$, a SAT solver (CaDiCaL via PySAT) proves that no multiset
+  obeying (C1)--(C3) has size $\ge41$. Each tuple gets a Boolean variable, and each incompatible
+  pair gets a binary clause. A repeated tuple $(2,3,t)$ gets $15$ or $12$ ``copy'' variables that
+  imply it. A cardinality constraint caps the copies of $(2,3,5)$ and $(2,3,7)$ together at $18$,
+  and another requires at least $41$ counted literals. All $481$ instances are UNSAT.
+\end{enumerate}
+Hence $|O|\le40<41$ in Case~II, which is the reduction behind Remark~\ref{thm:44}. \qed
+
+\paragraph{How the joint bound was needed.} With the weaker joint bound $19$ (from (1)+(2) with
+only the Case~B argument), exactly $8$ placements are not excluded by the SAT relaxation, for
+example $P_1=\{2,11,13\}$, $P_2=\{3,17,19\}$, $P_3=\{5,7,23,29,31,37,41\}$. There the relaxation
+reaches exactly $41=k-3$. With $18$, the relaxation stays $\le40$ on all of them.
+
+% ===========================================================================
+\section{Remarks}
+
+\begin{enumerate}
+\item \emph{Where the hypothesis enters.} The hypothesis is used only in Step~2 ($s\ge3$), and
+  only at size $k-1$.
+\item \emph{Why Cell~5's argument breaks.} For $p\ge31$ the full map $\omega$ need not be
+  injective, because two classes may share exactly the primes $\{2,3,5\}$ ($\gcd=30$).
+  AM--GM alone also fails, independently of injectivity. For $k=32$ it allows $(3,3,2,2)$ with
+  product $36\ge28$ at $s=4$, and $(2,2,2,2,2)$ with $32\ge27$ at $s=5$. Lemma~\ref{lem:caseI}
+  replaces the $s$-fold product by a product of two coordinates.
+\item \emph{Tightness.} For $k=42$ the margin is one ($38<39$), and it uses the full strength of
+  Lemma~\ref{lem:mult}.
+\item \label{rem:48}\emph{$k=48$ ($p=47$) is not decided.} All of Case~I and $s\ge4$ closes (bounds
+  $36,30,\dots,1$ against $44,43,\dots,34$, and $42<45$ for $s=3$ in Case~I). The multiplicity
+  lemma, Lemma~\ref{lem:mult44}, holds verbatim for $p=47$: every step uses only $6q>p$ for
+  $q\ge11$ and $g<60$. Case~II is \textbf{not} closed, however: in a partial run
+  (\texttt{sat\_residual\_48\_partial.log}, stopped for time) the code relaxation (C1)--(C3)
+  already reaches $45=k-3$ on at least two placements, for example $P_1=\{2,11,41,43\}$,
+  $P_2=\{3,17,19,23\}$, $P_3=\{5,7,13,29,31,37\}$. Closing $k=48$ needs information
+  beyond (C1)--(C3), such as residue interactions between $L_5$, $L_7$ and the other cells
+  $(2,3,x)$ or $(2,y,5)$, which have gcd $6$ or $10$ with them. The sizes $k=54,60,\dots$
+  were not attempted.
+\end{enumerate}
+
+\paragraph{Files} (directory \texttt{p4\_c6/}).
+\begin{itemize}
+\item \texttt{check\_p4\_c6.py}: every inequality of Sections~3 and 4 (Case~I);
+  output in \texttt{check\_p4\_c6.log}. This enumeration is part of the proof for $k=32,38,42$
+  (the maxima in Case~II are computed over all placements, not derived by hand), so these three
+  sizes are \emph{computer-assisted}. The set enumerated is the finite set of prime distributions
+  defined in Section~3; it runs in 4\,s on a laptop, and an independent rerun
+  (\texttt{check\_p4\_c6\_rerun.log}) reproduces the output exactly.
+\item \texttt{sat\_residual.py}: Case~II for $k=44$; output in \texttt{sat\_residual.log}.
+\item \texttt{validate.py}, \texttt{validate44.py}: self-review cross-checks. On random placements
+  the exact code optimum never exceeds $\min(B_1,B_2)$. The SAT encoding is not vacuous: it is
+  satisfiable at $40$ and unsatisfiable at $41$ on a residual placement.
+\item \texttt{probe\_joint.py}: the joint bound $19$ versus $18$ for $k=44$.
+\end{itemize}
+\end{document}

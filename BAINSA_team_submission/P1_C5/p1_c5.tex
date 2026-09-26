@@ -1,0 +1,332 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\begin{document}
+\title{Cell C5: $d+2$ lines in $\mathbb R^d$}
+\date{26 September 2026}
+\maketitle
+
+\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{\textbf{Official statement (Cell 5).} ``The case $N = d+2$ in every dimension, with the same conjectured optimum: the $d$ coordinate axes, two of them repeated. Prove that for every $d \ge 2$, any $d+2$ lines in $\mathbb R^d$ satisfy $S \le \bigl(\binom{d+2}{2} - 2\bigr)\cdot\pi/2$.''}}
+\medskip
+
+\begin{abstract}
+We prove that for every $d\ge 1$ (the statement asked for $d\ge2$), any $d+2$ lines through the origin of
+$\mathbb R^d$ satisfy $S\le\bigl(\binom{d+2}{2}-2\bigr)\frac{\pi}{2}$.
+The proof is unconditional. It has two steps. The first uses the orthogonality-saturation
+proposition of the C4 notes (\texttt{p1\_codex/p1\_c4.tex}) to
+reduce an extremal configuration to orthogonal blocks. Each block is an isolated line, a coincident pair,
+three coincident lines, or a \emph{cycle}. The second step proves a
+new \emph{cycle lemma} by a monotone potential along a spherical-trigonometric
+recursion. As by-products, the same argument gives a two-line proof of
+the $d+1$ case (C3) and a second proof of the $J=C_6$ case of C4
+(six lines in $\mathbb R^4$), which the C4 notes settle by their own computation. Every inequality used was checked
+numerically (Section~\ref{sec:num}).
+\end{abstract}
+
+\section{Setting}
+Lines are represented by unit vectors $x_1,\dots,x_N\in\mathbb R^d$;
+put $g_{ij}=\langle x_i,x_j\rangle$ and
+\[
+A(x)=\sum_{i<j}\arcsin|g_{ij}|,\qquad
+S(x)=\sum_{i<j}\arccos|g_{ij}|=\binom N2\frac\pi2-A(x).
+\]
+Thus $S\le(\binom{d+2}2-2)\frac\pi2$ for $N=d+2$ is equivalent to
+$A\ge\pi$. Both quantities depend only on the lines. Two graphs on
+$\{1,\dots,N\}$ are used: the \emph{orthogonality graph} $H$ ($ij\in H$
+iff $g_{ij}=0$) and its complement $J$ ($ij\in J$ iff $g_{ij}\neq0$).
+Only $J$-edges contribute to $A$.
+
+\section{Structure of an extremal configuration}
+
+\begin{proposition}[Orthogonality saturation; from the C4 notes, reproved here]\label{prop:sat}
+There is a minimiser of $A$ (over $N$ lines in $\mathbb R^d$) such
+that for every $i$, either $x_i\perp x_j$ for all $j\ne i$, or the
+vectors $\{x_j: g_{ij}=0\}$ span a subspace of dimension at least $d-1$.
+\end{proposition}
+\begin{proof}
+The configuration space is compact and $A$ is continuous, so the set
+of minimisers is non-empty. Choose a minimiser with the largest number of
+orthogonal pairs. Suppose that for some $i$ the space
+$W=\operatorname{span}\{x_j:g_{ij}=0\}$ has $\dim W\le d-2$ and some
+$g_{ij}\ne0$. Since $x_i\perp W$ and $\dim W^\perp\ge2$, there is a unit $u\in W^\perp$,
+$u\perp x_i$. Put $x_i(t)=\cos t\,x_i+\sin t\,u$ and move only $x_i$.
+Pairs $(i,j)$ with $x_j\in W$ stay orthogonal, and pairs not involving
+$i$ are unchanged. For each $j$ with $g_{ij}\ne0$ we have
+$\langle x_i(t),x_j\rangle=r_j\cos(t-\phi_j)$ with $r_j>0$, so it
+vanishes somewhere on the circle but not at $t=0$. Let $t_-<0<t_+$ be
+the nearest zeros of any of these functions. On $(t_-,t_+)$ each such
+term $\arccos|r\cos(t-\phi)|$ is convex. Indeed, where $r\cos s>0$ and $r<1$,
+\[
+\frac{d^2}{ds^2}\arccos(r\cos s)=\frac{r(1-r^2)\cos s}{(1-r^2\cos^2s)^{3/2}}\ge0,
+\]
+and for $r=1$ the term is $|s|$ near $s=0$, which is convex. All other terms
+are constant. Hence $S(x(t))$ is convex on $[t_-,t_+]$, so
+$S(x(t_+))\ge S(x(0))$ or $S(x(t_-))\ge S(x(0))$. That endpoint is again a
+minimiser of $A$, and it has strictly more orthogonal pairs. This contradicts the choice of minimiser.
+\end{proof}
+
+\begin{lemma}[Paths]\label{lem:path}
+Let $y_1,\dots,y_k$ ($k\ge2$) be unit vectors with
+$\langle y_i,y_{i+1}\rangle\ne0$ and $\langle y_i,y_j\rangle=0$ for
+$|i-j|\ge2$. Then $y_1,\dots,y_{k-1}$ are linearly independent.
+\end{lemma}
+\begin{proof}
+Otherwise let $j\le k-1$ be minimal with
+$y_j\in\operatorname{span}(y_1,\dots,y_{j-1})$ (so $j\ge2$). Since
+$y_{j+1}\perp y_1,\dots,y_{j-1}$, it follows that $y_{j+1}\perp y_j$, a contradiction.
+\end{proof}
+
+\begin{lemma}[Block structure]\label{lem:blocks}
+Let $x$ be a minimiser as in Proposition~\ref{prop:sat}, and let $N=d+k$.
+\begin{enumerate}
+\item Every vertex of $J$ has degree at most $k$.
+\item Distinct connected components $C,C'$ of $J$ span mutually
+orthogonal subspaces $V_C\perp V_{C'}$. Hence
+$A=\sum_C A_C$, where $A_C$ is the sum over the $J$-edges of $C$, and
+$\sum_C r_C\le d$, where $r_C=\dim V_C$.
+\item If a vertex of a component $C$ (with $m_C$ vertices) has
+$J$-degree $\delta\ge1$, then $r_C\le m_C-\delta$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(1) A vertex of positive $J$-degree has $H$-neighbours spanning at least
+$d-1$ dimensions, so it has at least $d-1$ $H$-neighbours and at most
+$(N-1)-(d-1)=k$ $J$-neighbours. (2) All pairs across components are
+$H$-edges. (3) The $H$-neighbours of $x_i$ are the vertices of the other
+components, which span $\bigoplus_{C'\ne C}V_{C'}$ of dimension
+$\le d-r_C$, together with the $m_C-1-\delta$ non-neighbours of $i$
+inside $C$. By Proposition~\ref{prop:sat},
+$d-1\le (d-r_C)+(m_C-1-\delta)$.
+\end{proof}
+
+\section{The cycle lemma}
+
+\begin{lemma}[Cycle lemma]\label{lem:cycle}
+Let $m\ge4$ and let $x_1,\dots,x_m$ be unit vectors (indices mod $m$)
+with $\langle x_i,x_j\rangle=0$ unless $j\in\{i-1,i,i+1\}$,
+$\langle x_i,x_{i+1}\rangle\ne0$ for all $i$, and
+$\dim\operatorname{span}(x_1,\dots,x_m)\le m-2$. Then
+\[
+\sum_{i=1}^m\arcsin|\langle x_i,x_{i+1}\rangle|\ \ge\ \pi.
+\]
+\end{lemma}
+
+For $m=4$ equality always holds: the four lines are two orthonormal
+bases of one plane. For $m=5$ this is the $C_5$ computation in the C4 notes.
+For $m=6$ it is the case $J=C_6$; the C4 notes contain their own complete computation
+of it, and the cycle lemma gives a second proof.
+
+\subsection{Reformulation through a chain basis}
+By Lemma~\ref{lem:path} applied to the path $x_1,\dots,x_{m-1}$,
+the vectors $b_k:=x_k$ ($1\le k\le n:=m-2$) are linearly independent.
+Hence $V:=\operatorname{span}(x_1,\dots,x_m)=\operatorname{span}(b_1,\dots,b_n)$
+has dimension exactly $n$. Their Gram matrix is tridiagonal with
+non-zero off-diagonal entries. We call such a family a \emph{chain
+basis}. Since $x_{m-1}\in V$ is orthogonal to $b_1,\dots,b_{n-1}$,
+$x_{m-1}=\pm w_n$, where $w_n$ is the unit normal of
+$\operatorname{span}(b_1,\dots,b_{n-1})$ in $V$. Likewise
+$x_m=\pm u_n$, where $u_n$ is the unit normal of
+$\operatorname{span}(b_2,\dots,b_n)$ in $V$. (For $n=1$ we use the convention $u_1=w_1=b_1$: the orthogonal complement of $\operatorname{span}(\emptyset)=\{0\}$ in $\mathbb R b_1$ is $\mathbb R b_1$. This is what the case $n=1$ of Lemma~\ref{lem:rec} uses.) For a chain basis define
+$X_n,Y_n,\eta_n\in[0,\pi/2]$ and $s_n$ by
+\[
+\cos X_n=|\langle b_1,u_n\rangle|,\quad
+\cos Y_n=|\langle b_n,w_n\rangle|,\quad
+\sin\eta_n=|\langle u_n,w_n\rangle|,\quad
+s_n=\sum_{k=1}^{n-1}a_k,\ \ a_k=\arcsin|\langle b_k,b_{k+1}\rangle|.
+\]
+Here $\cos X_n,\cos Y_n>0$ by independence. The $m$ edges of the cycle
+contribute $s_n$, $\arcsin\cos Y_n=\frac\pi2-Y_n$ (edge $x_{m-2}x_{m-1}$),
+$\eta_n$ (edge $x_{m-1}x_m$) and $\frac\pi2-X_n$ (edge $x_mx_1$). Thus
+\begin{equation}\label{eq:phi}
+\sum_{i}\arcsin|\langle x_i,x_{i+1}\rangle|-\pi=\Phi_n:=s_n-X_n-Y_n+\eta_n,
+\end{equation}
+and the cycle lemma follows once we show $\Phi_n\ge0$ for all chain bases with $n\ge2$.
+
+\subsection{The recursion}
+\begin{lemma}\label{lem:rec}
+Let $b_1,\dots,b_{n+1}$ be a chain basis ($n\ge1$) and let
+$a=a_n$. Then
+\begin{align}
+\sin a&=\cos Y_n\,\sin Y_{n+1},\tag{R1}\\
+\tan\eta_{n+1}&=\tan Y_{n+1}\,\sin\eta_n,\tag{R2}\\
+\cos X_{n+1}&=\cos X_n\,\cos\eta_{n+1}.\tag{R3}
+\end{align}
+The initial values are $X_1=Y_1=0$ and $\eta_1=\pi/2$. Consequently $X_2=Y_2=\eta_2=a_1$ and
+$\Phi_2=0$. For $n\ge2$ we have $\eta_n\le Y_n$ and $\eta_n\le X_n$.
+\end{lemma}
+\begin{proof}
+Let $E=\operatorname{span}(b_1,\dots,b_n)$ and let $e$ be the unit normal of $E$
+in $E\oplus\mathbb R b_{n+1}$, so $w_{n+1}=\pm e$. Since
+$b_{n+1}\perp b_1,\dots,b_{n-1}$, its projection to $E$ is parallel to
+$w_n$. After changing signs of $w_n,e$ (this only changes the sign of $c=\langle u_n,w_n\rangle$ below, and only $|c|$ is used) we can write $b_{n+1}=p\,w_n+q\,e$ with $p,q\ge0$ and
+$p^2+q^2=1$, and $q>0$ by independence. Then $\cos Y_{n+1}=q$ and $p=\sin Y_{n+1}$.
+Moreover $\langle b_n,b_{n+1}\rangle=p\langle b_n,w_n\rangle$, which gives
+(R1). The orthogonal complement of $\operatorname{span}(b_2,\dots,b_n)$
+is $\operatorname{span}(u_n,e)$, so
+$u_{n+1}=\alpha u_n+\beta e$ with $\alpha^2+\beta^2=1$ and
+$0=\langle u_{n+1},b_{n+1}\rangle=\alpha pc+\beta q$, where
+$c=\langle u_n,w_n\rangle$ and $|c|=\sin\eta_n$. Hence
+$(\alpha,\beta)=(q,-pc)/\rho$ with $\rho=\sqrt{q^2+p^2c^2}>0$. Then
+$\sin\eta_{n+1}=|\beta|$ and $\cos\eta_{n+1}=|\alpha|$, which gives (R2).
+Also $\cos X_{n+1}=|\langle b_1,u_{n+1}\rangle|=|\alpha|\cos X_n$, because
+$b_1\perp e$. This gives (R3). The initial values follow from $u_1=w_1=b_1$.
+Finally, (R2) gives $\tan\eta_{n+1}\le\tan Y_{n+1}$ and (R3) gives
+$\cos X_{n+1}\le\cos\eta_{n+1}$.
+\end{proof}
+
+\subsection{Monotonicity of the potential}
+\begin{lemma}[Two right triangles]\label{lem:K}
+For $\zeta\in[0,\pi/2]$ and $Y'\in[0,\pi/2)$ let $\zeta^*\in[0,\pi/2)$ be
+defined by $\tan\zeta^*=\tan Y'\sin\zeta$. Then
+\[
+K(\zeta,Y'):=\arcsin(\sin Y'\cos\zeta)+\zeta-Y'
+-\arccos(\cos\zeta\cos\zeta^*)+\zeta^*\ \ge\ 0 .
+\]
+\end{lemma}
+\begin{proof}
+If $\zeta\in\{0,\pi/2\}$ or $Y'=0$, a direct substitution gives $K=0$.
+So let $\zeta,Y'\in(0,\pi/2)$, and put $s=\sin\zeta\in(0,1)$,
+$c=\cos\zeta=\sqrt{1-s^2}$ and $f(x)=\arccos(c\cos x)-x$ on
+$[0,\pi/2]$. With $x_1=\zeta^*$ and $x_2=\pi/2-Y'$ we have
+$\arcsin(\sin Y'\cos\zeta)=\frac\pi2-\arccos(c\cos x_2)$. Hence
+\[
+K=\zeta-f(x_1)-f(x_2),\qquad \tan x_1\tan x_2=s .
+\]
+Write $\tan x_1=\sqrt s\,e^{v}$, $\tan x_2=\sqrt s\,e^{-v}$ ($v\in\mathbb R$)
+and $F(v)=h(v)+h(-v)$ with $h(v)=f(\arctan(\sqrt s e^v))$. $F$ is
+even and $F(v)\to f(\pi/2)+f(0)=0+\zeta$ as $v\to\infty$. It therefore suffices to show
+$F'(v)\ge0$ for $v>0$. With $T=\tan x$ one computes
+$dx/dv=T/(1+T^2)$ and $f'(x)=cT/\sqrt{T^2+s^2}-1$, so
+\[
+h'(v)=q(T):=\frac{T}{1+T^2}\Bigl(\frac{cT}{\sqrt{T^2+s^2}}-1\Bigr),\qquad
+F'(v)=q(t)-q(s/t),\quad t=\sqrt s e^v>\sqrt s .
+\]
+With $\mathcal A=\sqrt{1+t^2}$ and $\mathcal B=\sqrt{t^2+s^2}$ we have
+$q(s/t)=\frac{st}{\mathcal B^2}\bigl(\frac{c}{\mathcal A}-1\bigr)$ and
+\[
+q(t)-q(s/t)=\frac{t}{\mathcal A^2\mathcal B^2}\Bigl[s\mathcal A^2-\mathcal B^2-c(s\mathcal A-t\mathcal B)\Bigr]
+=\frac{t\,(t^2-s)}{\mathcal A^2\mathcal B^2}\Bigl[\frac{c\,(t^2+s)}{t\mathcal B+s\mathcal A}-(1-s)\Bigr],
+\]
+using $s\mathcal A^2-\mathcal B^2=-(1-s)(t^2-s)$ and
+$t\mathcal B-s\mathcal A=(t^4-s^2)/(t\mathcal B+s\mathcal A)$.
+Since $t^2>s$, it remains to show that
+$\sqrt{1+s}\,(t^2+s)\ge\sqrt{1-s}\,(t\mathcal B+s\mathcal A)$.
+First, $\sqrt{(1+s)/(1-s)}\ge1+s$, because this is equivalent to $1\ge1-s^2$. Next,
+$t\mathcal B=t^2+\frac{ts^2}{\mathcal B+t}\le t^2+\frac{s^2}2$ and
+$s\mathcal A=s+\frac{st^2}{\mathcal A+1}\le s+\frac{st^2}2$. Therefore
+$t\mathcal B+s\mathcal A\le(t^2+s)(1+\frac s2)\le(1+s)(t^2+s)$.
+\end{proof}
+
+\begin{proposition}\label{prop:mono}
+For every chain basis and every $n\ge2$, $\Phi_{n+1}\ge\Phi_n$.
+Hence $\Phi_n\ge\Phi_2=0$, and the cycle lemma holds.
+\end{proposition}
+\begin{proof}
+Write $X,Y,\eta$ for step $n$, primes for step $n+1$, and $a=a_n$. Then
+$\Phi_{n+1}-\Phi_n=a-(X'-X)-(Y'-Y)+(\eta'-\eta)$.
+
+\emph{(i) Eliminating $X$.} By (R3), $X'-X=\varphi(X)$ with
+$\varphi(\xi)=\arccos(\cos\xi\cos\eta')-\xi$. This function is non-increasing
+on $[0,\pi/2]$, because
+$\varphi'(\xi)=\sin\xi\cos\eta'/\sqrt{1-\cos^2\xi\cos^2\eta'}-1\le0$
+(the radicand exceeds $\sin^2\xi\cos^2\eta'$ by $\sin^2\eta'\ge 0$).
+Since $X\ge\eta$ (Lemma~\ref{lem:rec}),
+$X'-X\le\arccos(\cos\eta\cos\eta')-\eta$. Hence
+\[
+\Phi_{n+1}-\Phi_n\ \ge\ \sigma(Y,Y')-\bigl[\arccos(\cos\eta\cos\eta')-\eta'\bigr],
+\qquad \sigma(Y,Y'):=\arcsin(\sin Y'\cos Y)+Y-Y',
+\]
+using $a=\arcsin(\sin Y'\cos Y)$ from (R1).
+
+\emph{(ii) Replacing $Y$ by $\eta$.} We have
+$\partial_Y\sigma=1-\sin Y'\sin Y/\sqrt{1-\sin^2Y'\cos^2Y}\ge0$, since
+$1-\sin^2Y'\cos^2Y-\sin^2Y'\sin^2Y=\cos^2Y'\ge0$. Because
+$\eta\le Y$, it follows that $\sigma(Y,Y')\ge\sigma(\eta,Y')$.
+
+\emph{(iii)} By (R2), $\eta'$ is exactly $\zeta^*$ for $\zeta=\eta$.
+Therefore $\Phi_{n+1}-\Phi_n\ge K(\eta,Y')\ge0$ by Lemma~\ref{lem:K}.
+Combined with \eqref{eq:phi}, this proves Lemma~\ref{lem:cycle}.
+\end{proof}
+
+\section{Main theorem}
+
+\begin{theorem}\label{thm:main}
+For every $d\ge1$, any $d+2$ unit vectors in $\mathbb R^d$ satisfy
+$\sum_{i<j}\arcsin|\langle x_i,x_j\rangle|\ge\pi$. Equivalently, any
+$d+2$ lines in $\mathbb R^d$ have
+$S\le\bigl(\binom{d+2}2-2\bigr)\frac\pi2$.
+\end{theorem}
+\begin{proof}
+It suffices to bound $A$ at the minimiser of Proposition~\ref{prop:sat}.
+By Lemma~\ref{lem:blocks} with $k=2$, every component $C$ of $J$ is an
+isolated vertex, a path or a cycle. Let $\nu_C=m_C-r_C$. We claim that
+$A_C\ge\nu_C\,\pi/2$ in every case.
+\begin{itemize}
+\item Isolated vertex: $\nu_C=0$.
+\item Path on two vertices: $r_C\le1$ by Lemma~\ref{lem:blocks}(3), so the two lines coincide. Then
+$\nu_C=1$ and $A_C=\pi/2$.
+\item Path on $k\ge3$ vertices: Lemma~\ref{lem:path} gives $r_C\ge k-1$, while an interior vertex gives
+$r_C\le k-2$. This case is impossible.
+\item Triangle: $r_C\le1$, so the three lines coincide. Then $\nu_C=2$ and $A_C=3\pi/2$.
+\item Cycle of length $m\ge4$: $r_C\le m-2$ by Lemma~\ref{lem:blocks}(3) and
+$r_C\ge m-2$ by Lemma~\ref{lem:path}, so $\nu_C=2$. Lemma~\ref{lem:cycle} gives $A_C\ge\pi$.
+\end{itemize}
+Finally $\sum_C\nu_C=N-\sum_Cr_C\ge (d+2)-d=2$, so
+$A=\sum_CA_C\ge\pi$.
+\end{proof}
+
+\begin{corollary}[C4]
+Five lines in $\mathbb R^3$ and six lines in $\mathbb R^4$ satisfy
+$A\ge\pi$.
+\end{corollary}
+
+\begin{corollary}[C3, without the prefix lemma]
+Any $d+1$ unit vectors in $\mathbb R^d$ satisfy $\sum\arcsin|g_{ij}|\ge\pi/2$.
+\end{corollary}
+\begin{proof}
+Lemma~\ref{lem:blocks} with $k=1$ shows that every component of $J$ is an isolated vertex
+($\nu=0$) or a single edge with $r\le1$, i.e.\ a coincident pair
+($\nu=1$, $A_C=\pi/2$). Since $\sum\nu_C\ge1$, the bound follows.
+\end{proof}
+
+\begin{remark}[Equality and extensions]
+The value $\pi$ is attained, for example by the following configurations:
+\begin{itemize}
+\item two disjoint coincident pairs completed by an orthonormal basis;
+\item two orthonormal bases of a plane (the $4$-cycle), completed by an orthonormal basis of the orthogonal complement;
+\item for $d\ge4$, two ``planar $0^\circ,45^\circ,90^\circ$ triples'' in orthogonal planes, completed by an orthonormal basis of the rest.
+\end{itemize}
+The last example contains a $J$-path on three vertices. This does not contradict the exclusion of such paths in the proof of Theorem~\ref{thm:main}, because that minimiser is not saturated: that exclusion applies only to the minimiser chosen in Proposition~\ref{prop:sat}. In our numerical searches ($d=2,\dots,5$), every minimiser found was of these block types. This is an observation, not a classification.
+
+For $N=d+k$, the same saturation step reduces the Fejes T\'oth conjecture for $N\le 2d$ to proving $A_C\ge\nu_C\pi/2$ for components of $J$ with maximum degree $\le k$ and $r_C\le m_C-\deg$. For $k\ge3$ these components are no longer just paths and cycles. The potential $\Phi$ of Proposition~\ref{prop:mono} was found numerically and may extend.
+\end{remark}
+
+\section{Numerical verification}\label{sec:num}
+All scripts are in \texttt{p1\_c5/}.
+\begin{itemize}
+\item \texttt{direct\_min.py}: direct minimisation of $A$ for $d+2$ lines,
+$d=2,\dots,5$, with $120$--$200$ random starts each. The minimum is $\pi$ to
+$10^{-8}$, no value below $\pi$ was found, and the minimisers have the block structure above.
+\item \texttt{cycle.py}, \texttt{concavity.py}: an explicit
+parametrisation of the cycle family ($x_1=e_1$,
+$x_{k+1}=\sin t_ke_k+\cos t_ke_{k+1}$). It confirms the orthogonality pattern
+and gives $\min(A-\pi)\ge-10^{-8}$ for $m=4,\dots,12$ (random sampling and local
+optimisation). The minimum is approached only at the degenerate boundary.
+\item \texttt{recursion.py}: (R1)--(R3) agree with the explicit
+parametrisation, and $\Phi_{n+1}\ge\Phi_n$ holds along $10^5$ random chains.
+\item \texttt{verify\_all.py} ($10^6$ samples each, float64) and
+\texttt{verify\_hp.py} (50-digit mpmath): these check the convexity in
+Proposition~\ref{prop:sat}, the invariants $\eta\le Y$ and $\eta\le X$,
+monotonicity of $\varphi$ and $\sigma$, the inequality $q(t)\ge q(s/t)$, the final
+algebraic inequality, $K\ge0$, the full step inequality, and the identity
+\eqref{eq:phi} ($|A-\pi-\Phi_n|\le2\cdot10^{-33}$ in high precision).
+The float64 violations of order $10^{-9}$ were arccos cancellation. They
+disappear at 50 digits.
+\end{itemize}
+\end{document}

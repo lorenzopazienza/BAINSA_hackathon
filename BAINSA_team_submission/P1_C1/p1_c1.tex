@@ -1,0 +1,190 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=2.5cm]{geometry}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{definition}
+\newtheorem*{statement}{Official statement}
+
+\newcommand{\T}{\mathbb{T}}
+
+\title{Problem 1, Cell 1: the planar case $d=2$}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{statement}
+A line here always means a line through the origin of $\mathbb{R}^d$. The angle between two lines
+$\ell,\ell'$ is the acute (non-obtuse) angle $\theta(\ell,\ell')\in[0,\pi/2]$ between them. If
+$\ell,\ell'$ are spanned by unit vectors $x,x'$, then $\theta(\ell,\ell')=\arccos|\langle x,x'\rangle|$.
+For lines $\ell_1,\dots,\ell_N$ in $\mathbb{R}^d$ (repetitions allowed), write
+$S(\ell_1,\dots,\ell_N)=\sum_{1\le i<j\le N}\theta(\ell_i,\ell_j)$.
+
+We begin in the plane ($d=2$), where the conjectured optimum splits the $N$ lines as evenly as
+possible between two perpendicular directions. Let $\ell_1,\dots,\ell_N$ be lines in $\mathbb{R}^2$.
+Prove that $S(\ell_1,\dots,\ell_N)\le(\pi/2)\cdot\lfloor N^2/4\rfloor$.
+\end{statement}
+
+\noindent Theorem~\ref{thm:main} below is exactly this statement. It is proved for arbitrary lines in
+$\mathbb{R}^2$, and lines through the origin are a special case. For lines spanned by unit vectors
+$x,x'$, the angle $\angle$ used below equals $\arccos|\langle x,x'\rangle|=\theta$. Repeated lines are
+allowed.
+
+\paragraph{Known result.} The planar case is known~\cite{FVZ16,BM19}; the proof below is
+self-contained.
+
+\paragraph{Setting.}
+Let $\ell_1,\dots,\ell_N$ be lines in $\mathbb{R}^2$. The angle $\angle(\ell_i,\ell_j)\in[0,\pi/2]$
+between two lines is the smaller of the two angles formed by their directions (it is $0$ for
+parallel lines, and it depends only on the directions of the lines). Put
+\[
+  S=\sum_{1\le i<j\le N}\angle(\ell_i,\ell_j).
+\]
+
+\begin{theorem}\label{thm:main}
+$S\le \dfrac{\pi}{2}\left\lfloor \dfrac{N^2}{4}\right\rfloor$.
+\end{theorem}
+
+\section{Directions as points of a circle of length $\pi$}
+
+Let $\T=\mathbb{R}/\pi\mathbb{Z}$, with the Lebesgue measure $\lambda$ inherited from $[0,\pi)$
+(so $\lambda(\T)=\pi$) and the quotient map $q\colon\mathbb{R}\to\T$. The direction of a line
+is determined by an angle $\varphi\in\mathbb{R}$ with the $x$-axis, up to adding multiples of
+$\pi$; hence each $\ell_i$ has a well-defined direction $\varphi_i\in\T$.
+
+For $u\in\T$ define $\|u\|=\min\{|t| : t\in\mathbb{R},\ q(t)=u\}\in[0,\pi/2]$. If $t\in[0,\pi)$ is
+the representative of $u$, then $\|u\|=\min(t,\pi-t)$. By definition of the angle between two
+lines,
+\begin{equation}\label{eq:angle}
+  \angle(\ell_i,\ell_j)=\|\varphi_i-\varphi_j\|.
+\end{equation}
+
+\begin{remark}\label{rem:fundamental}
+Any half-open interval $[s,s+\pi)\subset\mathbb{R}$ is mapped by $q$ bijectively onto $\T$, and
+$q$ restricted to it preserves the measure of Borel sets. For $s=0$ this is the definition of
+$\lambda$, and for general $s$ it follows by translation invariance of the Lebesgue measure. This is
+the only fact about
+``wrap-around'' we shall need.
+\end{remark}
+
+\section{The arcs}
+
+For each $i$ choose a real representative $p_i$ of $\varphi_i$ and set
+\[
+  I_i = q\bigl([\,p_i-\tfrac{\pi}{4},\ p_i+\tfrac{\pi}{4})\bigr)\subset\T .
+\]
+This set does not depend on the choice of $p_i$ (changing $p_i$ by $k\pi$ translates the interval
+by $k\pi$). By Remark~\ref{rem:fundamental}, $\lambda(I_i)=\pi/2$, since
+$[p_i-\frac\pi4,p_i+\frac\pi4)$ is contained in a half-open interval of length $\pi$ on which $q$
+is injective and measure preserving. (This value is not used below; it only shows that each arc
+covers exactly half of $\T$.) We write $\mathbf 1_i$ for the indicator function of $I_i$.
+
+\begin{lemma}[Symmetric difference]\label{lem:symdiff}
+For all $i\neq j$,
+\[
+  \lambda(I_i\,\triangle\, I_j)=\int_{\T}\bigl|\mathbf 1_i(x)-\mathbf 1_j(x)\bigr|\,dx
+  = 2\,\angle(\ell_i,\ell_j).
+\]
+\end{lemma}
+
+\begin{proof}
+The first equality holds because $|\mathbf 1_i-\mathbf 1_j|$ is the indicator function of
+$I_i\triangle I_j$. For the second, let $\theta=\angle(\ell_i,\ell_j)=\|\varphi_j-\varphi_i\|\in[0,\pi/2]$.
+Let $t\in[0,\pi)$ be the representative of $\varphi_j-\varphi_i$. Then $\theta=t$ or $\theta=\pi-t$.
+In the second case, $\varphi_i-\varphi_j$ has representative $\pi-t=\theta$ (if $t>0$; if $t=0$ the
+first case holds). Since the statement is symmetric in $i$ and $j$, we may swap the two indices
+if needed and assume
+\[
+  \varphi_j-\varphi_i=q(\theta),\qquad 0\le\theta\le\pi/2 .
+\]
+Choose the representatives $p_i$ and $p_j=p_i+\theta$. Let $J_i=[p_i-\frac\pi4,p_i+\frac\pi4)$ and
+$J_j=[p_i+\theta-\frac\pi4,p_i+\theta+\frac\pi4)$, so that $I_i=q(J_i)$ and $I_j=q(J_j)$.
+
+\emph{No wrap-around.} Because $0\le\theta\le\pi/2$, both $J_i$ and $J_j$ lie in the half-open
+interval $F=[p_i-\frac\pi4,\ p_i+\frac{3\pi}4)$, which has length exactly $\pi$. (Here we use
+$\theta+\frac\pi4\le\frac{3\pi}4$.) By Remark~\ref{rem:fundamental}, $q|_F$ is a measure-preserving
+bijection $F\to\T$. Being a bijection, it commutes with set operations:
+$q(J_i)\triangle q(J_j)=q(J_i\triangle J_j)$. Hence
+$\lambda(I_i\triangle I_j)$ equals the Lebesgue measure of $J_i\triangle J_j$ computed in $\mathbb{R}$.
+
+\emph{Computation in $\mathbb{R}$.} Since $\theta\le\pi/2$, the left end of $J_j$ satisfies
+$p_i+\theta-\frac\pi4\le p_i+\frac\pi4$, so
+\[
+  J_i\setminus J_j=[\,p_i-\tfrac\pi4,\ p_i+\theta-\tfrac\pi4),\qquad
+  J_j\setminus J_i=[\,p_i+\tfrac\pi4,\ p_i+\theta+\tfrac\pi4).
+\]
+Each has length $\theta$. (If $\theta=\pi/2$ the two intervals are disjoint and adjacent, and the
+formulas still hold. If $\theta=0$ both sets are empty.) Therefore
+$\lambda(I_i\triangle I_j)=2\theta$.
+\end{proof}
+
+\section{Counting pairs}
+
+Define the covering function
+\[
+  A(x)=\#\{\,i\in\{1,\dots,N\} : x\in I_i\,\}=\sum_{i=1}^N\mathbf 1_i(x),\qquad x\in\T .
+\]
+It is a finite sum of indicator functions of arcs, so it is a bounded measurable (step) function
+with integer values in $\{0,1,\dots,N\}$.
+
+\begin{lemma}[Pair count]\label{lem:count}
+For every $x\in\T$,
+\[
+  \sum_{1\le i<j\le N}\bigl|\mathbf 1_i(x)-\mathbf 1_j(x)\bigr| = A(x)\,\bigl(N-A(x)\bigr).
+\]
+\end{lemma}
+
+\begin{proof}
+Fix $x$. The number $|\mathbf 1_i(x)-\mathbf 1_j(x)|$ is $1$ if exactly one of $I_i,I_j$ contains
+$x$, and $0$ otherwise. So the left-hand side counts unordered pairs $\{i,j\}$ with exactly one
+of the arcs containing $x$. Let $P=\{i : x\in I_i\}$, so $|P|=A(x)$. Such a pair consists of one
+index in $P$ and one index outside $P$. Each unordered pair of this kind corresponds to exactly
+one element of $P\times(\{1,\dots,N\}\setminus P)$, and conversely. Hence there are
+$A(x)(N-A(x))$ such pairs.
+\end{proof}
+
+\begin{lemma}\label{lem:int}
+For every integer $a$ with $0\le a\le N$ we have $a(N-a)\le\lfloor N^2/4\rfloor$.
+\end{lemma}
+
+\begin{proof}
+$a(N-a)=\frac{N^2}{4}-\bigl(a-\frac N2\bigr)^2$. If $N$ is even this is at most $N^2/4=\lfloor N^2/4\rfloor$.
+If $N$ is odd, $a-\frac N2$ is a half-integer, so $(a-\frac N2)^2\ge\frac14$ and
+$a(N-a)\le\frac{N^2-1}{4}=\lfloor N^2/4\rfloor$.
+\end{proof}
+
+\section{Proof of Theorem~\ref{thm:main}}
+
+By \eqref{eq:angle}, Lemma~\ref{lem:symdiff}, linearity of the integral (a finite sum), and
+Lemma~\ref{lem:count},
+\[
+  2S=\sum_{i<j}2\angle(\ell_i,\ell_j)
+    =\sum_{i<j}\int_{\T}|\mathbf 1_i-\mathbf 1_j|\,dx
+    =\int_{\T}\sum_{i<j}|\mathbf 1_i-\mathbf 1_j|\,dx
+    =\int_{\T}A(x)\bigl(N-A(x)\bigr)\,dx .
+\]
+By Lemma~\ref{lem:int} the integrand is at most $\lfloor N^2/4\rfloor$ at every point, and
+$\lambda(\T)=\pi$. Hence $2S\le\pi\lfloor N^2/4\rfloor$, that is,
+$S\le\frac\pi2\lfloor N^2/4\rfloor$. \qed
+
+\begin{remark}[Sharpness]
+Take $\lfloor N/2\rfloor$ lines parallel to the $x$-axis and $\lceil N/2\rceil$ lines parallel to the
+$y$-axis. Exactly $\lfloor N/2\rfloor\lceil N/2\rceil=\lfloor N^2/4\rfloor$ pairs are
+perpendicular, and all other pairs have angle $0$. So equality holds and the bound is best possible.
+\end{remark}
+
+\begin{thebibliography}{9}
+\bibitem{BM19} D.~Bilyk and R.~W.~Matzke, \emph{On the Fejes T\'oth problem about the sum of angles
+  between lines}, Proc.\ Amer.\ Math.\ Soc.\ \textbf{147} (2019); arXiv:1801.07837.
+\bibitem{FVZ16} F.~Fodor, V.~V\'igh and T.~Zarn\'ocz, \emph{On the angle sum of lines}, Arch.\ Math.\
+  \textbf{106} (2016), 91--100.
+\end{thebibliography}
+
+\end{document}

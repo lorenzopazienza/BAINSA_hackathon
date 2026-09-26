@@ -1,0 +1,3 @@
+k=32: 1500 placements, exact <= hand everywhere; max exact 24 (< 29); tightest (0, {1: [2, 7], 2: [3, 5, 23], 3: [11]}, 3, 3)
+k=38: 1500 placements, exact <= hand everywhere; max exact 26 (< 35); tightest (0, {1: [2, 7, 31], 2: [3, 5, 23], 3: [11]}, 5, 5)
+k=42: 1500 placements, exact <= hand everywhere; max exact 31 (< 39); tightest (0, {1: [2, 7, 31], 2: [3, 5, 23], 3: [11]}, 5, 5)

@@ -1,0 +1,376 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=2.5cm]{geometry}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\pr}{\operatorname{pr}}
+\newtheorem*{statement}{Official statement}
+\input{k16status}
+\input{rerun_times}
+% Cell-specific sentence of the official statement (to be pasted verbatim):
+\newcommand{\CELLTASK}{\textbf{Cell 5 (The certified boundary, 8 points).} The main certification cell: an initial range of sizes as long as you can make it, plus two isolated sizes further out. Determine the largest $k$ for which you can certify the statement for all sizes up to and including $k$, and certify it. The range you claim must be contiguous, and if your argument at a given size assumes that all smaller sizes have already been settled you must say so. Then decide the two isolated sizes $k=24$ and $k=30$: show that neither is the least size at which the statement can fail.\par\smallskip For this cell the exhaustiveness certificate of the hand-in rules is not enough on its own. Add: (i) \emph{a demonstration that your method is not vacuous.} Construct a case in which an admissible configuration genuinely exists, run your machinery on it unmodified, and show it returns that configuration. A method that reports ``nothing survives'' at every size it is pointed at is indistinguishable from a method with a bug, and will be graded as one; (ii) \emph{for every object your pruning leaves undecided, at every $k$ you claim} --- not a sample --- an individual decision, plus the smallest part of that object which already forces the decision, plus a proof that no smaller part does; (iii) \emph{the exact list}, not merely the count, of what survives at each $k$; (iv) \emph{every pruning rule you use beyond those you have proved, proved.} If your search needs a rule you invented to finish a size, that rule is part of your claim: state it, prove it, and show the survivor list is unchanged when you switch it off. A size that only closes with an unproved rule is not certified; (v) \emph{a second implementation, written independently of your first, that differs in method} --- not the same algorithm twice --- and the two survivor lists compared elementwise at every $k$ you claim. Report any difference rather than reconciling it silently: a disagreement means one of them is wrong, and finding which is part of the cell.}
+
+\title{Problem 4, Cell 5: certified boundary, and the sizes $k=24,30$}
+\author{}
+\date{}
+
+\usepackage{array}
+\begin{document}
+\maketitle
+
+\begin{statement}
+For integers $a$ and $m\ge1$ write $a\ (\mathrm{mod}\ m)=\{a+mt:t\in\mathbb{Z}\}$. A finite family
+of classes $a_1\ (\mathrm{mod}\ m_1),\dots,a_k\ (\mathrm{mod}\ m_k)$ is pairwise disjoint if
+$a_i\ (\mathrm{mod}\ m_i)\cap a_j\ (\mathrm{mod}\ m_j)=\emptyset$ whenever $i<j$. Nothing is assumed
+about the moduli beyond $m_i\ge1$: they may repeat, and the residues $a_i$ may repeat as well. By the
+Chinese remainder theorem,
+\[
+  a_i\ (\mathrm{mod}\ m_i)\cap a_j\ (\mathrm{mod}\ m_j)\neq\emptyset\iff\gcd(m_i,m_j)\mid a_i-a_j.\tag{$*$}
+\]
+\emph{Question.} Let $k\ge2$ and let $a_1\ (\mathrm{mod}\ m_1),\dots,a_k\ (\mathrm{mod}\ m_k)$ be
+pairwise disjoint. Must there be a pair $i<j$ with $\gcd(m_i,m_j)\ge k$?
+
+\CELLTASK
+\end{statement}
+
+\paragraph{Conjecture (Sun).} If $k\ge2$ residue classes $a_1\bmod m_1,\dots,a_k\bmod m_k$ are
+pairwise disjoint, then $\gcd(m_i,m_j)\ge k$ for some $i\ne j$. We say the conjecture
+\emph{holds at $k$} if this is true for that $k$.
+
+% ===========================================================================
+\section{Certified contiguous boundary}
+
+\begin{definition}
+The \emph{certified contiguous boundary} $K^\ast$ is the largest $K$ such that, for every
+$3\le k\le K$:
+\begin{enumerate}
+\item both independent implementations (p4\_codex, SAT-based; p4\_dfs, column enumeration
+  plus backtracking, no SAT) enumerated the survivor list at $k$, and the two lists agree
+  elementwise after canonical normalisation;
+\item every survivor is decided UNSAT together with its minimal part: the smallest UNSAT
+  sub-multiset and explicit, directly checked residue witnesses for all its sub-multisets of one
+  size less (p4\_codex minimal-part certificate, \S\ref{sec:minimal});
+\item the survivor lists, the decisions and the minimal-part files are attached
+  (\texttt{code/data/});
+\item a timed rerun on this laptop takes under 10 minutes: the p4\_codex pipeline (enumeration,
+  SAT decisions, minimal parts) plus the p4\_dfs enumeration, added together.
+\end{enumerate}
+\end{definition}
+
+{\sloppy\noindent The list comparison comes from \texttt{p4\_crosscheck/compare\_report.json}, produced by
+\texttt{compare\_lists.py}. The attached data (\texttt{code/data/}) are: every p4\_codex
+\texttt{results\_k$K$.json} for $k\le16$ (gzipped for $k\ge13$), which contain the survivor
+lists, decisions and minimal-part records; every \texttt{minimal\_parts\_k$K$.jsonl.gz} and
+\texttt{minimal\_witnesses\_k$K$.jsonl.gz}; and the p4\_dfs survivor and decision files for
+$k\le15$ (\texttt{code/data/p4\_dfs/}, for $k=15$ the merged 24-block decisions). The p4\_dfs
+survivor list for $k=16$ is not attached.\par}
+\begin{center}
+\begin{tabular}{r|r|r|c|c}
+$k$ & survivors (p4\_dfs) & survivors (p4\_codex) & elementwise & all UNSAT (both)\\ \hline
+3--6 & 0 & 0 & identical & vacuous\\
+7 & 2 & 2 & identical & yes\\
+8 & 7 & 7 & identical & yes\\
+9 & 6 & 6 & identical & yes\\
+10 & 3 & 3 & identical & yes\\
+11 & 137 & 137 & identical & yes\\
+12 & 522 & 522 & identical & yes\\
+13 & 4395 & 4395 & identical & yes\\
+14 & 19\,880 & 19\,880 & identical & yes\\
+15 & 155\,890 & 155\,890 & identical & yes\\
+16 & 236\,333 & 236\,333 & identical & p4\_codex: yes; p4\_dfs: partial
+\end{tabular}
+\end{center}
+``Identical'' means that, after canonical normalisation, the two lists coincide element by element:
+nothing is only in one list, there are no duplicates, and the SHA-256 values are equal
+(Section~\ref{sec:lists}). No survivor received different decisions from the two
+implementations.
+
+Besides p4\_codex, p4\_dfs decided every survivor UNSAT for every $k\le15$ (for $k=15$ in 24
+round-robin blocks, merged and checked). For $k=16$, p4\_codex decided all $236\,333$ survivors
+UNSAT; the p4\_dfs decisions are a \textbf{partial cross-check}: \kXVIblocks/24 blocks, covering
+\kXVIdecided\ survivors, all UNSAT and in agreement, after which the run was stopped
+(\kXVIstamp).
+
+\paragraph{Timed rerun.} Run on this laptop on 26 September 2026 (\tStamp), with the code as
+submitted, in a copy of each directory, logs in \texttt{code/p4\_crosscheck/timed\_rerun/logs/}.
+Times are wall clock in seconds; p4\_codex enumerates $k=15$ with 6 worker processes, as in its
+original run; everything else is single-process.
+\begin{center}
+\begin{tabular}{r|r|r|r|r|c}
+$k$ & p4\_codex enum.\,+\,SAT & p4\_codex minimal parts & p4\_dfs enum. & total & $<600$\,s\\ \hline
+3--12 & \multicolumn{2}{c|}{\tSmallSAT\ (all sizes together)} & see below & & yes\\
+13 & \tXIIIenum & \tXIIImin & \tXIIIdfs & \tXIIItot & \okXIII\\
+14 & \tXIVenum & \tXIVmin & \tXIVdfs & \tXIVtot & \okXIV\\
+15 & \tXVenum & \tXVmin & \tXVdfs & \tXVtot & \okXV
+\end{tabular}
+\end{center}
+The full p4\_dfs run (enumeration \emph{and} decisions) for $k=3,\dots,13$ took \tSmallDFS\,s. In
+every rerun, all counts, survivor lists and SHA-256 values reproduced the original ones exactly:
+p4\_dfs for $k=3,\dots,13$ (full run) and $k=14,15$ (enumeration). The p4\_dfs decisions for
+$k=14$ (971\,s in the original run) were not rerun, and $k=16$ was not rerun.
+
+\paragraph{The boundary.} Items~1--3 hold for every $3\le k\le15$; at $k=16$ item~3 fails (the
+p4\_dfs list for $k=16$ is not attached) and no timed rerun was made. Item~4 holds for every
+$k\le\Kstar$ (table above). Hence
+\[
+  K^\ast=\Kstar .
+\]
+The sizes \Beyond\ are \emph{decided, beyond the certified boundary}: every survivor is UNSAT
+by p4\_codex, with its minimal part in the attached files, and the two survivor lists are
+identical; they do not meet every condition of the definition.
+
+% ===========================================================================
+\section{Minimal-part certificates}\label{sec:minimal}
+
+For each UNSAT survivor, \texttt{p4\_codex/minimal\_cert.py} searches its sub-multisets by
+increasing size $s$ with selector SAT: a Boolean $y_i$ per class guards every pair's
+disjointness clause, and assumptions activate exactly the selected classes. The first UNSAT
+sub-multiset (the \emph{minimal part}) is recorded with its indices, moduli and gcd matrix. At
+size $s-1$ every sub-multiset is SAT, and each distinct one has an explicit residue witness in
+\texttt{minimal\_witnesses\_k$K$.jsonl.gz}, checked directly over $\mathbb{Z}/L$ (bitset of
+occupied residues, no SAT involved). Checking size $s-1$ suffices: every subfamily of a SAT
+family is SAT, so a smaller UNSAT part would extend to an UNSAT part of size $s-1$.
+\texttt{verify\_minimal.py} repeats the coverage and the direct check and re-solves every
+distinct core (log \texttt{p4\_codex/work/final\_minimal\_audit.log}):
+\begin{center}\footnotesize
+\begin{tabular}{r|r|r|r|>{\raggedright\arraybackslash}p{6.2cm}}
+$k$ & minimal parts & distinct cores & witnesses checked & size distribution $s$:count\\ \hline
+7 & 2 & 2 & 10 & 5:2\\
+8 & 7 & 6 & 54 & 3:2, 5:5\\
+9 & 6 & 5 & 65 & 3:1, 5:5\\
+10 & 3 & 3 & 73 & 5:3\\
+11 & 137 & 30 & 454 & 3:84, 5:1, 6:1, 7:51\\
+12 & 522 & 73 & 1\,344 & 3:380, 4:10, 7:132\\
+13 & 4\,395 & 599 & 18\,060 & 3:2178, 4:334, 5:363, 6:669, 7:547, 8:193, 9:108, 10:1, 11:2\\
+14 & 19\,880 & 1\,716 & 76\,108 & 3:11007, 4:2405, 5:1325, 6:2369, 7:1842, 8:638, 9:294\\
+15 & 155\,890 & 2\,664 & 164\,041 & 3:132232, 4:5478, 5:2030, 6:9153, 7:3007, 8:872, 9:3113, 10:1, 12:4\\
+16 & 236\,333 & 4\,995 & 401\,312 & 3:153452, 4:19118, 5:16279, 6:25914, 7:8557, 8:7396, 9:4190, 10:834, 11:581, 12:12
+\end{tabular}
+\end{center}
+{\sloppy For $k\le6$ there are no survivors. Every minimal-part record, core and witness file is
+in \texttt{code/data/p4\_codex/}; each survivor's record in \texttt{results\_k$K$.json} names its
+witness file and its SHA-256.\par}
+
+% ===========================================================================
+\section{Vacuity demonstration}
+
+The same code, run with the gcd bound $[2,k]$ in place of $[2,k-1]$ (\texttt{--bound-offset 0}),
+must find disjoint systems. It does. For $k=3,4,5,6$ the survivors are listed below, and the
+witness $r\bmod k$ ($0\le r<k$) is found and passes the literal (element-by-element)
+disjointness check:
+\begin{center}
+\begin{tabular}{r|l|l}
+$k$ & survivors with bound $[2,k]$ & SAT\\ \hline
+3 & $(3,3,3)$ & $(3,3,3)$\\
+4 & $(4,4,4,4)$ & $(4,4,4,4)$\\
+5 & $(5,5,5,5,5)$ & $(5,5,5,5,5)$\\
+6 & 4 survivors & $(6,6,6,6,6,6)$ only
+\end{tabular}
+\end{center}
+The p4\_codex vacuity runs (\texttt{results\_k$K$\_vacuity.json}, bound $[2,k]$ throughout,
+including $L=\operatorname{lcm}(1,\dots,k)$) give the same picture.
+\begin{itemize}
+\item For $k=3,4,5$ there is exactly one survivor, $(k,\dots,k)$. It is SAT, with witnesses
+  $(0,1,2)$, $(0,3,2,1)$ and $(0,1,2,3,4)$.
+\item For $k=6$ there are $4$ survivors:
+  \[(4,6,6,6,6,12),\quad(6,6,6,6,6,6),\quad(6,6,6,6,10,15),\quad(6,6,6,12,15,20).\]
+  Only $(6,6,6,6,6,6)$ is SAT, with witness $(0,2,1,3,5,4)$; the other three are UNSAT.
+\end{itemize}
+Every witness was checked directly over $\mathbb{Z}/L$ (\texttt{verified\_over\_Z\_mod\_L}).
+The survivor counts and the unique SAT family agree with p4\_dfs.
+
+% ===========================================================================
+\section{Survivor lists}
+
+\label{sec:lists}
+The canonical survivor lists are in the attached result files: \texttt{p4\_dfs/results/kXX\_sun.json}
+(for $k=15,16$, \texttt{p4\_crosscheck/dfs\_view/kXX\_sun.json}) and
+\texttt{p4\_codex/results\_kXX.json}. After the canonical normalisation of \texttt{compare\_lists.py},
+both implementations give the following SHA-256 values, identical for every $k$:
+\begin{center}\small
+\begin{tabular}{r|r|l}
+$k$ & survivors & canonical SHA-256\\\hline
+3--6 & 0 & \texttt{4f53cda18c2baa0c0354bb5f9a3ecbe5}\\
+ & & \texttt{ed12ab4d8e11ba873c2f11161202b945}\\
+7 & 2 & \texttt{01557c6ee033362572d9b27c7544c573}\\
+ & & \texttt{ac3114f221e0989214da4c72908f71da}\\
+8 & 7 & \texttt{1621baadfc46fc4bd51a7a75c6d635d1}\\
+ & & \texttt{98bca530ae676a0cec92b471313d8a77}\\
+9 & 6 & \texttt{febd71b7bbda2883058372c14ae266f5}\\
+ & & \texttt{66ba8c815d0005df1081c944df13144c}\\
+10 & 3 & \texttt{b02fcc22779027561f7c60a1d3ffba72}\\
+ & & \texttt{30f1b11d39e3617eb7361ffe883db76e}\\
+11 & 137 & \texttt{dee521791e4d6f13cbeaa1875c70c99e}\\
+ & & \texttt{7278c8820143c0ab7fc0fe31003723fe}\\
+12 & 522 & \texttt{d7ab51816f731ab2283f025ba0f31adf}\\
+ & & \texttt{f2efe79f0762d2ec03fc01ed2d30986d}\\
+13 & 4\,395 & \texttt{2dbfd65f26961615f44ddd6efced8fdf}\\
+ & & \texttt{1d8489920b9de2bcfa111ab6b7411dd1}\\
+14 & 19\,880 & \texttt{f2ec65da7dedb65caec60c1acd7de28f}\\
+ & & \texttt{c3bcb28a743a274dd240f32a038ed818}\\
+15 & 155\,890 & \texttt{8a4aca6d7ee2df8bbc4f278621f82167}\\
+ & & \texttt{46990cf7c09164b452026bc0a2d87b40}\\
+16 & 236\,333 & \texttt{2f8472ca4310cce90f832161c0152085}\\
+ & & \texttt{3a5c7b79516202f8d15ede27b81334fd}\\
+\end{tabular}
+\end{center}
+(The value for $k=3$--$6$ is the hash of the empty list.)
+
+% ===========================================================================
+\section{Toggle-off identity}
+
+Every pruning rule of p4\_dfs can be switched off:
+\begin{itemize}
+\item \texttt{--no-gcd-prune};
+\item \texttt{--no-coprime-prune};
+\item \texttt{--late-nf};
+\item \texttt{--no-interchange} and \texttt{--plain-decide}, for the decision step.
+\end{itemize}
+With pruning off, the output is identical:
+\begin{itemize}
+\item \emph{Enumeration toggles:} identical survivor lists and stage counts for $3\le k\le7$, over all
+  $2^3$ combinations (the combinations with \texttt{--no-gcd-prune} only for $k\le6$).
+\item \emph{Naive oracle:} agrees with a naive enumeration of all multisets for $k\le8$.
+\item \emph{Deciders:} the three deciders agree on every survivor for $k\le10$. The two
+  forward-checking deciders also agree for $k=11,12,13$.
+\end{itemize}
+{\sloppy For p4\_codex, the density-prefix pruning (its only shortcut) was switched off by the script
+\texttt{validate\_pruning.py}, with the option
+\begin{center}\texttt{-{}-no-density-prefix-prune}.\end{center}
+For every
+$k=3,\dots,12$
+the survivor lists and all filter counts are identical to the pruned run: MATCH at every size
+(\texttt{work/density\_prune\_comparison.json}).\par}
+
+% ===========================================================================
+\section{Minimal counterexamples cannot have $k=24$ or $k=30$}
+
+This section is a complete proof by hand. The central injectivity idea (the map $\omega$ below)
+is taken from O'Bryant's proof of Lemma~6(8) in \emph{On Z.-W.\ Sun's disjoint congruence
+classes conjecture} (2007). The write-up below is self-contained, and it needs only the
+hypothesis at $k-1$.
+
+\begin{theorem}\label{thm:min}
+Let $k\in\{24,30\}$. If the conjecture holds at $k-1$, then it holds at $k$. In particular, if
+the conjecture fails for some $k$, the least such $k$ is neither $24$ nor $30$.
+\end{theorem}
+
+\subsection*{Tools}
+
+\begin{lemma}\label{lem:crt}
+$a\bmod m$ and $b\bmod n$ are disjoint if and only if $\gcd(m,n)\nmid a-b$.
+\end{lemma}
+\begin{proof}
+If $x$ lies in both, then $a\equiv x\equiv b\pmod{\gcd(m,n)}$. Conversely, suppose $g=\gcd(m,n)$
+divides $a-b=gt$, and take $um+vn=g$. Then $x=a-umt=b+vnt$ lies in both.
+\end{proof}
+
+Fix a disjoint family $a_i\bmod m_i$ ($i\in[k]$), write $g_{ij}=\gcd(m_i,m_j)$, and let $\pr(n)$ be
+the set of primes dividing $n$. By Lemma~\ref{lem:crt}, every $g_{ij}\ge2$ and
+$a_i\not\equiv a_j\pmod{g_{ij}}$. Let $\pi(i)=\{q\text{ prime}: q\mid g_{ij}\text{ for some }j\ne i\}$.
+
+\begin{lemma}\label{lem:channel}
+$\pr(g_{ij})=\pi(i)\cap\pi(j)$ for $i\ne j$. In particular, $\pi(i)\cap\pi(j)\neq\emptyset$.
+\end{lemma}
+\begin{proof}
+The inclusion $\subseteq$ is clear. If $q\in\pi(i)\cap\pi(j)$, then $q$ divides $m_i$ and $m_j$, hence
+$g_{ij}$. Finally $g_{ij}\ge2$.
+\end{proof}
+
+\subsection*{Proof of Theorem~\ref{thm:min}}
+
+Let $p=k-1$, so $p=23$ or $p=29$, a prime. Suppose, for contradiction, that the family above
+has all $g_{ij}\le p$. Let $r$ be the number of primes less than $p$: $r=8$ for $p=23$ (the primes
+$2,\dots,19$) and $r=9$ for $p=29$ (the primes $2,\dots,23$).
+
+\emph{Step 1: the set $S$.} Let $S=\{i: p\in\pi(i)\}$. For $i\ne j$ in $S$, $p\mid g_{ij}\le p$ by
+Lemma~\ref{lem:channel}, so $g_{ij}=p$ and $\pi(i)\cap\pi(j)=\{p\}$. Conversely, if $g_{ij}=p$
+then $i,j\in S$. Thus the pairs with gcd exactly $p$ are exactly the pairs inside $S$.
+
+\emph{Step 2: $|S|\ge3$.} Let $x\in[k]$. The family without $x$ consists of $k-1$ pairwise
+disjoint classes. Since the conjecture holds at $k-1$, it contains a pair with gcd $\ge k-1=p$.
+As all gcds are $\le p$, that pair has gcd exactly $p$, so it lies inside $S\setminus\{x\}$. Hence
+$|S\setminus\{x\}|\ge2$ for every $x$, and therefore $|S|\ge3$. Write $s=|S|$.
+
+\emph{Step 3: $S\ne[k]$.} Otherwise every $g_{ij}=p$, so the $a_i$ are pairwise incongruent
+modulo $p$. That forces $k\le p=k-1$, which is impossible. Let $O=[k]\setminus S$; then
+$|O|=k-s\ge1$.
+
+\emph{Step 4: the sets $P_i$.} For $i\in S$ let $P_i=\pi(i)\setminus\{p\}$. By Step~1 the sets
+$P_i$ ($i\in S$) are pairwise disjoint. Every prime in $\pi(i)$ divides some $g_{ij}\le p$, and
+$p\notin P_i$. So $P_i$ consists of primes less than $p$, and
+\begin{equation}\label{eq:sum}
+  \sum_{i\in S}|P_i|\le r .
+\end{equation}
+Let $l\in O$ and $i\in S$. By Lemma~\ref{lem:channel}, $\pi(l)\cap\pi(i)=\pr(g_{li})$ is nonempty,
+and it does not contain $p$ because $l\notin S$. So $\pi(l)\cap P_i\ne\emptyset$; in particular every
+$P_i$ is nonempty, and $s\le r$.
+
+\emph{Step 5: an injective map.} Number $S=\{i_1,\dots,i_s\}$. For $l\in O$ put
+\[
+  \omega(l)=\bigl(\min(\pi(l)\cap P_{i_1}),\ \dots,\ \min(\pi(l)\cap P_{i_s})\bigr)\in P_{i_1}\times\dots\times P_{i_s}.
+\]
+Suppose $\omega(l)=\omega(l')$ for some $l\ne l'$ in $O$. Each coordinate $q$ lies in
+$\pi(l)\cap\pi(l')$, so $q\mid g_{ll'}$ by Lemma~\ref{lem:channel}. The $s\ge3$ coordinates are
+distinct primes, because the $P_i$ are disjoint. Hence $g_{ll'}\ge2\cdot3\cdot5=30>p$, a
+contradiction. So $\omega$ is injective, and
+\begin{equation}\label{eq:inj}
+  k-s=|O|\le\prod_{i\in S}|P_i|.
+\end{equation}
+
+\emph{Step 6: counting.} By AM--GM and \eqref{eq:sum},
+$\prod_{i\in S}|P_i|\le\bigl(\tfrac1s\sum|P_i|\bigr)^s\le(r/s)^s$, for $3\le s\le r$. Numerically:
+\begin{center}
+\begin{tabular}{c|cccccc|c}
+$p=23$, $r=8$: $s$ & 3&4&5&6&7&8&\\ \hline
+$(8/s)^s$ & 18.97&16&10.49&5.62&2.55&1&\\
+$k-s=24-s$ & 21&20&19&18&17&16&
+\end{tabular}
+
+\medskip
+\begin{tabular}{c|ccccccc}
+$p=29$, $r=9$: $s$ & 3&4&5&6&7&8&9\\ \hline
+$(9/s)^s$ & 27&25.63&18.90&11.39&5.81&2.57&1\\
+$k-s=30-s$ & 27&26&25&24&23&22&21
+\end{tabular}
+\end{center}
+In every column except ($p=29$, $s=3$) we have $(r/s)^s<k-s$, which contradicts \eqref{eq:inj}.
+Each entry is easily checked by hand. For example, $(8/3)^3=512/27<19$,
+$(9/4)^4=6561/256<26$ and $(9/5)^5=59049/3125<19$.
+
+\emph{Step 7: the equality case $p=29$, $s=3$.} Equality in AM--GM, together with
+\eqref{eq:sum} and \eqref{eq:inj}, forces the following:
+\begin{itemize}
+\item $|P_{i_1}|=|P_{i_2}|=|P_{i_3}|=3$;
+\item the three sets partition all nine primes $2,3,5,\dots,23$;
+\item $|O|=27$, so $\omega$ is a bijection onto $P_{i_1}\times P_{i_2}\times P_{i_3}$.
+\end{itemize}
+Otherwise the product is an integer below $27$, which again contradicts \eqref{eq:inj}. Say
+$23\in P_{i_a}$. Pick $b\ne a$ and any $q\in P_{i_b}$, and let $c$ be the third index. There are
+exactly $|P_{i_c}|=3$ triples in the product whose $a$-coordinate is $23$ and whose $b$-coordinate
+is $q$. By bijectivity, these are $\omega(l)$ for three distinct $l\in O$. Take two of them,
+$l\ne l'$. Then $23$ and $q$ both divide $g_{ll'}$, so $g_{ll'}\ge23q\ge46>29$, a contradiction.
+
+All cases are contradictory, which proves Theorem~\ref{thm:min}. \qed
+
+\begin{remark}
+\begin{enumerate}
+\item The argument uses the hypothesis only at size $k-1$, not at all smaller sizes.
+\item This agrees with the second sentence of O'Bryant's Theorem~3 (``a counterexample to the
+  DCCC with minimal $k$ does not have $k\in\{24,30\}$''). Here it is re-proved, not assumed.
+\item The same argument works for every $k\le30$ with $k-1$ prime. An exact enumeration of all
+  size vectors $(|P_i|)$ (\texttt{p4\_dfs/check\_minimality.py}, not part of the proof) confirms
+  that the strict inequality holds for $k\in\{4,6,8,12,14,18,20,24\}$. The only equality case
+  in the range is $k=30$, $s=3$, $(3,3,3)$, treated in Step~7. For $k-1\ge31$ Step~5 breaks down,
+  since $2\cdot3\cdot5\le k-1$.
+\end{enumerate}
+\end{remark}
+
+\end{document}

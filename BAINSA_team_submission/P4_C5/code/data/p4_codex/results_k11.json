@@ -1,0 +1,9676 @@
+{
+  "k": 11,
+  "gcd_upper_bound": 10,
+  "L": 2520,
+  "candidate_divisors": 47,
+  "all_divisor_multisets": 184509266760,
+  "density_prefix_prune": true,
+  "status": "COMPLETE",
+  "counts": {
+    "multisets_after_gcd": 294730,
+    "multisets_after_density": 4463,
+    "multisets_after_normal_form": 137,
+    "sat_calls": 137,
+    "SAT": 0,
+    "UNSAT": 137,
+    "nodes_visited": 133746
+  },
+  "survivor_sha256": "7cc628ecca6ee9e594ba3d57cbe29e85b2acecdf31984bda1711ba1b350165d8",
+  "survivors": [
+    {
+      "moduli": [
+        6,
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        20,
+        56,
+        72,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          3,
+          8
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 17,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        24,
+        40,
+        56,
+        105
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          3,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 17,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        28,
+        40,
+        72,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          3,
+          7
+        ],
+        "core_moduli": [
+          6,
+          10,
+          28
+        ],
+        "s_minus_1_witness_count": 17,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            28
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        36,
+        40,
+        56,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          3,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 17,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        40,
+        56,
+        72,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          3,
+          8
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 17,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        6,
+        10,
+        10,
+        10,
+        12,
+        18,
+        40,
+        56,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          3,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 23,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        6,
+        10,
+        10,
+        10,
+        14,
+        18,
+        24,
+        40,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          3,
+          6
+        ],
+        "core_moduli": [
+          6,
+          10,
+          14
+        ],
+        "s_minus_1_witness_count": 23,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            14
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        6,
+        10,
+        10,
+        10,
+        18,
+        20,
+        24,
+        56,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          3,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 23,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        6,
+        10,
+        10,
+        10,
+        18,
+        24,
+        28,
+        40,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          3,
+          8
+        ],
+        "core_moduli": [
+          6,
+          10,
+          28
+        ],
+        "s_minus_1_witness_count": 23,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            28
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        6,
+        10,
+        10,
+        10,
+        18,
+        24,
+        40,
+        56,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          3,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 23,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        28,
+        36,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          2,
+          8
+        ],
+        "core_moduli": [
+          6,
+          10,
+          28
+        ],
+        "s_minus_1_witness_count": 12,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            28
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        40,
+        45,
+        72
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "core_moduli": [
+          6,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10
+        ],
+        "s_minus_1_witness_count": 24,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        40,
+        56,
+        105
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          2,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 12,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        56,
+        72,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          2,
+          8
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 12,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        12,
+        40,
+        56,
+        105
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          2,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 17,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        14,
+        20,
+        36,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          2,
+          7
+        ],
+        "core_moduli": [
+          6,
+          10,
+          14
+        ],
+        "s_minus_1_witness_count": 17,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            14
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        14,
+        24,
+        40,
+        105
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          2,
+          7
+        ],
+        "core_moduli": [
+          6,
+          10,
+          14
+        ],
+        "s_minus_1_witness_count": 17,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            14
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        14,
+        40,
+        72,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          2,
+          7
+        ],
+        "core_moduli": [
+          6,
+          10,
+          14
+        ],
+        "s_minus_1_witness_count": 17,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            14
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        18,
+        20,
+        28,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          2,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          28
+        ],
+        "s_minus_1_witness_count": 17,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            28
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        18,
+        24,
+        40,
+        45
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 5,
+        "core_indices": [
+          0,
+          1,
+          2,
+          7,
+          8
+        ],
+        "core_moduli": [
+          6,
+          6,
+          10,
+          18,
+          24
+        ],
+        "s_minus_1_witness_count": 42,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            6,
+            2,
+            6,
+            6
+          ],
+          [
+            6,
+            6,
+            2,
+            6,
+            6
+          ],
+          [
+            2,
+            2,
+            10,
+            2,
+            2
+          ],
+          [
+            6,
+            6,
+            2,
+            18,
+            6
+          ],
+          [
+            6,
+            6,
+            2,
+            6,
+            24
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        18,
+        24,
+        56,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          2,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 17,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        18,
+        40,
+        56,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          2,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 17,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        20,
+        24,
+        56,
+        105
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          2,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 17,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        20,
+        28,
+        36,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          2,
+          8
+        ],
+        "core_moduli": [
+          6,
+          10,
+          28
+        ],
+        "s_minus_1_witness_count": 17,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            28
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        20,
+        56,
+        72,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          2,
+          8
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 17,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        24,
+        28,
+        40,
+        105
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          2,
+          8
+        ],
+        "core_moduli": [
+          6,
+          10,
+          28
+        ],
+        "s_minus_1_witness_count": 17,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            28
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        24,
+        40,
+        56,
+        105
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          2,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 17,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        28,
+        40,
+        72,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          2,
+          7
+        ],
+        "core_moduli": [
+          6,
+          10,
+          28
+        ],
+        "s_minus_1_witness_count": 17,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            28
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        36,
+        40,
+        56,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          2,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 17,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        40,
+        56,
+        72,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          2,
+          8
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 17,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        12,
+        14,
+        18,
+        20,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          2,
+          7
+        ],
+        "core_moduli": [
+          6,
+          10,
+          14
+        ],
+        "s_minus_1_witness_count": 23,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            14
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        12,
+        18,
+        20,
+        28,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          2,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          28
+        ],
+        "s_minus_1_witness_count": 23,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            28
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        12,
+        18,
+        40,
+        56,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          2,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 23,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        14,
+        18,
+        24,
+        40,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          2,
+          6
+        ],
+        "core_moduli": [
+          6,
+          10,
+          14
+        ],
+        "s_minus_1_witness_count": 23,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            14
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        18,
+        20,
+        24,
+        56,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          2,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 23,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        18,
+        24,
+        28,
+        40,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          2,
+          8
+        ],
+        "core_moduli": [
+          6,
+          10,
+          28
+        ],
+        "s_minus_1_witness_count": 23,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            28
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        10,
+        10,
+        10,
+        10,
+        18,
+        24,
+        40,
+        56,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          2,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 23,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        8,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        24,
+        30,
+        40
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          2
+        ],
+        "core_moduli": [
+          6,
+          8,
+          10
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            8,
+            2
+          ],
+          [
+            2,
+            2,
+            10
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        12,
+        28,
+        105
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          28
+        ],
+        "s_minus_1_witness_count": 11,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            28
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        14,
+        18,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          8
+        ],
+        "core_moduli": [
+          6,
+          10,
+          14
+        ],
+        "s_minus_1_witness_count": 11,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            14
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        15,
+        24,
+        40
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "core_moduli": [
+          6,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        20,
+        28,
+        105
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          28
+        ],
+        "s_minus_1_witness_count": 11,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            28
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        20,
+        36,
+        45
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "core_moduli": [
+          6,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        24,
+        30,
+        40
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "core_moduli": [
+          6,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        24,
+        56,
+        105
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 11,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        28,
+        36,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          8
+        ],
+        "core_moduli": [
+          6,
+          10,
+          28
+        ],
+        "s_minus_1_witness_count": 11,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            28
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        40,
+        45,
+        72
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "core_moduli": [
+          6,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        40,
+        56,
+        105
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 11,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        56,
+        72,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          8
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 11,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        12,
+        14,
+        20,
+        105
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          8
+        ],
+        "core_moduli": [
+          6,
+          10,
+          14
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            14
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        12,
+        18,
+        20,
+        45
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "core_moduli": [
+          6,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10
+        ],
+        "s_minus_1_witness_count": 32,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        12,
+        18,
+        28,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          28
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            28
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        12,
+        20,
+        28,
+        105
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          28
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            28
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        12,
+        40,
+        56,
+        105
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        14,
+        20,
+        36,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          7
+        ],
+        "core_moduli": [
+          6,
+          10,
+          14
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            14
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        14,
+        24,
+        40,
+        105
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          7
+        ],
+        "core_moduli": [
+          6,
+          10,
+          14
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            14
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        14,
+        40,
+        72,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          7
+        ],
+        "core_moduli": [
+          6,
+          10,
+          14
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            14
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        18,
+        20,
+        28,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          28
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            28
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        18,
+        24,
+        40,
+        45
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "core_moduli": [
+          6,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10
+        ],
+        "s_minus_1_witness_count": 32,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        18,
+        24,
+        56,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        18,
+        40,
+        56,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        20,
+        24,
+        56,
+        105
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        20,
+        28,
+        36,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          8
+        ],
+        "core_moduli": [
+          6,
+          10,
+          28
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            28
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        20,
+        56,
+        72,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          8
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        24,
+        28,
+        40,
+        105
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          8
+        ],
+        "core_moduli": [
+          6,
+          10,
+          28
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            28
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        24,
+        40,
+        56,
+        105
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        28,
+        40,
+        72,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          7
+        ],
+        "core_moduli": [
+          6,
+          10,
+          28
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            28
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        36,
+        40,
+        56,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        40,
+        56,
+        72,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          8
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        12,
+        14,
+        18,
+        20,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          7
+        ],
+        "core_moduli": [
+          6,
+          10,
+          14
+        ],
+        "s_minus_1_witness_count": 22,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            14
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        12,
+        18,
+        20,
+        28,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          28
+        ],
+        "s_minus_1_witness_count": 22,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            28
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        12,
+        18,
+        40,
+        56,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 22,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        14,
+        18,
+        24,
+        40,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          6
+        ],
+        "core_moduli": [
+          6,
+          10,
+          14
+        ],
+        "s_minus_1_witness_count": 22,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            14
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        18,
+        20,
+        24,
+        56,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 22,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        18,
+        24,
+        28,
+        40,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          8
+        ],
+        "core_moduli": [
+          6,
+          10,
+          28
+        ],
+        "s_minus_1_witness_count": 22,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            28
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        10,
+        10,
+        10,
+        10,
+        10,
+        18,
+        24,
+        40,
+        56,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          1,
+          9
+        ],
+        "core_moduli": [
+          6,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 22,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            6,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        8,
+        8,
+        8,
+        8,
+        10,
+        10,
+        10,
+        10,
+        24,
+        30,
+        40
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 6,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          8
+        ],
+        "core_moduli": [
+          8,
+          8,
+          8,
+          8,
+          10,
+          24
+        ],
+        "s_minus_1_witness_count": 34,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            8,
+            8,
+            8,
+            8,
+            2,
+            8
+          ],
+          [
+            8,
+            8,
+            8,
+            8,
+            2,
+            8
+          ],
+          [
+            8,
+            8,
+            8,
+            8,
+            2,
+            8
+          ],
+          [
+            8,
+            8,
+            8,
+            8,
+            2,
+            8
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            10,
+            2
+          ],
+          [
+            8,
+            8,
+            8,
+            8,
+            2,
+            24
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        8,
+        8,
+        8,
+        10,
+        10,
+        10,
+        10,
+        10,
+        20,
+        24,
+        30
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          3,
+          4,
+          5,
+          6,
+          7,
+          10
+        ],
+        "core_moduli": [
+          8,
+          10,
+          10,
+          10,
+          10,
+          10,
+          30
+        ],
+        "s_minus_1_witness_count": 31,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            8,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            30
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        8,
+        8,
+        8,
+        10,
+        10,
+        10,
+        10,
+        10,
+        24,
+        30,
+        40
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          3,
+          4,
+          5,
+          6,
+          7,
+          9
+        ],
+        "core_moduli": [
+          8,
+          10,
+          10,
+          10,
+          10,
+          10,
+          30
+        ],
+        "s_minus_1_witness_count": 31,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            8,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            30
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        8,
+        8,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        12,
+        30,
+        40
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "core_moduli": [
+          8,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10
+        ],
+        "s_minus_1_witness_count": 24,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            8,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        8,
+        8,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        20,
+        24,
+        30
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "core_moduli": [
+          8,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10
+        ],
+        "s_minus_1_witness_count": 24,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            8,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        8,
+        8,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        24,
+        30,
+        40
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "core_moduli": [
+          8,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10
+        ],
+        "s_minus_1_witness_count": 24,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            8,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        8,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        24,
+        30
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "core_moduli": [
+          8,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10
+        ],
+        "s_minus_1_witness_count": 8,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            8,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        8,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        12,
+        30,
+        40
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "core_moduli": [
+          8,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            8,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        8,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        20,
+        24,
+        30
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "core_moduli": [
+          8,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            8,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        8,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        24,
+        30,
+        40
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "core_moduli": [
+          8,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            8,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          [
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        14,
+        35
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          9
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          14
+        ],
+        "s_minus_1_witness_count": 4,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            14
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        18,
+        45
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          9
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          18
+        ],
+        "s_minus_1_witness_count": 4,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            18
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        12,
+        15,
+        20
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          8
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          12
+        ],
+        "s_minus_1_witness_count": 8,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            12
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        12,
+        20,
+        30
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          8
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          12
+        ],
+        "s_minus_1_witness_count": 8,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            12
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        12,
+        28,
+        105
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          8
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          12
+        ],
+        "s_minus_1_witness_count": 8,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            12
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        14,
+        18,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          8,
+          9
+        ],
+        "core_moduli": [
+          10,
+          14,
+          18
+        ],
+        "s_minus_1_witness_count": 7,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            2,
+            2
+          ],
+          [
+            2,
+            14,
+            2
+          ],
+          [
+            2,
+            2,
+            18
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        15,
+        24,
+        40
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          9
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          24
+        ],
+        "s_minus_1_witness_count": 8,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            24
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        15,
+        35,
+        42
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          10
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          42
+        ],
+        "s_minus_1_witness_count": 8,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            42
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        20,
+        28,
+        35
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          9
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          28
+        ],
+        "s_minus_1_witness_count": 8,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            28
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        20,
+        36,
+        45
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          9
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          36
+        ],
+        "s_minus_1_witness_count": 8,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            36
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        24,
+        30,
+        40
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          8
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          24
+        ],
+        "s_minus_1_witness_count": 8,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            24
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        24,
+        56,
+        105
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          8
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          24
+        ],
+        "s_minus_1_witness_count": 8,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            24
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        28,
+        36,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          8
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          28
+        ],
+        "s_minus_1_witness_count": 8,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            28
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        30,
+        35,
+        42
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          10
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          42
+        ],
+        "s_minus_1_witness_count": 8,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            42
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        35,
+        40,
+        56
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          10
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 8,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        35,
+        45,
+        126
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          10
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          126
+        ],
+        "s_minus_1_witness_count": 8,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            126
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        40,
+        45,
+        72
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          10
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          72
+        ],
+        "s_minus_1_witness_count": 8,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            72
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        56,
+        72,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          8
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 8,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        12,
+        14,
+        20,
+        105
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          7,
+          8
+        ],
+        "core_moduli": [
+          10,
+          12,
+          14
+        ],
+        "s_minus_1_witness_count": 11,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            2,
+            2
+          ],
+          [
+            2,
+            12,
+            2
+          ],
+          [
+            2,
+            2,
+            14
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        12,
+        18,
+        20,
+        45
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          12
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            12
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        12,
+        18,
+        28,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          8,
+          9
+        ],
+        "core_moduli": [
+          10,
+          18,
+          28
+        ],
+        "s_minus_1_witness_count": 11,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            2,
+            2
+          ],
+          [
+            2,
+            18,
+            2
+          ],
+          [
+            2,
+            2,
+            28
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        12,
+        20,
+        28,
+        105
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          12
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            12
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        12,
+        40,
+        56,
+        105
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          12
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            12
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        14,
+        20,
+        36,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          7,
+          9
+        ],
+        "core_moduli": [
+          10,
+          14,
+          36
+        ],
+        "s_minus_1_witness_count": 11,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            2,
+            2
+          ],
+          [
+            2,
+            14,
+            2
+          ],
+          [
+            2,
+            2,
+            36
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        14,
+        24,
+        40,
+        105
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          7,
+          8
+        ],
+        "core_moduli": [
+          10,
+          14,
+          24
+        ],
+        "s_minus_1_witness_count": 11,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            2,
+            2
+          ],
+          [
+            2,
+            14,
+            2
+          ],
+          [
+            2,
+            2,
+            24
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        14,
+        40,
+        72,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          7,
+          9
+        ],
+        "core_moduli": [
+          10,
+          14,
+          72
+        ],
+        "s_minus_1_witness_count": 11,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            2,
+            2
+          ],
+          [
+            2,
+            14,
+            2
+          ],
+          [
+            2,
+            2,
+            72
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        15,
+        20,
+        35,
+        84
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          10
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          84
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            84
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        15,
+        35,
+        40,
+        168
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          10
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          168
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            168
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        18,
+        20,
+        28,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          7,
+          9
+        ],
+        "core_moduli": [
+          10,
+          18,
+          28
+        ],
+        "s_minus_1_witness_count": 11,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            2,
+            2
+          ],
+          [
+            2,
+            18,
+            2
+          ],
+          [
+            2,
+            2,
+            28
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        18,
+        24,
+        40,
+        45
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          18
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            18
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        18,
+        24,
+        56,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          7,
+          9
+        ],
+        "core_moduli": [
+          10,
+          18,
+          56
+        ],
+        "s_minus_1_witness_count": 11,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            2,
+            2
+          ],
+          [
+            2,
+            18,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        18,
+        40,
+        56,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          7,
+          9
+        ],
+        "core_moduli": [
+          10,
+          18,
+          56
+        ],
+        "s_minus_1_witness_count": 11,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            2,
+            2
+          ],
+          [
+            2,
+            18,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        20,
+        24,
+        56,
+        105
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          8
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          24
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            24
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        20,
+        28,
+        36,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          8
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          28
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            28
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        20,
+        30,
+        35,
+        84
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          10
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          84
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            84
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        20,
+        35,
+        45,
+        252
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          10
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          252
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            252
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        20,
+        56,
+        72,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          8
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        24,
+        28,
+        40,
+        105
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          24
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            24
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        24,
+        40,
+        56,
+        105
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          24
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            24
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        28,
+        40,
+        72,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          28
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            28
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        30,
+        35,
+        40,
+        168
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          10
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          168
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            168
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        35,
+        40,
+        45,
+        504
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          10
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          504
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            504
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        36,
+        40,
+        56,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          36
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            36
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        40,
+        56,
+        72,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 7,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          8
+        ],
+        "core_moduli": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          56
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        12,
+        14,
+        18,
+        20,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          6,
+          7
+        ],
+        "core_moduli": [
+          10,
+          12,
+          14
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            2,
+            2
+          ],
+          [
+            2,
+            12,
+            2
+          ],
+          [
+            2,
+            2,
+            14
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        12,
+        18,
+        20,
+        28,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          7,
+          9
+        ],
+        "core_moduli": [
+          10,
+          18,
+          28
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            2,
+            2
+          ],
+          [
+            2,
+            18,
+            2
+          ],
+          [
+            2,
+            2,
+            28
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        12,
+        18,
+        40,
+        56,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          7,
+          9
+        ],
+        "core_moduli": [
+          10,
+          18,
+          56
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            2,
+            2
+          ],
+          [
+            2,
+            18,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        14,
+        18,
+        24,
+        40,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          6,
+          7
+        ],
+        "core_moduli": [
+          10,
+          14,
+          18
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            2,
+            2
+          ],
+          [
+            2,
+            14,
+            2
+          ],
+          [
+            2,
+            2,
+            18
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        18,
+        20,
+        24,
+        56,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          6,
+          9
+        ],
+        "core_moduli": [
+          10,
+          18,
+          56
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            2,
+            2
+          ],
+          [
+            2,
+            18,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        18,
+        24,
+        28,
+        40,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          6,
+          8
+        ],
+        "core_moduli": [
+          10,
+          18,
+          28
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            2,
+            2
+          ],
+          [
+            2,
+            18,
+            2
+          ],
+          [
+            2,
+            2,
+            28
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        18,
+        24,
+        40,
+        56,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 3,
+        "core_indices": [
+          0,
+          6,
+          9
+        ],
+        "core_moduli": [
+          10,
+          18,
+          56
+        ],
+        "s_minus_1_witness_count": 16,
+        "witness_file": "minimal_witnesses_k11.jsonl.gz",
+        "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+        "core_gcds": [
+          [
+            10,
+            2,
+            2
+          ],
+          [
+            2,
+            18,
+            2
+          ],
+          [
+            2,
+            2,
+            56
+          ]
+        ]
+      }
+    }
+  ],
+  "last_prefix_at_timeout": null,
+  "wall_seconds": 0.149,
+  "solver": "CaDiCaL 1.5.3 via python-sat 1.9.dev15",
+  "minimal_parts": {
+    "status": "COMPLETE",
+    "records_file": "minimal_parts_k11.jsonl.gz",
+    "records_sha256": "ef00c13b37809651a715b448228100d5ae82e397e5b96bf998257e25bf1c6ff5",
+    "witness_file": "minimal_witnesses_k11.jsonl.gz",
+    "witness_sha256": "a31e24b557f59272462f8854c0875e8efadf1c76eda33fe8035a21d3e82dff09",
+    "k": 11,
+    "candidate_count": 137,
+    "distribution": {
+      "3": 84,
+      "7": 51,
+      "5": 1,
+      "6": 1
+    },
+    "unique_decisions": 1362,
+    "unique_witnesses": 454,
+    "selector_sat_calls": 1953,
+    "wall_seconds": 0.203,
+    "seeded_decisions": 0
+  }
+}

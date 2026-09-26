@@ -1,0 +1,190 @@
+  n   k   r     p(n)  D_B GH4.5   #ext #cyc  cycle lengths / sample extremal
+  1   1   1        1    0  None      1    1  (1,)
+  2   2   1        2    0  None      2    1  (2,) ...
+  3   2   2        3    2     2      1    1  (1, 1, 1)
+  4   3   1        5    2     2      1    1  (1, 1, 1, 1)
+  5   3   2        7    3     3      1    1  (1, 1, 1, 1, 1)
+  6   3   3       11    6     6      1    1  (2, 2, 1, 1)
+  7   4   1       15    4     4      1    1  (1, 1, 1, 1, 1, 1, 1)
+  8   4   2       22    5     5      1    2  (1, 1, 1, 1, 1, 1, 1, 1)
+  9   4   3       30    7     7      1    1  (3, 2, 2, 1, 1)
+ 10   4   4       42   12    12      3    1  (3, 3, 2, 1, 1) ...
+ 11   5   1       56    8     8      3    1  (3, 3, 2, 2, 1) ...
+ 12   5   2       77    8     8      2    2  (3, 3, 2, 2, 1, 1) ...
+ 13   5   3      101    9     9      1    2  (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+ 14   5   4      135   14    14      6    1  (4, 3, 3, 2, 1, 1) ...
+ 15   5   5      176   20    20     16    1  (4, 4, 3, 2, 1, 1) ...
+ 16   6   1      231   15    15     12    1  (4, 4, 3, 2, 2, 1) ...
+ 17   6   2      297   12    12      1    3  (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+ 18   6   3      385   13    13      1    4  (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+ 19   6   4      490   16    16     18    3  (5, 4, 3, 3, 2, 1, 1) ...
+ 20   6   5      627   23    23     34    1  (5, 4, 4, 3, 2, 1, 1) ...
+ 21   6   6      792   30    30     65    1  (5, 5, 4, 3, 2, 1, 1) ...
+ 22   7   1     1002   24    24     62    1  (5, 5, 4, 3, 2, 2, 1) ...
+ 23   7   2     1255   18    18     66    3  (5, 5, 4, 3, 3, 2, 1) ...
+ 24   7   3     1575   18    18     31    5  (5, 5, 4, 3, 3, 2, 1, 1) ...
+ 25   7   4     1958   19    19      1    5  (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+ 26   7   5     2436   26    26    116    3  (6, 5, 4, 4, 3, 2, 1, 1) ...
+ 27   7   6     3010   34    34    175    1  (6, 5, 5, 4, 3, 2, 1, 1) ...
+ 28   7   7     3718   42    42    293    1  (6, 6, 5, 4, 3, 2, 1, 1) ...
+ 29   8   1     4565   35    35    288    1  (6, 6, 5, 4, 3, 2, 2, 1) ...
+ 30   8   2     5604   28    28    253    4  (6, 6, 5, 4, 3, 3, 2, 1) ...
+ 31   8   3     6842   24    24      1    7  (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+ 32   8   4     8349   25    25      1   10  (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+ 33   8   5    10143   29    29    367    7  (7, 6, 5, 4, 4, 3, 2, 1, 1) ...
+ 34   8   6    12310   38    38    637    4  (7, 6, 5, 5, 4, 3, 2, 1, 1) ...
+ 35   8   7    14883   47    47    831    1  (7, 6, 6, 5, 4, 3, 2, 1, 1) ...
+ 36   8   8    17977   56    56   1267    1  (7, 7, 6, 5, 4, 3, 2, 1, 1) ...
+ 37   9   1    21637   48    48   1310    1  (7, 7, 6, 5, 4, 3, 2, 2, 1) ...
+ 38   9   2    26015   40    40   1341    4  (7, 7, 6, 5, 4, 3, 3, 2, 1) ...
+ 39   9   3    31185   32    32   1466   10  (7, 7, 6, 5, 4, 4, 3, 2, 1) ...
+ 40   9   4    37338   32    32    821   14  (7, 7, 6, 5, 4, 4, 3, 2, 1, 1) ...
+ 41   9   5    44583   33    33      1   14  (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+ 42   9   6    53174   42    42   2411   10  (8, 7, 6, 5, 5, 4, 3, 2, 1, 1) ...
+ 43   9   7    63261   52    52   3152    4  (8, 7, 6, 6, 5, 4, 3, 2, 1, 1) ...
+ 44   9   8    75175   62    62   3911    1  (8, 7, 7, 6, 5, 4, 3, 2, 1, 1) ...
+ 45   9   9    89134   72    72   5686    1  (8, 8, 7, 6, 5, 4, 3, 2, 1, 1) ...
+ 46  10   1   105558   63    63   5862    1  (8, 8, 7, 6, 5, 4, 3, 2, 2, 1) ...
+ 47  10   2   124754   54    54   6335    5  (8, 8, 7, 6, 5, 4, 3, 3, 2, 1) ...
+ 48  10   3   147273   45    45   4551   12  (8, 8, 7, 6, 5, 4, 4, 3, 2, 1) ...
+ 49  10   4   173525   40    40      1   22  (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+ 50  10   5   204226   41    41      1   26  (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+ 51  10   6   239943   46    46   7100   22  (9, 8, 7, 6, 5, 5, 4, 3, 2, 1, 1) ...
+ 52  10   7   281589   57    57  11936   12  (9, 8, 7, 6, 6, 5, 4, 3, 2, 1, 1) ...
+ 53  10   8   329931   68    68  15005    5  (9, 8, 7, 7, 6, 5, 4, 3, 2, 1, 1) ...
+ 54  10   9   386155   79    79  18163    1  (9, 8, 8, 7, 6, 5, 4, 3, 2, 1, 1) ...
+ 55  10  10   451276   90    90  25475    1  (9, 9, 8, 7, 6, 5, 4, 3, 2, 1, 1) ...
+ 56  11   1   526823   80    80  26399    1  (9, 9, 8, 7, 6, 5, 4, 3, 2, 2, 1) ...
+ 57  11   2   614154   70    70  28261    5  (9, 9, 8, 7, 6, 5, 4, 3, 3, 2, 1) ...
+ 58  11   3   715220   60    60  28742   15  (9, 9, 8, 7, 6, 5, 4, 4, 3, 2, 1) ...
+ 59  11   4   831820   50    50  31086   30  (9, 9, 8, 7, 6, 5, 5, 4, 3, 2, 1) ...
+ 60  11   5   966467   50    50  16653   42  (9, 9, 8, 7, 6, 5, 5, 4, 3, 2, 1, 1) ...
+[exhaustive part: 11.5s]
+
+C1  cyclic partitions and cycles
+  OK   cyclic set = Brandt form, all n <= NMAX
+  OK   number of cycles = (1/k) sum phi(d) C(k/d,r/d)
+  OK   every cycle length divides k
+C2  triangular n = T_k
+  OK   D_B(T_1) = 0
+  OK   D_B(T_2) = 2
+  OK   D_B(T_3) = 6
+  OK   D_B(T_4) = 12
+  OK   D_B(T_5) = 20
+  OK   D_B(T_6) = 30
+  OK   D_B(T_7) = 42
+  OK   D_B(T_8) = 56
+  OK   D_B(T_9) = 72
+  OK   D_B(T_10) = 90
+  OK   witness (k-1,k-1,k-2,...,1,1) has d_B = k^2-k, 2<=k<80
+C3  non-triangular n, Theorem 4.4
+  OK   D_B(n) <= k^2-2k-1 for all non-triangular n <= NMAX with k >= 4
+  OK   D_B(T_4-1) = 7
+  OK   D_B(T_5-1) = 14
+  OK   D_B(T_6-1) = 23
+  OK   D_B(T_7-1) = 34
+  OK   D_B(T_8-1) = 47
+  OK   D_B(T_9-1) = 62
+  OK   D_B(T_10-1) = 79
+  OK   witness (k-1,k-2,k-2,k-3,...,1,1) has d_B = k^2-2k-1, 3<=k<80
+       T_4-1 = 9: 1 extremal partitions; witness among them: True  (full list in bs_extremal.txt)
+       T_5-1 = 14: 6 extremal partitions; witness among them: True  (full list in bs_extremal.txt)
+       T_6-1 = 20: 34 extremal partitions; witness among them: True  (full list in bs_extremal.txt)
+       T_7-1 = 27: 175 extremal partitions; witness among them: True  (full list in bs_extremal.txt)
+       T_8-1 = 35: 831 extremal partitions; witness among them: True  (full list in bs_extremal.txt)
+       T_9-1 = 44: 3911 extremal partitions; witness among them: True  (full list in bs_extremal.txt)
+       T_10-1 = 54: 18163 extremal partitions; witness among them: True  (full list in bs_extremal.txt)
+C4  n = T_{k-1}+1 and T_{k-1}+2
+  OK   D_B(T_4+1) = (k-1)(k-3) = 8
+  OK   D_B(T_5+1) = (k-1)(k-3) = 15
+  OK   D_B(T_6+1) = (k-1)(k-3) = 24
+  OK   D_B(T_7+1) = (k-1)(k-3) = 35
+  OK   D_B(T_8+1) = (k-1)(k-3) = 48
+  OK   D_B(T_9+1) = (k-1)(k-3) = 63
+  OK   D_B(T_10+1) = (k-1)(k-3) = 80
+  OK   witness (k-2,k-2,k-3,...,3,2,2,1) has d_B = (k-1)(k-3), 5<=k<80
+  OK   D_B(T_1+2) = 2
+  OK   D_B(T_2+2) = 3
+  OK   D_B(T_3+2) = 5
+  OK   D_B(T_4+2) = 8
+  OK   D_B(T_5+2) = 12
+  OK   D_B(T_6+2) = 18
+  OK   D_B(T_7+2) = 28
+  OK   D_B(T_8+2) = 40
+  OK   D_B(T_9+2) = 54
+  OK   D_B(T_10+2) = 70
+       T_4+1 = 11: 3 extremal partitions; witness among them: True  (full list in bs_extremal.txt)
+       T_5+1 = 16: 12 extremal partitions; witness among them: True  (full list in bs_extremal.txt)
+       T_6+1 = 22: 62 extremal partitions; witness among them: True  (full list in bs_extremal.txt)
+       T_7+1 = 29: 288 extremal partitions; witness among them: True  (full list in bs_extremal.txt)
+       T_8+1 = 37: 1310 extremal partitions; witness among them: True  (full list in bs_extremal.txt)
+       T_9+1 = 46: 5862 extremal partitions; witness among them: True  (full list in bs_extremal.txt)
+       T_10+1 = 56: 26399 extremal partitions; witness among them: True  (full list in bs_extremal.txt)
+Characterisations of the extremal partitions (proved in p3_c2/p3_c3/p3_c4)
+  OK   n=10 (T_k, k=4): extremal <=> c_11 test <=> ramp chain  [3 extremal]
+  OK   n=15 (T_k, k=5): extremal <=> c_19 test <=> ramp chain  [16 extremal]
+  OK   n=14 (T_k - 1, k=5): extremal <=> c_13 test <=> ramp chain  [6 extremal]
+  OK   n=11 (T_{k-1} + 1, k=5): extremal <=> c_8 test <=> ramp chain  [3 extremal]
+  OK   n=21 (T_k, k=6): extremal <=> c_29 test <=> ramp chain  [65 extremal]
+  OK   n=20 (T_k - 1, k=6): extremal <=> c_22 test <=> ramp chain  [34 extremal]
+  OK   n=16 (T_{k-1} + 1, k=6): extremal <=> c_15 test <=> ramp chain  [12 extremal]
+  OK   n=28 (T_k, k=7): extremal <=> c_41 test <=> ramp chain  [293 extremal]
+  OK   n=27 (T_k - 1, k=7): extremal <=> c_33 test <=> ramp chain  [175 extremal]
+  OK   n=22 (T_{k-1} + 1, k=7): extremal <=> c_24 test <=> ramp chain  [62 extremal]
+  OK   n=36 (T_k, k=8): extremal <=> c_55 test <=> ramp chain  [1267 extremal]
+  OK   n=35 (T_k - 1, k=8): extremal <=> c_46 test <=> ramp chain  [831 extremal]
+  OK   n=29 (T_{k-1} + 1, k=8): extremal <=> c_35 test <=> ramp chain  [288 extremal]
+  OK   n=45 (T_k, k=9): extremal <=> c_71 test <=> ramp chain  [5686 extremal]
+  OK   n=44 (T_k - 1, k=9): extremal <=> c_61 test <=> ramp chain  [3911 extremal]
+  OK   n=37 (T_{k-1} + 1, k=9): extremal <=> c_48 test <=> ramp chain  [1310 extremal]
+  OK   n=55 (T_k, k=10): extremal <=> c_89 test <=> ramp chain  [25475 extremal]
+  OK   n=54 (T_k - 1, k=10): extremal <=> c_78 test <=> ramp chain  [18163 extremal]
+  OK   n=46 (T_{k-1} + 1, k=10): extremal <=> c_63 test <=> ramp chain  [5862 extremal]
+C4 entry lemma (n = T_{k-1}+1): last non-cyclic partition has k-2 parts, entry at zeta_j, j != 2, k
+  OK   k=5: entry lemma holds; max d_B per entry column = case bound (sharp)
+  OK   k=6: entry lemma holds; max d_B per entry column = case bound (sharp)
+  OK   k=7: entry lemma holds; max d_B per entry column = case bound (sharp)
+  OK   k=8: entry lemma holds; max d_B per entry column = case bound (sharp)
+  OK   k=9: entry lemma holds; max d_B per entry column = case bound (sharp)
+C3 direct necessary condition: extremal partitions of T_k - 1 contain lo_k (conjugate (k+1,k-1,...))
+  OK   k=5: every extremal partition of 14 has conjugate >= [6, 4, 2] and largest part <= k+1
+       observation: 6 partitions lie between lo_k and hi_k (conjugate [7, 5, 3, 1]); 6 are extremal; all extremal inside: True
+  OK   k=6: every extremal partition of 20 has conjugate >= [7, 5, 3, 1] and largest part <= k+1
+       observation: 35 partitions lie between lo_k and hi_k (conjugate [9, 7, 5, 3, 1]); 34 are extremal; all extremal inside: True
+  OK   k=7: every extremal partition of 27 has conjugate >= [8, 6, 4, 2] and largest part <= k+1
+       observation: 175 partitions lie between lo_k and hi_k (conjugate [11, 9, 7, 5, 3, 1]); 175 are extremal; all extremal inside: True
+  OK   k=8: every extremal partition of 35 has conjugate >= [9, 7, 5, 3, 1] and largest part <= k+1
+       observation: 834 partitions lie between lo_k and hi_k (conjugate [13, 11, 9, 7, 5, 3, 1]); 831 are extremal; all extremal inside: True
+  OK   k=9: every extremal partition of 44 has conjugate >= [10, 8, 6, 4, 2] and largest part <= k+1
+       observation: 3935 partitions lie between lo_k and hi_k (conjugate [15, 13, 11, 9, 7, 5, 3, 1]); 3911 are extremal; all extremal inside: True
+  OK   k=10: every extremal partition of 54 has conjugate >= [11, 9, 7, 5, 3, 1] and largest part <= k+1
+       observation: 18330 partitions lie between lo_k and hi_k (conjugate [17, 15, 13, 11, 9, 7, 5, 3, 1]); 18163 are extremal; all extremal inside: True
+C5 n = T_{k-1}+2: entry classification, per-type bounds, witness, characterisation
+  OK   k=5 (n=12): entry lemma, per-type bounds, witness d_B=4; D_B=8 = max((k-1)(k-4), T_(k-2)+2)
+       max d per entry type: {'E12': 8, 'E13': 8, 'E23': 4, 'b=4': 4}
+  OK   k=6 (n=17): entry lemma, per-type bounds, witness d_B=10; D_B=12 = max((k-1)(k-4), T_(k-2)+2)
+       max d per entry type: {'E12': 12, 'E13': 10, 'E23': 5, 'b=4': 10, 'b=5': 5}
+  OK   k=7 (n=23): entry lemma, per-type bounds, witness d_B=18; D_B=18 = max((k-1)(k-4), T_(k-2)+2)
+       max d per entry type: {'E12': 17, 'E13': 15, 'E23': 6, 'b=4': 18, 'b=5': 12, 'b=6': 6}
+  OK   k=7: extremal <=> c_D <= k-2 [66 extremal]; ramp chain holds; entry sets [(3, 4)]
+  OK   k=8 (n=30): entry lemma, per-type bounds, witness d_B=28; D_B=28 = max((k-1)(k-4), T_(k-2)+2)
+       max d per entry type: {'E12': 23, 'E13': 21, 'E23': 7, 'b=4': 28, 'b=5': 21, 'b=6': 14, 'b=7': 7}
+  OK   k=8: extremal <=> c_D <= k-2 [253 extremal]; ramp chain holds; entry sets [(3, 4)]
+  OK   k=9 (n=38): entry lemma, per-type bounds, witness d_B=40; D_B=40 = max((k-1)(k-4), T_(k-2)+2)
+       max d per entry type: {'E12': 30, 'E13': 28, 'E23': 8, 'b=4': 40, 'b=5': 32, 'b=6': 24, 'b=7': 16, 'b=8': 8}
+  OK   k=9: extremal <=> c_D <= k-2 [1341 extremal]; ramp chain holds; entry sets [(3, 4)]
+  OK   k=10 (n=47): entry lemma, per-type bounds, witness d_B=54; D_B=54 = max((k-1)(k-4), T_(k-2)+2)
+       max d per entry type: {'E12': 38, 'E13': 36, 'E23': 9, 'b=4': 54, 'b=5': 45, 'b=6': 36, 'b=7': 27, 'b=8': 18, 'b=9': 9}
+  OK   k=10: extremal <=> c_D <= k-2 [6335 extremal]; ramp chain holds; entry sets [(3, 4)]
+  OK   k=11 (n=57): entry lemma, per-type bounds, witness d_B=70; D_B=70 = max((k-1)(k-4), T_(k-2)+2)
+       max d per entry type: {'E12': 47, 'E13': 45, 'E23': 10, 'b=10': 10, 'b=4': 70, 'b=5': 60, 'b=6': 50, 'b=7': 40, 'b=8': 30, 'b=9': 20}
+  OK   k=11: extremal <=> c_D <= k-2 [28261 extremal]; ramp chain holds; entry sets [(3, 4)]
+  OK   C5 witness (k-2,k-2,k-3,...,4,3,3,2,1) has d_B = (k-1)(k-4), 5<=k<80
+Conjecture 4.7 (GH lower bound = D_B)
+  OK   D_B(n) = GH Theorem 4.5 value for 3 <= n <= NMAX
+Lemmas on the c-sequence (all partitions, n <= 30, first 4n terms)
+  OK   c_{i+1} <= c_i + 1
+  OK   ramp lemma: every ramp (p,q,x) has p <= (q-p-1) x
+  OK   Lemma 3.4: ramp with q-p = x+1 (x>=2) has q <= n+1
+
+[total 90.4s]  ALL CHECKS PASSED

@@ -1,0 +1,7 @@
+TIME 6.9s exit=0 :: ../../../.venv/bin/python checker.py 13
+TIME 11.1s exit=0 :: ../../../.venv/bin/python minimal_cert.py 13
+TIME 51.3s exit=0 :: ../../../.venv/bin/python checker.py 14
+TIME 129.0s exit=0 :: ../../../.venv/bin/python minimal_cert.py 14
+TIME 187.1s exit=0 :: ../../../.venv/bin/python parallel_enum.py 15 --workers 6 --output results_k15.json
+TIME 286.9s exit=0 :: ../../../.venv/bin/python minimal_cert.py 15 --seed-k 13 --seed-k 14
+SAT rerun done

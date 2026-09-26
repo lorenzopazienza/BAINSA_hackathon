@@ -1,0 +1,4 @@
+k=14 B=13  nodes=   3217925  leaves=  139820  gcd+NF= 139820  survivors= 19880  SAT=0  UNSAT=0  UNDECIDED=19880  t_enum=11.529s  t_dec=0.015s  sha256=f2ec65da7dedb65c
+real 12.45
+user 11.99
+sys 0.34

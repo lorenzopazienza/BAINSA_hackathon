@@ -1,0 +1,262 @@
+% ===== uphill/p2_c5.tex  (Problem 2, track 5) =====
+% Written directly as a body file (not produced by tools/convert_cell.py).
+% Title: Problem 2, Cell 5: bounds for $U(Q_9)$
+% Body only: packages, theorem environments and macros are in preamble.tex.
+% Labels are prefixed with "p2c5:".  Uses cells 1-4 (p2c1:*, p2c2:*, p2c3:*, p2c4:*).
+% Bibliography (1 entry) in paper/bib/p2_c5.tex -> references.tex.
+% Code: code/uphill_lower.py (claims L6, P6, D9), code/uphill_construct.py, code/uphill_eval.py.
+
+\paragraph{Official setting.} As in Cell~1 (\S\ref{p2c1:sec:count}). For C5, hand in either a
+labelling of $Q_9$ in the same format (its uphill paths are counted mechanically) or a proof of
+the lower bound.
+
+\begin{statement}
+Give bounds for $U(Q_9)$: a labelling of $Q_9$, or a proof of a lower bound.
+\end{statement}
+
+\paragraph{Status.} \textbf{Solved} in the sense of the cell: we hand in \emph{both} parts.
+\begin{itemize}
+\item A labelling with $2400$ uphill paths (\S\ref{p2c5:sec:lab}; by hand, and counted
+  mechanically).
+\item A proof that every labelling has at least $2328$ uphill paths
+  (Theorem~\ref{p2c5:thm:main}). It is \textbf{computer-assisted}: it uses two SAT facts about
+  $Q_6$, (L6) and (P6), which take about $2$ minutes. The rest is by hand.
+\end{itemize}
+The exact value is open (Cell~6).
+
+\paragraph{Answer.}
+\[
+  2328\;\le\;U(Q_9)\;\le\;2400,\qquad 227\;\le\;\nabla(Q_9)\;\le\;236 .
+\]
+For comparison, the counting bound of Lemma~\ref{p2c1:lem:count} gives
+$\nabla(Q_9)\ge\lceil1793/8\rceil=225$, that is, $U(Q_9)\ge2312$. Doubling
+(Lemma~\ref{p2c4:lem:double}) gives only $\nabla(Q_9)\ge224$.
+
+% ===========================================================================
+\subsubsection{Upper bound}\label{p2c5:sec:upper}
+
+\begin{proposition}\label{p2c5:prop:upper}
+Let $C_9\subseteq E_9$ be the following $20$ words:
+\begin{center}\small\ttfamily
+000000000 000101011 000110101 001000111 001011100 001110010 010001101\\
+010111110 011011011 011101000 100011010 100101100 101001001 101111111\\
+110010111 110100010 110111001 111001110 111010000 111100101
+\end{center}
+Every word has even weight, and any two words are at distance $\ge4$. Hence
+$\nabla(Q_9)\le256-20=236$, and the labelling $L_{C_9}$ has $512+8\cdot236=2400$ uphill paths.
+\end{proposition}
+
+\begin{proof}
+The two properties of $C_9$ are finite checks (all $\binom{20}{2}=190$ distances), done by
+\texttt{code/uphill\_construct.py}. The rest is Proposition~\ref{p2c1:prop:code}. The count $2400$
+of the listed labelling was also obtained with the evaluator \texttt{code/uphill\_eval.py}.
+\end{proof}
+
+$C_9$ was found by a SAT search for $20$ even words at pairwise distance $\ge4$. Twenty is the
+maximum, because $A(8,3)=20$ \cite{MS77}; we do not use this.
+
+% ===========================================================================
+\subsubsection{Three lemmas}\label{p2c5:sec:lemmas}
+
+For a vertex $x$ let $N(x)$ be its set of neighbours, and for $X\subseteq V$ let
+$N(X)=\bigcup_{x\in X}N(x)$. (Here $N$ is not the path count of Cell~1; that count does not
+appear in this section.) $e_i$ is the $i$-th unit vector.
+
+\begin{lemma}[computer-assisted]\label{p2c5:lem:P6}
+Every decycling set of $Q_6$ with $28$ vertices lies inside $E_6$ or inside $O_6$.
+\end{lemma}
+
+\begin{proof}[Method]
+This is claim (P6) of \texttt{code/uphill\_lower.py}. It runs the counterexample-guided SAT loop of
+Lemma~\ref{p2c2:lem:L5}, with $d=6$, the bound $\sum_vx_v\le28$, and two more clauses:
+$\bigvee_{v\in O_6}x_v$ and $\bigvee_{v\in E_6}x_v$. Every decycling set of size $\le28$ that meets
+both parity classes satisfies the formula at every stage. The solver (CaDiCaL~1.5.3) answers UNSAT
+after $6053$ rounds, in about $105$\,s. So no such set exists.
+\end{proof}
+
+\begin{lemma}[Delsarte bound]\label{p2c5:lem:del}
+If $C\subseteq E_9$ has pairwise distances $\ge4$, then $|C|\le25$.
+\end{lemma}
+
+\begin{proof}
+For $0\le k\le9$ and $x\in\{0,1\}^9$ with $|x|=i$, put
+$K_k(i)=\sum_{|w|=k}(-1)^{x\cdot w}=\sum_j(-1)^j\binom ij\binom{9-i}{k-j}$. The second expression
+follows by counting the words $w$ with $j$ ones inside the support of $x$. Let
+$A_i=|C|^{-1}\,\#\{(a,b)\in C^2:|a\oplus b|=i\}$. Then $A_0=1$, $\sum_iA_i=|C|$, and $A_i=0$ for
+$i\notin\{0,4,6,8\}$, since distances in $E_9$ are even. For each $k$,
+\[
+  |C|\sum_iA_iK_k(i)=\sum_{a,b\in C}\ \sum_{|w|=k}(-1)^{(a\oplus b)\cdot w}
+  =\sum_{|w|=k}\Bigl(\sum_{a\in C}(-1)^{a\cdot w}\Bigr)^2\ \ge0 .
+\]
+The values needed are
+\begin{center}
+\begin{tabular}{c|rrrr}
+$i$ & 0 & 4 & 6 & 8\\\hline
+$K_1(i)$ & 9 & 1 & $-3$ & $-7$\\
+$K_2(i)$ & 36 & $-4$ & 0 & 20\\
+$K_3(i)$ & 84 & $-4$ & 8 & $-28$
+\end{tabular}
+\end{center}
+so $\Lambda=(6K_1+3K_2+K_3)/10$ takes the values $24.6,\,-1,\,-1,\,-1$ at $i=0,4,6,8$. Adding the
+three inequalities with weights $6,3,1$ gives
+$0\le\sum_iA_i\Lambda(i)=24.6-(A_4+A_6+A_8)=24.6-(|C|-1)$. So $|C|\le25.6$.
+\end{proof}
+
+The certificate $(6,3,1)/10$ is the optimal dual solution of Delsarte's linear program
+\cite{MS77}. The table is recomputed exactly by claim (D9) of \texttt{code/uphill\_lower.py}.
+
+Fix a set $D$ of three coordinates. For $a\in\{0,1\}^D$, the \emph{copy}
+$Q^{D,a}=\{x:x|_D=a\}$ induces a $Q_6$. The eight copies partition $V(Q_9)$. Two copies are
+\emph{adjacent} if their indices $a$ differ in one coordinate $j$; then $x\mapsto x\oplus e_j$ maps
+one copy onto the other. The parity of $x$ in $Q_9$ is its parity inside the copy plus $|a|$. So
+each parity class of a copy lies in $E_9$ or in $O_9$.
+
+\begin{lemma}\label{p2c5:lem:adj}
+Let $R$ be a decycling set of $Q_9$, and let $Q^{D,a}$, $Q^{D,a'}$ be adjacent copies. Suppose that
+each contains exactly $28$ vertices of $R$, and that each of the two sets is contained in a parity
+class of $Q_9$. Then it is the same parity class for both.
+\end{lemma}
+
+\begin{proof}
+Suppose $R\cap Q^{D,a}\subseteq E_9$ and $R\cap Q^{D,a'}\subseteq O_9$, and let $S=V\setminus R$. In
+$Q^{D,a}$, $S$ contains the $32$ odd vertices and $4$ even ones. Each even vertex has $6$
+neighbours in the copy, all odd, so $S\cap Q^{D,a}$ spans $24$ edges. Likewise
+$S\cap Q^{D,a'}$ has $36$ vertices and spans $24$ edges. The map $x\mapsto x\oplus e_j$ sends the
+$32$ odd vertices of $Q^{D,a}$ onto the $32$ even vertices of $Q^{D,a'}$. All $64$ lie in $S$, which
+gives $32$ more edges inside $S$. So $S\cap(Q^{D,a}\cup Q^{D,a'})$ has $72$ vertices and at least
+$80$ edges, and it is not a forest. But it is an induced subgraph of the forest $Q_9-R$.
+\end{proof}
+
+% ===========================================================================
+\subsubsection{Lower bound}\label{p2c5:sec:lower}
+
+\begin{theorem}\label{p2c5:thm:main}
+$\nabla(Q_9)\ge227$. Consequently $U(Q_9)\ge512+8\cdot227=2328$.
+\end{theorem}
+
+\begin{proof}
+The second statement follows from the first by Theorem~\ref{p2c1:thm:lower}. Let $R$ be a decycling
+set of $Q_9$ with $r=|R|\le226$; we derive a contradiction. By Lemma~\ref{p2c1:lem:count},
+$8r\ge7\cdot256+1$, so $r\ge225$. Write $r=224+s$ with $s\in\{1,2\}$, and let $S=V\setminus R$.
+
+\emph{Step 1: light and heavy copies.} Fix $D$. For each $a$, $R\cap Q^{D,a}$ is a decycling set
+of the copy, so it has at least $28$ elements (Lemma~\ref{p2c3:lem:L6}). The eight numbers add up
+to $224+s$. So at most $s$ copies are \emph{heavy} (more than $28$), and at least $8-s\ge6$ are
+\emph{light} (exactly $28$). By Lemma~\ref{p2c5:lem:P6}, $R$ meets a light copy inside a single
+parity class of the copy, hence inside $E_9$ or inside $O_9$: we call this the \emph{type} of the
+copy.
+
+\emph{Step 2: one type.} Seen as vertices of $Q_3=\{0,1\}^D$, the light copies of $D$ are what
+remains after deleting at most two vertices. $Q_3$ is $3$-connected, so this set is connected. By
+Lemma~\ref{p2c5:lem:adj}, all light copies of $D$ have the same type $\tau_D$. If
+$\tau_D\ne\tau_{D'}$ for two choices of $D$, then $R$ contains at least $6\cdot28=168$ vertices of
+each parity, so $r\ge336$, which is false. So all light copies, for all $D$, have the same type.
+The translation $x\mapsto x\oplus e_1$ is an automorphism of $Q_9$ that exchanges $E_9$ and $O_9$,
+so we may assume that this type is even.
+
+\emph{Step 3: the odd part.} Let $Z=R\cap O_9$ and $C=E_9\setminus R=S\cap E_9$. Then
+$R=(E_9\setminus C)\cup Z$, so $r=256-|C|+|Z|$, that is,
+\begin{equation}\label{p2c5:eq:count}
+  |C|-|Z|=32-s\ \ge\ 30 .
+\end{equation}
+Light copies meet $R$ only in even vertices, so for every $D$ the set $Z$ lies in the union of the
+heavy copies of $D$. If $s=1$, there is one heavy copy for each $D$. Any coordinate $i$ belongs to
+some $D$, so all elements of $Z$ agree in every coordinate, and $|Z|\le1$. If $s=2$, suppose
+$z_1,z_2,z_3\in Z$ are distinct. Pick coordinates $i,j,k$ with $(z_1)_i\ne(z_2)_i$,
+$(z_1)_j\ne(z_3)_j$ and $(z_2)_k\ne(z_3)_k$, and a $3$-set $D\supseteq\{i,j,k\}$. Then $z_1,z_2,z_3$
+lie in three different copies of $D$, all heavy. That is more than $s=2$. So $|Z|\le s$ in both
+cases.
+
+\emph{Step 4: $C$ is almost a code.} Note that $S\supseteq O_9\setminus Z$.
+\begin{enumerate}[label=(\roman*)]
+\item Let $C_0=C\setminus N(Z)$ and $a\ne b\in C_0$. If $|a\oplus b|=2$, then $a$ and $b$ have exactly
+  two common neighbours $p,q$, both odd. Neither lies in $Z$, since otherwise $a\in N(Z)$. So
+  $p,q\in S$, and $a,p,b,q$ is a $4$-cycle in $Q_9-R$, which is impossible. So $C_0$ has pairwise
+  distances $\ge4$, and $|C_0|\le25$ by Lemma~\ref{p2c5:lem:del}.
+\item Let $z\in Z$ and $I=\{i:z\oplus e_i\in C\}$, so that $|C\cap N(z)|=|I|$. For $i\ne j$ in $I$, the
+  vertices $a_i=z\oplus e_i$ and $a_j=z\oplus e_j$ have the common neighbours $z$ and
+  $w_{ij}=z\oplus e_i\oplus e_j$. The latter is odd, and it lies in $S$ unless $w_{ij}\in Z$. Let
+  $H$ be the graph on $I$ with an edge $ij$ whenever $w_{ij}\in S$. A cycle
+  $i_1i_2\cdots i_mi_1$ in $H$ ($m\ge3$) gives the cycle
+  $a_{i_1},w_{i_1i_2},a_{i_2},\dots,a_{i_m},w_{i_mi_1}$ in $Q_9-R$. Its vertices are distinct: the
+  $a$'s are even, the $w$'s are odd, and $w_{ij}$ determines $\{i,j\}$. So $H$ is a forest. Now
+  $w_{ij}\in Z\setminus\{z\}$ for at most $|Z|-1$ pairs, so $H$ is the complete graph on $I$ minus
+  at most $|Z|-1\le1$ edges. A forest on $|I|$ vertices has at most $|I|-1$ edges. So
+  $\binom{|I|}2\le|I|-1$ if $|Z|=1$, which gives $|I|\le2$; and $\binom{|I|}2-1\le|I|-1$ if $|Z|=2$,
+  which gives $|I|\le3$.
+\end{enumerate}
+Hence $|C|\le|C_0|+\sum_{z\in Z}|C\cap N(z)|$, which is at most $25$, $25+2=27$ or $25+2\cdot3=31$
+for $|Z|=0,1,2$.
+
+\emph{Step 5: contradiction.} By~\eqref{p2c5:eq:count}, $|C|\ge30+|Z|$, which is $30$, $31$ or $32$
+for $|Z|=0,1,2$. In each case this exceeds the bound of Step~4.
+\end{proof}
+
+\begin{remark}[Where the argument stops]\label{p2c5:rem:limit}
+For $s=3$, Step~2 fails as written: deleting the three neighbours of a vertex disconnects $Q_3$,
+so one light copy may have the other type. Step~4 is also wasteful. Lemma~\ref{p2c5:lem:del}
+gives $25$, while the true maximum is $20$. Going further would need a finer analysis of the
+heavy copies. We did not complete it; see Cell~6.
+\end{remark}
+
+% ===========================================================================
+\subsubsection{The labelling of $Q_9$}\label{p2c5:sec:lab}
+
+$L_{C_9}$: the $20$ codewords of Proposition~\ref{p2c5:prop:upper}, then the $256$ odd vertices,
+then the remaining $236$ even vertices, each block in increasing binary order. It has $2400$
+uphill paths (counted with \texttt{code/uphill\_eval.py}; the file is
+\texttt{uphill/labellings/Q9.txt}).
+\begin{flushleft}\scriptsize\ttfamily
+\makebox[2.4em][r]{\textrm{1:}}\ 000000000\ 000101011\ 000110101\ 001000111\ 001011100\ 001110010\ 010001101\ 010111110\ 011011011\ 011101000\\
+\makebox[2.4em][r]{\textrm{11:}}\ 100011010\ 100101100\ 101001001\ 101111111\ 110010111\ 110100010\ 110111001\ 111001110\ 111010000\ 111100101\\
+\makebox[2.4em][r]{\textrm{21:}}\ 000000001\ 000000010\ 000000100\ 000000111\ 000001000\ 000001011\ 000001101\ 000001110\ 000010000\ 000010011\\
+\makebox[2.4em][r]{\textrm{31:}}\ 000010101\ 000010110\ 000011001\ 000011010\ 000011100\ 000011111\ 000100000\ 000100011\ 000100101\ 000100110\\
+\makebox[2.4em][r]{\textrm{41:}}\ 000101001\ 000101010\ 000101100\ 000101111\ 000110001\ 000110010\ 000110100\ 000110111\ 000111000\ 000111011\\
+\makebox[2.4em][r]{\textrm{51:}}\ 000111101\ 000111110\ 001000000\ 001000011\ 001000101\ 001000110\ 001001001\ 001001010\ 001001100\ 001001111\\
+\makebox[2.4em][r]{\textrm{61:}}\ 001010001\ 001010010\ 001010100\ 001010111\ 001011000\ 001011011\ 001011101\ 001011110\ 001100001\ 001100010\\
+\makebox[2.4em][r]{\textrm{71:}}\ 001100100\ 001100111\ 001101000\ 001101011\ 001101101\ 001101110\ 001110000\ 001110011\ 001110101\ 001110110\\
+\makebox[2.4em][r]{\textrm{81:}}\ 001111001\ 001111010\ 001111100\ 001111111\ 010000000\ 010000011\ 010000101\ 010000110\ 010001001\ 010001010\\
+\makebox[2.4em][r]{\textrm{91:}}\ 010001100\ 010001111\ 010010001\ 010010010\ 010010100\ 010010111\ 010011000\ 010011011\ 010011101\ 010011110\\
+\makebox[2.4em][r]{\textrm{101:}}\ 010100001\ 010100010\ 010100100\ 010100111\ 010101000\ 010101011\ 010101101\ 010101110\ 010110000\ 010110011\\
+\makebox[2.4em][r]{\textrm{111:}}\ 010110101\ 010110110\ 010111001\ 010111010\ 010111100\ 010111111\ 011000001\ 011000010\ 011000100\ 011000111\\
+\makebox[2.4em][r]{\textrm{121:}}\ 011001000\ 011001011\ 011001101\ 011001110\ 011010000\ 011010011\ 011010101\ 011010110\ 011011001\ 011011010\\
+\makebox[2.4em][r]{\textrm{131:}}\ 011011100\ 011011111\ 011100000\ 011100011\ 011100101\ 011100110\ 011101001\ 011101010\ 011101100\ 011101111\\
+\makebox[2.4em][r]{\textrm{141:}}\ 011110001\ 011110010\ 011110100\ 011110111\ 011111000\ 011111011\ 011111101\ 011111110\ 100000000\ 100000011\\
+\makebox[2.4em][r]{\textrm{151:}}\ 100000101\ 100000110\ 100001001\ 100001010\ 100001100\ 100001111\ 100010001\ 100010010\ 100010100\ 100010111\\
+\makebox[2.4em][r]{\textrm{161:}}\ 100011000\ 100011011\ 100011101\ 100011110\ 100100001\ 100100010\ 100100100\ 100100111\ 100101000\ 100101011\\
+\makebox[2.4em][r]{\textrm{171:}}\ 100101101\ 100101110\ 100110000\ 100110011\ 100110101\ 100110110\ 100111001\ 100111010\ 100111100\ 100111111\\
+\makebox[2.4em][r]{\textrm{181:}}\ 101000001\ 101000010\ 101000100\ 101000111\ 101001000\ 101001011\ 101001101\ 101001110\ 101010000\ 101010011\\
+\makebox[2.4em][r]{\textrm{191:}}\ 101010101\ 101010110\ 101011001\ 101011010\ 101011100\ 101011111\ 101100000\ 101100011\ 101100101\ 101100110\\
+\makebox[2.4em][r]{\textrm{201:}}\ 101101001\ 101101010\ 101101100\ 101101111\ 101110001\ 101110010\ 101110100\ 101110111\ 101111000\ 101111011\\
+\makebox[2.4em][r]{\textrm{211:}}\ 101111101\ 101111110\ 110000001\ 110000010\ 110000100\ 110000111\ 110001000\ 110001011\ 110001101\ 110001110\\
+\makebox[2.4em][r]{\textrm{221:}}\ 110010000\ 110010011\ 110010101\ 110010110\ 110011001\ 110011010\ 110011100\ 110011111\ 110100000\ 110100011\\
+\makebox[2.4em][r]{\textrm{231:}}\ 110100101\ 110100110\ 110101001\ 110101010\ 110101100\ 110101111\ 110110001\ 110110010\ 110110100\ 110110111\\
+\makebox[2.4em][r]{\textrm{241:}}\ 110111000\ 110111011\ 110111101\ 110111110\ 111000000\ 111000011\ 111000101\ 111000110\ 111001001\ 111001010\\
+\makebox[2.4em][r]{\textrm{251:}}\ 111001100\ 111001111\ 111010001\ 111010010\ 111010100\ 111010111\ 111011000\ 111011011\ 111011101\ 111011110\\
+\makebox[2.4em][r]{\textrm{261:}}\ 111100001\ 111100010\ 111100100\ 111100111\ 111101000\ 111101011\ 111101101\ 111101110\ 111110000\ 111110011\\
+\makebox[2.4em][r]{\textrm{271:}}\ 111110101\ 111110110\ 111111001\ 111111010\ 111111100\ 111111111\ 000000011\ 000000101\ 000000110\ 000001001\\
+\makebox[2.4em][r]{\textrm{281:}}\ 000001010\ 000001100\ 000001111\ 000010001\ 000010010\ 000010100\ 000010111\ 000011000\ 000011011\ 000011101\\
+\makebox[2.4em][r]{\textrm{291:}}\ 000011110\ 000100001\ 000100010\ 000100100\ 000100111\ 000101000\ 000101101\ 000101110\ 000110000\ 000110011\\
+\makebox[2.4em][r]{\textrm{301:}}\ 000110110\ 000111001\ 000111010\ 000111100\ 000111111\ 001000001\ 001000010\ 001000100\ 001001000\ 001001011\\
+\makebox[2.4em][r]{\textrm{311:}}\ 001001101\ 001001110\ 001010000\ 001010011\ 001010101\ 001010110\ 001011001\ 001011010\ 001011111\ 001100000\\
+\makebox[2.4em][r]{\textrm{321:}}\ 001100011\ 001100101\ 001100110\ 001101001\ 001101010\ 001101100\ 001101111\ 001110001\ 001110100\ 001110111\\
+\makebox[2.4em][r]{\textrm{331:}}\ 001111000\ 001111011\ 001111101\ 001111110\ 010000001\ 010000010\ 010000100\ 010000111\ 010001000\ 010001011\\
+\makebox[2.4em][r]{\textrm{341:}}\ 010001110\ 010010000\ 010010011\ 010010101\ 010010110\ 010011001\ 010011010\ 010011100\ 010011111\ 010100000\\
+\makebox[2.4em][r]{\textrm{351:}}\ 010100011\ 010100101\ 010100110\ 010101001\ 010101010\ 010101100\ 010101111\ 010110001\ 010110010\ 010110100\\
+\makebox[2.4em][r]{\textrm{361:}}\ 010110111\ 010111000\ 010111011\ 010111101\ 011000000\ 011000011\ 011000101\ 011000110\ 011001001\ 011001010\\
+\makebox[2.4em][r]{\textrm{371:}}\ 011001100\ 011001111\ 011010001\ 011010010\ 011010100\ 011010111\ 011011000\ 011011101\ 011011110\ 011100001\\
+\makebox[2.4em][r]{\textrm{381:}}\ 011100010\ 011100100\ 011100111\ 011101011\ 011101101\ 011101110\ 011110000\ 011110011\ 011110101\ 011110110\\
+\makebox[2.4em][r]{\textrm{391:}}\ 011111001\ 011111010\ 011111100\ 011111111\ 100000001\ 100000010\ 100000100\ 100000111\ 100001000\ 100001011\\
+\makebox[2.4em][r]{\textrm{401:}}\ 100001101\ 100001110\ 100010000\ 100010011\ 100010101\ 100010110\ 100011001\ 100011100\ 100011111\ 100100000\\
+\makebox[2.4em][r]{\textrm{411:}}\ 100100011\ 100100101\ 100100110\ 100101001\ 100101010\ 100101111\ 100110001\ 100110010\ 100110100\ 100110111\\
+\makebox[2.4em][r]{\textrm{421:}}\ 100111000\ 100111011\ 100111101\ 100111110\ 101000000\ 101000011\ 101000101\ 101000110\ 101001010\ 101001100\\
+\makebox[2.4em][r]{\textrm{431:}}\ 101001111\ 101010001\ 101010010\ 101010100\ 101010111\ 101011000\ 101011011\ 101011101\ 101011110\ 101100001\\
+\makebox[2.4em][r]{\textrm{441:}}\ 101100010\ 101100100\ 101100111\ 101101000\ 101101011\ 101101101\ 101101110\ 101110000\ 101110011\ 101110101\\
+\makebox[2.4em][r]{\textrm{451:}}\ 101110110\ 101111001\ 101111010\ 101111100\ 110000000\ 110000011\ 110000101\ 110000110\ 110001001\ 110001010\\
+\makebox[2.4em][r]{\textrm{461:}}\ 110001100\ 110001111\ 110010001\ 110010010\ 110010100\ 110011000\ 110011011\ 110011101\ 110011110\ 110100001\\
+\makebox[2.4em][r]{\textrm{471:}}\ 110100100\ 110100111\ 110101000\ 110101011\ 110101101\ 110101110\ 110110000\ 110110011\ 110110101\ 110110110\\
+\makebox[2.4em][r]{\textrm{481:}}\ 110111010\ 110111100\ 110111111\ 111000001\ 111000010\ 111000100\ 111000111\ 111001000\ 111001011\ 111001101\\
+\makebox[2.4em][r]{\textrm{491:}}\ 111010011\ 111010101\ 111010110\ 111011001\ 111011010\ 111011100\ 111011111\ 111100000\ 111100011\ 111100110\\
+\makebox[2.4em][r]{\textrm{501:}}\ 111101001\ 111101010\ 111101100\ 111101111\ 111110001\ 111110010\ 111110100\ 111110111\ 111111000\ 111111011\\
+\makebox[2.4em][r]{\textrm{511:}}\ 111111101\ 111111110\\
+\end{flushleft}

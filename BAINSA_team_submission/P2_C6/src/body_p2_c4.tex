@@ -1,0 +1,148 @@
+% ===== uphill/p2_c4.tex  (Problem 2, track 4) =====
+% Written directly as a body file (not produced by tools/convert_cell.py).
+% Title: Problem 2, Cell 4: $U(Q_7)$ and $U(Q_8)$
+% Body only: packages, theorem environments and macros are in preamble.tex.
+% Labels are prefixed with "p2c4:".  Uses cells 1 and 3 (p2c1:*, p2c3:*).
+% Code: code/uphill_construct.py, code/uphill_eval.py (no new computation for the lower bound).
+
+\paragraph{Official setting.} As in Cell~1 (\S\ref{p2c1:sec:count}).
+
+\begin{statement}
+Determine $U(Q_7)$ and $U(Q_8)$, and give a labelling attaining each value.
+\end{statement}
+
+\paragraph{Status.} \textbf{Solved}. The proof is by hand from $\nabla(Q_6)=28$ (Cell~3). That
+fact is computer-assisted, so this cell inherits its computation (Lemma~\ref{p2c3:lem:L6}) and
+needs no new one.
+
+\paragraph{Answer.} $U(Q_7)=464$ and $U(Q_8)=1040$; $\nabla(Q_7)=56$ and $\nabla(Q_8)=112$
+(Theorem~\ref{p2c4:thm:main}). The labellings are in \S\ref{p2c4:sec:lab}.
+
+\subsubsection{Doubling}
+
+\begin{lemma}[Doubling]\label{p2c4:lem:double}
+$\nabla(Q_d)\ge2\,\nabla(Q_{d-1})$ for every $d\ge2$.
+\end{lemma}
+
+\begin{proof}
+Fixing the last coordinate splits $Q_d$ into two disjoint induced copies of $Q_{d-1}$. If $R$ is a
+decycling set of $Q_d$, then the part of $R$ in each copy is a decycling set of that copy: an
+induced subgraph of a forest is a forest. So each copy contains at least $\nabla(Q_{d-1})$
+vertices of $R$.
+\end{proof}
+
+\begin{theorem}\label{p2c4:thm:main}
+$\nabla(Q_7)=56$, $\nabla(Q_8)=112$, $U(Q_7)=464$ and $U(Q_8)=1040$.
+\end{theorem}
+
+\begin{proof}
+Lower bounds: by Lemma~\ref{p2c3:lem:L6} and Lemma~\ref{p2c4:lem:double},
+$\nabla(Q_7)\ge2\cdot28=56$ and $\nabla(Q_8)\ge2\cdot56=112$. By Theorem~\ref{p2c1:thm:lower},
+$U(Q_7)\ge128+6\cdot56=464$ and $U(Q_8)\ge256+7\cdot112=1040$.
+
+Upper bounds: let $C_7\subseteq\{0,1\}^7$ be the linear code spanned by $1111000$, $1100110$ and
+$1010101$. Its $7$ nonzero words are the sums of nonempty subsets of the generators:
+\[
+1111000,\ 1100110,\ 1010101,\ 0011110,\ 0101101,\ 0110011,\ 1001011.
+\]
+All have weight $4$. So $C_7\subseteq E_7$, $|C_7|=8$ and all distances are $4$ (this is the
+simplex code, i.e.\ the dual of the Hamming code of length $7$). Let $C_8\subseteq\{0,1\}^8$ be the
+extended Hamming code, spanned by $11110000$, $11001100$, $10101010$ and $11111111$. Its $16$ words
+are $C_7'\cup(C_7'\oplus11111111)$, where $C_7'$ is the set of words of $C_7$ with a $0$ appended.
+The words of $C_7'$ have weights $0$ and $4$, and their complements have weights $8$ and $4$. The
+distance between $x$ and $y\oplus11111111$, for $x,y\in C_7'$, is $8-|x\oplus y|\in\{8,4\}$. So
+$C_8\subseteq E_8$ has minimum distance $4$ and $|C_8|=16$. Proposition~\ref{p2c1:prop:code}
+gives decycling sets of sizes $64-8=56$ and $128-16=112$, and labellings with
+$128+6\cdot56=464$ and $256+7\cdot112=1040$ uphill paths.
+\end{proof}
+
+\subsubsection{Summary for $d\le8$}
+
+\begin{corollary}\label{p2c4:cor:table}
+For $2\le d\le8$, $U(Q_d)=2^d+(d-1)\nabla(Q_d)=2^d+(d-1)\bigl(2^{d-1}-K_d\bigr)$, where $K_d$ is
+the size of the code used:
+\begin{center}
+\begin{tabular}{c|ccccccc}
+\toprule
+$d$ & 2 & 3 & 4 & 5 & 6 & 7 & 8\\
+\midrule
+$K_d$ & 1 & 1 & 2 & 2 & 4 & 8 & 16\\
+$\nabla(Q_d)$ & 1 & 3 & 6 & 14 & 28 & 56 & 112\\
+$U(Q_d)$ & 5 & 14 & 34 & 88 & 204 & 464 & 1040\\
+counting bound $\lceil\frac{(d-2)2^{d-1}+1}{d-1}\rceil$ & 1 & 3 & 6 & 13 & 26 & 54 & 110\\
+\bottomrule
+\end{tabular}
+\end{center}
+In every case the optimum is attained by a code labelling $L_C$, and the set $R_f$ of expensive
+vertices is one parity class minus a code.
+\end{corollary}
+
+\begin{proof}
+$d=2$ and $d=3,4$: Cell~1. $d=5$: Cell~2. $d=6$: Cell~3. $d=7,8$: Theorem~\ref{p2c4:thm:main}.
+\end{proof}
+
+\begin{remark}
+The values $K_d=1,1,2,2,4,8,16$ are the maximum sizes $A(d-1,3)$ of binary codes of length $d-1$
+and minimum distance $3$. Adding a parity bit turns such a code into a code in $E_d$ with minimum
+distance $4$, and conversely. The proofs above do not use this. For $d=9$ the same formula would
+give $\nabla(Q_9)\le256-A(8,3)=236$, because $A(8,3)=20$ \cite{MS77}. This is the starting point of Cells~5
+and~6.
+\end{remark}
+
+\subsubsection{The labellings}\label{p2c4:sec:lab}
+
+In both lists: the codewords, then all odd vertices, then the remaining even vertices, each
+block in increasing binary order. The counts ($464$ and $1040$) were checked with
+\texttt{code/uphill\_eval.py}.
+
+\medskip\noindent$Q_7$, $C=C_7$ ($8$ codewords), $464$ uphill paths:
+\begin{flushleft}\footnotesize\ttfamily
+\makebox[2.4em][r]{\textrm{1:}}\ 0000000\ 0011110\ 0101101\ 0110011\ 1001011\ 1010101\ 1100110\ 1111000\\
+\makebox[2.4em][r]{\textrm{9:}}\ 0000001\ 0000010\ 0000100\ 0000111\ 0001000\ 0001011\ 0001101\ 0001110\\
+\makebox[2.4em][r]{\textrm{17:}}\ 0010000\ 0010011\ 0010101\ 0010110\ 0011001\ 0011010\ 0011100\ 0011111\\
+\makebox[2.4em][r]{\textrm{25:}}\ 0100000\ 0100011\ 0100101\ 0100110\ 0101001\ 0101010\ 0101100\ 0101111\\
+\makebox[2.4em][r]{\textrm{33:}}\ 0110001\ 0110010\ 0110100\ 0110111\ 0111000\ 0111011\ 0111101\ 0111110\\
+\makebox[2.4em][r]{\textrm{41:}}\ 1000000\ 1000011\ 1000101\ 1000110\ 1001001\ 1001010\ 1001100\ 1001111\\
+\makebox[2.4em][r]{\textrm{49:}}\ 1010001\ 1010010\ 1010100\ 1010111\ 1011000\ 1011011\ 1011101\ 1011110\\
+\makebox[2.4em][r]{\textrm{57:}}\ 1100001\ 1100010\ 1100100\ 1100111\ 1101000\ 1101011\ 1101101\ 1101110\\
+\makebox[2.4em][r]{\textrm{65:}}\ 1110000\ 1110011\ 1110101\ 1110110\ 1111001\ 1111010\ 1111100\ 1111111\\
+\makebox[2.4em][r]{\textrm{73:}}\ 0000011\ 0000101\ 0000110\ 0001001\ 0001010\ 0001100\ 0001111\ 0010001\\
+\makebox[2.4em][r]{\textrm{81:}}\ 0010010\ 0010100\ 0010111\ 0011000\ 0011011\ 0011101\ 0100001\ 0100010\\
+\makebox[2.4em][r]{\textrm{89:}}\ 0100100\ 0100111\ 0101000\ 0101011\ 0101110\ 0110000\ 0110101\ 0110110\\
+\makebox[2.4em][r]{\textrm{97:}}\ 0111001\ 0111010\ 0111100\ 0111111\ 1000001\ 1000010\ 1000100\ 1000111\\
+\makebox[2.4em][r]{\textrm{105:}}\ 1001000\ 1001101\ 1001110\ 1010000\ 1010011\ 1010110\ 1011001\ 1011010\\
+\makebox[2.4em][r]{\textrm{113:}}\ 1011100\ 1011111\ 1100000\ 1100011\ 1100101\ 1101001\ 1101010\ 1101100\\
+\makebox[2.4em][r]{\textrm{121:}}\ 1101111\ 1110001\ 1110010\ 1110100\ 1110111\ 1111011\ 1111101\ 1111110\\
+\end{flushleft}
+\noindent$Q_8$, $C=C_8$ ($16$ codewords), $1040$ uphill paths:
+\begin{flushleft}\footnotesize\ttfamily
+\makebox[2.4em][r]{\textrm{1:}}\ 00000000\ 00001111\ 00110011\ 00111100\ 01010101\ 01011010\ 01100110\ 01101001\ 10010110\\
+\makebox[2.4em][r]{\textrm{10:}}\ 10011001\ 10100101\ 10101010\ 11000011\ 11001100\ 11110000\ 11111111\ 00000001\ 00000010\\
+\makebox[2.4em][r]{\textrm{19:}}\ 00000100\ 00000111\ 00001000\ 00001011\ 00001101\ 00001110\ 00010000\ 00010011\ 00010101\\
+\makebox[2.4em][r]{\textrm{28:}}\ 00010110\ 00011001\ 00011010\ 00011100\ 00011111\ 00100000\ 00100011\ 00100101\ 00100110\\
+\makebox[2.4em][r]{\textrm{37:}}\ 00101001\ 00101010\ 00101100\ 00101111\ 00110001\ 00110010\ 00110100\ 00110111\ 00111000\\
+\makebox[2.4em][r]{\textrm{46:}}\ 00111011\ 00111101\ 00111110\ 01000000\ 01000011\ 01000101\ 01000110\ 01001001\ 01001010\\
+\makebox[2.4em][r]{\textrm{55:}}\ 01001100\ 01001111\ 01010001\ 01010010\ 01010100\ 01010111\ 01011000\ 01011011\ 01011101\\
+\makebox[2.4em][r]{\textrm{64:}}\ 01011110\ 01100001\ 01100010\ 01100100\ 01100111\ 01101000\ 01101011\ 01101101\ 01101110\\
+\makebox[2.4em][r]{\textrm{73:}}\ 01110000\ 01110011\ 01110101\ 01110110\ 01111001\ 01111010\ 01111100\ 01111111\ 10000000\\
+\makebox[2.4em][r]{\textrm{82:}}\ 10000011\ 10000101\ 10000110\ 10001001\ 10001010\ 10001100\ 10001111\ 10010001\ 10010010\\
+\makebox[2.4em][r]{\textrm{91:}}\ 10010100\ 10010111\ 10011000\ 10011011\ 10011101\ 10011110\ 10100001\ 10100010\ 10100100\\
+\makebox[2.4em][r]{\textrm{100:}}\ 10100111\ 10101000\ 10101011\ 10101101\ 10101110\ 10110000\ 10110011\ 10110101\ 10110110\\
+\makebox[2.4em][r]{\textrm{109:}}\ 10111001\ 10111010\ 10111100\ 10111111\ 11000001\ 11000010\ 11000100\ 11000111\ 11001000\\
+\makebox[2.4em][r]{\textrm{118:}}\ 11001011\ 11001101\ 11001110\ 11010000\ 11010011\ 11010101\ 11010110\ 11011001\ 11011010\\
+\makebox[2.4em][r]{\textrm{127:}}\ 11011100\ 11011111\ 11100000\ 11100011\ 11100101\ 11100110\ 11101001\ 11101010\ 11101100\\
+\makebox[2.4em][r]{\textrm{136:}}\ 11101111\ 11110001\ 11110010\ 11110100\ 11110111\ 11111000\ 11111011\ 11111101\ 11111110\\
+\makebox[2.4em][r]{\textrm{145:}}\ 00000011\ 00000101\ 00000110\ 00001001\ 00001010\ 00001100\ 00010001\ 00010010\ 00010100\\
+\makebox[2.4em][r]{\textrm{154:}}\ 00010111\ 00011000\ 00011011\ 00011101\ 00011110\ 00100001\ 00100010\ 00100100\ 00100111\\
+\makebox[2.4em][r]{\textrm{163:}}\ 00101000\ 00101011\ 00101101\ 00101110\ 00110000\ 00110101\ 00110110\ 00111001\ 00111010\\
+\makebox[2.4em][r]{\textrm{172:}}\ 00111111\ 01000001\ 01000010\ 01000100\ 01000111\ 01001000\ 01001011\ 01001101\ 01001110\\
+\makebox[2.4em][r]{\textrm{181:}}\ 01010000\ 01010011\ 01010110\ 01011001\ 01011100\ 01011111\ 01100000\ 01100011\ 01100101\\
+\makebox[2.4em][r]{\textrm{190:}}\ 01101010\ 01101100\ 01101111\ 01110001\ 01110010\ 01110100\ 01110111\ 01111000\ 01111011\\
+\makebox[2.4em][r]{\textrm{199:}}\ 01111101\ 01111110\ 10000001\ 10000010\ 10000100\ 10000111\ 10001000\ 10001011\ 10001101\\
+\makebox[2.4em][r]{\textrm{208:}}\ 10001110\ 10010000\ 10010011\ 10010101\ 10011010\ 10011100\ 10011111\ 10100000\ 10100011\\
+\makebox[2.4em][r]{\textrm{217:}}\ 10100110\ 10101001\ 10101100\ 10101111\ 10110001\ 10110010\ 10110100\ 10110111\ 10111000\\
+\makebox[2.4em][r]{\textrm{226:}}\ 10111011\ 10111101\ 10111110\ 11000000\ 11000101\ 11000110\ 11001001\ 11001010\ 11001111\\
+\makebox[2.4em][r]{\textrm{235:}}\ 11010001\ 11010010\ 11010100\ 11010111\ 11011000\ 11011011\ 11011101\ 11011110\ 11100001\\
+\makebox[2.4em][r]{\textrm{244:}}\ 11100010\ 11100100\ 11100111\ 11101000\ 11101011\ 11101101\ 11101110\ 11110011\ 11110101\\
+\makebox[2.4em][r]{\textrm{253:}}\ 11110110\ 11111001\ 11111010\ 11111100\\
+\end{flushleft}

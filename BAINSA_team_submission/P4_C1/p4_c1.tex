@@ -1,0 +1,98 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=2.5cm]{geometry}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{definition}
+\newtheorem*{statement}{Official statement}
+
+\title{Problem 4, Cell 1: Sun's conjecture for $k=3$}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{statement}
+For integers $a$ and $m\ge1$ write $a\ (\mathrm{mod}\ m)=\{a+mt:t\in\mathbb{Z}\}$. A finite family
+of classes $a_1\ (\mathrm{mod}\ m_1),\dots,a_k\ (\mathrm{mod}\ m_k)$ is pairwise disjoint if
+$a_i\ (\mathrm{mod}\ m_i)\cap a_j\ (\mathrm{mod}\ m_j)=\emptyset$ whenever $i<j$. Nothing is assumed
+about the moduli beyond $m_i\ge1$: they may repeat, and the residues $a_i$ may repeat as well. By the
+Chinese remainder theorem,
+\[
+  a_i\ (\mathrm{mod}\ m_i)\cap a_j\ (\mathrm{mod}\ m_j)\neq\emptyset\iff\gcd(m_i,m_j)\mid a_i-a_j.\tag{$*$}
+\]
+\emph{Question.} Let $k\ge2$ and let $a_1\ (\mathrm{mod}\ m_1),\dots,a_k\ (\mathrm{mod}\ m_k)$ be
+pairwise disjoint. Must there be a pair $i<j$ with $\gcd(m_i,m_j)\ge k$?
+
+The first size that the two trivial observations above do not settle. Prove the statement for
+$k=3$: any three pairwise disjoint classes have $\gcd(m_i,m_j)\ge3$ for some $i<j$.
+\end{statement}
+
+\noindent Theorem~\ref{thm:main} below is exactly this statement. The notation $a\bmod m$ below is the class
+$a\ (\mathrm{mod}\ m)$ of the statement. Lemma~\ref{lem:crt} is $(*)$, proved for completeness.
+
+\paragraph{Known result.} The question is Sun's disjoint congruence classes conjecture~\cite{Sun06}.
+O'Bryant~\cite{OBr07} proved it for all $k\le20$, so this case is known. The proof below is an
+independent proof and is self-contained.
+
+For an integer $m\ge1$ and $a\in\mathbb{Z}$ write $a\bmod m=\{x\in\mathbb{Z}: x\equiv a\pmod m\}$.
+A family of residue classes is \emph{disjoint} if its members are pairwise disjoint.
+
+\begin{theorem}\label{thm:main}
+Let $a_1\bmod m_1,\ a_2\bmod m_2,\ a_3\bmod m_3$ be three pairwise disjoint residue classes.
+Then $\gcd(m_i,m_j)\ge3$ for some $i\ne j$.
+\end{theorem}
+
+\section{When do two classes meet?}
+
+\begin{lemma}\label{lem:crt}
+Let $m,n\ge1$, $a,b\in\mathbb{Z}$ and $g=\gcd(m,n)$. Then
+$(a\bmod m)\cap(b\bmod n)\ne\emptyset$ if and only if $g\mid a-b$.
+\end{lemma}
+
+\begin{proof}
+($\Rightarrow$) If $x\equiv a\pmod m$ and $x\equiv b\pmod n$, then $g\mid m$ and $g\mid n$ give
+$a\equiv x\equiv b\pmod g$.
+
+($\Leftarrow$) By B\'ezout there are $u,v\in\mathbb{Z}$ with $um+vn=g$. Write $a-b=gt$ with
+$t\in\mathbb{Z}$ and set $x=a-umt$. Clearly $x\equiv a\pmod m$. Also
+$x=a-(g-vn)t=a-gt+vnt=b+vnt\equiv b\pmod n$.
+\end{proof}
+
+\begin{corollary}\label{cor:small}
+Let $a\bmod m$ and $b\bmod n$ be disjoint and $g=\gcd(m,n)$. Then $g\ge2$ and $a\not\equiv b\pmod g$.
+In particular, if $g=2$, then $a\not\equiv b\pmod 2$.
+\end{corollary}
+
+\begin{proof}
+By Lemma~\ref{lem:crt}, disjointness means $g\nmid a-b$. Since $1$ divides every integer, $g\ne1$.
+\end{proof}
+
+\section{Proof of Theorem~\ref{thm:main}}
+
+Suppose, for contradiction, that $\gcd(m_i,m_j)\le2$ for all $i\ne j$. By
+Corollary~\ref{cor:small} each of these gcds is at least $2$, so $\gcd(m_i,m_j)=2$ for all three
+pairs. By Corollary~\ref{cor:small} again, $a_i\not\equiv a_j\pmod2$ for all $i\ne j$. In other
+words, $a_1,a_2,a_3$ lie in three distinct residue classes modulo $2$. There are only two such
+classes, so this is impossible by the pigeonhole principle. Hence some pair satisfies
+$\gcd(m_i,m_j)\ge3$. \qed
+
+\begin{remark}
+The bound is sharp: $0\bmod3$, $1\bmod3$, $2\bmod3$ are disjoint and every pairwise gcd equals $3$.
+The case of a modulus $m_i=1$ needs no separate treatment: then $a_i\bmod m_i=\mathbb{Z}$, which meets
+every class, and the corresponding gcds equal $1$, which Corollary~\ref{cor:small} excludes.
+\end{remark}
+
+\begin{thebibliography}{9}
+\bibitem{OBr07} K.~O'Bryant, \emph{On Z.-W.\ Sun's disjoint congruence classes conjecture}, in
+  \emph{Combinatorial Number Theory}, de Gruyter, Berlin, 2007, pp.~403--411; arXiv:math/0604347.
+\bibitem{Sun06} Z.-W.~Sun, \emph{Finite covers of groups by cosets or subgroups}, Internat.\ J.\ Math.\
+  \textbf{17} (2006), 1047--1064; arXiv:math/0501451.
+\end{thebibliography}
+
+\end{document}

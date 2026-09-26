@@ -1,0 +1,8 @@
+# python3 uphill_lower.py  (rerun by Claude in a cloud Linux container, 26 Sep 2026 15:2x; python-sat 1.x, networkx)
+(D9) Krawtchouk table and certificate verified: Lambda(0) = 24.6, Lambda(4) = Lambda(6) = Lambda(8) = -1, so |C| <= 25
+(L5) Q_5, |R| <= 13, Cadical153: UNSAT: no decycling set (348 rounds, 0.2 s)
+(L5) Q_5, |R| <= 13, Glucose4: UNSAT: no decycling set (357 rounds, 0.1 s)
+(L6) Q_6, |R| <= 27, Cadical153: UNSAT: no decycling set (685 rounds, 3.5 s)
+(L6) Q_6, |R| <= 27, Glucose4: UNSAT: no decycling set (689 rounds, 3.3 s)
+(P6) Q_6, |R| <= 28, Cadical153: UNSAT: no mixed-parity decycling set (6053 rounds, 39.2 s)
+exit 0

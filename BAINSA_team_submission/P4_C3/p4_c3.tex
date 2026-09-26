@@ -1,0 +1,313 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=2.5cm]{geometry}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{definition}
+\newtheorem*{statement}{Official statement}
+
+\newcommand{\pr}{\operatorname{pr}}
+
+\title{Problem 4, Cell 3: Sun's conjecture for all $k\le 8$}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{statement}
+For integers $a$ and $m\ge1$ write $a\ (\mathrm{mod}\ m)=\{a+mt:t\in\mathbb{Z}\}$. A finite family
+of classes $a_1\ (\mathrm{mod}\ m_1),\dots,a_k\ (\mathrm{mod}\ m_k)$ is pairwise disjoint if
+$a_i\ (\mathrm{mod}\ m_i)\cap a_j\ (\mathrm{mod}\ m_j)=\emptyset$ whenever $i<j$. Nothing is assumed
+about the moduli beyond $m_i\ge1$: they may repeat, and the residues $a_i$ may repeat as well. By the
+Chinese remainder theorem,
+\[
+  a_i\ (\mathrm{mod}\ m_i)\cap a_j\ (\mathrm{mod}\ m_j)\neq\emptyset\iff\gcd(m_i,m_j)\mid a_i-a_j.\tag{$*$}
+\]
+\emph{Question.} Let $k\ge2$ and let $a_1\ (\mathrm{mod}\ m_1),\dots,a_k\ (\mathrm{mod}\ m_k)$ be
+pairwise disjoint. Must there be a pair $i<j$ with $\gcd(m_i,m_j)\ge k$?
+
+A first range of sizes: after C1 and C2, the sizes $k=5,6,7$ and $8$ remain. Prove the statement
+for every $k\le8$.
+\end{statement}
+
+\noindent Theorem~\ref{thm:main} below is exactly this statement, for all $2\le k\le8$ (the question assumes
+$k\ge2$). The notation $a\bmod m$ below is the class $a\ (\mathrm{mod}\ m)$ of the statement.
+Lemma~\ref{lem:crt} is $(*)$, proved for completeness.
+
+\paragraph{Known result.} The question is Sun's disjoint congruence classes conjecture~\cite{Sun06}.
+O'Bryant~\cite{OBr07} proved it for all $k\le20$, so this case is known. The proof below is an
+independent proof and is self-contained.
+
+For an integer $m\ge1$ and $a\in\mathbb{Z}$ write $a\bmod m=\{x\in\mathbb{Z}:x\equiv a\pmod m\}$.
+A family of residue classes is \emph{disjoint} if its members are pairwise disjoint.
+
+\begin{theorem}\label{thm:main}
+Let $2\le k\le 8$ and let $a_1\bmod m_1,\dots,a_k\bmod m_k$ be a disjoint family of residue
+classes. Then $\gcd(m_i,m_j)\ge k$ for some $i\ne j$.
+\end{theorem}
+
+The proof is by hand throughout; no computation is used. The cases $k=5,6$ follow from
+Lemma~\ref{lem:pp}, and the cases $k=7,8$ from Proposition~\ref{prop:78}. The same arguments
+also give $k=2,3,4$ again.
+
+\medskip\noindent\textbf{Notation.} Throughout, $a_1\bmod m_1,\dots,a_k\bmod m_k$ ($k\ge2$) is a
+disjoint family, $[k]=\{1,\dots,k\}$, and $g_{ij}=\gcd(m_i,m_j)$ for $i\ne j$. For an integer
+$n\ge 1$, $\pr(n)$ denotes the set of primes dividing $n$.
+
+\section{Preliminaries}
+
+\begin{lemma}\label{lem:crt}
+Let $m,n\ge1$, $a,b\in\mathbb{Z}$ and $g=\gcd(m,n)$. Then $(a\bmod m)\cap(b\bmod n)\ne\emptyset$ if
+and only if $g\mid a-b$.
+\end{lemma}
+
+\begin{proof}
+($\Rightarrow$) If $x\equiv a\pmod m$ and $x\equiv b\pmod n$, then $a\equiv x\equiv b\pmod g$.
+($\Leftarrow$) Choose $u,v\in\mathbb{Z}$ with $um+vn=g$ (B\'ezout). Write $a-b=gt$ and put
+$x=a-umt$. Then $x\equiv a\pmod m$, and $x=a-(g-vn)t=b+vnt\equiv b\pmod n$.
+\end{proof}
+
+\begin{corollary}\label{cor:basic}
+For all $i\ne j$ we have $g_{ij}\ge2$ and $a_i\not\equiv a_j\pmod{g_{ij}}$. Consequently, if
+$g_{ij}\mid q$ for some integer $q$, then $a_i\not\equiv a_j\pmod q$.
+\end{corollary}
+
+\begin{proof}
+By Lemma~\ref{lem:crt}, disjointness means $g_{ij}\nmid a_i-a_j$, and this forces $g_{ij}\ne1$.
+If $a_i\equiv a_j\pmod q$ and $g_{ij}\mid q$, then $a_i\equiv a_j\pmod{g_{ij}}$, a contradiction.
+\end{proof}
+
+We use the pigeonhole principle in the following form. If integers $a_i$ ($i\in I$) are
+pairwise incongruent modulo $q$, then $|I|\le q$.
+
+\paragraph{Prime channels.}
+For $i\in[k]$ let
+\[
+  \pi(i)=\{\,p \text{ prime}: p\mid g_{ij}\text{ for some } j\ne i\,\},
+  \qquad S_p=\{\,i\in[k]: p\in\pi(i)\,\}.
+\]
+
+\begin{lemma}[Channel lemma]\label{lem:channel}
+\begin{enumerate}
+\item[(a)] $\pr(g_{ij})=\pi(i)\cap\pi(j)$ for all $i\ne j$; in particular $\pi(i)\cap\pi(j)\ne\emptyset$.
+\item[(b)] $|S_p|\ne1$ for every prime $p$.
+\item[(c)] If $p$ is a prime and $i\ne j$ are both in $S_p$, then $p\mid g_{ij}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) The inclusion $\subseteq$ holds by definition of $\pi$. Conversely, if $p\in\pi(i)\cap\pi(j)$,
+then $p$ divides some $g_{il}$ and hence $m_i$, and similarly $p\mid m_j$; so $p\mid g_{ij}$. The set
+$\pr(g_{ij})$ is nonempty because $g_{ij}\ge2$ (Corollary~\ref{cor:basic}).
+(b) If $i\in S_p$, then $p\mid g_{ij}$ for some $j\ne i$, and then $j\in S_p$ as well.
+(c) This is (a).
+\end{proof}
+
+\section{All gcds prime powers: $k\le 6$}
+
+\begin{lemma}[Prime-power lemma]\label{lem:pp}
+Let $2\le M\le5$ and suppose every $g_{ij}$ is a prime power with $g_{ij}\le M$. For each prime
+$p\le M$ let $q_p$ be the largest power of $p$ with $q_p\le M$, and let $P$ be the set of primes
+$\le M$. Then
+\[
+  k\le\max\Bigl(\max_{p\in P}q_p,\ \tbinom{|P|}{2}\Bigr).
+\]
+\end{lemma}
+
+\begin{proof}
+By Lemma~\ref{lem:channel}(a), each $\pi(i)\cap\pi(j)=\pr(g_{ij})$ is a single prime, which lies in $P$.
+Every prime in $\pi(i)$ divides some $g_{ij}\le M$, so $\pi(i)\subseteq P$.
+
+\emph{Case I: some prime $p$ lies in every $\pi(i)$.} Then $p\in\pi(i)\cap\pi(j)=\pr(g_{ij})$ for all $i\ne j$,
+so every $g_{ij}$ is a power of $p$ that is at most $M$. Hence $g_{ij}\mid q_p$. By
+Corollary~\ref{cor:basic}, the $a_i$ are pairwise incongruent modulo $q_p$, so $k\le q_p$ by pigeonhole.
+
+\emph{Case II: no prime lies in every $\pi(i)$.} If some $\pi(i)=\{p\}$, then every $\pi(j)$ ($j\ne i$) meets
+$\{p\}$, so $p$ lies in all $\pi(\cdot)$, which is Case I. Hence $|\pi(i)|\ge2$ for all $i$. Two distinct
+indices $i\ne j$ cannot satisfy $\pi(i)=\pi(j)$, since then $|\pi(i)\cap\pi(j)|\ge2$. Also
+$|\pi(i)|\le2$ for every $i$. Indeed, $|P|\le3$ because $M\le5$. So $|\pi(i)|\ge3$ would force
+$\pi(i)=P\supseteq\pi(j)$ for any $j\ne i$ (such a $j$ exists since $k\ge2$), and then
+$|\pi(i)\cap\pi(j)|=|\pi(j)|\ge2$. Hence the $\pi(i)$ are pairwise distinct $2$-element subsets
+of $P$, so $k\le\binom{|P|}{2}$.
+\end{proof}
+
+\begin{corollary}\label{cor:k56}
+Theorem~\ref{thm:main} holds for $2\le k\le6$.
+\end{corollary}
+
+\begin{proof}
+For $k=2$ this is Corollary~\ref{cor:basic}. Let $3\le k\le6$ and suppose all $g_{ij}\le k-1$. Put
+$M=k-1\in\{2,3,4,5\}$. Every integer in $\{2,\dots,5\}$ is a prime power, so Lemma~\ref{lem:pp}
+applies:
+\begin{center}
+\begin{tabular}{c|c|c|c|c}
+$k$ & $M$ & $P$ & $\max_p q_p$ & $\binom{|P|}{2}$\\ \hline
+3 & 2 & $\{2\}$ & 2 & 0\\
+4 & 3 & $\{2,3\}$ & 3 & 1\\
+5 & 4 & $\{2,3\}$ & 4 & 1\\
+6 & 5 & $\{2,3,5\}$ & 5 & 3
+\end{tabular}
+\end{center}
+In every row the bound of Lemma~\ref{lem:pp} equals $k-1<k$, a contradiction.
+\end{proof}
+
+\begin{remark}
+For $k=5$ the sets $S_2$ and $S_3$ play the role of the sets $E$ and $T$ of Cell~2 (in general
+only $S_2\subseteq E$ and $S_3\subseteq T$). Case II would require
+two indices with $\pi(i)=\pi(j)=\{2,3\}$, i.e.\ $6\mid g_{ij}$. In Case I with $p=2$ all gcds
+divide $4$, and with $p=3$ all gcds equal $3$.
+\end{remark}
+
+\section{Gcds in $\{2,3,4,6\}$}
+
+\begin{lemma}\label{lem:W}
+If every $g_{ij}$ lies in $\{2,3,4,6\}$, then $k\le6$.
+\end{lemma}
+
+\begin{proof}
+Let $E=\{i:2\mid m_i\}$ and $T=\{i:3\mid m_i\}$. Each $i$ lies in $E\cup T$, because $g_{ij}$ (for any
+$j\ne i$) is divisible by $2$ or $3$ and divides $m_i$. If $i\in E\setminus T$ and $j\in T\setminus E$, then
+$g_{ij}$ is coprime to $6$, which is impossible. Hence $T\setminus E=\emptyset$ or $E\setminus T=\emptyset$, that is,
+$[k]=E$ or $[k]=T$. Put $A=E\cap T=\{i:6\mid m_i\}$. For $i\ne j$ in $A$ we have $6\mid g_{ij}$, so
+$g_{ij}=6$.
+
+\emph{Case $[k]=T$.} Let $B=T\setminus E$. If $i\ne j$ and at least one of them is in $B$, then $3\mid g_{ij}$
+and $2\nmid g_{ij}$, so $g_{ij}=3$. By Corollary~\ref{cor:basic}:
+\begin{itemize}
+\item the $a_b$ ($b\in B$) are pairwise incongruent mod $3$;
+\item each $a_i$ ($i\in A$) is incongruent mod $3$ to every $a_b$ ($b\in B$);
+\item the $a_i$ ($i\in A$) are pairwise incongruent mod $6$.
+\end{itemize}
+So the residues $a_i\bmod6$ ($i\in A$) are distinct, and they lie in the preimage of the
+$3-|B|$ classes of $\mathbb{Z}/3$ not used by $B$. Each class of $\mathbb{Z}/3$ has exactly two
+preimages in $\mathbb{Z}/6$, so $|A|\le2(3-|B|)$. Then $k=|A|+|B|\le6-|B|\le6$.
+
+\emph{Case $[k]=E$.} Let $B=E\setminus T$, $A_2=\{i\in A:4\mid m_i\}$ and $A_1=A\setminus A_2$. We have
+$|A_2|\le1$, since two indices of $A_2$ would give $12\mid g_{ij}$. For $b\ne b'$ in $B$, $g_{bb'}$ is
+even and not divisible by $3$, so $g_{bb'}\in\{2,4\}$ and $g_{bb'}\mid4$. For $i\in A_1$ and $b\in B$,
+$g_{ib}$ is even, not divisible by $3$ (as $3\nmid m_b$) and not divisible by $4$ (as $4\nmid m_i$), so
+$g_{ib}=2$. By Corollary~\ref{cor:basic}:
+\begin{itemize}
+\item the $a_b$ ($b\in B$) are pairwise incongruent mod $4$;
+\item each $a_i$ ($i\in A_1$) has parity opposite to every $a_b$ ($b\in B$);
+\item the $a_i$ ($i\in A$) are pairwise incongruent mod $6$.
+\end{itemize}
+If $B=\emptyset$, then $[k]=A$ and $k\le6$ by pigeonhole mod $6$. If the $a_b$ ($b\in B$) have both
+parities, then $A_1=\emptyset$ and $k\le|B|+|A_2|\le4+1=5$. Otherwise all $a_b$ have the same parity
+$\varepsilon$. Then $|B|\le2$, since there are only two classes mod $4$ of parity $\varepsilon$. Every
+$a_i$ with $i\in A_1$ has parity $1-\varepsilon$, and these $a_i$ are pairwise incongruent mod $6$. Only
+three classes mod $6$ have a given parity, so $|A_1|\le3$. Altogether $k\le2+3+1=6$.
+\end{proof}
+
+\section{Gcds at most $7$: the cases $k=7,8$}
+
+\begin{proposition}\label{prop:78}
+Suppose every $g_{ij}\le7$. Then $k\le7$. If moreover no $g_{ij}$ equals $7$, then $k\le6$.
+\end{proposition}
+
+\begin{proof}
+For $n\in\{2,\dots,7\}$ the sets $\pr(n)$ are $\{2\},\{3\},\{2\},\{5\},\{2,3\},\{7\}$. By
+definition of $\pi(i)$, since every $g_{ij}\le7$, every $\pi(i)\subseteq\{2,3,5,7\}$. Let $p\in\{5,7\}$. For $i\ne j$ in $S_p$,
+Lemma~\ref{lem:channel}(c) gives $p\mid g_{ij}\le7$, so
+\begin{equation}\label{eq:Sp}
+  g_{ij}=p\quad\text{and}\quad\pi(i)\cap\pi(j)=\{p\}\qquad(i\ne j\in S_p).
+\end{equation}
+In particular the sets $\pi(i)\setminus\{p\}$, $i\in S_p$, are pairwise disjoint.
+
+\emph{Step 1. For $p\in\{5,7\}$: either $S_p=[k]$, in which case $k\le p$ and every $g_{ij}=p$; or
+$|S_p|\le|\pi(l)|$ for every $l\notin S_p$.}
+If $S_p=[k]$, then \eqref{eq:Sp} gives $g_{ij}=p$ for all pairs, and $k\le p$ by
+Corollary~\ref{cor:basic} and pigeonhole. Otherwise, let $l\notin S_p$. For each $i\in S_p$, the set
+$\pi(i)\cap\pi(l)$ is nonempty (Lemma~\ref{lem:channel}(a)) and contained in $\pi(i)\setminus\{p\}$
+(since $p\notin\pi(l)$). These nonempty sets are pairwise disjoint subsets of $\pi(l)$, so
+$|S_p|\le|\pi(l)|$.
+
+Let $O=[k]\setminus(S_5\cup S_7)$. Thus $\pi(l)\subseteq\{2,3\}$ for $l\in O$.
+
+\emph{Step 2. The case $O=\emptyset$.} Then $[k]=S_5\cup S_7$.
+\begin{itemize}
+\item If $S_5=[k]$, then all $g_{ij}=5$ and $k\le5$.
+\item If $S_7=[k]$, then all $g_{ij}=7$ and $k\le7$.
+\item Otherwise, for each $p\in\{5,7\}$ some $l\notin S_p$ exists. Since $\pi(l)\subseteq\{2,3,5,7\}\setminus\{p\}$,
+  Step~1 gives $|S_p|\le3$. Hence $k\le|S_5|+|S_7|\le6$.
+\end{itemize}
+
+\emph{Step 3. The case $O\ne\emptyset$.} Fix $l_0\in O$ and let $p\in\{5,7\}$ with $S_p\ne\emptyset$.
+By Step~1 (note $l_0\notin S_p$), $|S_p|\le|\pi(l_0)|\le2$, and by Lemma~\ref{lem:channel}(b),
+$|S_p|=2$. Write $S_p=\{i,i'\}$. For every $l\in O$, the sets $\pi(i)\cap\pi(l)$ and $\pi(i')\cap\pi(l)$
+are nonempty, disjoint (by \eqref{eq:Sp}) and contained in $\pi(l)\subseteq\{2,3\}$. Therefore
+$\pi(l)=\{2,3\}$. After renaming $i,i'$ we may take $\pi(i)\cap\pi(l)=\{2\}$ and $\pi(i')\cap\pi(l)=\{3\}$.
+The names $i,i'$ do not depend on $l$: we have $\pi(i)\cap\{2,3\}=\pi(i)\cap\pi(l)$ for every
+$l\in O$.
+
+\emph{Step 3(a): $S_5=S_7=\emptyset$.} Then $O=[k]$, and every $\pr(g_{ij})=\pi(i)\cap\pi(j)\subseteq\{2,3\}$.
+With $g_{ij}\le7$ this means $g_{ij}\in\{2,3,4,6\}$. Lemma~\ref{lem:W} gives $k\le6$.
+
+\emph{Step 3(b): some $S_p=\{i,i'\}$ is nonempty, with notation as above.} We derive
+constraints on the $a_l$ ($l\in O$).
+\begin{itemize}
+\item For $l\ne l'$ in $O$: $\pr(g_{ll'})=\{2,3\}$ and $g_{ll'}\le7$, so $g_{ll'}=6$. The $a_l$ are
+  pairwise incongruent mod $6$.
+\item For $l\in O$: $\pr(g_{i'l})=\{3\}$, so $g_{i'l}=3$ and $a_l\not\equiv a_{i'}\pmod3$.
+\item For $l\in O$: $\pr(g_{il})=\{2\}$, so $g_{il}\in\{2,4\}$. At most one $l\in O$ has $4\mid m_l$, since
+  two such $l,l'$ would give $12\mid g_{ll'}$. For every other $l\in O$ we get $g_{il}=2$ (as
+  $g_{il}\mid m_l$), hence $a_l\not\equiv a_i\pmod2$.
+\end{itemize}
+Let $O'=\{l\in O:4\nmid m_l\}$, so $|O|\le|O'|+1$. The residues $a_l\bmod6$ ($l\in O'$) are distinct.
+Each has parity different from $a_i$ and residue mod $3$ different from $a_{i'}$. By the Chinese
+remainder theorem, $\mathbb{Z}/6\cong\mathbb{Z}/2\times\mathbb{Z}/3$, and exactly $1\cdot2=2$ classes
+mod $6$ meet both conditions. So $|O'|\le2$ and $|O|\le3$. Step~3 also showed $|S_q|\in\{0,2\}$ for
+both $q\in\{5,7\}$. Hence
+\[
+  k\le|S_5|+|S_7|+|O|\le2+2+3=7.
+\]
+
+\emph{Conclusion.} In every case $k\le7$. Now suppose no $g_{ij}$ equals $7$. Then no prime channel is
+$7$, i.e.\ $S_7=\emptyset$ by \eqref{eq:Sp} and Lemma~\ref{lem:channel}(b). The cases give:
+\begin{itemize}
+\item Step~2: $k\le5$ ($S_5=[k]$ is forced, because $S_7=\emptyset$ and $O=\emptyset$);
+\item Step~3(a): $k\le6$;
+\item Step~3(b): $k\le|S_5|+|O|\le2+3=5$.
+\end{itemize}
+So $k\le6$.
+\end{proof}
+
+\section{Proof of Theorem~\ref{thm:main}}
+
+The cases $2\le k\le6$ are Corollary~\ref{cor:k56}. Suppose $k=7$ and all $g_{ij}\le6$. Then
+Proposition~\ref{prop:78} (second part) gives $k\le6$, a contradiction. Suppose $k=8$ and all
+$g_{ij}\le7$. Then Proposition~\ref{prop:78} (first part) gives $k\le7$, a contradiction. \qed
+
+\begin{remark}[Sharpness]
+For every $k$ the family $r\bmod k$ ($0\le r<k$) is disjoint with all pairwise gcds equal to
+$k$. The bounds in Lemma~\ref{lem:W} and Proposition~\ref{prop:78} are attained. The six classes
+$r\bmod6$ have all gcds equal to $6$. The seven classes $r\bmod7$ have all gcds equal to $7$.
+\end{remark}
+
+\begin{remark}[Computer sanity check, not part of the proof]
+The script \texttt{check\_p4\_c3.py} checks the theorem numerically; the proof does not use it.
+\begin{itemize}
+\item \emph{Graph.} For each $k\in\{5,6,7,8\}$ it forms all classes $a\bmod m$ with $0\le a<m\le60$
+  (1829 classes). Two classes are joined when they are disjoint and their moduli have gcd $<k$.
+\item \emph{Disjointness.} This is checked literally, from the definition, and not via $(*)$ or
+  Lemma~\ref{lem:crt}. The classes $a\bmod m$ and $b\bmod n$ meet iff $b-a\equiv mt\pmod n$ for some
+  $t$, and the set $\{mt\bmod n:0\le t<n\}$ is listed explicitly.
+\item \emph{Result.} An exact branch-and-bound search finds a maximum clique size of exactly $k-1$
+  in each case (5.5\,s in total). This agrees with the theorem.
+\end{itemize}
+\end{remark}
+
+\begin{thebibliography}{9}
+\bibitem{OBr07} K.~O'Bryant, \emph{On Z.-W.\ Sun's disjoint congruence classes conjecture}, in
+  \emph{Combinatorial Number Theory}, de Gruyter, Berlin, 2007, pp.~403--411; arXiv:math/0604347.
+\bibitem{Sun06} Z.-W.~Sun, \emph{Finite covers of groups by cosets or subgroups}, Internat.\ J.\ Math.\
+  \textbf{17} (2006), 1047--1064; arXiv:math/0501451.
+\end{thebibliography}
+
+\end{document}

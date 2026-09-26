@@ -1,0 +1,72 @@
+% ===== uphill/p2_c3.tex  (Problem 2, track 3) =====
+% Written directly as a body file (not produced by tools/convert_cell.py).
+% Title: Problem 2, Cell 3: $U(Q_6)$
+% Body only: packages, theorem environments and macros are in preamble.tex.
+% Labels are prefixed with "p2c3:".  Uses cell 1 (p2c1:*) and the method of cell 2 (p2c2:*).
+% Code: code/uphill_lower.py (claim L6), code/uphill_construct.py, code/uphill_eval.py.
+
+\paragraph{Official setting.} As in Cell~1 (\S\ref{p2c1:sec:count}).
+
+\begin{statement}
+Determine $U(Q_6)$, and give a labelling attaining it.
+\end{statement}
+
+\paragraph{Status.} \textbf{Solved}. The upper bound is by hand. The lower bound is
+\textbf{computer-assisted}: one SAT computation, about $10$\,s, repeated with two solvers.
+
+\paragraph{Answer.} $U(Q_6)=204$, and $\nabla(Q_6)=28$ (Theorem~\ref{p2c3:thm:main}).
+The labelling is in \S\ref{p2c3:sec:lab}.
+
+\subsubsection{The decycling number of $Q_6$}
+
+Lemma~\ref{p2c1:lem:count} gives $5\nabla(Q_6)\ge4\cdot32+1$, that is, $\nabla(Q_6)\ge26$. The
+true value is $28$.
+
+\begin{lemma}[computer-assisted]\label{p2c3:lem:L6}
+$Q_6$ has no decycling set with $27$ or fewer vertices. Hence $\nabla(Q_6)\ge28$.
+\end{lemma}
+
+\begin{proof}[Method]
+This is claim (L6) of \texttt{code/uphill\_lower.py}. It uses the same counterexample-guided SAT
+loop as Lemma~\ref{p2c2:lem:L5}, with $d=6$ and bound $\sum_vx_v\le27$. The argument there shows
+that every decycling set of size $\le27$ satisfies the formula at every stage, and that the loop
+ends. The result is UNSAT: after $685$ rounds in about $10$\,s with CaDiCaL~1.5.3, and after
+$689$ rounds in about $8$\,s with Glucose~4.
+\end{proof}
+
+\begin{theorem}\label{p2c3:thm:main}
+$\nabla(Q_6)=28$ and $U(Q_6)=204$.
+\end{theorem}
+
+\begin{proof}
+Lower bound: by Lemma~\ref{p2c3:lem:L6} and Theorem~\ref{p2c1:thm:lower},
+$U(Q_6)\ge64+5\cdot28=204$. Upper bound: let
+\[
+  C=\{000000,\ 111100,\ 110011,\ 001111\},
+\]
+the linear code spanned by $111100$ and $110011$. All its nonzero words have weight $4$, so its
+pairwise distances are $4$. By Proposition~\ref{p2c1:prop:code}, $E_6\setminus C$ is a decycling
+set of size $32-4=28$, and $L_C$ has $64+5\cdot28=204$ uphill paths.
+\end{proof}
+
+\begin{remark}\label{p2c3:rem:parity}
+Cell~5 needs a stronger fact: every decycling set of $Q_6$ of size $28$ lies inside $E_6$ or
+inside $O_6$. This is Lemma~P6 of Cell~5, claim (P6) of the same script. It is stated and
+proved there, where it is used.
+\end{remark}
+
+\subsubsection{The labelling}\label{p2c3:sec:lab}
+
+$L_C$ for the code $C$ above: the $4$ codewords, then the $32$ odd vertices, then the remaining
+$28$ even vertices, each block in increasing binary order. It has $204$ uphill paths (checked with
+\texttt{code/uphill\_eval.py}).
+\begin{flushleft}\small\ttfamily
+\makebox[2.4em][r]{\textrm{1:}}\ 000000\ 001111\ 110011\ 111100\ 000001\ 000010\ 000100\ 000111\\
+\makebox[2.4em][r]{\textrm{9:}}\ 001000\ 001011\ 001101\ 001110\ 010000\ 010011\ 010101\ 010110\\
+\makebox[2.4em][r]{\textrm{17:}}\ 011001\ 011010\ 011100\ 011111\ 100000\ 100011\ 100101\ 100110\\
+\makebox[2.4em][r]{\textrm{25:}}\ 101001\ 101010\ 101100\ 101111\ 110001\ 110010\ 110100\ 110111\\
+\makebox[2.4em][r]{\textrm{33:}}\ 111000\ 111011\ 111101\ 111110\ 000011\ 000101\ 000110\ 001001\\
+\makebox[2.4em][r]{\textrm{41:}}\ 001010\ 001100\ 010001\ 010010\ 010100\ 010111\ 011000\ 011011\\
+\makebox[2.4em][r]{\textrm{49:}}\ 011101\ 011110\ 100001\ 100010\ 100100\ 100111\ 101000\ 101011\\
+\makebox[2.4em][r]{\textrm{57:}}\ 101101\ 101110\ 110000\ 110101\ 110110\ 111001\ 111010\ 111111\\
+\end{flushleft}

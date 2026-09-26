@@ -1,0 +1,440 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\newtheorem{proposition}{Proposition}
+\begin{document}
+\title{Cell C4: complete proofs for five and six lines}
+\author{}
+\date{26 September 2026}
+\maketitle
+
+\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{\textbf{Official statement (Cell 4).} ``Two concrete instances of the next case, $N = d+2$: five lines in three dimensions and six lines in four. In each, the conjectured optimum repeats two of the coordinate axes. Prove that any 5 lines in $\mathbb R^3$ satisfy $S \le 4\pi$, and that any 6 lines in $\mathbb R^4$ satisfy $S \le 13\pi/2$.''}}
+\medskip
+
+For unit representatives $x_1,\ldots,x_N\in\mathbb R^d$, put
+$g_{ij}=\langle x_i,x_j\rangle$,
+$A=\sum_{i<j}\arcsin|g_{ij}|$, and
+$S=\sum_{i<j}\arccos|g_{ij}|$.  Since
+$\theta_{ij}=\pi/2-\arcsin|g_{ij}|$, the two requested inequalities
+are both equivalent to $A\geq\pi$.
+
+\section*{Elementary lemmas}
+
+\begin{proposition}[Planar triples and quadruples]
+For three lines in a plane, the sum of their pairwise acute angles
+is at most $\pi$.  For four lines in a plane, it is at most $2\pi$.
+Equivalently, their respective $A$-values are at least $\pi/2$
+and $\pi$.
+\end{proposition}
+\begin{proof}
+Represent the three lines by three points on a circle of circumference
+$\pi$; acute angle is shortest circular distance.  If the three
+successive gaps are all at most $\pi/2$, the three pair distances sum
+to the circumference $\pi$.  If one gap is greater than $\pi/2$,
+the sum of pair distances is twice the sum of the other two gaps,
+which is less than $\pi$.  This proves the triple statement.
+For four lines, sum the triple statement over their four triples.
+Each pair appears twice, so twice the four-line angle sum is at most
+$4\pi$.
+For later use, averaging the three-line $A\geq\pi/2$ bound over
+the ten triples among five planar lines shows that their $A$-value
+is at least $5\pi/3$: every pair occurs in three triples.
+\end{proof}
+
+\begin{proposition}[Orthogonal basis]
+If $e_1,\ldots,e_d$ are an orthonormal basis and $z$ is a unit
+vector, then $\sum_{j=1}^d\arcsin|\langle z,e_j\rangle|\geq\pi/2$.
+\end{proposition}
+\begin{proof}
+For $a,b\geq0$ with $a^2+b^2\leq1$ one has
+\[
+ \arcsin a+\arcsin b\geq\arcsin\sqrt{a^2+b^2}.
+\]
+If the left side is already at least $\pi/2$, this is immediate.
+Otherwise, taking sines reduces the claim to
+$\sqrt{(1-a^2)(1-b^2)}\geq ab$, which follows from
+$a^2+b^2\leq1$.  Combine the $d$ coordinates successively and use
+$\sum_j|\langle z,e_j\rangle|^2=1$.
+\end{proof}
+
+\begin{proposition}[Orthogonality saturation]
+Fix $N$ lines in $\mathbb R^d$ and let $S$ be their total acute-angle
+sum.  There exists a maximizer of $S$ such that, for every line
+$\ell_i$, either it is orthogonal to all other lines or its
+orthogonality neighbors span a space of dimension at least $d-1$.
+\end{proposition}
+\begin{proof}
+The product of projective spheres is compact, so a maximizer exists.
+Among all maximizers choose one with the largest possible number of
+orthogonal pairs.  Let $W$ be the span of the representatives of the
+lines orthogonal to $\ell_i$.  Suppose $\dim W\leq d-2$ and that
+$\ell_i$ is not orthogonal to all the others.  Then $W^\perp$ has
+dimension at least two, and there is a great circle in $W^\perp$
+through a unit representative $x_i$ on which the inner product with
+some non-neighbor is nonconstant.  Vary only $x_i$ on this circle.
+
+On an interval with no new orthogonality event, each term
+$\arccos|\langle x_i(t),x_j\rangle|$ is convex.  To see this,
+write its inner product, up to sign, as $r\cos(t-\phi)$, with
+$0\leq r\leq1$ and $\cos(t-\phi)>0$.  For $r<1$ its second
+derivative is
+\[
+ \frac{r(1-r^2)\cos(t-\phi)}
+ {(1-r^2\cos^2(t-\phi))^{3/2}}\geq0.
+\]
+For $r=1$ the function is piecewise linear with a convex corner
+at coincidence.  Terms with $r=0$ are constant.  Thus the sum is
+convex between consecutive orthogonality events.  One endpoint of
+the event interval containing $x_i$ has value at least its initial
+value.  Since the initial configuration was a global maximizer, the
+endpoint is another maximizer.  All old orthogonality pairs involving
+$i$ persist, since the circle lies in $W^\perp$, and at least one
+new pair appears.  This contradicts the choice of maximizer.
+\end{proof}
+
+The same argument has a strict form that we will use only to describe
+equality.  At \emph{any} maximizer, suppose an orthogonality-neighbor
+span $W$ has dimension at most $d-2$.  On every two-dimensional circle
+$U\subset W^\perp$ through $x_i$, a non-neighbor $y$ with
+$0<\|\operatorname{proj}_U y\|<1$ would make its angle term strictly
+convex between events, contradicting maximality.  Thus every
+non-neighbor belongs to every such $U$.  If $\dim W^\perp=2$, all
+non-neighbors lie in $W^\perp$; if $\dim W^\perp\geq3$, they lie on
+$\ell_i$, the intersection of these circle planes.  Hence the
+configuration splits into orthogonal subfamilies, unless $W=0$
+and all lines coincide.  The latter is not a maximizer for $N\geq2$
+and $d\geq2$.
+
+\section*{Five lines in three dimensions}
+
+\begin{proposition}
+For any five lines in $\mathbb R^3$, $A\geq\pi$, or equivalently
+$S\leq4\pi$.
+\end{proposition}
+\begin{proof}
+It suffices to prove the bound for a maximizing configuration chosen
+as in the orthogonality-saturation proposition.  Let $H$ be its graph
+of orthogonal pairs.  If a vertex is adjacent to all four others,
+those four lines lie in a plane; their angle sum is at most $2\pi$,
+and the four angles involving the universal vertex total $2\pi$.
+
+Otherwise the neighbors of every vertex span a plane, so $H$ has
+minimum degree at least two.  If $H$ contains a triangle, its three
+lines form an orthonormal basis.  The orthogonal-basis proposition
+applied to each of the remaining two lines gives $A\geq\pi$.
+
+If $H$ is triangle-free, minimum degree two on five vertices forces
+$H=C_5$ or $H=K_{2,3}$.  Indeed, degree two everywhere gives $C_5$;
+if some vertex has degree three, its three neighbors are mutually
+nonadjacent, and the fifth vertex must meet all three to give them
+degree at least two, giving $K_{2,3}$.  In the latter case the two
+parts span orthogonal subspaces.  If the part of size two consists
+of independent lines, the three lines in the other part coincide
+and contribute $3\pi/2$ to $A$.  Otherwise the two lines coincide,
+contributing $\pi/2$, while the other three are planar and
+contribute at least another $\pi/2$.
+
+It remains to treat $C_5$.  Label its edges
+$12,23,34,45,51$.  Choose coordinates with $x_1=e_1$ and
+$x_2=e_2$.  Since $x_2\perp x_3$ and $x_1\perp x_5$, write,
+up to signs irrelevant to the absolute inner products,
+\[
+ x_3=(\cos t,0,\sin t),\qquad
+ x_5=(0,\cos s,\sin s),\qquad 0\leq t,s\leq\pi/2.
+\]
+The line $x_4$ is perpendicular to both $x_3,x_5$.  Put
+$D=\sqrt{1-\sin^2t\sin^2s}$.  If $D=0$, then $x_3=x_5=e_3$
+as lines and $x_1,x_2,x_3$ are an orthonormal basis, a case already
+handled.  Otherwise, the five nonzero-potential pairs are the
+nonedges of $C_5$, and direct cross-product calculation gives
+\[
+ A=\pi-t-s+u(t,s)+v(t,s)+\gamma(t,s)
+  =\pi+F(t,s),
+ \quad F(t,s):=u(t,s)+v(t,s)+\gamma(t,s)-t-s,
+\]
+where
+\[
+ u=\arctan(\tan t\cos s),\qquad
+ v=\arctan(\tan s\cos t),\qquad
+ \gamma=\arcsin(\sin t\sin s).
+\]
+The expression is interpreted continuously at endpoints.  We show
+$F\geq0$.  For fixed $s\in[0,\pi/2)$, differentiation gives
+\[
+ \frac{\partial F}{\partial t}
+ =\frac{\cos s}{1+\sin t\sin s}
+  +\frac{\cos t\sin s}{\sqrt{1-\sin^2t\sin^2s}}-1.
+\]
+Both nonconstant terms decrease with $t$.  For the second,
+\[
+ \frac{d}{dt}\left(\frac{\cos t}{D}\right)
+ =-\frac{\sin t\cos^2s}{D^3}\leq0.
+\]
+Hence $F$ is concave in $t$.
+But $F(0,s)=F(\pi/2,s)=0$, so $F(t,s)\geq0$.
+The case $s=\pi/2$ follows by continuity.  Therefore $A\geq\pi$.
+\end{proof}
+
+\section*{Six lines in four dimensions}
+
+\begin{proposition}
+Any four lines in $\mathbb R^3$ satisfy $A\geq\pi/2$.
+\end{proposition}
+\begin{proof}
+Choose a maximizing configuration for their acute-angle sum with
+the largest number of orthogonal pairs.  If one line is orthogonal
+to the other three, the latter are planar, so their $A$-value is
+at least $\pi/2$.  Otherwise saturation gives minimum degree two
+in the orthogonality graph on four vertices.  If it contains a
+triangle, that triangle is an orthonormal basis and the fourth line
+contributes at least $\pi/2$ by the orthogonal-basis proposition.
+If it is triangle-free, it must be $K_{2,2}$: the two parts span
+orthogonal spaces, and since their dimensions sum to at most three,
+at least one part is a pair of coincident lines, contributing
+$\pi/2$ to $A$.
+\end{proof}
+
+\begin{proposition}
+For any six lines in $\mathbb R^4$, $A\geq\pi$, or equivalently
+$S\leq13\pi/2$.
+\end{proposition}
+\begin{proof}
+The same saturation proposition gives a useful restriction.  At a
+maximizing configuration of six lines in $\mathbb R^4$, a universal
+orthogonality vertex reduces the bound to the five-line theorem above:
+the other five lines lie in its orthogonal $\mathbb R^3$, while its
+five incident angles total $5\pi/2$.  Four mutually orthogonal
+lines also settle the case, by applying the orthogonal-basis
+proposition to each of the other two lines.
+
+If neither occurs, let $J$ be the graph of nonorthogonal pairs.
+Every orthogonality neighborhood spans a three-dimensional space,
+so every vertex of $J$ has degree at most two.  If $J$ is connected,
+it is a path or a cycle on six vertices.  A path is impossible:
+the Gram matrix, in path order, is an irreducible symmetric
+tridiagonal matrix, whose eigenvalues are simple (the first
+coordinate of an eigenvector determines all the others by the
+three-term recurrence).  Its nullity is therefore at most one,
+whereas six vectors in $\mathbb R^4$ have Gram nullity at least two.
+If $J$ is disconnected, its components are mutually orthogonal
+families.  For any component of at most five lines with span rank
+$r$, the preceding planar bounds, the four-line proposition, and
+the five-line theorem show directly that its $A$-value is at least
+$(n-r)\pi/2$: check $r=1$ by counting coincident pairs, $r=2$
+by the planar bounds and the five-line triple average, and
+$r=3$ by the four- and five-line theorems.  A component of rank
+$4$ leaves no room for any other nonempty orthogonal component.
+Summing over components gives $A\geq(6-4)\pi/2=\pi$.
+It remains to handle $J=C_6$.
+This case also follows from the general cycle lemma in \texttt{p1\_c5.tex}.
+The two alternating triples of its
+vertices are each pairwise orthogonal.  Denote their unit vectors by
+$u_1,u_2,u_3$ and $v_1,v_2,v_3$, relabeling so that
+$u_i\perp v_i$ for $i=1,2,3$ and the six other cross pairs are the
+edges of $J$.  Complete $u_1,u_2,u_3$ to an orthonormal basis of
+$\mathbb R^4$, so $u_i=e_i$.  Orienting coordinate axes and lines
+does not change $A$.  We may therefore write
+\[
+ v_1=(0,C,Pc,Ps),\qquad
+ v_2=(D,0,Ws,-Wc),
+\]
+where $P=\sin p$, $C=\cos p$, $W=\sin w$, $D=\cos w$,
+$c=\cos q$, $s=\sin q$, and $p,w,q\in[0,\pi/2]$.
+Indeed, the first expression parameterizes a unit vector orthogonal
+to $e_1$; the second parameterizes a unit vector orthogonal to
+both $e_2$ and $v_1$.  For the strict $C_6$ pattern all six cross
+inner products are nonzero, so $C,D,c,s>0$.  Boundary cases follow
+by continuity or have already been covered by a graph with more
+orthogonality edges.
+
+The vector $v_3$ is orthogonal to $e_3,v_1,v_2$.  Solving these
+three linear equations and normalizing shows that the absolute
+values of its first two coordinates are
+\[
+ X=\frac{WCc}{H},\qquad Y=\frac{PDs}{H},\qquad
+ H^2=C^2D^2+P^2D^2s^2+W^2C^2c^2.
+\]
+The six nonzero-potential pair terms are consequently
+\[
+ A=\arcsin C+\arcsin D+\arcsin(Pc)+\arcsin(Ws)
+       +\arcsin X+\arcsin Y
+   =\pi+F(q),
+\]
+where
+\[
+ F(q)=\arcsin(Pc)+\arcsin(Ws)+\arcsin X+\arcsin Y-p-w.
+\]
+We prove $F(q)\geq0$.  Its endpoint values are
+$F(0)=F(\pi/2)=0$.  Set
+\[
+ a=\sqrt{1-P^2c^2},\qquad b=\sqrt{1-W^2s^2},\qquad
+ M=\frac{CD}{H^2}.
+\]
+Direct differentiation, using $1-X^2=D^2a^2/H^2$ and
+$1-Y^2=C^2b^2/H^2$, gives
+\[
+ F'(q)=\frac{c(W+PM)}{b}-\frac{s(P+WM)}{a}.
+\]
+For $0<p,w<\pi/2$, the sign of $F'(q)$ is the sign of $R(q)-1$,
+where
+\[
+ R(q)=\frac{c}{s}\frac{a}{b}\frac{W+PM}{P+WM}.
+\]
+The first two factors have a nonincreasing product: multiplying
+its logarithmic derivative by $sc$ yields
+\[
+ -1+\frac{P^2s^2c^2}{a^2}
+    +\frac{W^2s^2c^2}{b^2}\leq0,
+\]
+because $a^2=C^2+P^2s^2\geq P^2s^2$ and
+$b^2=D^2+W^2c^2\geq W^2c^2$.  The last factor is also
+nonincreasing.  Indeed $H^2=D^2+(W^2-P^2)c^2$, so
+\[
+ M'=\frac{2CD(W^2-P^2)sc}{H^4},
+\]
+and the logarithmic derivative of $(W+PM)/(P+WM)$ is
+\[
+ \frac{M'(P^2-W^2)}{(W+PM)(P+WM)}
+ =-\frac{2CD(W^2-P^2)^2sc}
+ {H^4(W+PM)(P+WM)}\leq0.
+\]
+Thus $R$ decreases from $+\infty$ at $q=0$ to $0$ at
+$q=\pi/2$.  The derivative $F'$ changes sign only from positive
+to negative, so $F$ has its minimum at an endpoint.  Both endpoint
+values are zero; hence $A\geq\pi$.  Cases with $p$ or $w$ on the
+boundary follow by continuity.  This completes the six-line proof.
+\end{proof}
+
+\noindent The six-line case also follows from the cycle lemma of Cell~5 (applied with $m=6$),
+which gives a second, independent proof.
+
+\section*{Sharpness}
+
+Three planar lines with directions $0,\pi/3,2\pi/3$ have three
+pairwise acute angles $\pi/3$, hence contribute $\pi/2$ to $A$.
+Four planar lines with directions $0,\pi/2,\delta,\delta+\pi/2$
+have $A=\pi$ for every $0\leq\delta\leq\pi/2$.
+For five lines in $\mathbb R^3$, put the planar triple in one
+two-dimensional summand and repeat the perpendicular line twice;
+their contributions are $\pi/2+\pi/2=\pi$.  Alternatively, use
+the planar quadruple and one perpendicular line.  For six lines in
+$\mathbb R^4$, put one such planar triple in each of two mutually
+orthogonal planes.  Their contributions again sum to $\pi$.
+Thus both upper bounds are attained.
+
+\section*{Equality configurations}
+
+Here is an exact description, with repeated lines allowed.  Let $D$
+be a pair of coincident lines; let $T$ be any three lines in a plane
+whose three successive gaps on the projective circle are all at most
+$\pi/2$; let $Q$ be any four lines in a plane that are the union of
+two orthogonal pairs.  The symbol $+$ below denotes an orthogonal
+direct sum of the spans of the indicated blocks, and $1$ denotes a
+single line.  Up to an orthogonal transformation and relabeling,
+all equality configurations are
+\[
+ \begin{array}{c|c}
+ (N,d)&\text{blocks}\\ \hline
+ (5,3)&Q+1\quad\text{or}\quad T+D\\
+ (6,4)&Q+1+1\quad\text{or}\quad T+D+1
+                  \quad\text{or}\quad T+T.
+ \end{array}
+\]
+Each displayed family attains $A=\pi$, by the planar bounds with
+equality and by $A(D)=\pi/2$.
+
+For completeness, we justify that the list is exhaustive.  Equality
+in the orthogonal-basis proposition holds precisely when the extra
+vector has at most two nonzero basis coordinates: combining two
+positive coordinates is strict whenever their squared sum is less
+than one.  Equality for a planar triple is exactly the gap condition
+in the definition of $T$.  For four cyclically ordered planar lines,
+write the four consecutive gaps as $a,b,c,d$, with
+$a+b+c+d=\pi$.  Equality in the four-line bound forces equality in
+each of its four triple bounds, hence
+\[
+ a+b,\ b+c,\ c+d,\ d+a\leq\pi/2.
+\]
+The four left sides sum to $2\pi$, so all are $\pi/2$; opposite
+lines form two orthogonal pairs.  This is exactly $Q$.
+
+An equality configuration is a global maximizer.  If it is not an
+orthogonal sum, the strict form of orthogonality saturation gives
+the same minimum-degree conclusions for its own orthogonality graph
+as those used above.  For four lines in $\mathbb R^3$, its graph is
+then a triangle or $K_{2,2}$; the latter is an orthogonal sum, and
+equality in the former puts the fourth line in a coordinate plane,
+leaving a basis line orthogonal to the other three.  Thus every
+four-line equality case is $T+1$.
+
+For five lines in $\mathbb R^3$, the $K_{2,3}$ case is an orthogonal
+sum and the exact $C_5$ case is strict: with $0<t,s<\pi/2$, the
+function $F(t,s)$ above is strictly concave in $t$ and is positive
+between its zero endpoints.  In the orthogonal-basis case, the two
+extra lines each have support of size at most two and are orthogonal
+to each other.  If their supports are disjoint or equal, they split
+off an orthogonal coordinate block; supports meeting in exactly one
+coordinate have nonzero inner product.  Hence
+this case also splits orthogonally.  Decomposing repeatedly, and
+using the sharp component bounds in ranks one, two, and three,
+leaves exactly $Q+1$ or $T+D$.
+
+For six lines in $\mathbb R^4$, the exact $C_6$ case is strict because
+$R(q)$ is strictly decreasing in the interior, so $F(q)>0$ there.
+The path is impossible and a disconnected nonorthogonality graph
+already gives an orthogonal sum.  If four lines form an orthonormal
+basis, equality requires the other two to be orthogonal and each
+to have support in at most two basis coordinates.  Their supports
+are either disjoint or equal; supports meeting in only one coordinate
+would have nonzero inner product.  Thus this case
+also splits.  Finally, the universal-vertex case splits by definition.
+Every equality case is therefore an orthogonal sum of components
+of sizes at most five.  The component inequalities used above imply
+that equality requires total span rank four and equality in each
+component.  The only positive-defect block types needed are
+$D$ (defect one), $T$ (defect one), and $Q$ (defect two); the
+four-line and five-line equality classifications just proved split
+all other blocks further.  A zero-defect component at equality has
+$A=0$, so its lines split into orthogonal singletons.  Counting
+six lines and rank four gives
+exactly the three displayed families.
+
+
+\section*{An independent short estimate}
+
+\begin{proposition}
+For $(N,d)=(5,3)$ or $(6,4)$, the requested inequality holds if
+$|g_{ij}|\leq 1/2$ for every $i\ne j$.  In the first case the stronger
+bound $A\geq 10\pi/9$ holds.
+\end{proposition}
+\begin{proof}
+The function $f(t)=\arcsin(t)/t^2$ decreases on $(0,1/2]$.  Indeed,
+the sign of $f'(t)$ is the sign of
+$t/\sqrt{1-t^2}-2\arcsin t$, which is negative there because
+$t/\sqrt{1-t^2}\leq 2t/\sqrt3<2t\leq2\arcsin t$.
+Consequently,
+\[
+  \arcsin t\geq \frac{2\pi}{3}t^2
+  \qquad (0\leq t\leq 1/2).
+\]
+Let $T=\sum_i x_i x_i^{\mathsf T}$.  It is positive semidefinite,
+$\operatorname{tr}T=N$, and Cauchy--Schwarz on its at most $d$
+nonzero eigenvalues gives
+\[
+ N+2\sum_{i<j}g_{ij}^2
+ =\operatorname{tr}(T^2)\geq \frac{N^2}{d}.
+\]
+Thus
+\[
+ A\geq\frac{2\pi}{3}\sum_{i<j}g_{ij}^2
+ \geq \frac{\pi N(N-d)}{3d}.
+\]
+This last expression is $10\pi/9$ for $(N,d)=(5,3)$ and
+$\pi$ for $(N,d)=(6,4)$.
+\end{proof}
+
+The hypothesis is exactly that every acute line angle is at least
+$\pi/3$.  This gives a separate check on that part of the
+configuration space.
+
+\end{document}

@@ -1,0 +1,15 @@
+k= 3 B= 2  nodes=         3  leaves=       1  gcd+NF=      1  survivors=     0  SAT=0  UNSAT=0  UNDECIDED=0  t_enum=0.0s  t_dec=0.0s  sha256=4f53cda18c2baa0c
+k= 4 B= 3  nodes=        20  leaves=       2  gcd+NF=      2  survivors=     0  SAT=0  UNSAT=0  UNDECIDED=0  t_enum=0.0s  t_dec=0.0s  sha256=4f53cda18c2baa0c
+k= 5 B= 4  nodes=        40  leaves=       6  gcd+NF=      6  survivors=     0  SAT=0  UNSAT=0  UNDECIDED=0  t_enum=0.0s  t_dec=0.0s  sha256=4f53cda18c2baa0c
+k= 6 B= 5  nodes=       133  leaves=       8  gcd+NF=      8  survivors=     0  SAT=0  UNSAT=0  UNDECIDED=0  t_enum=0.001s  t_dec=0.0s  sha256=4f53cda18c2baa0c
+k= 7 B= 6  nodes=       341  leaves=      47  gcd+NF=     47  survivors=     2  SAT=0  UNSAT=2  UNDECIDED=0  t_enum=0.003s  t_dec=0.001s  sha256=01557c6ee0333625
+k= 8 B= 7  nodes=      1263  leaves=      71  gcd+NF=     71  survivors=     7  SAT=0  UNSAT=7  UNDECIDED=0  t_enum=0.008s  t_dec=0.007s  sha256=1621baadfc46fc4b
+k= 9 B= 8  nodes=      2557  leaves=     329  gcd+NF=    329  survivors=     6  SAT=0  UNSAT=6  UNDECIDED=0  t_enum=0.025s  t_dec=0.005s  sha256=febd71b7bbda2883
+k=10 B= 9  nodes=      6093  leaves=     570  gcd+NF=    570  survivors=     3  SAT=0  UNSAT=3  UNDECIDED=0  t_enum=0.063s  t_dec=0.003s  sha256=b02fcc2277902756
+k=11 B=10  nodes=     31547  leaves=    7450  gcd+NF=   7450  survivors=   137  SAT=0  UNSAT=137  UNDECIDED=0  t_enum=0.796s  t_dec=1.836s  sha256=dee521791e4d6f13
+k=12 B=11  nodes=    113915  leaves=   12546  gcd+NF=  12546  survivors=   522  SAT=0  UNSAT=522  UNDECIDED=0  t_enum=1.594s  t_dec=4.6s  sha256=d7ab51816f731ab2
+  [k=13] decided 1000/4395 (2s)
+  [k=13] decided 2000/4395 (10s)
+  [k=13] decided 3000/4395 (33s)
+  [k=13] decided 4000/4395 (181s)
+k=13 B=12  nodes=    288390  leaves=   55827  gcd+NF=  55827  survivors=  4395  SAT=0  UNSAT=4395  UNDECIDED=0  t_enum=6.487s  t_dec=276.965s  sha256=2dbfd65f26961615

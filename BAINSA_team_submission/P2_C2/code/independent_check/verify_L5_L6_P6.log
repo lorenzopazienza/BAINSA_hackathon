@@ -1,0 +1,12 @@
+# verify_L5_L6_P6.py -- Sat Sep 26 15:01:58 CEST 2026
+OK  L5: Q5, |R| <= 13: UNSAT (cadical195, 219 rounds, 579 cuts, 0.0s)
+OK  L5: Q5, |R| <= 13: UNSAT (glucose4, 201 rounds, 558 cuts, 0.1s)
+OK  L6: Q6, |R| <= 27: UNSAT (cadical195, 200 rounds, 1659 cuts, 0.9s)
+OK  L6: Q6, |R| <= 27: UNSAT (glucose4, 205 rounds, 1723 cuts, 1.5s)
+OK  P6: Q6, |R| <= 28, both parities: UNSAT (cadical195, 3552 rounds, 15696 cuts, 14.0s)
+OK  P6: Q6, |R| <= 28, both parities: UNSAT (glucose4, 3312 rounds, 15645 cuts, 26.7s)
+OK  sanity Q5 size 14: Q5, |R| <= 14: SAT (cadical195, 1 rounds, 0 cuts, 0.0s, |R| = 14, parities [0, 1])
+OK  sanity Q5 size 14: Q5, |R| <= 14: SAT (glucose4, 93 rounds, 126 cuts, 0.0s, |R| = 14, parities [0, 1])
+OK  sanity Q6 size 28: Q6, |R| <= 28: SAT (cadical195, 168 rounds, 912 cuts, 0.2s, |R| = 28, parities [0])
+OK  sanity Q6 size 28: Q6, |R| <= 28: SAT (glucose4, 804 rounds, 4178 cuts, 1.1s, |R| = 28, parities [0])
+ALL OK

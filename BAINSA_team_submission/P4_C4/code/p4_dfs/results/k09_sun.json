@@ -1,0 +1,127 @@
+{
+ "k": 9,
+ "status": "COMPLETE",
+ "enumeration_finished": true,
+ "first_column_subtrees_completed": 9,
+ "gcd_bound": [
+  2,
+  8
+ ],
+ "L": 840,
+ "primes_processing_order": [
+  7,
+  5,
+  3,
+  2
+ ],
+ "options": {
+  "gcd_prune": true,
+  "coprime_prune": true,
+  "forced_even_prune": true,
+  "late_nf": false,
+  "plain_decide": false,
+  "interchange": true
+ },
+ "counts": {
+  "enumeration_nodes": 2557,
+  "complete_exponent_matrices(leaves)": 329,
+  "gcd_in_range_and_normal_form": 329,
+  "survivors(density<=1)": 6,
+  "SAT": 0,
+  "UNSAT": 6,
+  "UNDECIDED": 0,
+  "decision_nodes": 53
+ },
+ "wall_clock_s": {
+  "enumeration": 0.025,
+  "decision": 0.005,
+  "total": 0.03
+ },
+ "survivors_sha256": "febd71b7bbda2883058372c14ae266f566ba8c815d0005df1081c944df13144c",
+ "survivors": [
+  {
+   "moduli": [
+    6,
+    6,
+    6,
+    6,
+    6,
+    12,
+    40,
+    56,
+    105
+   ],
+   "decision": "UNSAT"
+  },
+  {
+   "moduli": [
+    6,
+    6,
+    6,
+    6,
+    6,
+    14,
+    24,
+    40,
+    105
+   ],
+   "decision": "UNSAT"
+  },
+  {
+   "moduli": [
+    6,
+    6,
+    6,
+    6,
+    6,
+    15,
+    21,
+    24,
+    280
+   ],
+   "decision": "UNSAT"
+  },
+  {
+   "moduli": [
+    6,
+    6,
+    6,
+    6,
+    6,
+    20,
+    24,
+    56,
+    105
+   ],
+   "decision": "UNSAT"
+  },
+  {
+   "moduli": [
+    6,
+    6,
+    6,
+    6,
+    6,
+    24,
+    28,
+    40,
+    105
+   ],
+   "decision": "UNSAT"
+  },
+  {
+   "moduli": [
+    6,
+    6,
+    6,
+    6,
+    6,
+    24,
+    40,
+    56,
+    105
+   ],
+   "decision": "UNSAT"
+  }
+ ]
+}

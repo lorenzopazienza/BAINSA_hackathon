@@ -1,0 +1,758 @@
+\documentclass[11pt]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\dB}{d_{\mathcal{B}}}
+\newcommand{\DB}{D_{\mathcal{B}}}
+\newcommand{\R}{R}
+\renewcommand{\le}{\leqslant}
+\renewcommand{\ge}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\author{Problem 3 team}
+
+\title{Problem 3 (Bulgarian solitaire), Cell 3:\\ a general upper bound}
+\date{}
+\begin{document}
+\maketitle
+
+\paragraph{Official setting.}
+\begin{quote}
+A partition of a positive integer $n$ is a weakly decreasing sequence $\lambda=(\lambda_1,\dots,\lambda_s)$ of
+positive integers with $\lambda_1+\cdots+\lambda_s=n$.  The shift $\B(\lambda)$ is the partition whose parts are the
+positive numbers among $\lambda_1-1,\dots,\lambda_s-1$ together with one extra part equal to $s$.  Call $\lambda$
+cyclic if $\B^i(\lambda)=\lambda$ for some $i\ge1$, and let $\dB(\lambda)=\min\{\,i\ge0:\B^i(\lambda)\text{ is cyclic}\,\}$,
+$\DB(n)=\max\{\,\dB(\lambda):\lambda\text{ is a partition of }n\,\}$.  Write $T_k=k(k+1)/2$ and
+$\delta_k=(k,k-1,\dots,2,1)$.  Every $n\ge1$ satisfies $T_{k-1}<n\le T_k$ for exactly one $k$, which we call the
+rank of $n$.
+\end{quote}
+Section~\ref{sec:defs} restates these definitions in an equivalent form, proves that $\dB$ is well defined and
+that the rank exists and is unique (Lemma~\ref{lem:rank}, where we also write $n=T_{k-1}+r$, $1\le r\le k$), and
+fixes further notation.
+
+\paragraph{Official statement of the cell.}
+\begin{quote}
+Prove that for every $k\ge4$ and every non-triangular $n$ with $T_{k-1}<n<T_k$, $\DB(n)\le k^2-2k-1$, and
+determine $\DB(T_k-1)$ exactly.  Determine also, for that $n$, which partitions attain the maximum.
+\end{quote}
+
+\paragraph{Status.} \textbf{Partial:} value and both bounds fully proved for the stated range; the complete set of extremal partitions is given only by an exact dynamical criterion (closed form open).
+\begin{itemize}
+\item The bound and the value are proved in full.  The case $k=4$ uses an exhaustive computation over the $67$
+partitions of $7,8,9$, with the code in Appendix~\ref{app:code}.
+\item The partitions attaining the maximum are determined \emph{exactly} by the criterion of
+Theorem~\ref{thm:c3ext}.  We also give an explicit extremal family and a proved direct necessary condition.
+\item Qualification: this is a dynamical criterion, not a closed-form description of all extremal partitions;
+that description is open (Section~\ref{sec:c3direct}).  If a closed form is required, this sub-part is partial.
+\end{itemize}
+
+\paragraph{Answer and where it is proved.}
+\begin{itemize}
+\item For $k\ge4$ and $T_{k-1}<n<T_k$: $\DB(n)\le k^2-2k-1$ (Theorem~\ref{thm:c3upper}, \cite[Thm.~4.4(1)]{GH}).
+\item $\DB(T_k-1)=k^2-2k-1$ for every $k\ge4$ (Theorem~\ref{thm:c3lower}), attained by the explicit family
+$\lambda^{\langle k\rangle}=(k-1,\,k-2,\,k-2,\,k-3,\dots,2,\,1,\,1)$ ($\lambda_1=k-1$, $\lambda_2=k-2$,
+$\lambda_i=k+1-i$ for $3\le i\le k$, $\lambda_{k+1}=1$).
+\item Which partitions attain it.  For $k=4$: only $(3,2,2,1,1)$.  For $k\ge5$: exactly those $\lambda\vdash T_k-1$ for which
+$\B^{k^2-2k-3}(\lambda)$ has at least $k+1$ parts; equivalently, the part counts along the orbit contain the ramps
+$(k-1,k,\dots,k,k+1)$ at the positions $jk,\dots,jk+j+1$, $j=1,\dots,k-3$ (Theorem~\ref{thm:c3ext}).  Every extremal
+partition ($k\ge5$) satisfies the direct conditions $\lambda_1\le k+1$ and $\#\{m:\lambda_m\ge i\}\ge k+3-2i$ for all
+$i\ge1$ (Proposition~\ref{prop:c3direct}).
+\end{itemize}
+The proof of the bound reproduces, completed in detail, Griggs--Ho \cite[Lemma~4.3, Thm.~4.4]{GH}.  Their proof of
+the tail lemma is only sketched there; we give a different complete proof.  Sections~\ref{sec:defs}--\ref{sec:tail}
+are shared with Cell 2 (and, up to Section~\ref{sec:ramps}, with Cells 4 and 5), and are repeated so that this
+document is self-contained.
+
+\section{Setting and notation}\label{sec:defs}
+
+Throughout, $T_m=m(m+1)/2$ for integers $m\ge 0$, and $[P]\in\{0,1\}$ denotes the truth value
+of a statement $P$.
+A \emph{partition} $\lambda$ of $n\ge 1$ (written $\lambda\vdash n$) is a finite non-increasing
+sequence of positive integers $\lambda_1\ge\lambda_2\ge\dots\ge\lambda_\ell$ with sum $n$;
+$\ell=\ell(\lambda)$ is its number of parts, and we put $\lambda_i=0$ for $i>\ell(\lambda)$.
+Partitions are identified with multisets of positive integers.
+
+\begin{definition}[Bulgarian solitaire]
+For $\lambda\vdash n$ let $\B(\lambda)$ be the partition whose parts are $\ell(\lambda)$ together
+with the numbers $\lambda_i-1$ for those $i\le\ell(\lambda)$ with $\lambda_i\ge 2$.
+Since $\ell(\lambda)+\sum_{i}(\lambda_i-1)=n$, we have $\B(\lambda)\vdash n$.
+Put $\B^0=\mathrm{id}$ and $\B^{i+1}=\B\circ\B^{i}$.
+A partition $\mu$ is \emph{cyclic} if $\B^P(\mu)=\mu$ for some $P\ge 1$.
+For $\lambda\vdash n$, $\dB(\lambda)$ is the least $i\ge 0$ such that $\B^i(\lambda)$ is cyclic,
+and $\DB(n)=\max\{\dB(\lambda):\lambda\vdash n\}$.
+A partition $\lambda\vdash n$ with $\dB(\lambda)=\DB(n)$ is called \emph{extremal}.
+\end{definition}
+
+$\dB(\lambda)$ is well defined: $n$ has finitely many partitions, so $\B^a(\lambda)=\B^{a+P}(\lambda)$
+for some $a\ge 0$, $P\ge 1$, and then $\B^a(\lambda)$ is cyclic.
+If $\mu$ is cyclic with $\B^P(\mu)=\mu$, then $\B^P(\B(\mu))=\B(\mu)$, so $\B(\mu)$ is cyclic.
+Hence $\B^i(\lambda)$ is cyclic for every $i\ge\dB(\lambda)$ and for no $i<\dB(\lambda)$.
+
+\begin{lemma}[rank]\label{lem:rank}
+Every $n\ge1$ can be written in exactly one way as $n=T_{k-1}+r$ with integers $k\ge1$ and
+$1\le r\le k$.  We call $k$ the \emph{rank} of $n$; $n$ is triangular iff $r=k$ (then $n=T_k$).
+\end{lemma}
+\begin{proof}
+$T_0=0<T_1<T_2<\cdots$ is strictly increasing and unbounded, so there is exactly one $k\ge 1$ with
+$T_{k-1}<n\le T_k$; then $r=n-T_{k-1}$ satisfies $1\le r\le T_k-T_{k-1}=k$.
+Conversely $n=T_{k-1}+r$ with $1\le r\le k$ forces $T_{k-1}<n\le T_k$, i.e.\ this $k$.
+If $n=T_m$ ($m\ge1$), then $T_{m-1}<n\le T_m$, so $k=m$ and $r=T_m-T_{m-1}=m=k$; conversely $r=k$ gives
+$n=T_k$.
+\end{proof}
+
+\section{Diagrams, diagonals, rotation, and Brandt's theorem}\label{sec:brandt}
+
+This section follows Griggs--Ho \cite[\S2]{GH} (the idea goes back to Etienne \cite{Et});
+we make their ``left shifting decreases the diagonal index'' precise with an explicit
+potential $\Phi$.
+
+Let $\PP=\Z_{>0}\times\Z_{>0}$; the \emph{cell} $(i,j)\in\PP$ has \emph{row} $i$ and \emph{column} $j$.
+The \emph{diagram} of $\lambda$ is
+\[Y(\lambda)=\{(i,j)\in\PP:\ 1\le j\le\ell(\lambda),\ 1\le i\le\lambda_j\},\]
+so column $j$ has $\lambda_j$ cells (columns are parts, as in \cite{GH}).
+$Y(\lambda)$ determines $\lambda$, since $\lambda_j=\#\{i:(i,j)\in Y(\lambda)\}$.
+Row~1 of $Y(\lambda)$ is $\{(1,j):j\le\ell(\lambda)\}$ and column~1 has $\lambda_1$ cells; in particular
+\begin{equation}\label{eq:Y1}
+(1,w+1)\in Y(\lambda)\ \Longrightarrow\ (1,w)\in Y(\lambda)\qquad(w\ge1).
+\end{equation}
+For a finite sequence $a=(a_1,\dots,a_m)$ of non-negative integers let
+$X_a=\{(i,j):1\le j\le m,\ 1\le i\le a_j\}$.  If $a$ is non-increasing, then $X_a=Y(\nu)$ where $\nu$ is the
+partition formed by the non-zero entries of $a$.
+
+For $w\ge 1$ the \emph{$w$-th diagonal} is $D_w=\{(i,j)\in\PP: i+j=w+1\}$; it has the $w$ cells
+$d_w(j)=(w+1-j,\,j)$, $1\le j\le w$ ($d_w(j)$ is the cell of $D_w$ in column $j$).
+$\PP$ is the disjoint union of the $D_w$.  Put $\Delta_0=\emptyset$ and
+$\Delta_m=D_1\cup\dots\cup D_m$ for $m\ge 1$.  Column $j$ of $\Delta_m$ consists of the cells $(i,j)$ with
+$i\le m+1-j$, so $\Delta_m=Y(\delta_m)$ with $\delta_m=(m,m-1,\dots,1)$, and $|\Delta_m|=T_m$.
+
+Define $\rho:\PP\to\PP$ by $\rho(i,j)=(i-1,j+1)$ if $i\ge2$ and $\rho(1,j)=(j,1)$.
+
+\begin{lemma}\label{lem:rho}
+(a) $\rho(d_w(j))=d_w(j+1)$ for $1\le j<w$ and $\rho(d_w(w))=d_w(1)$.  Hence $\rho$ maps each $D_w$
+bijectively onto itself, $\rho$ is a bijection of $\PP$, and for $m\ge 0$,
+$\rho^m(d_w(j))=d_w(j')$ where $1\le j'\le w$ and $j'\equiv j+m\pmod w$.  In particular $\rho^w$ is the
+identity on $D_w$.
+(b) $\rho$ preserves the quantity $i+j$ of a cell.
+\end{lemma}
+\begin{proof}
+(a) For $j<w$ the cell $d_w(j)=(w+1-j,j)$ has row $w+1-j\ge2$, so $\rho(d_w(j))=(w-j,j+1)=d_w(j+1)$;
+and $\rho(d_w(w))=\rho(1,w)=(w,1)=d_w(1)$.  So $\rho$ acts on $D_w$ as the cyclic shift $j\mapsto j+1$
+of column indices modulo $w$; the rest follows.  (b) $(i-1)+(j+1)=i+j$ and $j+1=1+j$.
+\end{proof}
+
+\begin{lemma}[one move]\label{lem:move}
+Let $\lambda\vdash n$, $s=\ell(\lambda)$ and $a=(s,\lambda_1-1,\lambda_2-1,\dots,\lambda_s-1)$.
+Then $\rho(Y(\lambda))=X_a$, and $Y(\B(\lambda))=X_{a^*}$, where $a^*$ is the non-increasing rearrangement
+of $a$.  If $s\ge\lambda_1-1$, then $a$ is non-increasing and $Y(\B(\lambda))=\rho(Y(\lambda))$.
+\end{lemma}
+\begin{proof}
+The cells of row~1 of $Y(\lambda)$ are $(1,j)$, $1\le j\le s$; $\rho$ sends them to $(j,1)$, i.e.\ exactly
+onto the cells $(1,1),\dots,(s,1)$ of column~1.  A cell $(i,j)\in Y(\lambda)$ with $i\ge 2$ satisfies
+$2\le i\le\lambda_j$ and is sent to $(i-1,j+1)$; for fixed $j$ these images are exactly the cells
+$(1,j+1),\dots,(\lambda_j-1,j+1)$.  Hence $\rho(Y(\lambda))=X_a$.  The parts of $\B(\lambda)$ are the non-zero
+entries of $a$, so $Y(\B(\lambda))=X_{a^*}$.  The entries of $a$ after the first are non-increasing because
+$\lambda$ is; so $a$ is non-increasing iff $s\ge\lambda_1-1$, and then $a^*=a$.
+\end{proof}
+
+For a finite set $X\subseteq\PP$ put $\Phi(X)=\sum_{(i,j)\in X}(i+j)$.
+
+\begin{lemma}\label{lem:rearr}
+For every finite sequence $a$ of non-negative integers, $\Phi(X_{a^*})\le\Phi(X_a)$, with equality iff $a$
+is non-increasing.
+\end{lemma}
+\begin{proof}
+$\Phi(X_a)=\sum_j\sum_{i=1}^{a_j}(i+j)=\sum_j\binom{a_j+1}{2}+F(a)$ with $F(a)=\sum_j j\,a_j$.
+The first sum does not change when $a$ is permuted.  If $a_j<a_{j+1}$, exchanging these two entries
+changes $F$ by $j a_{j+1}+(j+1)a_j-ja_j-(j+1)a_{j+1}=a_j-a_{j+1}<0$.  Starting from $a$, repeatedly exchange
+some adjacent pair with $a_j<a_{j+1}$.  Each exchange lowers the non-negative integer $F$, so the process
+stops, and it stops at a sequence with no adjacent ascent, i.e.\ at the non-increasing rearrangement
+$a^*$ (which is unique).  If $a$ is not non-increasing at least one exchange happens, so $F(a^*)<F(a)$; if
+$a$ is non-increasing then $a=a^*$.
+\end{proof}
+
+\begin{corollary}\label{cor:energy}
+For $\lambda\vdash n$: $\Phi(Y(\B(\lambda)))\le\Phi(Y(\lambda))$, with equality iff $\ell(\lambda)\ge\lambda_1-1$;
+in the case of equality $Y(\B(\lambda))=\rho(Y(\lambda))$.
+\end{corollary}
+\begin{proof}
+By Lemma~\ref{lem:rho}, $\rho$ is injective and preserves $i+j$, so $\Phi(\rho(X))=\Phi(X)$.  With $a$ as in
+Lemma~\ref{lem:move}: $\Phi(Y(\lambda))=\Phi(X_a)\ge\Phi(X_{a^*})=\Phi(Y(\B(\lambda)))$, with equality iff $a$ is
+non-increasing (Lemma~\ref{lem:rearr}), i.e.\ iff $\ell(\lambda)\ge\lambda_1-1$, and then
+Lemma~\ref{lem:move} gives $Y(\B(\lambda))=\rho(Y(\lambda))$.
+\end{proof}
+
+For $k\ge1$ and $E\subseteq D_k$ let $\lambda_E$ be the partition whose $j$-th part, $1\le j\le k$, is
+$k-j+[d_k(j)\in E]$ (zero parts omitted).  The sequence $(k-j+\varepsilon_j)_{j=1}^k$ with
+$\varepsilon_j\in\{0,1\}$ is non-increasing (consecutive differences are $1+\varepsilon_j-\varepsilon_{j+1}\ge0$),
+so $\lambda_E$ is a partition, $|\lambda_E|=T_{k-1}+|E|$, and $Y(\lambda_E)=\Delta_{k-1}\cup E$ (column $j$ consists
+of the $k-j$ cells of $\Delta_{k-1}$ and, if $d_k(j)\in E$, the cell $d_k(j)=(k+1-j,j)$).  Writing
+$e_{k-j}=[d_k(j)\in E]$ we get $\lambda_E=(k-1+e_{k-1},\,k-2+e_{k-2},\dots,1+e_1,\,e_0)$.
+
+\begin{theorem}[Brandt \cite{Br}; see also \cite{AD,Et,GH}]\label{thm:brandt}
+Let $n=T_{k-1}+r$ with $1\le r\le k$.  A partition of $n$ is cyclic if and only if it equals $\lambda_E$
+for some $E\subseteq D_k$ with $|E|=r$; equivalently, iff it has the form
+$(k-1+e_{k-1},\dots,1+e_1,e_0)$ with $e_i\in\{0,1\}$ and $\sum_ie_i=r$ (zero parts omitted).
+Moreover $Y(\B(\lambda_E))=\rho(Y(\lambda_E))$, i.e.\ $\B(\lambda_E)=\lambda_{\rho(E)}$, and $\B^k(\lambda_E)=\lambda_E$.
+\end{theorem}
+\begin{proof}
+($\Leftarrow$ and ``moreover'').  Let $\mu=\lambda_E$ with $E\subseteq D_k$, $|E|=r$.  Row~1 of
+$Y(\mu)=\Delta_{k-1}\cup E$ consists of the cells $(1,w)=d_w(w)$ with $w\le k-1$ and possibly $d_k(k)$;
+so $\ell(\mu)=k-1+[d_k(k)\in E]\ge k-1$.  Column~1 consists of $d_w(1)$ for $w\le k-1$ and possibly $d_k(1)$;
+so $\mu_1=k-1+[d_k(1)\in E]\le k$.  Thus $\ell(\mu)\ge\mu_1-1$ and Corollary~\ref{cor:energy} and
+Lemma~\ref{lem:rho} give $Y(\B(\mu))=\rho(\Delta_{k-1})\cup\rho(E)=\Delta_{k-1}\cup\rho(E)$ with
+$\rho(E)\subseteq D_k$, $|\rho(E)|=r$.  Hence $\B(\lambda_E)=\lambda_{\rho(E)}$, and by induction
+$\B^k(\lambda_E)=\lambda_{\rho^k(E)}=\lambda_E$ because $\rho^k$ is the identity on $D_k$.  So $\mu$ is cyclic.
+
+($\Rightarrow$).  Let $\lambda\vdash n$ with $\B^P(\lambda)=\lambda$, $P\ge 1$, and write
+$\lambda^{(m)}=\B^m(\lambda)$.  By Corollary~\ref{cor:energy},
+$\Phi(Y(\lambda^{(0)}))\ge\Phi(Y(\lambda^{(1)}))\ge\dots\ge\Phi(Y(\lambda^{(P)}))=\Phi(Y(\lambda^{(0)}))$, so all these are
+equalities and $Y(\lambda^{(m+1)})=\rho(Y(\lambda^{(m)}))$ for $0\le m<P$.  As $\lambda^{(m+P)}=\lambda^{(m)}$, this holds for
+all $m\ge0$, and therefore $Y(\lambda^{(m)})=\rho^m(Y(\lambda))$ for all $m\ge 0$.
+
+\emph{Claim: there is no $w\ge1$ such that $D_w\not\subseteq Y(\lambda)$ and $D_{w+1}\cap Y(\lambda)\ne\emptyset$.}
+Suppose $d_w(\alpha)\notin Y(\lambda)$ and $d_{w+1}(\beta)\in Y(\lambda)$.  Since $\gcd(w,w+1)=1$, the Chinese remainder
+theorem gives $m\ge0$ with $m\equiv w-\alpha\pmod w$ and $m\equiv w+1-\beta\pmod{w+1}$.  By Lemma~\ref{lem:rho},
+$\rho^m(d_w(\alpha))=d_w(w)=(1,w)$ and $\rho^m(d_{w+1}(\beta))=d_{w+1}(w+1)=(1,w+1)$.  As $\rho^m$ is injective,
+$(1,w)\notin\rho^m(Y(\lambda))=Y(\lambda^{(m)})$ while $(1,w+1)\in Y(\lambda^{(m)})$, contradicting \eqref{eq:Y1}.
+
+$Y(\lambda)$ is finite, so some $D_w$ is not contained in it; let $K\ge1$ be the least such $w$.  Then
+$\Delta_{K-1}\subseteq Y(\lambda)$.  By the claim, $D_{K+1}\cap Y(\lambda)=\emptyset$; then $D_{K+1}\not\subseteq Y(\lambda)$, so
+again by the claim $D_{K+2}\cap Y(\lambda)=\emptyset$, and inductively $D_w\cap Y(\lambda)=\emptyset$ for all $w>K$.  Thus
+$Y(\lambda)=\Delta_{K-1}\cup E'$ with $E'=Y(\lambda)\cap D_K\ne D_K$; let $r'=|E'|\in\{0,\dots,K-1\}$, so
+$n=T_{K-1}+r'$ and $Y(\lambda)=Y(\lambda_{E'})$ (with $k$ replaced by $K$ in the definition of $\lambda_{E'}$).
+If $r'\ge1$, then $T_{K-1}<n<T_K$, so by Lemma~\ref{lem:rank} $K=k$, $r'=r$, and $\lambda=\lambda_{E'}$.
+If $r'=0$, then $K\ge2$ (as $n\ge1$) and $n=T_{K-1}=T_{K-2}+(K-1)$, so $k=K-1$, $r=k$, and
+$Y(\lambda)=\Delta_k=\Delta_{k-1}\cup D_k$, i.e.\ $\lambda=\lambda_{D_k}$ with $|D_k|=k=r$.
+\end{proof}
+
+\begin{corollary}\label{cor:cyc}
+Let $n=T_{k-1}+r$, $1\le r\le k$.
+\begin{enumerate}
+\item[(a)] If $r=k$ (i.e.\ $n=T_k$), the only cyclic partition of $n$ is $\delta_k=(k,k-1,\dots,1)$, and
+$\B(\delta_k)=\delta_k$.
+\item[(b)] Every cyclic $\mu\vdash n$ satisfies $Y(\mu)\subseteq\Delta_k$, $\Delta_{k-1}\subseteq Y(\mu)$,
+$\ell(\mu)\in\{k-1,k\}$ and $\B^k(\mu)=\mu$.
+\item[(c)] If $\mu\vdash n$ is cyclic, then for every $a\ge0$:
+$\sum_{i=a}^{a+k-1}\ell(\B^i(\mu))=k(k-1)+r$.  If moreover $r<k$, both values $k-1$ and $k$ occur among
+$\ell(\B^a(\mu)),\dots,\ell(\B^{a+k-1}(\mu))$.
+\end{enumerate}
+\end{corollary}
+\begin{proof}
+(a) and (b) are immediate from Theorem~\ref{thm:brandt} ($E=D_k$ when $r=k$; $\ell(\lambda_E)=k-1+[d_k(k)\in E]$ was
+computed in its proof).  (c) Write $\mu=\lambda_E$.  Then $\B^i(\mu)=\lambda_{\rho^i(E)}$, so
+$\ell(\B^i(\mu))=k-1+[d_k(k)\in\rho^i(E)]=k-1+[d_k(j_i)\in E]$, where $d_k(j_i)=\rho^{-i}(d_k(k))$, i.e.\
+$j_i\equiv k-i\pmod k$ (Lemma~\ref{lem:rho}).  As $i$ runs through $a,\dots,a+k-1$, $j_i$ runs through all
+of $1,\dots,k$ once, so the sum is $k(k-1)+|E|=k(k-1)+r$.  If $0<r<k$, some $j_i$ lies in $E$ and some does not.
+\end{proof}
+
+\section{Piles and the part-count sequence}\label{sec:piles}
+
+This is the ``$\mathrm{diagram}_B(\lambda)$'' bookkeeping of Griggs--Ho \cite[\S3]{GH}, written with
+explicitly labelled piles.
+
+Fix $\lambda\vdash n$, write $\lambda^{(i)}=\B^i(\lambda)$ and
+\[c_i=\ell(\lambda^{(i-1)})\qquad(i\ge1).\]
+We call $c(\lambda)=(c_1,c_2,\dots)$ the \emph{part-count sequence}; clearly
+$c(\lambda^{(a)})=(c_{a+1},c_{a+2},\dots)$.  Every $c_i\ge1$.
+
+\begin{lemma}[piles]\label{lem:piles}
+For every $i\ge0$ the multiset of parts of $\lambda^{(i)}$ is
+\[\{\lambda_m-i:\ 1\le m\le\ell(\lambda),\ \lambda_m>i\}\ \uplus\ \{c_j-(i-j):\ 1\le j\le i,\ c_j>i-j\}.\]
+\end{lemma}
+\begin{proof}
+Induction on $i$; $i=0$ is clear.  $\lambda^{(i+1)}=\B(\lambda^{(i)})$ has the part $\ell(\lambda^{(i)})=c_{i+1}=c_{i+1}-0$ and
+the parts of $\lambda^{(i)}$ decreased by one, the zeros being discarded: this is the stated multiset for
+$i+1$ (the term $j=i+1$ is $c_{i+1}$).
+\end{proof}
+
+We use \emph{labels}: $O_1,\dots,O_{\ell(\lambda)}$ (the original piles) and $N_1,N_2,\dots$ ($N_j$ is the pile
+created by the $j$-th move, of size $c_j$ when created).  By Lemma~\ref{lem:piles}, at time $i$ (i.e.\ in
+$\lambda^{(i)}$) the pile $O_m$ has size $\lambda_m-i$ and the pile $N_j$ ($j\le i$) has size $c_j-(i-j)$, a pile
+being present iff its size is positive.  For $i\ge1$ let $\R_i$ be the set of labels of the piles present
+at time $i-1$:
+\begin{equation}\label{eq:alive}
+O_m\in \R_i\iff\lambda_m\ge i,\qquad N_j\in \R_i\iff j\le i-1\ \text{and}\ c_j\ge i-j .
+\end{equation}
+By Lemma~\ref{lem:piles} (with $i-1$), $|\R_i|=\ell(\lambda^{(i-1)})=c_i$.  Let $Z_i=\R_i\setminus \R_{i+1}$ (the piles
+of size $1$ at time $i-1$, which disappear in move $i$).
+
+\begin{lemma}[basic facts]\label{lem:basic}
+For all $i\ge1$:
+\begin{enumerate}
+\item[(a)] $N_i\in \R_{i+1}$ and $N_i\notin \R_i$.
+\item[(b)] $\R_{i+1}=(\R_i\setminus Z_i)\cup\{N_i\}$, hence $c_{i+1}=c_i+1-|Z_i|$ and $c_{i+1}\le c_i+1$.
+\item[(c)] If $c_{i+1}=c_i+1$ then $Z_i=\emptyset$, i.e.\ $\R_i\subseteq \R_{i+1}$.  If $c_{i+1}=c_i$ then $|Z_i|=1$.
+\item[(d)] For $j<i$: $N_j\in \R_i$ implies $N_j\in \R_{i'}$ for $j<i'\le i$, and $N_j\notin \R_i$ implies
+$N_j\notin \R_{i'}$ for all $i'\ge i$.  Likewise for the labels $O_m$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(a) $c_i\ge1=(i+1)-i$; and labels $N_j$ in $\R_i$ have $j\le i-1$.  (d) For $i'>j$ the clause $j\le i'-1$ in
+\eqref{eq:alive} holds automatically, so membership of $N_j$ in $\R_{i'}$ is the condition $c_j\ge i'-j$, which
+is monotone in $i'$; for $O_m$ the condition $\lambda_m\ge i'$ is monotone as well.  (b) By (d), $\R_{i+1}\setminus\{N_i\}\subseteq \R_i$, so
+$\R_{i+1}=(\R_i\cap \R_{i+1})\cup\{N_i\}=(\R_i\setminus Z_i)\cup\{N_i\}$, a disjoint union by (a); take cardinalities.
+(c) follows from $c_{i+1}=c_i+1-|Z_i|$.
+\end{proof}
+
+\begin{lemma}[gap lemma]\label{lem:gap}
+Let $1\le j<i$.  If $N_j\notin \R_i$ and $N_{j+1}\in \R_{i+1}$, then $c_j=i-j-1$, $c_{j+1}=i-j$, and
+$N_{j+1}\notin \R_{i+2}$.
+\end{lemma}
+\begin{proof}
+By \eqref{eq:alive}, $c_j\le i-j-1$ and $c_{j+1}\ge (i+1)-(j+1)=i-j$.  By Lemma~\ref{lem:basic}(b),
+$c_{j+1}\le c_j+1\le i-j$.  Hence both equalities hold, and $c_{j+1}=i-j<(i+2)-(j+1)$ gives
+$N_{j+1}\notin \R_{i+2}$.
+\end{proof}
+
+\begin{lemma}[the sequence determines the partition]\label{lem:determ}
+For $i\ge1$, $\#\{m:\lambda_m\ge i\}=c_i-\#\{j:1\le j\le i-1,\ c_j\ge i-j\}$.  Consequently, if two partitions
+have the same part-count sequence, they are equal.
+\end{lemma}
+\begin{proof}
+The formula is $|\R_i|=c_i$ together with \eqref{eq:alive}.  The numbers $\#\{m:\lambda_m\ge i\}$, $i\ge1$,
+determine $\lambda$, since $\lambda_m=\#\{i\ge1:\#\{m':\lambda_{m'}\ge i\}\ge m\}$.
+\end{proof}
+
+\begin{lemma}[window sums; generalising {\cite[Prop.~3.2(2)]{GH}}]\label{lem:window}
+For all $a\ge0$ and $h\ge1$: $c_{a+1}+c_{a+2}+\dots+c_{a+h}\le n+T_{h-1}$.
+\end{lemma}
+\begin{proof}
+Let $\mu=\lambda^{(a)}$; its part-count sequence is $(c_{a+1},c_{a+2},\dots)$.  Applying \eqref{eq:alive} to $\mu$,
+for $1\le g\le h$ the number $c_{a+g}$ equals $\#\{m:\mu_m\ge g\}$ plus the number of piles created in the
+first $g-1$ moves starting from $\mu$ that are still present, which is at most $g-1$.  Summing,
+$\sum_{g=1}^h c_{a+g}\le\sum_{g\ge1}\#\{m:\mu_m\ge g\}+\sum_{g=1}^h(g-1)=|\mu|+T_{h-1}=n+T_{h-1}$.
+\end{proof}
+
+\section{Ramps}\label{sec:ramps}
+
+The following lemmas are Lemmas 3.4--3.6 and Proposition 3.2(3) of Griggs--Ho \cite{GH}; we give complete
+proofs (the proof of \cite[Lemma~3.5]{GH} ends with ``continue this process'', which we replace by an
+explicit induction) and we add the equality statement in Proposition~\ref{prop:rampbound}.
+
+\begin{definition}
+A \emph{ramp} of $\lambda$ is a triple $(p,q,x)$ of integers with $p\ge1$, $q\ge p+2$ and
+\[c_p=x-1,\qquad c_{p+1}=c_{p+2}=\dots=c_{q-1}=x,\qquad c_q=x+1 .\]
+Its \emph{length} is $q-p$ and its \emph{value} is $x$ (note $x\ge2$, since $c_p\ge1$).
+\end{definition}
+
+\begin{lemma}[sandwich]\label{lem:sandwich}
+If $1\le i<j$ and $c_i<x<c_j$ for an integer $x$, then there is a ramp $(p,q,x)$ with $i\le p<q\le j$.
+\end{lemma}
+\begin{proof}
+Let $p$ be the largest $m$ with $i\le m<j$ and $c_m\le x-1$ (it exists: $m=i$ qualifies).  By
+Lemma~\ref{lem:basic}(b), $c_{p+1}\le c_p+1\le x$.  Since $c_j>x$, this rules out $p+1=j$; so $p+1<j$, and
+$c_{p+1}\ge x$ by maximality of $p$.  Hence $c_p=x-1$ and $c_{p+1}=x$.  Let $q$ be the least $m$ with $p<m\le j$ and
+$c_m\ge x+1$ (it exists: $m=j$ qualifies).  Then $q\ge p+2$ since $c_{p+1}=x$.  For $p<m<q$ we have $c_m\le x$
+(minimality of $q$) and $c_m\ge x$ (maximality of $p$, as $m<j$), so $c_m=x$.  Finally
+$x+1\le c_q\le c_{q-1}+1=x+1$.
+\end{proof}
+
+\begin{lemma}[short ramps {\cite[Lemma~3.6]{GH}}]\label{lem:short}
+If $(p,p+2,x)$ is a ramp, then $p\le x$.
+\end{lemma}
+\begin{proof}
+Suppose $p\ge x+1$; then $p\ge3$.  Since $|\R_p|=c_p=x-1\le p-2$, not all of $N_1,\dots,N_{p-1}$ lie in
+$\R_p$, while $N_{p-1}\in \R_p$ (Lemma~\ref{lem:basic}(a)).  Let $j$ be the largest index in $[1,p-2]$ with
+$N_j\notin \R_p$; then $N_{j+1}\in \R_p$.  As $c_{p+1}=c_p+1$ and $c_{p+2}=c_{p+1}+1$, Lemma~\ref{lem:basic}(c)
+gives $\R_p\subseteq \R_{p+1}\subseteq \R_{p+2}$, so $N_{j+1}\in \R_{p+1}$ and $N_{j+1}\in \R_{p+2}$.  But
+Lemma~\ref{lem:gap} (with $i=p$) gives $N_{j+1}\notin \R_{p+2}$, a contradiction.
+\end{proof}
+
+\begin{lemma}[descent {\cite[Lemma~3.5]{GH}}]\label{lem:descent}
+Let $(p,q,x)$ be a ramp with $q-p\ge3$ and $p\ge x+1$.  Then there is a ramp $(p',q',x')$ with
+\[p-x\le p'\le p-2,\qquad x'=p-p'\le x,\qquad 2\le q'-p'\le q-p-1 .\]
+\end{lemma}
+\begin{proof}
+The $x$ labels $N_{p-x},\dots,N_{p-1}$ exist since $p-x\ge1$.  As $|\R_p|=x-1$, one of them is not in $\R_p$;
+$N_{p-1}\in \R_p$.  Let $p'$ be the largest index in $[p-x,p-2]$ with $N_{p'}\notin \R_p$ and put $y=p-p'$, so
+$2\le y\le x$ and $N_{p'+1},\dots,N_{p-1}\in \R_p$.  As $c_{p+1}=c_p+1$, $\R_p\subseteq \R_{p+1}$, and with
+Lemma~\ref{lem:basic}(a), $N_{p'+1},\dots,N_p\in \R_{p+1}$.  Lemma~\ref{lem:gap} ($j=p'$, $i=p$) gives
+$c_{p'}=y-1$ and $c_{p'+1}=y$.
+
+For $1\le l\le q-p-1$ let $H(l)$ be the statement
+\[H(l):\qquad c_{p'+1}=\dots=c_{p'+l}=y\quad\text{and}\quad N_{p'+l},N_{p'+l+1},\dots,N_{p+l-1}\in \R_{p+l}.\]
+We just proved $H(1)$.  Assume $H(l)$.  Since
+$c_{p'+l}=y=p-p'$, \eqref{eq:alive} gives, for $i>p'+l$: $N_{p'+l}\in \R_i\iff i\le p+l$.  Hence
+$N_{p'+l}\in Z_{p+l}$.
+\begin{itemize}
+\item If $l=q-p-1$, then $p+l=q-1$ and $c_q=c_{q-1}+1$, so $Z_{q-1}=\emptyset$ by Lemma~\ref{lem:basic}(c): a
+contradiction.  So $H(q-p-1)$ is false.
+\item If $l\le q-p-2$, then $p+l$ and $p+l+1$ lie in $[p+1,q-1]$, so $c_{p+l+1}=c_{p+l}=x$ and $|Z_{p+l}|=1$,
+i.e.\ $Z_{p+l}=\{N_{p'+l}\}$.  By Lemma~\ref{lem:basic}(b),
+$\R_{p+l+1}=(\R_{p+l}\setminus\{N_{p'+l}\})\cup\{N_{p+l}\}\supseteq\{N_{p'+l+1},\dots,N_{p+l}\}$.  In particular
+$N_{p'+l+1}\in \R_{p+l+1}$, i.e.\ $c_{p'+l+1}\ge(p+l+1)-(p'+l+1)=y$, and $c_{p'+l+1}\le c_{p'+l}+1=y+1$.  So either
+$c_{p'+l+1}=y+1$, or $c_{p'+l+1}=y$ and then $H(l+1)$ holds.
+\end{itemize}
+Let $l_0$ be the largest $l\le q-p-1$ such that $H(1),\dots,H(l)$ all hold; then $1\le l_0\le q-p-2$, and
+since $H(l_0+1)$ fails, the second item gives $c_{p'+l_0+1}=y+1$.  Thus $(p',p'+l_0+1,y)$ is a ramp of
+length $l_0+1\in[2,q-p-1]$, and $x'=y$ has the stated properties.
+\end{proof}
+
+\begin{proposition}[ramp bound]\label{prop:rampbound}
+Every ramp $(p,q,x)$ satisfies $p\le(q-p-1)\,x$.  If equality holds, then $(jx,\ jx+j+1,\ x)$ is a ramp
+for every $j=1,2,\dots,q-p-1$.
+\end{proposition}
+\begin{proof}
+Strong induction on the length $L=q-p\ge2$.  If $L=2$, Lemma~\ref{lem:short} gives $p\le x$; if $p=x$, the
+ramp itself is $(x,x+2,x)$.  Let $L\ge3$.  If $p\le x$ then $p\le x<(L-1)x$.  Otherwise
+Lemma~\ref{lem:descent} provides a ramp $(p',q',x')$ with $p'\ge p-x$, $x'\le x$ and length $L'\le L-1$; by
+induction $p'\le(L'-1)x'$, hence
+\[p\le p'+x\le(L'-1)x'+x\le(L-2)x+x=(L-1)x .\]
+If $p=(L-1)x$, all these inequalities are equalities: $p'=p-x=(L-2)x$ and $(L'-1)x'=(L-2)x$; since
+$1\le L'-1\le L-2$ and $x'\le x$, this forces $L'=L-1$ and $x'=x$.  So $((L-2)x,(L-2)x+L-1,x)$ is a ramp
+attaining equality, and by induction $(jx,jx+j+1,x)$ is a ramp for $j=1,\dots,L-2$; for $j=L-1$ it is
+$(p,q,x)$ itself.
+\end{proof}
+
+\begin{lemma}[long ramps {\cite[Lemma~3.4]{GH}}]\label{lem:long}
+If $(p,q,x)$ is a ramp with $q-p=x+1$, then $q\le n+1$.  (Recall that $x\ge2$ for every ramp.)
+\end{lemma}
+\begin{proof}
+For $p+1\le j\le q-1$ we have $c_j=x\ge q-j$, so $N_j\in \R_q$: these are $x$ piles.  Also
+$c_p=x-1<q-p$, so $N_p\notin \R_q$.  Since $|\R_q|=c_q=x+1$, $\R_q$ contains exactly one further label $P$,
+and $P=O_m$ for some $m$, or $P=N_j$ with $1\le j\le p-1$.
+If $P=O_m$, then $q\le\lambda_m\le n$.  If $P=N_1$, then $c_1\ge q-1$, and $c_1=\ell(\lambda)\le n$.
+Suppose $P=N_j$ with $2\le j\le p-1$.  Then $N_{j-1}\notin \R_q$.  As $c_q=c_{q-1}+1$, $\R_{q-1}\subseteq \R_q$, so
+$N_{j-1}\notin \R_{q-1}$.  Next, $q-2\ge p+1$ (as $x\ge2$), so $c_{q-1}=c_{q-2}=x$ and $|Z_{q-2}|=1$; since
+$c_p=x-1=(q-2)-p$, $N_p\in \R_{q-2}\setminus \R_{q-1}$, so $Z_{q-2}=\{N_p\}$.  As $j-1\ne p$, $N_{j-1}\in \R_{q-2}$ would give
+$N_{j-1}\in \R_{q-1}$ (Lemma~\ref{lem:basic}(b)); hence $N_{j-1}\notin \R_{q-2}$, i.e.\ $c_{j-1}\le q-j-2$.  But
+$N_j\in \R_q$ gives $c_j\ge q-j$, so $c_j\ge c_{j-1}+2$, contradicting Lemma~\ref{lem:basic}(b).
+\end{proof}
+
+\section{The tail lemma}\label{sec:tail}
+
+This is \cite[Lemma~3.3(2) and Lemma~4.3(2)]{GH}, in a form that serves both the triangular and the
+non-triangular case.
+
+\begin{lemma}\label{lem:tail}
+Let $k\ge2$ and $t\ge k+1$ with $c_t=k-1$, $c_{t+1}=k$, and $c_j\ge k-1$ for $t\le j\le t+k-2$.  Then at
+least one of the following holds.
+\begin{enumerate}
+\item[(A)] There is a ramp $(p,q,k)$ with $t-k\le p<q\le t-1$.
+\item[(B)] There is a ramp $(p,q,k-1)$ with $t-k+1\le p<q\le t+1$.
+\item[(C)] Every part of $\lambda^{(t-1)}$ is at most $k$, and $c_{t+m}=c_{t-k+m}$ for $0\le m\le k-1$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+The $k$ labels $N_{t-k},\dots,N_{t-1}$ exist ($t-k\ge1$); as $|\R_t|=k-1$, one of them is not in $\R_t$, and
+$N_{t-1}\in \R_t$.  Let $i$ be the largest index in $[t-k,t-2]$ with $N_i\notin \R_t$.  Then
+$N_{i+1},\dots,N_{t-1}\in \R_t$; as $c_{t+1}=c_t+1$, $\R_t\subseteq \R_{t+1}$, so $N_{i+1}\in \R_{t+1}$, and
+Lemma~\ref{lem:gap} gives $c_i=t-i-1$ and $c_{i+1}=t-i$.
+
+\emph{Case 1: $i\ge t-k+1$.}  Then $c_i\le k-2<k-1<k=c_{t+1}$, and Lemma~\ref{lem:sandwich} gives a ramp
+$(p,q,k-1)$ with $i\le p<q\le t+1$: (B) holds.
+
+\emph{Case 2: $i=t-k$.}  Then $c_{t-k}=k-1$, $c_{t-k+1}=k$, and $\R_t=\{N_{t-k+1},\dots,N_{t-1}\}$ (these $k-1$ labels lie in
+$\R_t$ and $|\R_t|=k-1$).  If $c_j\le k-2$ for some $j\in[t-k+2,t-1]$, Lemma~\ref{lem:sandwich} applied to $j<t+1$ gives
+(B).  If $c_j\ge k+1$ for some $j\in[t-k+2,t-1]$, Lemma~\ref{lem:sandwich} applied to $t-k<j$ (with
+$c_{t-k}=k-1<k<c_j$) gives a ramp $(p,q,k)$ with $t-k\le p<q\le j\le t-1$: (A) holds.  Otherwise
+$c_j\in\{k-1,k\}$ for all $j\in[t-k+1,t-1]$; we show (C).  The parts of $\lambda^{(t-1)}$ are the sizes
+$c_j-(t-1-j)\le k$ of the piles $N_j\in \R_t$.  Write $c_{t-1-u}=k-1+\varepsilon_u$ with $\varepsilon_u\in\{0,1\}$
+($0\le u\le k-2$).  Fix $m\in[0,k-1]$ and determine $\R_{t+m}$:
+\begin{itemize}
+\item labels not in $\R_t$ (all $O$'s and all $N_j$ with $j\le t-k$) are not in $\R_{t+m}$
+(Lemma~\ref{lem:basic}(d));
+\item for $t\le j\le t+m-1$: $c_j\ge k-1\ge m\ge t+m-j$, so $N_j\in \R_{t+m}$ ($m$ labels);
+\item $N_{t-1-u}\in \R_{t+m}\iff k-1+\varepsilon_u\ge m+1+u\iff u\le k-2-m+\varepsilon_u$.
+\end{itemize}
+For $m=0$ this gives $c_t=k-1=c_{t-k}$.  For $1\le m\le k-1$ the labels $N_{t-1-u}$ with $u\le k-2-m$ are
+in $\R_{t+m}$, the one with $u=k-1-m$ is in iff $\varepsilon_{k-1-m}=1$, and those with $u\ge k-m$ are not.  So
+$c_{t+m}=m+(k-1-m)+\varepsilon_{k-1-m}=k-1+\varepsilon_{k-1-m}=c_{t-k+m}$.
+\end{proof}
+
+\section{Two lemmas for non-triangular $n$}\label{sec:c3lemmas}
+
+\begin{lemma}[too many parts]\label{lem:overfull}
+Let $n=T_{k-1}+r$ with $1\le r\le k$ and $\lambda\vdash n$.  If $c_m\ge k+1$ for some $m\ge1$, then
+$\dB(\lambda)\ge m+1$.
+\end{lemma}
+\begin{proof}
+$\lambda^{(m-1)}$ has $c_m\ge k+1$ parts, so it is not cyclic (Corollary~\ref{cor:cyc}(b)), and $\dB(\lambda)\ge m$.
+Suppose $\dB(\lambda)=m$, i.e.\ $\lambda^{(m)}$ is cyclic.  Its iterates are $\lambda^{(m)},\dots,\lambda^{(m+k-1)}$, whose part
+counts are $c_{m+1},\dots,c_{m+k}$, so Corollary~\ref{cor:cyc}(c) gives $\sum_{i=m+1}^{m+k}c_i=k(k-1)+r$.
+Lemma~\ref{lem:window} with $a=m-1$, $h=k$ gives $\sum_{i=m}^{m+k-1}c_i\le n+T_{k-1}=k(k-1)+r$.  Subtracting,
+$c_m\le c_{m+k}\le k$, a contradiction.
+\end{proof}
+
+\begin{lemma}[the anchor $t$]\label{lem:anchor}
+Let $k\ge2$, $n=T_{k-1}+r$ with $1\le r\le k-1$, and $\lambda\vdash n$.  The set
+\[\mathcal T=\{i\ge1:\ \lambda^{(i-1)}\text{ is cyclic},\ c_i=k-1,\ c_{i+1}=k\}\]
+is non-empty; let $t=\min\mathcal T$.  Then $\dB(\lambda)\le t-1$, and for all $j\ge t$:
+$c_j\in\{k-1,k\}$, $c_{j+k}=c_j$, and $\sum_{i=j}^{j+k-1}c_i=k(k-1)+r$.
+\end{lemma}
+\begin{proof}
+Let $d=\dB(\lambda)$.  For $i\ge d+1$, $\lambda^{(i-1)}$ is cyclic, so by Corollary~\ref{cor:cyc}(b),(c) the
+sequence $(c_i)_{i\ge d+1}$ takes only the values $k-1$ and $k$, is periodic with period $k$, and takes both
+values.  Choose $i_0\ge d+1$ with $c_{i_0}=k-1$, and let $i_1>i_0$ be least with $c_{i_1}=k$.  Then
+$c_{i_1-1}=k-1$, and $i=i_1-1\ge d+1$ lies in $\mathcal T$.  If $t\in\mathcal T$, then $\lambda^{(t-1)}$ is cyclic, so
+$d\le t-1$.  The remaining statements hold because every $\lambda^{(j-1)}$ with $j\ge t$ is cyclic, by
+Corollary~\ref{cor:cyc}(b),(c).
+\end{proof}
+
+\section{The upper bound}\label{sec:c3upper}
+
+\begin{theorem}[{\cite[Thm.~4.4(1)]{GH}}]\label{thm:c3upper}
+Let $k\ge4$ and $n=T_{k-1}+r$ with $1\le r\le k-1$.  Then $\DB(n)\le k^2-2k-1$.
+\end{theorem}
+\begin{proof}
+\emph{$k=4$} ($n\in\{7,8,9\}$, bound $7$): by exhaustive computation over the $15+22+30$ partitions,
+$\DB(7)=4$, $\DB(8)=5$, $\DB(9)=7$ (Appendix~\ref{app:code}; this matches \cite[Fig.~1]{GH}).
+The general argument below does not cover $k=4$: in case (B) with $L=k$ it only gives $d\le T_k-2=8>7$.
+
+\emph{$k\ge5$.}  Let $\lambda\vdash n$, $d=\dB(\lambda)$, and let $t$ be as in Lemma~\ref{lem:anchor}, so $d\le t-1$.  If
+$t\le k$, then $d\le k-1<k^2-2k-1$.  Assume $t\ge k+1$.  By Lemma~\ref{lem:anchor} the hypotheses of
+Lemma~\ref{lem:tail} hold.
+
+\emph{(C) is impossible.}  Suppose $c_{t-k+m}=c_{t+m}$ for $0\le m\le k-1$.  For $m\ge k$,
+$c_{t-k+m}=c_{t+(m-k)}=c_{t+m}$ by the periodicity in Lemma~\ref{lem:anchor}.  Thus $\lambda^{(t-k-1)}$ and
+$\lambda^{(t-1)}$ have the same part-count sequence $(c_t,c_{t+1},\dots)$, so they are equal
+(Lemma~\ref{lem:determ}).  In particular $\lambda^{(t-k-1)}$ is cyclic.  Since also $c_{t-k}=c_t=k-1$,
+$c_{t-k+1}=c_{t+1}=k$ and $t-k\ge1$, we get $t-k\in\mathcal T$, contradicting the minimality of $t$.
+
+\emph{(A): a ramp $(p,q,k)$ with $t-k\le p<q\le t-1$}, of length $L=q-p\le k-1$.
+If $L=k-1$, then $p=t-k$, $q=t-1$ and $c_{t-1}=k+1$.  Lemma~\ref{lem:window} ($a=t-2$, $h=k$) gives
+$c_{t-1}+\sum_{i=t}^{t+k-2}c_i\le k(k-1)+r$, while $\sum_{i=t}^{t+k-1}c_i=k(k-1)+r$ by Lemma~\ref{lem:anchor}.
+Hence $c_{t-1}\le c_{t+k-1}\le k$, a contradiction.  If $L\le k-2$, Proposition~\ref{prop:rampbound} gives
+$p\le(k-3)k$, and $d\le t-1\le p+k-1\le k^2-2k-1$.
+
+\emph{(B): a ramp $(p,q,k-1)$ with $t-k+1\le p<q\le t+1$}, of length $L\le k$.
+\begin{itemize}
+\item $L=k$: then $(p,q)=(t-k+1,t+1)$, and Lemma~\ref{lem:long} (with $x=k-1\ge2$) gives $t+1\le n+1$.  So
+$d\le t-1\le n-1\le T_{k-1}+k-2=T_k-2$, and $(k^2-2k-1)-(T_k-2)=\tfrac12(k^2-5k+2)>0$ for $k\ge5$.
+\item $L=k-1$: then $(p,q)=(t-k+1,t)$ or $(t-k+2,t+1)$.  The first would give $c_t=k$, but $c_t=k-1$.  In the
+second, $c_{t-k+2}=k-2=t-(t-k+2)$, so by \eqref{eq:alive} $N_{t-k+2}\in \R_t\setminus \R_{t+1}=Z_t$.  But
+$c_{t+1}=c_t+1$ forces $Z_t=\emptyset$ (Lemma~\ref{lem:basic}(c)).  Contradiction.
+\item $L\le k-2$: $p\le(k-3)(k-1)$ by Proposition~\ref{prop:rampbound}, and
+$d\le t-1\le p+k-2\le k^2-3k+1<k^2-2k-1$.
+\end{itemize}
+In all possible cases $d\le k^2-2k-1$.
+\end{proof}
+
+\section{Equality for $n=T_k-1$}\label{sec:c3lower}
+
+For $k\ge3$, $h\in\{1,\dots,k\}$ and $x\in\{1,\dots,k+1\}$ put
+\[X'(h,x)=\Delta_{k-1}\cup\bigl(D_k\setminus\{d_k(h),d_k(h\oplus_k1)\}\bigr)\cup\{d_{k+1}(x)\},\]
+where for $w\ge1$ and $1\le j\le w$, $j\oplus_w1=j+1$ if $j<w$ and $w\oplus_w1=1$.
+
+\begin{lemma}\label{lem:c3conf}
+Let $k\ge3$ and let $\mu$ be a partition with $Y(\mu)=X'(h,x)$.  If $(h,x)\ne(k-1,1)$, then
+$Y(\B(\mu))=X'(h\oplus_k1,\,x\oplus_{k+1}1)$.  If $(h,x)=(k-1,1)$, then $\mu=(k+1,k-1,k-2,\dots,3,1)$ (to be read as $(4,1)$ when $k=3$) and
+$\B(\mu)=(k,k-1,\dots,2)$, which is cyclic.
+\end{lemma}
+\begin{proof}
+Let $H=\{h,h\oplus_k1\}$, a set of two elements as $k\ge3$.  The cells of row~1 are among the
+$d_w(w)=(1,w)$ and those of column~1 among the $d_w(1)=(w,1)$.  Counting them,
+$\ell(\mu)=k-1+[k\notin H]+[x=k+1]$ and $\mu_1=k-1+[1\notin H]+[x=1]$.  So
+$\ell(\mu)\le\mu_1-2$ iff $k\in H$, $x\ne k+1$, $1\notin H$ and $x=1$.  Now $k\in H$ iff $h\in\{k-1,k\}$, and
+$h=k$ gives $H=\{k,1\}\ni1$.  So this happens iff $(h,x)=(k-1,1)$ (note $1\notin\{k-1,k\}$ as $k\ge3$).  If
+$(h,x)\ne(k-1,1)$, Corollary~\ref{cor:energy} and Lemma~\ref{lem:rho} give $Y(\B(\mu))=\rho(X'(h,x))=
+X'(h\oplus_k1,x\oplus_{k+1}1)$.  If $(h,x)=(k-1,1)$, the column lengths are $k+1$ (column 1), $k+1-j$ for
+$2\le j\le k-2$, $1$ (column $k-1$: the cell of $\Delta_{k-1}$ only) and $0$ (column $k$).  So
+$\mu=(k+1,k-1,\dots,3,1)$ (i.e.\ $(4,1)$ for $k=3$) with $k-1$ parts, and $\B(\mu)$ has the parts $k-1$ and $k,k-2,\dots,2$ (the
+part $1$ disappears).  That is $\B(\mu)=(k,k-1,\dots,2)=\lambda_E$ with $E=D_k\setminus\{d_k(k)\}$, which is
+cyclic by Theorem~\ref{thm:brandt}.
+\end{proof}
+
+\begin{theorem}[{\cite[Thm.~4.4(2)]{GH}}]\label{thm:c3lower}
+For $k\ge3$, $\lambda^{\langle k\rangle}=(k-1,k-2,k-2,k-3,\dots,2,1,1)\vdash T_k-1$ and
+$\dB(\lambda^{\langle k\rangle})=k^2-2k-1$.  Consequently $\DB(T_k-1)=k^2-2k-1$ for all $k\ge4$.
+\end{theorem}
+\begin{proof}
+The sequence is non-increasing with sum $(k-1)+(k-2)+T_{k-2}+1=T_k-1$.  Its diagram is $X'(1,k+1)$:
+columns 1 and 2 have $k-1$ and $k-2$ cells (those of $\Delta_{k-1}$, so $d_k(1),d_k(2)$ are missing).  Column
+$j\in[3,k]$ has $k+1-j$ cells ($\Delta_{k-1}$ plus $d_k(j)$), and column $k+1$ is $\{d_{k+1}(k+1)\}$.  Let
+$h_m\equiv1+m\pmod k$ and $x_m\equiv m\pmod{k+1}$ with $h_m\in[1,k]$, $x_m\in[1,k+1]$.  Then
+$(h_m,x_m)=(k-1,1)$ iff $m\equiv-2\pmod k$ and $m\equiv1\pmod{k+1}$.  $M=k^2-2k-2$ satisfies both
+($k^2-2k-2\equiv1+2-2\pmod{k+1}$), and for $k\ge3$, $0\le M<k(k+1)$.  So $M$ is the least non-negative
+solution.  By Lemma~\ref{lem:c3conf} and induction, $Y(\B^m(\lambda^{\langle k\rangle}))=X'(h_m,x_m)$ for $m\le M$,
+and $\B^{M+1}(\lambda^{\langle k\rangle})$ is cyclic.  For $m\le M$ the diagram contains a cell of $D_{k+1}$, so
+$\B^m(\lambda^{\langle k\rangle})$ is not cyclic (Corollary~\ref{cor:cyc}(b): cyclic diagrams lie in $\Delta_k$).
+Hence $\dB=M+1=k^2-2k-1$.  With Theorem~\ref{thm:c3upper}, $\DB(T_k-1)=k^2-2k-1$ for $k\ge4$.  (For $k=3$,
+$\DB(5)=3>2$; for $k=2$, $\DB(2)=0$.)
+\end{proof}
+
+\section{All extremal partitions of $T_k-1$}\label{sec:c3ext}
+
+\begin{theorem}\label{thm:c3ext}
+Let $k\ge5$ and $\lambda\vdash T_k-1$.  The following are equivalent:
+\begin{enumerate}
+\item[(1)] $\dB(\lambda)=k^2-2k-1$;
+\item[(2)] $c_{k^2-2k-2}\ge k+1$, i.e.\ $\B^{k^2-2k-3}(\lambda)$ has at least $k+1$ parts;
+\item[(3)] $(jk,\ jk+j+1,\ k)$ is a ramp for every $j=1,\dots,k-3$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+(3)$\Rightarrow$(2): $j=k-3$ gives $c_{k(k-3)+k-2}=c_{k^2-2k-2}=k+1$.
+(2)$\Rightarrow$(1): by Lemma~\ref{lem:overfull} (here $r=k-1$), $\dB(\lambda)\ge k^2-2k-1$; the reverse
+inequality is Theorem~\ref{thm:c3upper}.
+(1)$\Rightarrow$(3): go through the proof of Theorem~\ref{thm:c3upper} with $d=k^2-2k-1$.  $t\le k$ would give
+$d\le k-1$.  (C) and (A) with $L=k-1$ are impossible, and whenever (B) holds it gives $d<k^2-2k-1$
+(strictly, as $k\ge5$).  Hence (A) holds with $L\le k-2$, and $d\le t-1\le p+k-1\le(L-1)k+k-1\le k^2-2k-1$ is
+an equality: $L=k-2$ and $p=(L-1)k$.  The equality part of Proposition~\ref{prop:rampbound} gives the ramps
+$(jk,jk+j+1,k)$ for $j=1,\dots,k-3$.
+\end{proof}
+
+\begin{remark}
+As for $T_k$, this is a dynamical characterisation, not a closed formula.  For $k=5$ the extremal
+partitions of $14$ are $(4,3,3,2,1,1)=\lambda^{\langle5\rangle}$, $(4,3,2,2,2,1)$, $(4,3,2,2,1,1,1)$,
+$(3,3,3,2,2,1)$, $(3,3,3,2,1,1,1)$ and $(3,3,2,2,2,1,1)$.  For $k=4$ the unique extremal partition of $9$ is
+$(3,2,2,1,1)$; the proof of Theorem~\ref{thm:c3ext} does not apply to $k=4$, and this fact is from exhaustive
+computation over the $30$ partitions of $9$ (Appendix~\ref{app:code}).  Numbers of extremal partitions of $T_k-1$:
+\begin{center}
+\begin{tabular}{c|ccccccc}
+$k$ & 4 & 5 & 6 & 7 & 8 & 9 & 10\\\hline
+$\#\{\lambda\vdash T_k-1:\dB(\lambda)=k^2-2k-1\}$ & 1 & 6 & 34 & 175 & 831 & 3911 & 18163
+\end{tabular}
+\end{center}
+\end{remark}
+
+\section{Towards a direct description of the extremal partitions}\label{sec:c3direct}
+
+\begin{proposition}[a proved direct necessary condition]\label{prop:c3direct}
+Let $k\ge5$ and let $\lambda\vdash T_k-1$ be extremal.  Then
+\begin{enumerate}
+\item[(i)] $\lambda_1\le k+1$;
+\item[(ii)] $\lambda'_i:=\#\{m:\lambda_m\ge i\}\ge k+3-2i$ for every $i\ge1$.  Equivalently, $Y(\lambda)$ contains the diagram of
+$\mathrm{lo}_k=(\lceil (k+2-j)/2\rceil)_{j=1}^{k+1}$, whose conjugate is $(k+1,k-1,k-3,\dots)$;
+\item[(iii)] $\ell(\lambda)\ge k+1$ (the case $i=1$ of (ii)).
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+By Theorem~\ref{thm:c3ext}, $(k,k+2,k)$ is a ramp: $c_k=k-1$, $c_{k+1}=k$, $c_{k+2}=k+1$.  We claim
+$\R_{k+2}=\{N_1,\dots,N_{k+1}\}$.  As $c_{k+1}=c_k+1$ and $c_{k+2}=c_{k+1}+1$, Lemma~\ref{lem:basic}(c) gives
+$\R_k\subseteq \R_{k+1}\subseteq \R_{k+2}$, and $N_k,N_{k+1}\in \R_{k+2}$.  Suppose some $N_i$ with $1\le i\le k-1$ is not in
+$\R_{k+2}$, and take $i$ largest.  Then $N_{i+1}\in \R_{k+2}$, hence $N_{i+1}\in \R_{k+1}$ (Lemma~\ref{lem:basic}(d)), and
+$N_i\notin \R_k$ (as $\R_k\subseteq \R_{k+2}$).  Lemma~\ref{lem:gap} (with $j=i<k$) gives $N_{i+1}\notin \R_{k+2}$, a contradiction.
+So $N_1,\dots,N_{k+1}\in \R_{k+2}$, and since $|\R_{k+2}|=c_{k+2}=k+1$ the claim follows.
+
+(i) No $O_m$ lies in $\R_{k+2}$, i.e.\ $\lambda_m\le k+1$ for all $m$.
+(ii) For $1\le i\le k+1$, $N_i\in \R_{k+2}$ gives $c_i\ge k+2-i$.  Hence for $j<i\le k+2$, $c_j\ge k+2-j\ge i-j$, i.e.\
+$N_j\in \R_i$ by \eqref{eq:alive}.  So $|\R_i|=c_i$ and \eqref{eq:alive} give $\lambda'_i=c_i-(i-1)\ge k+3-2i$.  For
+$i\ge k+2$ the bound is negative.  The conjugate of $\mathrm{lo}_k$ is
+$\#\{j\le k+1:\lceil(k+2-j)/2\rceil\ge i\}=\#\{j\le k+3-2i\}=k+3-2i$, which gives the equivalent form.
+\end{proof}
+
+This is the analogue of condition (1) of \cite[Thm.~3.8]{GH}.  The following observation shows why we do not
+claim a direct characterisation.
+
+\begin{remark}[computational observation, not used]\label{rem:sandwich}
+Let $\mathrm{hi}_k$ be the partition with conjugate $(2k-3,2k-5,\dots,3,1)$.  For $5\le k\le10$ every extremal
+partition of $T_k-1$ lies between $\mathrm{lo}_k$ and $\mathrm{hi}_k$ (\texttt{bs.py}).  But the number of partitions of
+$T_k-1$ in this interval is $6,35,175,834,3935,18330$, against $6,34,175,831,3911,18163$ extremal ones.  So
+``$\mathrm{lo}_k\subseteq\lambda\subseteq\mathrm{hi}_k$'' characterises the extremal partitions for $k=5,7$ but not for
+$k=6,8,9,10$.  Griggs--Ho made the same kind of observation in the triangular case: their three direct
+conditions \cite[Thm.~3.8]{GH} are necessary but not sufficient ($k=8$).
+\end{remark}
+
+\paragraph{What Theorem~\ref{thm:c3ext} does and does not give.}  It is an exact ``if and only if'' description of the
+set of extremal partitions of $T_k-1$, and it goes beyond the bare definition in two ways.  First, (2) is a
+test on a single number: the part count at one fixed time $k^2-2k-2$ must be at least $k+1$.  The definition, by
+contrast, asks whether $\B^{k^2-2k-3}(\lambda)$ is cyclic, which needs Brandt's list.  Second, (3) says that every
+extremal orbit has the same rigid skeleton: ramps of value $k$ at the fixed positions $jk,\dots,jk+j+1$,
+$j=1,\dots,k-3$.  However, it is a \emph{dynamical} description, not a closed-form (static) description of the
+diagrams.  Proposition~\ref{prop:c3direct} extracts direct conditions from the first ramp only.
+Remark~\ref{rem:sandwich} shows that the natural static bounds do not suffice.  We do not have a proof that no
+simple static description exists; the heuristic obstacle is that the ramps with $j\ge2$ involve the orbit up to
+time about $k^2$.  \emph{We therefore regard the question ``which partitions attain the maximum'' as answered
+exactly but not in closed form, and we leave a closed-form description open.}
+
+\section{Computations}
+Computations used in proofs: the case $k=4$ of Theorem~\ref{thm:c3upper} (exhaustive over the $67$ partitions
+of $7,8,9$) and the uniqueness of the extremal partition of $9$ (exhaustive over its $30$ partitions).  Both are
+done by the script in Appendix~\ref{app:code}, which runs in well under a second.  As sanity checks, \texttt{bs.py} (exhaustive for
+$n\le60$, about $1.5$ minutes) confirms: $\DB(n)\le k^2-2k-1$ for all non-triangular $n\le60$ with $k\ge4$;
+$\DB(T_k-1)=k^2-2k-1$ for $4\le k\le10$; $\dB(\lambda^{\langle k\rangle})=k^2-2k-1$ for $3\le k<80$; and
+Theorem~\ref{thm:c3ext} for $5\le k\le10$.  It also checks the ramp bound and Lemma~\ref{lem:long} on
+every ramp among the first $4n+10$ part counts of every partition of $n\le30$.
+
+\appendix
+\section{Code for the exhaustive small cases}\label{app:code}
+File \texttt{p3\_small\_cases.py} (Python 3, no dependencies; runs in well under one second). It computes $\dB$ directly from the definition: the orbit of $\lambda$ is followed until a partition repeats, and the index of the first occurrence of that partition is $\dB(\lambda)$.
+{\footnotesize
+\begin{verbatim}
+#!/usr/bin/env python3
+"""Exhaustive small cases used in p3_c2/p3_c3/p3_c4/p3_c5.
+Straight from the definitions: B(lambda), d_B(lambda) = number of steps before the
+first partition that recurs in the orbit, D_B(n) = max over all partitions of n.
+Runtime: well under one second."""
+
+
+def partitions(n, maxp=None):
+    maxp = n if maxp is None else maxp
+    if n == 0:
+        yield ()
+        return
+    for p in range(min(n, maxp), 0, -1):
+        for rest in partitions(n - p, p):
+            yield (p,) + rest
+
+
+def B(lam):
+    return tuple(sorted([len(lam)] + [x - 1 for x in lam if x > 1], reverse=True))
+
+
+def d_B(lam):
+    first = {}
+    i = 0
+    while lam not in first:
+        first[lam] = i
+        lam = B(lam)
+        i += 1
+    return first[lam]  # the tail length: B^i(lam) is cyclic iff i >= this
+
+
+def fmt(lam):
+    # compact notation: (3,3,2,1) -> 3^2 2 1
+    out = []
+    for v in sorted(set(lam), reverse=True):
+        m = lam.count(v)
+        out.append(f"{v}^{m}" if m > 1 else f"{v}")
+    return "(" + " ".join(out) + ")"
+
+
+for n in [1, 3, 4, 5, 6, 7, 8, 9, 12, 17]:
+    parts = list(partitions(n))
+    d = {lam: d_B(lam) for lam in parts}
+    D = max(d.values())
+    ext = [lam for lam in parts if d[lam] == D]
+    print(f"n={n}: {len(parts)} partitions, D_B={D}, extremal: {', '.join(fmt(l) for l in ext)}")
+\end{verbatim}
+}
+Output:
+{\footnotesize
+\begin{verbatim}
+n=1: 1 partitions, D_B=0, extremal: (1)
+n=3: 3 partitions, D_B=2, extremal: (1^3)
+n=4: 5 partitions, D_B=2, extremal: (1^4)
+n=5: 7 partitions, D_B=3, extremal: (1^5)
+n=6: 11 partitions, D_B=6, extremal: (2^2 1^2)
+n=7: 15 partitions, D_B=4, extremal: (1^7)
+n=8: 22 partitions, D_B=5, extremal: (1^8)
+n=9: 30 partitions, D_B=7, extremal: (3 2^2 1^2)
+n=12: 77 partitions, D_B=8, extremal: (3^2 2^2 1^2), (1^12)
+n=17: 297 partitions, D_B=12, extremal: (1^17)
+\end{verbatim}
+}
+
+\begin{thebibliography}{9}
+\bibitem{AD} E.~Akin and M.~Davis, Bulgarian solitaire, \emph{Amer.\ Math.\ Monthly} 92 (1985), no.~4, 237--250.
+\bibitem{Br} J.~Brandt, Cycles of partitions, \emph{Proc.\ Amer.\ Math.\ Soc.} 85 (1982), 483--486.
+\bibitem{Et} G.~Etienne, Tableaux de Young et solitaire bulgare, \emph{J.\ Combin.\ Theory Ser.~A} 58 (1991), 181--197.
+\bibitem{GH} J.~R.~Griggs and C.-C.~Ho, The cycling of partitions and compositions under repeated shifts,
+\emph{Adv.\ in Appl.\ Math.} 21 (1998), no.~2, 205--227. Preprint (dated March 2, 1998):
+\url{https://people.math.sc.edu/griggs/cycling.pdf}. Theorem and lemma numbers refer to this preprint.
+\bibitem{Ig} K.~Igusa, Solution of the Bulgarian solitaire conjecture, \emph{Math.\ Mag.} 58 (1985), 259--271.
+\bibitem{OEIS} OEIS Foundation, The On-Line Encyclopedia of Integer Sequences, sequence A037306.
+\end{thebibliography}
+
+\end{document}

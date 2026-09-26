@@ -1,0 +1,560 @@
+[
+ {
+  "k": 3,
+  "codex": {
+   "file": "../p4_codex/results_k3.json",
+   "status": "COMPLETE",
+   "count": 0,
+   "duplicates": 0,
+   "normalised_unsorted": 0,
+   "canonical_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "stored_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "stored_matches_own_definition": true,
+   "decisions": {},
+   "wall_seconds": 0.0
+  },
+  "dfs": {
+   "file": "../review/Teo /hackaton/p4_dfs/results/k03_sun.json",
+   "status": "COMPLETE",
+   "enumeration_finished": true,
+   "count": 0,
+   "duplicates": 0,
+   "normalised_unsorted": 0,
+   "canonical_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "stored_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "stored_matches_own_definition": true,
+   "decision_source": "p4_dfs result file",
+   "decisions": {},
+   "wall_clock_s": {
+    "enumeration": 0.0,
+    "decision": 0.0,
+    "total": 0.0
+   }
+  },
+  "lists_identical": true,
+  "only_in_codex": [],
+  "only_in_dfs": [],
+  "decision_disagreements": []
+ },
+ {
+  "k": 4,
+  "codex": {
+   "file": "../p4_codex/results_k4.json",
+   "status": "COMPLETE",
+   "count": 0,
+   "duplicates": 0,
+   "normalised_unsorted": 0,
+   "canonical_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "stored_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "stored_matches_own_definition": true,
+   "decisions": {},
+   "wall_seconds": 0.0
+  },
+  "dfs": {
+   "file": "../review/Teo /hackaton/p4_dfs/results/k04_sun.json",
+   "status": "COMPLETE",
+   "enumeration_finished": true,
+   "count": 0,
+   "duplicates": 0,
+   "normalised_unsorted": 0,
+   "canonical_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "stored_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "stored_matches_own_definition": true,
+   "decision_source": "p4_dfs result file",
+   "decisions": {},
+   "wall_clock_s": {
+    "enumeration": 0.0,
+    "decision": 0.0,
+    "total": 0.0
+   }
+  },
+  "lists_identical": true,
+  "only_in_codex": [],
+  "only_in_dfs": [],
+  "decision_disagreements": []
+ },
+ {
+  "k": 5,
+  "codex": {
+   "file": "../p4_codex/results_k5.json",
+   "status": "COMPLETE",
+   "count": 0,
+   "duplicates": 0,
+   "normalised_unsorted": 0,
+   "canonical_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "stored_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "stored_matches_own_definition": true,
+   "decisions": {},
+   "wall_seconds": 0.0
+  },
+  "dfs": {
+   "file": "../review/Teo /hackaton/p4_dfs/results/k05_sun.json",
+   "status": "COMPLETE",
+   "enumeration_finished": true,
+   "count": 0,
+   "duplicates": 0,
+   "normalised_unsorted": 0,
+   "canonical_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "stored_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "stored_matches_own_definition": true,
+   "decision_source": "p4_dfs result file",
+   "decisions": {},
+   "wall_clock_s": {
+    "enumeration": 0.0,
+    "decision": 0.0,
+    "total": 0.0
+   }
+  },
+  "lists_identical": true,
+  "only_in_codex": [],
+  "only_in_dfs": [],
+  "decision_disagreements": []
+ },
+ {
+  "k": 6,
+  "codex": {
+   "file": "../p4_codex/results_k6.json",
+   "status": "COMPLETE",
+   "count": 0,
+   "duplicates": 0,
+   "normalised_unsorted": 0,
+   "canonical_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "stored_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "stored_matches_own_definition": true,
+   "decisions": {},
+   "wall_seconds": 0.0
+  },
+  "dfs": {
+   "file": "../review/Teo /hackaton/p4_dfs/results/k06_sun.json",
+   "status": "COMPLETE",
+   "enumeration_finished": true,
+   "count": 0,
+   "duplicates": 0,
+   "normalised_unsorted": 0,
+   "canonical_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "stored_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "stored_matches_own_definition": true,
+   "decision_source": "p4_dfs result file",
+   "decisions": {},
+   "wall_clock_s": {
+    "enumeration": 0.001,
+    "decision": 0.0,
+    "total": 0.001
+   }
+  },
+  "lists_identical": true,
+  "only_in_codex": [],
+  "only_in_dfs": [],
+  "decision_disagreements": []
+ },
+ {
+  "k": 7,
+  "codex": {
+   "file": "../p4_codex/results_k7.json",
+   "status": "COMPLETE",
+   "count": 2,
+   "duplicates": 0,
+   "normalised_unsorted": 0,
+   "canonical_sha256": "01557c6ee033362572d9b27c7544c573ac3114f221e0989214da4c72908f71da",
+   "stored_sha256": "ed6ec18b630fcae83cdb95604fa797f7207296de09ad302174c164281d2e8bc6",
+   "stored_matches_own_definition": true,
+   "decisions": {
+    "UNSAT": 2
+   },
+   "wall_seconds": 0.002
+  },
+  "dfs": {
+   "file": "../review/Teo /hackaton/p4_dfs/results/k07_sun.json",
+   "status": "COMPLETE",
+   "enumeration_finished": true,
+   "count": 2,
+   "duplicates": 0,
+   "normalised_unsorted": 0,
+   "canonical_sha256": "01557c6ee033362572d9b27c7544c573ac3114f221e0989214da4c72908f71da",
+   "stored_sha256": "01557c6ee033362572d9b27c7544c573ac3114f221e0989214da4c72908f71da",
+   "stored_matches_own_definition": true,
+   "decision_source": "p4_dfs result file",
+   "decisions": {
+    "UNSAT": 2
+   },
+   "wall_clock_s": {
+    "enumeration": 0.003,
+    "decision": 0.001,
+    "total": 0.004
+   }
+  },
+  "lists_identical": true,
+  "only_in_codex": [],
+  "only_in_dfs": [],
+  "decision_disagreements": []
+ },
+ {
+  "k": 8,
+  "codex": {
+   "file": "../p4_codex/results_k8.json",
+   "status": "COMPLETE",
+   "count": 7,
+   "duplicates": 0,
+   "normalised_unsorted": 0,
+   "canonical_sha256": "1621baadfc46fc4bd51a7a75c6d635d198bca530ae676a0cec92b471313d8a77",
+   "stored_sha256": "8215975a3cf404147cf3ebde53c8fdb32e6ec072e63520d14e9fcf217a5a6c1b",
+   "stored_matches_own_definition": true,
+   "decisions": {
+    "UNSAT": 7
+   },
+   "wall_seconds": 0.003
+  },
+  "dfs": {
+   "file": "../review/Teo /hackaton/p4_dfs/results/k08_sun.json",
+   "status": "COMPLETE",
+   "enumeration_finished": true,
+   "count": 7,
+   "duplicates": 0,
+   "normalised_unsorted": 0,
+   "canonical_sha256": "1621baadfc46fc4bd51a7a75c6d635d198bca530ae676a0cec92b471313d8a77",
+   "stored_sha256": "1621baadfc46fc4bd51a7a75c6d635d198bca530ae676a0cec92b471313d8a77",
+   "stored_matches_own_definition": true,
+   "decision_source": "p4_dfs result file",
+   "decisions": {
+    "UNSAT": 7
+   },
+   "wall_clock_s": {
+    "enumeration": 0.008,
+    "decision": 0.007,
+    "total": 0.015
+   }
+  },
+  "lists_identical": true,
+  "only_in_codex": [],
+  "only_in_dfs": [],
+  "decision_disagreements": []
+ },
+ {
+  "k": 9,
+  "codex": {
+   "file": "../p4_codex/results_k9.json",
+   "status": "COMPLETE",
+   "count": 6,
+   "duplicates": 0,
+   "normalised_unsorted": 0,
+   "canonical_sha256": "febd71b7bbda2883058372c14ae266f566ba8c815d0005df1081c944df13144c",
+   "stored_sha256": "3fa7dcb734f900ef86d29006e7cae6896a4f3fc1d03d7debda9eb5bba6224d65",
+   "stored_matches_own_definition": true,
+   "decisions": {
+    "UNSAT": 6
+   },
+   "wall_seconds": 0.007
+  },
+  "dfs": {
+   "file": "../review/Teo /hackaton/p4_dfs/results/k09_sun.json",
+   "status": "COMPLETE",
+   "enumeration_finished": true,
+   "count": 6,
+   "duplicates": 0,
+   "normalised_unsorted": 0,
+   "canonical_sha256": "febd71b7bbda2883058372c14ae266f566ba8c815d0005df1081c944df13144c",
+   "stored_sha256": "febd71b7bbda2883058372c14ae266f566ba8c815d0005df1081c944df13144c",
+   "stored_matches_own_definition": true,
+   "decision_source": "p4_dfs result file",
+   "decisions": {
+    "UNSAT": 6
+   },
+   "wall_clock_s": {
+    "enumeration": 0.025,
+    "decision": 0.005,
+    "total": 0.03
+   }
+  },
+  "lists_identical": true,
+  "only_in_codex": [],
+  "only_in_dfs": [],
+  "decision_disagreements": []
+ },
+ {
+  "k": 10,
+  "codex": {
+   "file": "../p4_codex/results_k10.json",
+   "status": "COMPLETE",
+   "count": 3,
+   "duplicates": 0,
+   "normalised_unsorted": 0,
+   "canonical_sha256": "b02fcc22779027561f7c60a1d3ffba7230f1b11d39e3617eb7361ffe883db76e",
+   "stored_sha256": "182177d61551f2aa7e921cdafebf7e437a5e9aba08cb9ebbaa8300c736a4ee75",
+   "stored_matches_own_definition": true,
+   "decisions": {
+    "UNSAT": 3
+   },
+   "wall_seconds": 0.022
+  },
+  "dfs": {
+   "file": "../review/Teo /hackaton/p4_dfs/results/k10_sun.json",
+   "status": "COMPLETE",
+   "enumeration_finished": true,
+   "count": 3,
+   "duplicates": 0,
+   "normalised_unsorted": 0,
+   "canonical_sha256": "b02fcc22779027561f7c60a1d3ffba7230f1b11d39e3617eb7361ffe883db76e",
+   "stored_sha256": "b02fcc22779027561f7c60a1d3ffba7230f1b11d39e3617eb7361ffe883db76e",
+   "stored_matches_own_definition": true,
+   "decision_source": "p4_dfs result file",
+   "decisions": {
+    "UNSAT": 3
+   },
+   "wall_clock_s": {
+    "enumeration": 0.063,
+    "decision": 0.003,
+    "total": 0.067
+   }
+  },
+  "lists_identical": true,
+  "only_in_codex": [],
+  "only_in_dfs": [],
+  "decision_disagreements": []
+ },
+ {
+  "k": 11,
+  "codex": {
+   "file": "../p4_codex/results_k11.json",
+   "status": "COMPLETE",
+   "count": 137,
+   "duplicates": 0,
+   "normalised_unsorted": 0,
+   "canonical_sha256": "dee521791e4d6f13cbeaa1875c70c99e7278c8820143c0ab7fc0fe31003723fe",
+   "stored_sha256": "7cc628ecca6ee9e594ba3d57cbe29e85b2acecdf31984bda1711ba1b350165d8",
+   "stored_matches_own_definition": true,
+   "decisions": {
+    "UNSAT": 137
+   },
+   "wall_seconds": 0.149
+  },
+  "dfs": {
+   "file": "../review/Teo /hackaton/p4_dfs/results/k11_sun.json",
+   "status": "COMPLETE",
+   "enumeration_finished": true,
+   "count": 137,
+   "duplicates": 0,
+   "normalised_unsorted": 0,
+   "canonical_sha256": "dee521791e4d6f13cbeaa1875c70c99e7278c8820143c0ab7fc0fe31003723fe",
+   "stored_sha256": "dee521791e4d6f13cbeaa1875c70c99e7278c8820143c0ab7fc0fe31003723fe",
+   "stored_matches_own_definition": true,
+   "decision_source": "p4_dfs result file",
+   "decisions": {
+    "UNSAT": 137
+   },
+   "wall_clock_s": {
+    "enumeration": 0.796,
+    "decision": 1.836,
+    "total": 2.631
+   }
+  },
+  "lists_identical": true,
+  "only_in_codex": [],
+  "only_in_dfs": [],
+  "decision_disagreements": []
+ },
+ {
+  "k": 12,
+  "codex": {
+   "file": "../p4_codex/results_k12.json",
+   "status": "COMPLETE",
+   "count": 522,
+   "duplicates": 0,
+   "normalised_unsorted": 0,
+   "canonical_sha256": "d7ab51816f731ab2283f025ba0f31adff2efe79f0762d2ec03fc01ed2d30986d",
+   "stored_sha256": "cd709c8a6965be50ea53ba64c155c7773ace52038aaeee5dbfb6a1405bbff160",
+   "stored_matches_own_definition": true,
+   "decisions": {
+    "UNSAT": 522
+   },
+   "wall_seconds": 0.972
+  },
+  "dfs": {
+   "file": "../review/Teo /hackaton/p4_dfs/results/k12_sun.json",
+   "status": "COMPLETE",
+   "enumeration_finished": true,
+   "count": 522,
+   "duplicates": 0,
+   "normalised_unsorted": 0,
+   "canonical_sha256": "d7ab51816f731ab2283f025ba0f31adff2efe79f0762d2ec03fc01ed2d30986d",
+   "stored_sha256": "d7ab51816f731ab2283f025ba0f31adff2efe79f0762d2ec03fc01ed2d30986d",
+   "stored_matches_own_definition": true,
+   "decision_source": "p4_dfs result file",
+   "decisions": {
+    "UNSAT": 522
+   },
+   "wall_clock_s": {
+    "enumeration": 1.594,
+    "decision": 4.6,
+    "total": 6.193
+   }
+  },
+  "lists_identical": true,
+  "only_in_codex": [],
+  "only_in_dfs": [],
+  "decision_disagreements": []
+ },
+ {
+  "k": 13,
+  "codex": {
+   "file": "../p4_codex/results_k13.json",
+   "status": "COMPLETE",
+   "count": 4395,
+   "duplicates": 0,
+   "normalised_unsorted": 0,
+   "canonical_sha256": "2dbfd65f26961615f44ddd6efced8fdf1d8489920b9de2bcfa111ab6b7411dd1",
+   "stored_sha256": "584dbf8f1355f4e691b45e32ecd277e9777802d6625fa930cf9b703281733a83",
+   "stored_matches_own_definition": true,
+   "decisions": {
+    "UNSAT": 4395
+   },
+   "wall_seconds": 8.126
+  },
+  "dfs": {
+   "file": "../review/Teo /hackaton/p4_dfs/results/k13_sun.json",
+   "status": "COMPLETE",
+   "enumeration_finished": true,
+   "count": 4395,
+   "duplicates": 0,
+   "normalised_unsorted": 0,
+   "canonical_sha256": "2dbfd65f26961615f44ddd6efced8fdf1d8489920b9de2bcfa111ab6b7411dd1",
+   "stored_sha256": "2dbfd65f26961615f44ddd6efced8fdf1d8489920b9de2bcfa111ab6b7411dd1",
+   "stored_matches_own_definition": true,
+   "decision_source": "p4_dfs result file",
+   "decisions": {
+    "UNSAT": 4395
+   },
+   "wall_clock_s": {
+    "enumeration": 6.487,
+    "decision": 276.965,
+    "total": 283.452
+   }
+  },
+  "lists_identical": true,
+  "only_in_codex": [],
+  "only_in_dfs": [],
+  "decision_disagreements": []
+ },
+ {
+  "k": 14,
+  "codex": {
+   "file": "../p4_codex/results_k14.json",
+   "status": "COMPLETE",
+   "count": 19880,
+   "duplicates": 0,
+   "normalised_unsorted": 0,
+   "canonical_sha256": "f2ec65da7dedb65caec60c1acd7de28fc3bcb28a743a274dd240f32a038ed818",
+   "stored_sha256": "c571ebcb1923d44d05835ee06e247dcf8052fb7bd5debb38b1c3a410bcc50ee1",
+   "stored_matches_own_definition": true,
+   "decisions": {
+    "UNSAT": 19880
+   },
+   "wall_seconds": 60.082
+  },
+  "dfs": {
+   "file": "../review/Teo /hackaton/p4_dfs/results/k14_sun.json",
+   "status": "COMPLETE",
+   "enumeration_finished": true,
+   "count": 19880,
+   "duplicates": 0,
+   "normalised_unsorted": 0,
+   "canonical_sha256": "f2ec65da7dedb65caec60c1acd7de28fc3bcb28a743a274dd240f32a038ed818",
+   "stored_sha256": "f2ec65da7dedb65caec60c1acd7de28fc3bcb28a743a274dd240f32a038ed818",
+   "stored_matches_own_definition": true,
+   "decision_source": "p4_dfs result file",
+   "decisions": {
+    "UNSAT": 19880
+   },
+   "wall_clock_s": {
+    "enumeration": 35.826,
+    "decision": 970.83,
+    "total": 1006.656
+   }
+  },
+  "lists_identical": true,
+  "only_in_codex": [],
+  "only_in_dfs": [],
+  "decision_disagreements": []
+ },
+ {
+  "k": 15,
+  "codex": {
+   "file": "../p4_codex/results_k15.json",
+   "status": "COMPLETE",
+   "count": 155890,
+   "duplicates": 0,
+   "normalised_unsorted": 0,
+   "canonical_sha256": "8a4aca6d7ee2df8bbc4f278621f8216746990cf7c09164b452026bc0a2d87b40",
+   "stored_sha256": "3a79e6a5fe791f6d39f5220961c01ba8336102f5f7f8b6caf81611098aab5f12",
+   "stored_matches_own_definition": true,
+   "decisions": {
+    "UNSAT": 155890
+   },
+   "wall_seconds": 199.51
+  },
+  "dfs": {
+   "file": "../review/Teo /hackaton/p4_dfs/results/k15_sun_UNFINISHED.json",
+   "status": "UNFINISHED",
+   "enumeration_finished": true,
+   "count": 155890,
+   "duplicates": 0,
+   "normalised_unsorted": 0,
+   "canonical_sha256": "8a4aca6d7ee2df8bbc4f278621f8216746990cf7c09164b452026bc0a2d87b40",
+   "stored_sha256": "8a4aca6d7ee2df8bbc4f278621f8216746990cf7c09164b452026bc0a2d87b40",
+   "stored_matches_own_definition": true,
+   "decision_source": "p4_dfs result file",
+   "decisions": {
+    "UNDECIDED": 155890
+   },
+   "wall_clock_s": {
+    "enumeration": 420.332,
+    "decision": 0.347,
+    "total": 420.679
+   }
+  },
+  "lists_identical": true,
+  "only_in_codex": [],
+  "only_in_dfs": [],
+  "decision_disagreements": []
+ },
+ {
+  "k": 16,
+  "codex": {
+   "file": "../p4_codex/results_k16.json",
+   "status": "COMPLETE",
+   "count": 236333,
+   "duplicates": 0,
+   "normalised_unsorted": 0,
+   "canonical_sha256": "2f8472ca4310cce90f832161c01520853a5c7b79516202f8d15ede27b81334fd",
+   "stored_sha256": "31ee564cab1dac77b3a98b067aa2a7807ec61e0b01f2ea4294c3e002ac079aa6",
+   "stored_matches_own_definition": true,
+   "decisions": {
+    "UNSAT": 236333
+   },
+   "wall_seconds": 223.907
+  },
+  "dfs": {
+   "file": "../review/Teo /hackaton/p4_dfs/results/k16_sun_UNFINISHED.json",
+   "status": "UNFINISHED",
+   "enumeration_finished": true,
+   "count": 236333,
+   "duplicates": 0,
+   "normalised_unsorted": 0,
+   "canonical_sha256": "2f8472ca4310cce90f832161c01520853a5c7b79516202f8d15ede27b81334fd",
+   "stored_sha256": "2f8472ca4310cce90f832161c01520853a5c7b79516202f8d15ede27b81334fd",
+   "stored_matches_own_definition": true,
+   "decision_source": "p4_dfs result file",
+   "decisions": {
+    "UNDECIDED": 236333
+   },
+   "wall_clock_s": {
+    "enumeration": 776.782,
+    "decision": 0.514,
+    "total": 777.296
+   }
+  },
+  "lists_identical": true,
+  "only_in_codex": [],
+  "only_in_dfs": [],
+  "decision_disagreements": []
+ }
+]

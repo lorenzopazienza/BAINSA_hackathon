@@ -1,0 +1,99 @@
+% ===== uphill/p2_c6.tex  (Problem 2, track 6) =====
+% Written directly as a body file (not produced by tools/convert_cell.py).
+% Title: Problem 2, Cell 6: $U(Q_9)$ (open question)
+% Body only: packages, theorem environments and macros are in preamble.tex.
+% Labels are prefixed with "p2c6:".  Uses cells 1-5 (p2c1:* ... p2c5:*).
+% Bibliography (3 entries) in paper/bib/p2_c6.tex -> references.tex.
+
+\paragraph{Official setting.} As in Cell~1 (\S\ref{p2c1:sec:count}). For C6, hand in all three
+of: the value; an explicit labelling that attains it, in the same format; and a proof that no
+labelling gives fewer uphill paths.
+
+\begin{statement}
+Determine $U(Q_9)$.
+\end{statement}
+
+\paragraph{Status.} \textbf{Partial.} We do \emph{not} determine $U(Q_9)$. We prove
+$2328\le U(Q_9)\le2400$ (Cell~5) and reduce the remaining gap to a question about decycling sets
+of $Q_9$. We conjecture $U(Q_9)=2400$ (Conjecture~\ref{p2c6:conj}), and give the evidence we have.
+The labelling of Cell~5 (\S\ref{p2c5:sec:lab}) is our candidate for the optimum.
+
+\subsubsection{What is proved}
+
+\begin{proposition}\label{p2c6:prop:reduce}
+\begin{enumerate}[label=(\alph*)]
+\item $2328\le U(Q_9)\le2400$ and $227\le\nabla(Q_9)\le236$.
+\item Every labelling $f$ of $Q_9$ with fewer than $2400$ uphill paths has a set $R_f$ of expensive
+  vertices ($N\ge2$) that is a decycling set with at most $235$ vertices. It also satisfies
+  $\sum_{u\in R_f}(N(u)-2)\,\mathrm{out}(u)\le2399-512-8|R_f|$.
+\item In particular, if $\nabla(Q_9)=236$, then $U(Q_9)=2400$, attained by $L_{C_9}$.
+\item Let $R$ be a decycling set of $Q_9$ contained in one parity class. Then $|R|\ge231$; and
+  $|R|\ge236$ if one uses the known value $A(8,3)=20$ \cite{MS77}.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(a) is Proposition~\ref{p2c5:prop:upper} and Theorem~\ref{p2c5:thm:main}. (b) is
+Proposition~\ref{p2c1:prop:formula} with $d=9$ together with Lemma~\ref{p2c1:lem:S}(c).
+(c) follows from (b) and (a). For (d), assume by symmetry that $R\subseteq E_9$, and let
+$C=E_9\setminus R$. All odd vertices lie outside $R$. Two words of $C$ at distance $2$ would span a
+$4$-cycle with their two (odd) common neighbours, so $C$ has pairwise distances $\ge4$. By
+Lemma~\ref{p2c5:lem:del}, $|C|\le25$, so $|R|\ge256-25=231$. The maximum size of such a code equals
+$A(8,3)=20$ (puncture one coordinate, respectively add a parity bit), which gives $|R|\ge236$.
+\end{proof}
+
+So a labelling beating $2400$ must come from a decycling set of $Q_9$ with at most $235$ vertices.
+By (d), such a set contains vertices of \emph{both} parities, unlike every optimal set we know for
+$d\le8$ (Corollary~\ref{p2c4:cor:table}).
+
+\subsubsection{Conjecture and evidence}
+
+\begin{conjecture}\label{p2c6:conj}
+$\nabla(Q_9)=236$, and hence $U(Q_9)=2400$.
+\end{conjecture}
+
+\paragraph{Evidence (not a proof).}
+\begin{itemize}
+\item For $2\le d\le8$ we proved $\nabla(Q_d)=2^{d-1}-A(d-1,3)$. In each case the optimum is attained
+  by a parity class minus a code (Corollary~\ref{p2c4:cor:table}). The conjecture is the same
+  formula at $d=9$.
+\item Up to $d=8$ this formula is squeezed between two simple lower bounds: the counting bound
+  (Lemma~\ref{p2c1:lem:count}) and doubling (Lemma~\ref{p2c4:lem:double}). At $d=9$ the two bounds
+  give only $225$ and $224$, while the formula gives $236$. The gap is $11$. This is why $d=9$ is the
+  first open case.
+\item Local search found nothing below $236$. We ran simulated annealing over sets $R$ of fixed
+  size $r\in\{228,\dots,235\}$, minimising the cycle rank of $Q_9-R$. Starts were random or
+  $E_9\setminus C_9$ with vertices removed. Moves swapped a vertex of $R$ with a vertex of the
+  complement, and runs had up to $6\cdot10^6$ moves. No decycling set of size $\le235$ turned up; the
+  best set of size $235$ left one independent cycle. A SAT search for a decycling set of size $225$
+  (with the subcube bounds of Cell~5 added) did not finish within half an hour. These runs are
+  exploratory and are not part of any proof.
+\end{itemize}
+
+\subsubsection{What a proof would need}
+
+By Proposition~\ref{p2c6:prop:reduce}(c), it suffices to show that $Q_9$ has no decycling set of
+size $224+s$ for $3\le s\le11$ (sizes $227$--$235$). The proof of Theorem~\ref{p2c5:thm:main}
+covers $s\le2$. Two ingredients would have to be strengthened:
+\begin{enumerate}[label=(\roman*)]
+\item \emph{Types of light copies.} For $s\ge3$ the heavy copies of a fixed $D$ can separate
+  $\{0,1\}^D$, so the light copies need not all have the same type. One would need the structure of
+  decycling sets of $Q_6$ with $29$, $30$, \dots\ vertices, or copies of other dimensions, for
+  instance $Q_5$ with $\nabla(Q_5)=14$ and $16$ copies per class.
+\item \emph{The code bound.} Step~4 of that proof uses $|C_0|\le25$ (Lemma~\ref{p2c5:lem:del}). With
+  $A(8,3)=20$ in its place, Step~4 gives $|C|\le20+\sum_{z\in Z}|C\cap N(z)|$, to be compared with
+  $|C|=32-s+|Z|$. This is a contradiction while the odd part $Z$ is small. For example, when
+  $|Z|\le3$ each $|C\cap N(z)|\le3$, and $|C|\le20+3|Z|<32-s+|Z|$ as soon as $2|Z|<12-s$. For a
+  large $Z$ it is not.
+\end{enumerate}
+A decycling set of size $\le235$ would not settle the question by itself either. By
+Proposition~\ref{p2c6:prop:reduce}(b), it improves on $2400$ only if the extra term
+$\sum_{u\in R}(N(u)-2)\mathrm{out}(u)$ can be kept small, for instance if it is independent.
+
+\begin{remark}[Literature]
+Decycling (feedback vertex) sets of hypercubes have been studied before, e.g.\
+\cite{FLP00,BB02,Pik03}. We did not use these papers and have not checked which of our values
+$\nabla(Q_d)$, $d\le8$, appear there. We claim no novelty for these values. The connection with
+uphill paths, the exact formula of Proposition~\ref{p2c1:prop:formula}, the resulting values of
+$U(Q_d)$, and the bound $\nabla(Q_9)\ge227$ were obtained independently here.
+\end{remark}

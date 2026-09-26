@@ -1,0 +1,7 @@
+literal tests agree with each other and with criterion (*) for all moduli <= 40
+k=3, moduli<=60, definition table: 17561 moduli tuples, 0 counterexamples (3.1s)
+k=3, moduli<=20, period-by-period check: 718 moduli tuples, 0 counterexamples (0.0s)
+k=4, moduli<=60, definition table: 214078 moduli tuples, 0 counterexamples (79.7s)
+k=4, moduli<=20, period-by-period check: 3032 moduli tuples, 0 counterexamples (0.2s)
+sharpness: {r mod k : 0 <= r < k} is disjoint with all gcds = k (k = 3, 4)
+.venv/bin/python check_p4.py  83.11s user 0.44s system 98% cpu 1:25.01 total

@@ -1,0 +1,257 @@
+{
+  "k": 10,
+  "gcd_upper_bound": 9,
+  "L": 2520,
+  "candidate_divisors": 47,
+  "all_divisor_multisets": 35607051480,
+  "density_prefix_prune": true,
+  "status": "COMPLETE",
+  "counts": {
+    "multisets_after_gcd": 59092,
+    "multisets_after_density": 547,
+    "multisets_after_normal_form": 3,
+    "sat_calls": 3,
+    "SAT": 0,
+    "UNSAT": 3,
+    "nodes_visited": 37873
+  },
+  "survivor_sha256": "182177d61551f2aa7e921cdafebf7e437a5e9aba08cb9ebbaa8300c736a4ee75",
+  "survivors": [
+    {
+      "moduli": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        18,
+        24,
+        28,
+        40,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 5,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          7
+        ],
+        "core_moduli": [
+          6,
+          6,
+          6,
+          6,
+          28
+        ],
+        "s_minus_1_witness_count": 31,
+        "witness_file": "minimal_witnesses_k10.jsonl.gz",
+        "witness_sha256": "11b89c2483678965d33fd0ad07da2eacc168b028d561592158aaead1aef1252e",
+        "core_gcds": [
+          [
+            6,
+            6,
+            6,
+            6,
+            2
+          ],
+          [
+            6,
+            6,
+            6,
+            6,
+            2
+          ],
+          [
+            6,
+            6,
+            6,
+            6,
+            2
+          ],
+          [
+            6,
+            6,
+            6,
+            6,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            28
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        18,
+        24,
+        40,
+        56,
+        315
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 5,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          7
+        ],
+        "core_moduli": [
+          6,
+          6,
+          6,
+          6,
+          40
+        ],
+        "s_minus_1_witness_count": 31,
+        "witness_file": "minimal_witnesses_k10.jsonl.gz",
+        "witness_sha256": "11b89c2483678965d33fd0ad07da2eacc168b028d561592158aaead1aef1252e",
+        "core_gcds": [
+          [
+            6,
+            6,
+            6,
+            6,
+            2
+          ],
+          [
+            6,
+            6,
+            6,
+            6,
+            2
+          ],
+          [
+            6,
+            6,
+            6,
+            6,
+            2
+          ],
+          [
+            6,
+            6,
+            6,
+            6,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            40
+          ]
+        ]
+      }
+    },
+    {
+      "moduli": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        18,
+        24,
+        45,
+        63,
+        280
+      ],
+      "decision": "UNSAT",
+      "minimal_part": {
+        "s": 5,
+        "core_indices": [
+          0,
+          1,
+          2,
+          3,
+          9
+        ],
+        "core_moduli": [
+          6,
+          6,
+          6,
+          6,
+          280
+        ],
+        "s_minus_1_witness_count": 31,
+        "witness_file": "minimal_witnesses_k10.jsonl.gz",
+        "witness_sha256": "11b89c2483678965d33fd0ad07da2eacc168b028d561592158aaead1aef1252e",
+        "core_gcds": [
+          [
+            6,
+            6,
+            6,
+            6,
+            2
+          ],
+          [
+            6,
+            6,
+            6,
+            6,
+            2
+          ],
+          [
+            6,
+            6,
+            6,
+            6,
+            2
+          ],
+          [
+            6,
+            6,
+            6,
+            6,
+            2
+          ],
+          [
+            2,
+            2,
+            2,
+            2,
+            280
+          ]
+        ]
+      }
+    }
+  ],
+  "last_prefix_at_timeout": null,
+  "wall_seconds": 0.022,
+  "solver": "CaDiCaL 1.5.3 via python-sat 1.9.dev15",
+  "minimal_parts": {
+    "status": "COMPLETE",
+    "records_file": "minimal_parts_k10.jsonl.gz",
+    "records_sha256": "ba85f6e959b76b05d01fa7560525177e046afef6866f3adb9bb1d9e0026ba9dc",
+    "witness_file": "minimal_witnesses_k10.jsonl.gz",
+    "witness_sha256": "11b89c2483678965d33fd0ad07da2eacc168b028d561592158aaead1aef1252e",
+    "k": 10,
+    "candidate_count": 3,
+    "distribution": {
+      "5": 3
+    },
+    "unique_decisions": 183,
+    "unique_witnesses": 73,
+    "selector_sat_calls": 259,
+    "wall_seconds": 0.013,
+    "seeded_decisions": 0
+  }
+}

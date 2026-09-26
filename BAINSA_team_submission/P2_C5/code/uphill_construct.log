@@ -1,0 +1,8 @@
+d = 3: |C| =  1, uphill paths = 14  -> ../uphill/labellings/Q3.txt
+d = 4: |C| =  2, uphill paths = 34  -> ../uphill/labellings/Q4.txt
+d = 5: |C| =  2, uphill paths = 88  -> ../uphill/labellings/Q5.txt
+d = 6: |C| =  4, uphill paths = 204  -> ../uphill/labellings/Q6.txt
+d = 7: |C| =  8, uphill paths = 464  -> ../uphill/labellings/Q7.txt
+d = 8: |C| = 16, uphill paths = 1040  -> ../uphill/labellings/Q8.txt
+d = 9: |C| = 20, uphill paths = 2400  -> ../uphill/labellings/Q9.txt
+exit 0

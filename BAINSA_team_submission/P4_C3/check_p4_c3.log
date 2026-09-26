@@ -1,0 +1,6 @@
+k=5, moduli<=60: 1829 classes, max clique = 4 (example [(60, 58), (56, 55), (52, 49), (44, 40)]), 118 nodes, 0.4s
+k=6, moduli<=60: 1829 classes, max clique = 5 (example [(45, 44), (50, 46), (55, 53), (35, 32), (5, 0)]), 3197 nodes, 1.0s
+k=7, moduli<=60: 1829 classes, max clique = 6 (example [(30, 28), (48, 41), (54, 50), (42, 37), (6, 3), (6, 0)]), 3976 nodes, 1.2s
+k=8, moduli<=60: 1829 classes, max clique = 7 (example [(42, 41), (35, 32), (49, 47), (7, 3), (7, 2), (7, 1), (7, 0)]), 25656 nodes, 2.9s
+all OK
+.venv/bin/python check_p4_c3.py 5:60 6:60 7:60 8:60  5.50s user 0.02s system 99% cpu 5.551 total

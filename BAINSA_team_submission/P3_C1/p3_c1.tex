@@ -1,0 +1,339 @@
+\documentclass[11pt]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\dB}{d_{\mathcal{B}}}
+\newcommand{\DB}{D_{\mathcal{B}}}
+\newcommand{\R}{R}
+\renewcommand{\le}{\leqslant}
+\renewcommand{\ge}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\author{Problem 3 team}
+
+\title{Problem 3 (Bulgarian solitaire), Cell 1:\\ cyclic partitions and cycles}
+\date{}
+\begin{document}
+\maketitle
+
+\paragraph{Official setting.}
+\begin{quote}
+A partition of a positive integer $n$ is a weakly decreasing sequence $\lambda=(\lambda_1,\dots,\lambda_s)$ of
+positive integers with $\lambda_1+\cdots+\lambda_s=n$.  The shift $\B(\lambda)$ is the partition whose parts are the
+positive numbers among $\lambda_1-1,\dots,\lambda_s-1$ together with one extra part equal to $s$.  Call $\lambda$
+cyclic if $\B^i(\lambda)=\lambda$ for some $i\ge1$, and let $\dB(\lambda)=\min\{\,i\ge0:\B^i(\lambda)\text{ is cyclic}\,\}$,
+$\DB(n)=\max\{\,\dB(\lambda):\lambda\text{ is a partition of }n\,\}$.  Write $T_k=k(k+1)/2$ and
+$\delta_k=(k,k-1,\dots,2,1)$.  Every $n\ge1$ satisfies $T_{k-1}<n\le T_k$ for exactly one $k$, which we call the
+rank of $n$.
+\end{quote}
+Section~\ref{sec:defs} restates these definitions in an equivalent form, proves that $\dB$ is well defined and
+that the rank exists and is unique (Lemma~\ref{lem:rank}, where we also write $n=T_{k-1}+r$, $1\le r\le k$), and
+fixes further notation.
+
+\paragraph{Official statement of the cell.}
+\begin{quote}
+Let $n=T_k$.  Prove that for every partition $\lambda$ of $n$ there is an $i$ with $\B^i(\lambda)=\delta_k$, and that
+$\delta_k$ is the only cyclic partition of $n$.  Then let $n$ be arbitrary of rank $k$, say $n=T_{k-1}+r$ with
+$1\le r\le k$: determine all cyclic partitions of $n$, and determine the number of distinct cycles of $\B$ on the
+partitions of $n$.  Prove both.
+\end{quote}
+
+\paragraph{Status.} \textbf{Solved} (complete proof; no computation is used).
+
+\paragraph{Answer and where it is proved.}
+\begin{itemize}
+\item $n=T_k$: $\delta_k$ is the only cyclic partition (Corollary~\ref{cor:cyc}(a)), and $\B^i(\lambda)=\delta_k$ for
+every $i\ge\dB(\lambda)$ (Corollary~\ref{cor:reach}).
+\item $n=T_{k-1}+r$, $1\le r\le k$: the cyclic partitions are exactly
+$(k-1+e_{k-1},\,k-2+e_{k-2},\dots,1+e_1,\,e_0)$ with $e_i\in\{0,1\}$ and $\sum_ie_i=r$ (zero parts omitted), so there
+are $\binom kr$ of them (Theorem~\ref{thm:brandt}, Brandt \cite{Br}).
+\item On them $\B$ acts as rotation of a necklace with $r$ black and $k-r$ white beads, so the number of distinct
+cycles is
+\[N(k,r)=\frac1k\sum_{d\mid\gcd(k,r)}\varphi(d)\binom{k/d}{r/d}\qquad\text{(Theorem~\ref{thm:necklace}; OEIS A037306 \cite{OEIS})},\]
+and every cycle length divides $k$.
+\end{itemize}
+The characterisation follows the argument of Griggs--Ho \cite[\S2]{GH} (Etienne's idea \cite{Et}), made fully
+explicit with a potential function.  The count uses Burnside's lemma, proved here for the cyclic group.
+
+\section{Setting and notation}\label{sec:defs}
+
+Throughout, $T_m=m(m+1)/2$ for integers $m\ge 0$, and $[P]\in\{0,1\}$ denotes the truth value
+of a statement $P$.
+A \emph{partition} $\lambda$ of $n\ge 1$ (written $\lambda\vdash n$) is a finite non-increasing
+sequence of positive integers $\lambda_1\ge\lambda_2\ge\dots\ge\lambda_\ell$ with sum $n$;
+$\ell=\ell(\lambda)$ is its number of parts, and we put $\lambda_i=0$ for $i>\ell(\lambda)$.
+Partitions are identified with multisets of positive integers.
+
+\begin{definition}[Bulgarian solitaire]
+For $\lambda\vdash n$ let $\B(\lambda)$ be the partition whose parts are $\ell(\lambda)$ together
+with the numbers $\lambda_i-1$ for those $i\le\ell(\lambda)$ with $\lambda_i\ge 2$.
+Since $\ell(\lambda)+\sum_{i}(\lambda_i-1)=n$, we have $\B(\lambda)\vdash n$.
+Put $\B^0=\mathrm{id}$ and $\B^{i+1}=\B\circ\B^{i}$.
+A partition $\mu$ is \emph{cyclic} if $\B^P(\mu)=\mu$ for some $P\ge 1$.
+For $\lambda\vdash n$, $\dB(\lambda)$ is the least $i\ge 0$ such that $\B^i(\lambda)$ is cyclic,
+and $\DB(n)=\max\{\dB(\lambda):\lambda\vdash n\}$.
+A partition $\lambda\vdash n$ with $\dB(\lambda)=\DB(n)$ is called \emph{extremal}.
+\end{definition}
+
+$\dB(\lambda)$ is well defined: $n$ has finitely many partitions, so $\B^a(\lambda)=\B^{a+P}(\lambda)$
+for some $a\ge 0$, $P\ge 1$, and then $\B^a(\lambda)$ is cyclic.
+If $\mu$ is cyclic with $\B^P(\mu)=\mu$, then $\B^P(\B(\mu))=\B(\mu)$, so $\B(\mu)$ is cyclic.
+Hence $\B^i(\lambda)$ is cyclic for every $i\ge\dB(\lambda)$ and for no $i<\dB(\lambda)$.
+
+\begin{lemma}[rank]\label{lem:rank}
+Every $n\ge1$ can be written in exactly one way as $n=T_{k-1}+r$ with integers $k\ge1$ and
+$1\le r\le k$.  We call $k$ the \emph{rank} of $n$; $n$ is triangular iff $r=k$ (then $n=T_k$).
+\end{lemma}
+\begin{proof}
+$T_0=0<T_1<T_2<\cdots$ is strictly increasing and unbounded, so there is exactly one $k\ge 1$ with
+$T_{k-1}<n\le T_k$; then $r=n-T_{k-1}$ satisfies $1\le r\le T_k-T_{k-1}=k$.
+Conversely $n=T_{k-1}+r$ with $1\le r\le k$ forces $T_{k-1}<n\le T_k$, i.e.\ this $k$.
+If $n=T_m$ ($m\ge1$), then $T_{m-1}<n\le T_m$, so $k=m$ and $r=T_m-T_{m-1}=m=k$; conversely $r=k$ gives
+$n=T_k$.
+\end{proof}
+
+\section{Diagrams, diagonals, rotation, and Brandt's theorem}\label{sec:brandt}
+
+This section follows Griggs--Ho \cite[\S2]{GH} (the idea goes back to Etienne \cite{Et});
+we make their ``left shifting decreases the diagonal index'' precise with an explicit
+potential $\Phi$.
+
+Let $\PP=\Z_{>0}\times\Z_{>0}$; the \emph{cell} $(i,j)\in\PP$ has \emph{row} $i$ and \emph{column} $j$.
+The \emph{diagram} of $\lambda$ is
+\[Y(\lambda)=\{(i,j)\in\PP:\ 1\le j\le\ell(\lambda),\ 1\le i\le\lambda_j\},\]
+so column $j$ has $\lambda_j$ cells (columns are parts, as in \cite{GH}).
+$Y(\lambda)$ determines $\lambda$, since $\lambda_j=\#\{i:(i,j)\in Y(\lambda)\}$.
+Row~1 of $Y(\lambda)$ is $\{(1,j):j\le\ell(\lambda)\}$ and column~1 has $\lambda_1$ cells; in particular
+\begin{equation}\label{eq:Y1}
+(1,w+1)\in Y(\lambda)\ \Longrightarrow\ (1,w)\in Y(\lambda)\qquad(w\ge1).
+\end{equation}
+For a finite sequence $a=(a_1,\dots,a_m)$ of non-negative integers let
+$X_a=\{(i,j):1\le j\le m,\ 1\le i\le a_j\}$.  If $a$ is non-increasing, then $X_a=Y(\nu)$ where $\nu$ is the
+partition formed by the non-zero entries of $a$.
+
+For $w\ge 1$ the \emph{$w$-th diagonal} is $D_w=\{(i,j)\in\PP: i+j=w+1\}$; it has the $w$ cells
+$d_w(j)=(w+1-j,\,j)$, $1\le j\le w$ ($d_w(j)$ is the cell of $D_w$ in column $j$).
+$\PP$ is the disjoint union of the $D_w$.  Put $\Delta_0=\emptyset$ and
+$\Delta_m=D_1\cup\dots\cup D_m$ for $m\ge 1$.  Column $j$ of $\Delta_m$ consists of the cells $(i,j)$ with
+$i\le m+1-j$, so $\Delta_m=Y(\delta_m)$ with $\delta_m=(m,m-1,\dots,1)$, and $|\Delta_m|=T_m$.
+
+Define $\rho:\PP\to\PP$ by $\rho(i,j)=(i-1,j+1)$ if $i\ge2$ and $\rho(1,j)=(j,1)$.
+
+\begin{lemma}\label{lem:rho}
+(a) $\rho(d_w(j))=d_w(j+1)$ for $1\le j<w$ and $\rho(d_w(w))=d_w(1)$.  Hence $\rho$ maps each $D_w$
+bijectively onto itself, $\rho$ is a bijection of $\PP$, and for $m\ge 0$,
+$\rho^m(d_w(j))=d_w(j')$ where $1\le j'\le w$ and $j'\equiv j+m\pmod w$.  In particular $\rho^w$ is the
+identity on $D_w$.
+(b) $\rho$ preserves the quantity $i+j$ of a cell.
+\end{lemma}
+\begin{proof}
+(a) For $j<w$ the cell $d_w(j)=(w+1-j,j)$ has row $w+1-j\ge2$, so $\rho(d_w(j))=(w-j,j+1)=d_w(j+1)$;
+and $\rho(d_w(w))=\rho(1,w)=(w,1)=d_w(1)$.  So $\rho$ acts on $D_w$ as the cyclic shift $j\mapsto j+1$
+of column indices modulo $w$; the rest follows.  (b) $(i-1)+(j+1)=i+j$ and $j+1=1+j$.
+\end{proof}
+
+\begin{lemma}[one move]\label{lem:move}
+Let $\lambda\vdash n$, $s=\ell(\lambda)$ and $a=(s,\lambda_1-1,\lambda_2-1,\dots,\lambda_s-1)$.
+Then $\rho(Y(\lambda))=X_a$, and $Y(\B(\lambda))=X_{a^*}$, where $a^*$ is the non-increasing rearrangement
+of $a$.  If $s\ge\lambda_1-1$, then $a$ is non-increasing and $Y(\B(\lambda))=\rho(Y(\lambda))$.
+\end{lemma}
+\begin{proof}
+The cells of row~1 of $Y(\lambda)$ are $(1,j)$, $1\le j\le s$; $\rho$ sends them to $(j,1)$, i.e.\ exactly
+onto the cells $(1,1),\dots,(s,1)$ of column~1.  A cell $(i,j)\in Y(\lambda)$ with $i\ge 2$ satisfies
+$2\le i\le\lambda_j$ and is sent to $(i-1,j+1)$; for fixed $j$ these images are exactly the cells
+$(1,j+1),\dots,(\lambda_j-1,j+1)$.  Hence $\rho(Y(\lambda))=X_a$.  The parts of $\B(\lambda)$ are the non-zero
+entries of $a$, so $Y(\B(\lambda))=X_{a^*}$.  The entries of $a$ after the first are non-increasing because
+$\lambda$ is; so $a$ is non-increasing iff $s\ge\lambda_1-1$, and then $a^*=a$.
+\end{proof}
+
+For a finite set $X\subseteq\PP$ put $\Phi(X)=\sum_{(i,j)\in X}(i+j)$.
+
+\begin{lemma}\label{lem:rearr}
+For every finite sequence $a$ of non-negative integers, $\Phi(X_{a^*})\le\Phi(X_a)$, with equality iff $a$
+is non-increasing.
+\end{lemma}
+\begin{proof}
+$\Phi(X_a)=\sum_j\sum_{i=1}^{a_j}(i+j)=\sum_j\binom{a_j+1}{2}+F(a)$ with $F(a)=\sum_j j\,a_j$.
+The first sum does not change when $a$ is permuted.  If $a_j<a_{j+1}$, exchanging these two entries
+changes $F$ by $j a_{j+1}+(j+1)a_j-ja_j-(j+1)a_{j+1}=a_j-a_{j+1}<0$.  Starting from $a$, repeatedly exchange
+some adjacent pair with $a_j<a_{j+1}$.  Each exchange lowers the non-negative integer $F$, so the process
+stops, and it stops at a sequence with no adjacent ascent, i.e.\ at the non-increasing rearrangement
+$a^*$ (which is unique).  If $a$ is not non-increasing at least one exchange happens, so $F(a^*)<F(a)$; if
+$a$ is non-increasing then $a=a^*$.
+\end{proof}
+
+\begin{corollary}\label{cor:energy}
+For $\lambda\vdash n$: $\Phi(Y(\B(\lambda)))\le\Phi(Y(\lambda))$, with equality iff $\ell(\lambda)\ge\lambda_1-1$;
+in the case of equality $Y(\B(\lambda))=\rho(Y(\lambda))$.
+\end{corollary}
+\begin{proof}
+By Lemma~\ref{lem:rho}, $\rho$ is injective and preserves $i+j$, so $\Phi(\rho(X))=\Phi(X)$.  With $a$ as in
+Lemma~\ref{lem:move}: $\Phi(Y(\lambda))=\Phi(X_a)\ge\Phi(X_{a^*})=\Phi(Y(\B(\lambda)))$, with equality iff $a$ is
+non-increasing (Lemma~\ref{lem:rearr}), i.e.\ iff $\ell(\lambda)\ge\lambda_1-1$, and then
+Lemma~\ref{lem:move} gives $Y(\B(\lambda))=\rho(Y(\lambda))$.
+\end{proof}
+
+For $k\ge1$ and $E\subseteq D_k$ let $\lambda_E$ be the partition whose $j$-th part, $1\le j\le k$, is
+$k-j+[d_k(j)\in E]$ (zero parts omitted).  The sequence $(k-j+\varepsilon_j)_{j=1}^k$ with
+$\varepsilon_j\in\{0,1\}$ is non-increasing (consecutive differences are $1+\varepsilon_j-\varepsilon_{j+1}\ge0$),
+so $\lambda_E$ is a partition, $|\lambda_E|=T_{k-1}+|E|$, and $Y(\lambda_E)=\Delta_{k-1}\cup E$ (column $j$ consists
+of the $k-j$ cells of $\Delta_{k-1}$ and, if $d_k(j)\in E$, the cell $d_k(j)=(k+1-j,j)$).  Writing
+$e_{k-j}=[d_k(j)\in E]$ we get $\lambda_E=(k-1+e_{k-1},\,k-2+e_{k-2},\dots,1+e_1,\,e_0)$.
+
+\begin{theorem}[Brandt \cite{Br}; see also \cite{AD,Et,GH}]\label{thm:brandt}
+Let $n=T_{k-1}+r$ with $1\le r\le k$.  A partition of $n$ is cyclic if and only if it equals $\lambda_E$
+for some $E\subseteq D_k$ with $|E|=r$; equivalently, iff it has the form
+$(k-1+e_{k-1},\dots,1+e_1,e_0)$ with $e_i\in\{0,1\}$ and $\sum_ie_i=r$ (zero parts omitted).
+Moreover $Y(\B(\lambda_E))=\rho(Y(\lambda_E))$, i.e.\ $\B(\lambda_E)=\lambda_{\rho(E)}$, and $\B^k(\lambda_E)=\lambda_E$.
+\end{theorem}
+\begin{proof}
+($\Leftarrow$ and ``moreover'').  Let $\mu=\lambda_E$ with $E\subseteq D_k$, $|E|=r$.  Row~1 of
+$Y(\mu)=\Delta_{k-1}\cup E$ consists of the cells $(1,w)=d_w(w)$ with $w\le k-1$ and possibly $d_k(k)$;
+so $\ell(\mu)=k-1+[d_k(k)\in E]\ge k-1$.  Column~1 consists of $d_w(1)$ for $w\le k-1$ and possibly $d_k(1)$;
+so $\mu_1=k-1+[d_k(1)\in E]\le k$.  Thus $\ell(\mu)\ge\mu_1-1$ and Corollary~\ref{cor:energy} and
+Lemma~\ref{lem:rho} give $Y(\B(\mu))=\rho(\Delta_{k-1})\cup\rho(E)=\Delta_{k-1}\cup\rho(E)$ with
+$\rho(E)\subseteq D_k$, $|\rho(E)|=r$.  Hence $\B(\lambda_E)=\lambda_{\rho(E)}$, and by induction
+$\B^k(\lambda_E)=\lambda_{\rho^k(E)}=\lambda_E$ because $\rho^k$ is the identity on $D_k$.  So $\mu$ is cyclic.
+
+($\Rightarrow$).  Let $\lambda\vdash n$ with $\B^P(\lambda)=\lambda$, $P\ge 1$, and write
+$\lambda^{(m)}=\B^m(\lambda)$.  By Corollary~\ref{cor:energy},
+$\Phi(Y(\lambda^{(0)}))\ge\Phi(Y(\lambda^{(1)}))\ge\dots\ge\Phi(Y(\lambda^{(P)}))=\Phi(Y(\lambda^{(0)}))$, so all these are
+equalities and $Y(\lambda^{(m+1)})=\rho(Y(\lambda^{(m)}))$ for $0\le m<P$.  As $\lambda^{(m+P)}=\lambda^{(m)}$, this holds for
+all $m\ge0$, and therefore $Y(\lambda^{(m)})=\rho^m(Y(\lambda))$ for all $m\ge 0$.
+
+\emph{Claim: there is no $w\ge1$ such that $D_w\not\subseteq Y(\lambda)$ and $D_{w+1}\cap Y(\lambda)\ne\emptyset$.}
+Suppose $d_w(\alpha)\notin Y(\lambda)$ and $d_{w+1}(\beta)\in Y(\lambda)$.  Since $\gcd(w,w+1)=1$, the Chinese remainder
+theorem gives $m\ge0$ with $m\equiv w-\alpha\pmod w$ and $m\equiv w+1-\beta\pmod{w+1}$.  By Lemma~\ref{lem:rho},
+$\rho^m(d_w(\alpha))=d_w(w)=(1,w)$ and $\rho^m(d_{w+1}(\beta))=d_{w+1}(w+1)=(1,w+1)$.  As $\rho^m$ is injective,
+$(1,w)\notin\rho^m(Y(\lambda))=Y(\lambda^{(m)})$ while $(1,w+1)\in Y(\lambda^{(m)})$, contradicting \eqref{eq:Y1}.
+
+$Y(\lambda)$ is finite, so some $D_w$ is not contained in it; let $K\ge1$ be the least such $w$.  Then
+$\Delta_{K-1}\subseteq Y(\lambda)$.  By the claim, $D_{K+1}\cap Y(\lambda)=\emptyset$; then $D_{K+1}\not\subseteq Y(\lambda)$, so
+again by the claim $D_{K+2}\cap Y(\lambda)=\emptyset$, and inductively $D_w\cap Y(\lambda)=\emptyset$ for all $w>K$.  Thus
+$Y(\lambda)=\Delta_{K-1}\cup E'$ with $E'=Y(\lambda)\cap D_K\ne D_K$; let $r'=|E'|\in\{0,\dots,K-1\}$, so
+$n=T_{K-1}+r'$ and $Y(\lambda)=Y(\lambda_{E'})$ (with $k$ replaced by $K$ in the definition of $\lambda_{E'}$).
+If $r'\ge1$, then $T_{K-1}<n<T_K$, so by Lemma~\ref{lem:rank} $K=k$, $r'=r$, and $\lambda=\lambda_{E'}$.
+If $r'=0$, then $K\ge2$ (as $n\ge1$) and $n=T_{K-1}=T_{K-2}+(K-1)$, so $k=K-1$, $r=k$, and
+$Y(\lambda)=\Delta_k=\Delta_{k-1}\cup D_k$, i.e.\ $\lambda=\lambda_{D_k}$ with $|D_k|=k=r$.
+\end{proof}
+
+\begin{corollary}\label{cor:cyc}
+Let $n=T_{k-1}+r$, $1\le r\le k$.
+\begin{enumerate}
+\item[(a)] If $r=k$ (i.e.\ $n=T_k$), the only cyclic partition of $n$ is $\delta_k=(k,k-1,\dots,1)$, and
+$\B(\delta_k)=\delta_k$.
+\item[(b)] Every cyclic $\mu\vdash n$ satisfies $Y(\mu)\subseteq\Delta_k$, $\Delta_{k-1}\subseteq Y(\mu)$,
+$\ell(\mu)\in\{k-1,k\}$ and $\B^k(\mu)=\mu$.
+\item[(c)] If $\mu\vdash n$ is cyclic, then for every $a\ge0$:
+$\sum_{i=a}^{a+k-1}\ell(\B^i(\mu))=k(k-1)+r$.  If moreover $r<k$, both values $k-1$ and $k$ occur among
+$\ell(\B^a(\mu)),\dots,\ell(\B^{a+k-1}(\mu))$.
+\end{enumerate}
+\end{corollary}
+\begin{proof}
+(a) and (b) are immediate from Theorem~\ref{thm:brandt} ($E=D_k$ when $r=k$; $\ell(\lambda_E)=k-1+[d_k(k)\in E]$ was
+computed in its proof).  (c) Write $\mu=\lambda_E$.  Then $\B^i(\mu)=\lambda_{\rho^i(E)}$, so
+$\ell(\B^i(\mu))=k-1+[d_k(k)\in\rho^i(E)]=k-1+[d_k(j_i)\in E]$, where $d_k(j_i)=\rho^{-i}(d_k(k))$, i.e.\
+$j_i\equiv k-i\pmod k$ (Lemma~\ref{lem:rho}).  As $i$ runs through $a,\dots,a+k-1$, $j_i$ runs through all
+of $1,\dots,k$ once, so the sum is $k(k-1)+|E|=k(k-1)+r$.  If $0<r<k$, some $j_i$ lies in $E$ and some does not.
+\end{proof}
+
+\begin{corollary}\label{cor:reach}
+Let $n=T_k$.  For every partition $\lambda$ of $n$, $\B^i(\lambda)=\delta_k$ for every $i\ge\dB(\lambda)$; in particular there is an
+$i$ with $\B^i(\lambda)=\delta_k$.
+\end{corollary}
+\begin{proof}
+$\dB(\lambda)$ is finite (Section~\ref{sec:defs}), and $\B^{i}(\lambda)$ is cyclic for every $i\ge\dB(\lambda)$.  By
+Corollary~\ref{cor:cyc}(a) the only cyclic partition of $T_k$ is $\delta_k$.
+\end{proof}
+
+\section{The cycles of $\B$ and necklaces}\label{sec:necklace}
+
+A \emph{cycle} of $\B$ on the partitions of $n$ is a set $\{\B^i(\mu):i\ge0\}$ with $\mu$ cyclic.  For
+$E\subseteq D_k$ let $w(E)=(w_1,\dots,w_k)\in\{0,1\}^k$ with $w_j=[d_k(j)\in E]$, and let
+$W_{k,r}=\{w\in\{0,1\}^k:w_1+\dots+w_k=r\}$.  Let $\sigma(w_1,\dots,w_k)=(w_k,w_1,\dots,w_{k-1})$ (rotation).
+
+\begin{theorem}\label{thm:necklace}
+Let $n=T_{k-1}+r$, $1\le r\le k$, and let $\mathcal C_n$ be the set of cyclic partitions of $n$.
+\begin{enumerate}
+\item[(a)] $\lambda_E\mapsto w(E)$ is a well-defined bijection $\mathcal C_n\to W_{k,r}$; in particular
+$|\mathcal C_n|=\binom kr$.
+\item[(b)] If $\mu=\lambda_E$, then $\B(\mu)=\lambda_{\rho(E)}$ and $w(\rho(E))=\sigma(w(E))$.  Hence $\B$ permutes
+$\mathcal C_n$.
+\item[(c)] The cycles of $\B$ are exactly the images of the $\sigma$-orbits on $W_{k,r}$ (necklaces with $r$
+black and $k-r$ white beads).  Their number is $N(k,r)=\frac1k\sum_{d\mid\gcd(k,r)}\varphi(d)\binom{k/d}{r/d}$.
+\item[(d)] The cycle through $\lambda_E$ has length equal to the least $p\ge1$ with $\sigma^p(w(E))=w(E)$, and this
+length divides $k$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(a) By Theorem~\ref{thm:brandt}, $E\mapsto\lambda_E$ maps the $r$-subsets of $D_k$ onto $\mathcal C_n$.  It is injective,
+because $\lambda_E$ determines $Y(\lambda_E)=\Delta_{k-1}\cup E$, and $E=Y(\lambda_E)\cap D_k$.  Finally $E\mapsto w(E)$ is a
+bijection from $r$-subsets of $D_k$ onto $W_{k,r}$.
+
+(b) By Theorem~\ref{thm:brandt}, $\B(\lambda_E)=\lambda_{\rho(E)}$.  By Lemma~\ref{lem:rho}, $\rho^{-1}(d_k(j))=d_k(j-1)$ for
+$j\ge2$ and $\rho^{-1}(d_k(1))=d_k(k)$.  So $w(\rho(E))_j=[\rho^{-1}(d_k(j))\in E]=w(E)_{j-1}$ (with $w_0:=w_k$), i.e.\
+$w(\rho(E))=\sigma(w(E))$.  Since $\sigma$ is a bijection of $W_{k,r}$, $\B$ is a bijection of $\mathcal C_n$.
+
+(c) By (b), for $\mu=\lambda_E$ the cycle $\{\B^i(\mu):i\ge0\}$ corresponds to the forward orbit
+$\{\sigma^i(w(E)):i\ge0\}$, which is the orbit under the group generated by $\sigma$ because $\sigma^k=\mathrm{id}$.  To count
+orbits, let the group $G=\Z/k\Z$ act on $W_{k,r}$ by $m\cdot w=\sigma^m(w)$.
+
+\emph{Burnside's lemma for $G$:} the number of orbits is $\frac1k\sum_{m=0}^{k-1}|\mathrm{Fix}(\sigma^m)|$.
+Indeed, for $w\in W_{k,r}$ the stabiliser $S_w=\{m\in G:\sigma^m w=w\}$ is a subgroup.  The map
+$G\to\mathrm{Orb}(w)$, $m\mapsto\sigma^m(w)$, is onto, and its fibres are the cosets of $S_w$, so
+$|\mathrm{Orb}(w)|\,|S_w|=k$.  Hence $\sum_m|\mathrm{Fix}(\sigma^m)|=\sum_w|S_w|
+=\sum_{O}\sum_{w\in O}k/|O|=k\cdot\#\{\text{orbits}\}$.
+
+\emph{Fixed points:} let $0\le m\le k-1$ and $g=\gcd(m,k)$ (so $g=k$ for $m=0$).  $\sigma^m w=w$ means
+$w_j=w_{j-m}$ for all $j$ (indices mod $k$), i.e.\ $w$ is constant on the cosets of the subgroup generated by
+$m$ in $\Z/k\Z$.  This subgroup equals $g\Z/k\Z$: $g$ is a multiple of $m$ modulo $k$ by B\'ezout, and $m$ is a
+multiple of $g$.  So $w$ is constant on the $g$ residue classes mod $g$, each of size $k/g$, and $w$ is
+determined by $(w_1,\dots,w_g)$, with $|w|=(k/g)(w_1+\dots+w_g)$.  With $d=k/g$ we get
+$|\mathrm{Fix}(\sigma^m)|=\binom{k/d}{r/d}$ if $d\mid r$, and $0$ otherwise.
+
+\emph{Counting $m$:} for $d\mid k$, the $m\in\{0,\dots,k-1\}$ with $\gcd(m,k)=k/d$ are the $m=(k/d)m'$ with
+$0\le m'<d$ and $\gcd(m',d)=1$.  There are $\varphi(d)$ of them ($m'=0$ counts only when $d=1$, and
+$\varphi(1)=1$).  Therefore
+\[\#\{\text{orbits}\}=\frac1k\sum_{d\mid k,\ d\mid r}\varphi(d)\binom{k/d}{r/d}=N(k,r).\]
+(d) The length of the cycle is $|\mathrm{Orb}(w(E))|=k/|S_{w(E)}|$.  The set $\{m\in\Z:\sigma^m(w(E))=w(E)\}$ is a subgroup of $\Z$ containing $k$, hence equals $p\Z$ for the
+least $p\ge1$ with $\sigma^p(w(E))=w(E)$, and $p\mid k$.  Its image $S_{w(E)}$ in $\Z/k\Z$ has $k/p$ elements, so
+the cycle length is $p$, a divisor of $k$.
+\end{proof}
+
+\begin{corollary}
+For $r\in\{1,k-1,k\}$ there is exactly one cycle: $N(k,1)=N(k,k-1)=\binom k1/k=1$ (as $\gcd(k,1)=\gcd(k,k-1)=1$),
+and $N(k,k)=1$ because $|W_{k,k}|=1$.  For $r=k$ it is the fixed point $\delta_k$.  For $r\in\{1,k-1\}$ and
+$k\ge2$ it has length $k$: a word with a single $1$ (or a single $0$) is moved by $\sigma^m$ for $0<m<k$, so by
+Theorem~\ref{thm:necklace}(d) its period is $k$.
+\end{corollary}
+
+\section{Computational check}
+The script \texttt{bs.py} enumerates all partitions of every $n\le 60$ and builds the functional graph of
+$\B$ from the definition.  It finds the cycles of that graph independently of the theorems above and
+checks that: (i) the set of cyclic partitions equals Brandt's list; (ii) the number of cycles equals
+$N(k,r)$; (iii) every cycle length divides $k$.  All checks pass (\texttt{python3 bs.py 60}, about $1.5$
+minutes).  These computations are a sanity check only; the proofs above do not use them.
+
+\begin{thebibliography}{9}
+\bibitem{AD} E.~Akin and M.~Davis, Bulgarian solitaire, \emph{Amer.\ Math.\ Monthly} 92 (1985), no.~4, 237--250.
+\bibitem{Br} J.~Brandt, Cycles of partitions, \emph{Proc.\ Amer.\ Math.\ Soc.} 85 (1982), 483--486.
+\bibitem{Et} G.~Etienne, Tableaux de Young et solitaire bulgare, \emph{J.\ Combin.\ Theory Ser.~A} 58 (1991), 181--197.
+\bibitem{GH} J.~R.~Griggs and C.-C.~Ho, The cycling of partitions and compositions under repeated shifts,
+\emph{Adv.\ in Appl.\ Math.} 21 (1998), no.~2, 205--227. Preprint (dated March 2, 1998):
+\url{https://people.math.sc.edu/griggs/cycling.pdf}. Theorem and lemma numbers refer to this preprint.
+\bibitem{Ig} K.~Igusa, Solution of the Bulgarian solitaire conjecture, \emph{Math.\ Mag.} 58 (1985), 259--271.
+\bibitem{OEIS} OEIS Foundation, The On-Line Encyclopedia of Integer Sequences, sequence A037306.
+\end{thebibliography}
+
+\end{document}

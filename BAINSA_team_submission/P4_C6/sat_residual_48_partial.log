@@ -1,0 +1,6 @@
+26:    if T3 == [5, 7]: return 16, {5: 12, 7: 15}, 18
+k=44: 133154 grouped placements, 481 residual after B1/B2, 0 SAT; 58s
+  NOT CLOSED by code relaxation: {1: [2, 11, 43, 41], 2: [3, 23, 19, 17], 3: [5, 7, 13, 37, 31, 29]}
+  NOT CLOSED by code relaxation: {1: [2, 13, 43, 41], 2: [3, 23, 19, 17], 3: [5, 7, 11, 37, 31, 29]}
+
+[exited with code 144]

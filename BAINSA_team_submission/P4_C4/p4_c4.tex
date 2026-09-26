@@ -1,0 +1,427 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=2.3cm]{geometry}
+\usepackage{booktabs}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\pr}{\operatorname{pr}}
+\newcommand{\C}{\mathcal{C}}
+\newtheorem*{statement}{Official statement}
+\input{k16status}
+\input{rerun_times}
+% Cell-specific sentence of the official statement (to be pasted verbatim):
+\newcommand{\CELLTASK}{\textbf{Cell 4 (Every $k$ up to 12, 5 points).} A longer range, and a precise account of your method at the sizes just beyond it. Prove the statement for every $k\le12$. Then, for each $k$ from $9$ to $16$ in turn, report exactly what your method leaves undecided at that $k$: if nothing, say so and prove it; if something, exhibit it in full. If that disagrees with any source you consulted, say which of the two is right and why. An answer that reports agreement with a source it did not test will be marked wrong.}
+
+\title{Problem 4, Cell 4: Sun's conjecture for all $k\le12$,\\ and a status report for $9\le k\le16$}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{statement}
+For integers $a$ and $m\ge1$ write $a\ (\mathrm{mod}\ m)=\{a+mt:t\in\mathbb{Z}\}$. A finite family
+of classes $a_1\ (\mathrm{mod}\ m_1),\dots,a_k\ (\mathrm{mod}\ m_k)$ is pairwise disjoint if
+$a_i\ (\mathrm{mod}\ m_i)\cap a_j\ (\mathrm{mod}\ m_j)=\emptyset$ whenever $i<j$. Nothing is assumed
+about the moduli beyond $m_i\ge1$: they may repeat, and the residues $a_i$ may repeat as well. By the
+Chinese remainder theorem,
+\[
+  a_i\ (\mathrm{mod}\ m_i)\cap a_j\ (\mathrm{mod}\ m_j)\neq\emptyset\iff\gcd(m_i,m_j)\mid a_i-a_j.\tag{$*$}
+\]
+\emph{Question.} Let $k\ge2$ and let $a_1\ (\mathrm{mod}\ m_1),\dots,a_k\ (\mathrm{mod}\ m_k)$ be
+pairwise disjoint. Must there be a pair $i<j$ with $\gcd(m_i,m_j)\ge k$?
+
+\CELLTASK
+\end{statement}
+
+
+\begin{theorem}\label{thm:main}
+Let $2\le k\le12$. If $a_1\bmod m_1,\dots,a_k\bmod m_k$ are pairwise disjoint residue classes, then
+$\gcd(m_i,m_j)\ge k$ for some $i\ne j$.
+\end{theorem}
+
+\noindent\emph{Structure of the proof.}
+\begin{itemize}
+\item $k\le8$: by hand (Cell~3, \texttt{p4\_c3.tex}, Theorem~1). It is not repeated here.
+\item $9\le k\le12$: by an exhaustive computation. Its certificate has five parts: the finite
+  set and the proofs of the reductions (\S\ref{sec:red}); the enumeration with every pruning rule
+  proved (\S\ref{sec:enum}); the decision procedure (\S\ref{sec:dec}); node counts, wall clock
+  and a rerun (\S\ref{sec:res}); and the list of survivors, each decided (Appendix~\ref{app:surv}
+  and the attached files in \texttt{code/data/}).
+\item The code is \texttt{p4\_dfs/sun\_dfs.py}. It uses no SAT solver, and it was written
+  independently of the SAT-based checker \texttt{p4\_codex}.
+\end{itemize}
+Throughout, $B$ denotes the gcd bound. For the conjecture at $k$, $B=k-1$.
+
+% ===========================================================================
+\section{Reductions and the finite set}\label{sec:red}
+
+\begin{lemma}[Criterion]\label{lem:crt}
+$a\bmod m$ and $b\bmod n$ are disjoint if and only if $\gcd(m,n)\nmid a-b$.
+\end{lemma}
+\begin{proof}
+If $x$ is in both, then $a\equiv x\equiv b\pmod{g}$, where $g=\gcd(m,n)$. Conversely, if $a-b=gt$,
+take $um+vn=g$; then $x=a-umt=b+vnt$ is in both.
+\end{proof}
+
+\begin{lemma}[Normal form]\label{lem:nf}
+Let $a_i\bmod m_i$ ($i\in[k]$) be disjoint, $g_{ij}=\gcd(m_i,m_j)$, and $n_i=\operatorname{lcm}_{j\ne i}g_{ij}$.
+Then:
+\begin{itemize}
+\item $n_i\mid m_i$;
+\item $\gcd(n_i,n_j)=g_{ij}$ for all $i\ne j$;
+\item the classes $a_i\bmod n_i$ are pairwise disjoint;
+\item $n_i=\operatorname{lcm}_{j\ne i}\gcd(n_i,n_j)$.
+\end{itemize}
+\end{lemma}
+\begin{proof}
+Each $g_{ij}$ divides $m_i$, so $n_i\mid m_i$. Next, $g_{ij}$ divides both $n_i$ and $n_j$, so
+$g_{ij}\mid\gcd(n_i,n_j)$. Conversely, $\gcd(n_i,n_j)\mid\gcd(m_i,m_j)=g_{ij}$. Disjointness follows
+from Lemma~\ref{lem:crt}, since the gcds are unchanged. The last identity is the definition of
+$n_i$, rewritten using $\gcd(n_i,n_j)=g_{ij}$.
+\end{proof}
+
+We say that $(m_1,\dots,m_k)$ is in \emph{normal form} if $m_i=\operatorname{lcm}_{j\ne i}\gcd(m_i,m_j)$
+for every $i$.
+
+\begin{lemma}\label{lem:div}
+If $(m_i)$ is in normal form and all $\gcd(m_i,m_j)\le B$, then each $m_i$ divides
+$L_B=\operatorname{lcm}(1,\dots,B)$.
+\end{lemma}
+\begin{proof}
+Each $m_i$ is the lcm of integers in $[1,B]$, and each of these divides $L_B$.
+\end{proof}
+
+\begin{lemma}[Density]\label{lem:dens}
+If $a_i\bmod m_i$ ($i\in[k]$) are disjoint, then $\sum_i1/m_i\le1$.
+\end{lemma}
+\begin{proof}
+Let $M=\operatorname{lcm}(m_1,\dots,m_k)$. Class $i$ meets $[0,M)$ in exactly $M/m_i$ integers, and
+these sets are disjoint. Hence $\sum_iM/m_i\le M$.
+\end{proof}
+
+\begin{lemma}[Normal form, one prime at a time]\label{lem:nfp}
+$(m_i)$ is in normal form if and only if, for every prime $p$, the maximum of
+$v_p(m_1),\dots,v_p(m_k)$ is $0$ or is attained at least twice.
+\end{lemma}
+\begin{proof}
+Write $e_i=v_p(m_i)$. Then $v_p(\operatorname{lcm}_{j\ne i}\gcd(m_i,m_j))=\max_{j\ne i}\min(e_i,e_j)$, and
+this equals $e_i$ iff $e_i=0$ or some $j\ne i$ has $e_j\ge e_i$. This holds for every $i$ iff the
+maximum is $0$ or attained at least twice.
+\end{proof}
+
+\begin{definition}
+$\C(k,B)$ is the set of multisets $\{m_1,\dots,m_k\}$ of divisors of $L_B$ such that
+\begin{itemize}
+\item $2\le\gcd(m_i,m_j)\le B$ for all $i\ne j$;
+\item the multiset is in normal form;
+\item $\sum_i1/m_i\le1$.
+\end{itemize}
+Its elements are called \emph{survivors}. A survivor is \emph{SAT} if there are
+$a_1,\dots,a_k$ making the classes $a_i\bmod m_i$ pairwise disjoint, and \emph{UNSAT} otherwise.
+\end{definition}
+
+\begin{proposition}[Finite reduction]\label{prop:finite}
+The conjecture holds at $k$ if and only if every survivor in $\C(k,k-1)$ is UNSAT.
+\end{proposition}
+\begin{proof}
+A SAT survivor is a counterexample, by the first condition. Conversely, take a counterexample
+$(a_i,m_i)$ with all $g_{ij}\le k-1$ (and $\ge2$, by Lemma~\ref{lem:crt}). By
+Lemma~\ref{lem:nf} we get a disjoint family $(a_i,n_i)$ in normal form with the same gcds. By
+Lemma~\ref{lem:div}, $n_i\mid L_{k-1}$, and by Lemma~\ref{lem:dens}, $\sum 1/n_i\le1$. So
+$\{n_i\}\in\C(k,k-1)$, and it is SAT.
+\end{proof}
+
+% ===========================================================================
+\section{Enumeration of $\C(k,B)$}\label{sec:enum}
+
+\paragraph{Encoding.}
+Let $p_0>p_1>\dots>p_{r-1}$ be the primes $\le B$ (largest first), and let
+$v_t=\lfloor\log_{p_t}B\rfloor=v_{p_t}(L_B)$. A $k$-tuple of divisors of $L_B$ is a $k\times r$
+matrix $E$ with $0\le E_{it}\le v_t$ and $m_i=\prod_tp_t^{E_{it}}$.
+
+\begin{lemma}[Canonical form]\label{lem:canon}
+Every multiset of $k$ divisors of $L_B$ is represented by exactly one matrix $E$ whose rows are in
+lexicographically non-increasing order. Suppose the first $t$ columns of $E$ are fixed and
+their rows are lex non-increasing. Then rows with equal prefixes form contiguous blocks. The
+full matrix is lex non-increasing if and only if, recursively, column $t$ is non-increasing
+within every block.
+\end{lemma}
+\begin{proof}
+Sorting the rows gives a representative. Two sorted matrices with the same multiset of rows are
+equal. The block statement is the definition of lexicographic order, applied one column at a
+time.
+\end{proof}
+
+The enumerator fills $E$ column by column and, within a column, row by row. When row $i$ does
+not start a block, it only allows $E_{it}\le E_{i-1,t}$. By Lemma~\ref{lem:canon}, every multiset
+is produced exactly once. (Duplicates are also checked at run time.) It maintains the partial
+gcds $G_{ij}=\prod_{s\le t}p_s^{\min(E_{is},E_{js})}$ of the columns filled so far.
+
+\paragraph{Filters during the search.}
+None of these filters changes the output. Each can be switched off.
+\begin{itemize}
+\item[(P1)] \emph{gcd bound} (\texttt{--no-gcd-prune}). $G_{ij}$ divides the final
+  $\gcd(m_i,m_j)$. So if $G_{ij}>B$, no completion is in $\C(k,B)$.
+\item[(P2)] \emph{coprime pairs at the last prime} (\texttt{--no-coprime-prune}). Suppose that in
+  the last column $E_{i,r-1}=0$ and $G_{ij}=1$ for some $j\ne i$. Then $\gcd(m_i,m_j)=1$ in every
+  completion. For $j<i$ this is immediate. For $j>i$, the missing factor is
+  $p_{r-1}^{\min(0,E_{j,r-1})}=1$.
+\item[(P3)] \emph{forced-even rows} (\texttt{--no-forced-even-prune}). The primes are processed in
+  decreasing order, so the last column is $p=2$. Consider the moment when column $r-2$ is
+  complete. A row $i$ with $G_{ij}=1$ for some $j\ne i$ must have $E_{i,r-1}\ge1$, since
+  otherwise $\gcd(m_i,m_j)=1$. Call such rows \emph{forced}. If two forced rows $a\ne b$ have
+  $2G_{ab}>B$, then $\gcd(m_a,m_b)\ge2G_{ab}>B$ in every completion, so the subtree is empty.
+  The test also runs inside column $r-2$. Once rows $a,b\le i$ have been set in that column,
+  $G_{ab}$ is final except for the factor from $2$. So a partner $b\le i$ with $G_{ab}=1$ already
+  makes $a$ forced, and the test can be applied to the rows forced so far.
+\item[(NF)] \emph{normal form per column} (\texttt{--late-nf} moves it to the leaves). By
+  Lemma~\ref{lem:nfp}, normal form is a condition on each column separately. So it can be
+  tested as soon as a column is complete.
+\end{itemize}
+At every leaf, all conditions defining $\C(k,B)$ are re-checked from the moduli:
+\begin{itemize}
+\item $2\le\gcd\le B$ for every pair;
+\item normal form, recomputed from the definition;
+\item $\sum1/m_i\le1$, tested exactly in integers as $\sum L_B/m_i\le L_B$.
+\end{itemize}
+
+\paragraph{Toggle test.}
+For $3\le k\le7$, all $2^4$ combinations of the four toggles give identical survivor lists and
+an identical count at the ``gcd in range and normal form'' stage. The combinations with (P1) off
+are only run for $k\le6$, because without the gcd bound the tree grows too fast. For
+$8\le k\le12$, the results are also identical with (P3) on and off. (P3) shrinks the tree from
+$1\,746\,588$ to $113\,915$ nodes at $k=12$.
+
+\paragraph{Oracle test.}
+For $3\le k\le8$ ($B=k-1$) and $3\le k\le6$ ($B=k$), the enumerator agrees with a naive
+enumeration of all multisets of divisors of $L_B$, filtered by the definition. The naive
+enumerator is a test oracle only.
+
+% ===========================================================================
+\section{Deciding each survivor}\label{sec:dec}
+
+For a survivor $(m_1,\dots,m_k)$ we decide whether residues exist by backtracking.
+\begin{itemize}
+\item \emph{Translation.} $a_i\mapsto a_i-c$ preserves disjointness, so the first class chosen is
+  given $a=0$.
+\item \emph{Forward checking.} Each unplaced class $i$ has a domain $D_i\subseteq\mathbb{Z}/m_i$.
+  Placing $a_j=x$ deletes $\{y\in D_i: y\equiv x\pmod{g_{ij}}\}$. By Lemma~\ref{lem:crt}, these
+  are exactly the values that conflict with $a_j=x$. An empty domain means backtrack.
+\item \emph{Interchangeability} (\texttt{--no-interchange}). Let $U_i=\operatorname{lcm}\{g_{ij}: j\text{ unplaced}, j\ne i\}$,
+  which divides $m_i$. If $x,x'\in D_i$ and $x\equiv x'\pmod{U_i}$, then $x$ extends to a solution
+  iff $x'$ does. Both are compatible with the placed classes, since they lie in $D_i$. The
+  constraint with an unplaced $j$ depends only on the residue modulo $g_{ij}$, and $g_{ij}\mid U_i$.
+  So one value per class of $D_i$ modulo $U_i$ suffices.
+\item \emph{Order.} The next class is the one with the fewest candidates; ties go to the larger
+  $\sum_j\log g_{ij}$. Correctness does not depend on the order.
+\item \emph{Cross-checks.} \texttt{--plain-decide} is plain backtracking over all of
+  $\mathbb{Z}/m_i$ with a static order, and with neither forward checking nor
+  interchangeability.
+  \begin{itemize}
+  \item All three deciders (default, \texttt{--no-interchange}, \texttt{--plain-decide}) agree
+    on every survivor with $k\le10$.
+  \item The first two also agree on every survivor with $k=11,12,13$.
+  \end{itemize}
+\item \emph{SAT witnesses.} These are checked literally: for each pair, every element of one
+  period of class $i$ is tested for membership in class $j$, without using Lemma~\ref{lem:crt}.
+  With bound $B=k-1$ no SAT survivor occurred.
+\end{itemize}
+
+\paragraph{Vacuity test.}
+With bound $B=k$ ($k=3,\dots,6$), the same code finds SAT survivors, in particular $(k,\dots,k)$
+with residues $0,1,\dots,k-1$. All SAT witnesses pass the literal check. So the pipeline is able
+to detect solutions.
+
+% ===========================================================================
+\section{Results}\label{sec:res}
+
+Machine: Apple Mac, 8 cores, CPython 3.12 + numpy, single-threaded. ``SHA-256'' is the hash of the
+canonical survivor list: a JSON list of ascending lists, sorted lexicographically, serialised
+compactly (\texttt{separators=(',', ':')}). The table shows the first 16 hex digits; the full
+values are in the JSON files.
+
+\begin{center}\small
+\begin{tabular}{rrrrrrrrrl}
+\toprule
+$k$ & $L_{k-1}$ & enum.\ nodes & leaves & gcd+NF & survivors & UNSAT & dec.\ nodes & time (s) & SHA-256 (prefix)\\
+\midrule
+3 & 2 & 3 & 1 & 1 & 0 & 0 & 0 & 0.00 & \texttt{4f53cda18c2baa0c}\\
+4 & 6 & 20 & 2 & 2 & 0 & 0 & 0 & 0.00 & \texttt{4f53cda18c2baa0c}\\
+5 & 12 & 40 & 6 & 6 & 0 & 0 & 0 & 0.00 & \texttt{4f53cda18c2baa0c}\\
+6 & 60 & 133 & 8 & 8 & 0 & 0 & 0 & 0.00 & \texttt{4f53cda18c2baa0c}\\
+7 & 60 & 341 & 47 & 47 & 2 & 2 & 13 & 0.00 & \texttt{01557c6ee0333625}\\
+8 & 420 & 1\,263 & 71 & 71 & 7 & 7 & 42 & 0.01 & \texttt{1621baadfc46fc4b}\\
+9 & 840 & 2\,557 & 329 & 329 & 6 & 6 & 53 & 0.03 & \texttt{febd71b7bbda2883}\\
+10 & 2520 & 6\,093 & 570 & 570 & 3 & 3 & 25 & 0.07 & \texttt{b02fcc2277902756}\\
+11 & 2520 & 31\,547 & 7\,450 & 7\,450 & 137 & 137 & 27\,772 & 2.63 & \texttt{dee521791e4d6f13}\\
+12 & 27720 & 113\,915 & 12\,546 & 12\,546 & 522 & 522 & 42\,848 & 6.19 & \texttt{d7ab51816f731ab2}\\
+\midrule
+13 & 27720 & 288\,390 & 55\,827 & 55\,827 & 4\,395 & 4\,395 & 3\,550\,936 & 283.45 & \texttt{2dbfd65f26961615}\\
+14 & 360360 & 3\,217\,925 & 139\,820 & 139\,820 & 19\,880 & 19\,880 & 6\,272\,555 & 1006.66 & \texttt{f2ec65da7dedb65c}\\
+\bottomrule
+\end{tabular}
+\end{center}
+(The SHA-256 of the empty list is \texttt{4f53cda1\dots}, which explains the repetition for
+$k\le6$.) The node and leaf counts are those of the default options. The last three count
+columns do not depend on the toggles.
+
+\paragraph{Rerun.}{\sloppy
+The table above comes from the original run (\texttt{p4\_dfs/results/run\_k03-13.log},
+\texttt{run\_k14.log}). A timed rerun on this laptop (26 September 2026, logs in
+\texttt{code/p4\_crosscheck/timed\_rerun/logs/}) repeated the full run, enumeration \emph{and}
+decisions, for $k=3,\dots,13$ in \tSmallDFS\,s of total wall clock, and the enumeration alone for
+$k=14$ (\tXIVdfs\,s) and $k=15$ (\tXVdfs\,s). Every count (nodes, leaves, stages, decision nodes),
+every survivor list and every SHA-256 was reproduced exactly. The p4\_dfs \emph{decisions} for
+$k=14$ were not rerun; that row rests on the original run and on the independent p4\_codex
+computation below. Earlier versions of the code, without (P3) and with rational
+density arithmetic, produced the same survivor lists and SHA-256 values for $k\le13$, with larger
+node counts.\par}
+
+\paragraph{Second implementation.}
+The SAT-based checker \texttt{p4\_codex} was written independently. It enumerates the same
+finite sets with its own code and decides each survivor with CaDiCaL~1.5.3 (via
+python-sat~1.9.dev15). The survivor lists of the two implementations were compared
+\emph{elementwise} by \texttt{p4\_crosscheck/compare\_lists.py}, after canonical normalisation, for
+every $k=3,\dots,16$. The report is \texttt{compare\_report.json}.
+\begin{itemize}
+\item The lists are identical for every $k\le16$: nothing is only in one list, and there are no
+  duplicates.
+\item Their canonical SHA-256 values coincide. They are the values in the table above, and those
+  in Section~\ref{sec:report} for $k=15,16$.
+\item There is no decision disagreement on any survivor.
+\end{itemize}
+For $k\le12$ in particular, every survivor used in the proof below is decided UNSAT by both
+implementations.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+For $k\le8$: Cell~3. For $9\le k\le12$: by Proposition~\ref{prop:finite} it suffices that every
+survivor in $\C(k,k-1)$ is UNSAT. The enumeration of \S\ref{sec:enum} produces all of
+$\C(k,k-1)$ (Lemma~\ref{lem:canon}, filters (P1), (P2), (NF)). The decision of \S\ref{sec:dec}
+returns UNSAT for each of the $6+3+137+522$ survivors. The survivors for $k=9,10$ are listed in
+Appendix~\ref{app:surv}; those for $k=11,12$ are in \texttt{code/data/p4\_dfs/k11\_sun.json.gz} and
+\texttt{k12\_sun.json.gz} (and, with their minimal parts and witnesses, in
+\texttt{code/data/p4\_codex/}), with the SHA-256
+values above. The computation also re-confirms $k=7,8$ (2 and 7 survivors, all UNSAT),
+independently of the hand proof.
+\end{proof}
+
+% ===========================================================================
+\section{Report for $9\le k\le16$}\label{sec:report}
+
+\begin{center}\small
+\begin{tabular}{rllll}
+\toprule
+$k$ & survivors & p4\_codex (SAT) & p4\_dfs (no SAT) & lists\\
+\midrule
+9 & 6 & all UNSAT & all UNSAT & identical\\
+10 & 3 & all UNSAT & all UNSAT & identical\\
+11 & 137 & all UNSAT & all UNSAT & identical\\
+12 & 522 & all UNSAT & all UNSAT & identical\\
+13 & 4\,395 & all UNSAT & all UNSAT & identical\\
+14 & 19\,880 & all UNSAT & all UNSAT & identical\\
+15 & 155\,890 & all UNSAT & all UNSAT & identical\\
+16 & 236\,333 & all UNSAT & partial: \kXVIblocks/24 blocks, all agree & identical\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Decisions.}\sloppy
+\begin{itemize}
+\item \emph{p4\_codex.} Its decisions are complete for every $k\le16$, and every survivor is
+  UNSAT. This includes $155\,890$ survivors at $k=15$ and $236\,333$ at $k=16$; there are no
+  SAT and no undecided survivors.
+\item \emph{p4\_dfs, $k=15$.} Its decisions are complete. The $155\,890$ survivors were decided
+  by \texttt{sun\_dfs.decide} (default mode) in $24$ round-robin blocks, using the script
+  \texttt{dfs\_decide\_chunk.py} of \texttt{p4\_crosscheck}. The blocks were merged and checked by
+  \texttt{merge\_dfs\_decisions.py}: every index was decided exactly once, and the survivor hash
+  matches. All $155\,890$ are UNSAT. The run used $154\,966\,934$ decision nodes and
+  $4575.8$\,s of CPU summed over the blocks.
+\item \emph{p4\_dfs, $k=16$.} This is only a \textbf{partial cross-check}: \kXVIblocks/24 blocks
+  are finished, covering \kXVIdecided\ survivors (state at compile time, \kXVIstamp). All are
+  UNSAT, in agreement with p4\_codex. The run was then stopped; the remaining blocks are not
+  claimed here.
+\end{itemize}\fussy
+The enumeration of $\C(k,k-1)$ by p4\_dfs finished for both $k=15$ and $k=16$:
+\begin{center}\small
+\begin{tabular}{rrrrrrl}
+\toprule
+$k$ & $L_{k-1}$ & enum.\ nodes & gcd+NF & survivors & enum.\ time (s) & SHA-256 (prefix)\\
+\midrule
+15 & 360360 & 13\,266\,631 & 2\,992\,302 & 155\,890 & 420.3 & \texttt{8a4aca6d7ee2df8b}\\
+16 & 360360 & 26\,169\,762 & 5\,314\,669 & 236\,333 & 776.8 & \texttt{2f8472ca4310cce9}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Status for $13\le k\le16$ (report, not part of the theorem).}{\sloppy The certified result
+of this cell is Theorem~\ref{thm:main}, for $k\le12$. The sizes $13\le k\le16$ are reported here
+and are \emph{not} part of it. Under the stricter definition of Cell~5 (\texttt{p4\_c5.tex},
+\S1: identical lists, every survivor decided with its minimal part, all files attached, a timed
+rerun under 10 minutes), the certified contiguous boundary is $K^\ast=\Kstar$; the sizes
+\Beyond\ are \emph{decided, beyond the certified boundary}.\par}
+\begin{itemize}
+\item For $k=13,14,15$, both implementations enumerate identical survivor lists and both decide
+  every survivor UNSAT; p4\_codex also gives each survivor's minimal part, in the files of
+  \texttt{code/data/p4\_codex/}.
+\item For $k=16$ the survivor lists are identical and every survivor is UNSAT by p4\_codex, with
+  its minimal part. The independent p4\_dfs decisions cover only \kXVIblocks/24 blocks (the run
+  was stopped).
+\end{itemize}
+
+\paragraph{Comparison with O'Bryant (2007).}
+K.\ O'Bryant, \emph{On Z.-W.\ Sun's disjoint congruence classes conjecture}, in \emph{Combinatorial
+Number Theory}, de Gruyter 2007, pp.~403--411 (arXiv:math/0604347). Theorem~3 states: ``The DCCC
+holds for $k\le20$. Moreover, a counterexample to the DCCC with minimal $k$ does not have
+$k\in\{24,30\}$.'' For every size we completed, our result agrees with the first sentence. It was
+obtained by our own computation, not assumed. Two further points were checked:
+\begin{itemize}
+\item our values of $L_{k-1}$ coincide with O'Bryant's table of $L_k=\operatorname{lcm}(1,\dots,k-1)$
+  for $k=3,\dots,13$;
+\item his example $20,15,12,6,6,6,6$ for $k=7$ passes his density test (Lemma~5). It appears
+  among our two survivors for $k=7$, and our decider finds it UNSAT.
+\end{itemize}
+The second sentence of his Theorem~3 is re-proved by hand in Cell~5 (\texttt{p4\_c5.tex}).
+
+% ===========================================================================
+\appendix
+\section{Survivors}\label{app:surv}
+
+Every survivor below was decided UNSAT. Survivors for $k\le6$: none.
+
+\smallskip\noindent$k=7$: $(6,6,6,6,6,10,15)$, $(6,6,6,6,12,15,20)$.
+
+\smallskip\noindent$k=8$:
+$(6,6,6,6,6,12,21,28)$, $(6,6,6,6,6,15,21,70)$, $(6,6,6,6,6,20,28,105)$, $(6,6,6,6,10,12,28,105)$,
+$(6,6,6,6,12,14,20,105)$, $(6,6,6,6,12,15,21,140)$, $(6,6,6,6,12,20,28,105)$.
+
+\smallskip\noindent$k=9$:
+$(6,6,6,6,6,12,40,56,105)$, $(6,6,6,6,6,14,24,40,105)$, $(6,6,6,6,6,15,21,24,280)$,
+$(6,6,6,6,6,20,24,56,105)$, $(6,6,6,6,6,24,28,40,105)$, $(6,6,6,6,6,24,40,56,105)$.
+
+\smallskip\noindent$k=10$:
+$(6,6,6,6,6,18,24,28,40,315)$, $(6,6,6,6,6,18,24,40,56,315)$, $(6,6,6,6,6,18,24,45,63,280)$.
+
+\smallskip\noindent$k=11,12,13,14$: 137, 522, 4\,395 and 19\,880 survivors, in
+\texttt{p4\_dfs/results/k11\_sun.canonical.json}, \texttt{k12\_sun.canonical.json} and
+\texttt{k13\_sun.canonical.json}, \texttt{k14\_sun.canonical.json}. Each decision is in the
+corresponding \texttt{kXX\_sun.json}.
+The full SHA-256 values are:
+\begin{itemize}\footnotesize
+\item[$k=11$:] \texttt{dee521791e4d6f13cbeaa1875c70c99e7278c8820143c0ab7fc0fe31003723fe}
+\item[$k=12$:] \texttt{d7ab51816f731ab2283f025ba0f31adff2efe79f0762d2ec03fc01ed2d30986d}
+\item[$k=13$:] \texttt{2dbfd65f26961615f44ddd6efced8fdf1d8489920b9de2bcfa111ab6b7411dd1}
+\item[$k=14$:] \texttt{f2ec65da7dedb65caec60c1acd7de28fc3bcb28a743a274dd240f32a038ed818}
+\item[$k=15$:] \texttt{8a4aca6d7ee2df8bbc4f278621f8216746990cf7c09164b452026bc0a2d87b40} (undecided)
+\item[$k=16$:] \texttt{2f8472ca4310cce90f832161c01520853a5c7b79516202f8d15ede27b81334fd} (undecided)
+\end{itemize}
+
+\end{document}
