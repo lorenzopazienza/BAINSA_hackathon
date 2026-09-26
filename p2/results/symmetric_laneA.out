@@ -1,0 +1,6 @@
+z9 k<=236: UNSAT: no independent decycling set of Q9 with |I| <= 236 group=z9; 1 iterations, 2104 cuts, 0s
+z9: skip k<=235 (implied UNSAT)
+inv4 k<=236: !!! FOUND Q9: independent decycling set |I| = 236, c = 96, U = 2400 (DP == brute force), saved I_Q9_k236_1790415107.json; store best = 2400
+inv4 k<=235: UNSAT: no independent decycling set of Q9 with |I| <= 235 group=inv4; 1 iterations, 2104 cuts, 4s
+inv1 k<=236: UNSAT: no independent decycling set of Q9 with |I| <= 236 group=inv1; 1 iterations, 2104 cuts, 5s
+inv1: skip k<=235 (implied UNSAT)

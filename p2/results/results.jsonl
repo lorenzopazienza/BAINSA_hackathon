@@ -7,3 +7,240 @@
 {"model": "claude-sonnet-5", "parent": "dc852180d4ee", "round": 0, "tokens_in": 278, "tokens_out": 3595, "cache_read": 0, "cache_write": 1028, "hash": "0b0876532040", "d": 7, "raw": 607893105039973959, "polished": 464, "runtime": 0.029716968536376953, "timestamp": 1790412974.4205592}
 {"model": "claude-sonnet-5", "parent": "dc852180d4ee", "round": 0, "tokens_in": 278, "tokens_out": 3595, "cache_read": 0, "cache_write": 1028, "hash": "0b0876532040", "d": 8, "raw": 205010184278737800544294388950417608, "polished": 1040, "runtime": 0.029929161071777344, "timestamp": 1790412974.420566}
 {"model": "claude-sonnet-5", "parent": "dc852180d4ee", "round": 0, "tokens_in": 278, "tokens_out": 3595, "cache_read": 0, "cache_write": 1028, "hash": "0b0876532040", "d": 9, "raw": 23316957069052323456087333502536009372979405716649687635065979545422635, "polished": 2408, "runtime": 0.02964496612548828, "timestamp": 1790412974.4205709}
+{"source": "ils", "worker": 1003, "d": 9, "score": 2400, "current": 2400, "accepted": 28, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 18.899625062942505, "timestamp": 1790414176.600909}
+{"source": "ils", "worker": 1002, "d": 9, "score": 2400, "current": 2400, "accepted": 31, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 18.90208411216736, "timestamp": 1790414176.603318}
+{"source": "ils", "worker": 1000, "d": 9, "score": 2400, "current": 2400, "accepted": 37, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 18.909759044647217, "timestamp": 1790414176.611041}
+{"source": "ils", "worker": 1001, "d": 9, "score": 2400, "current": 2400, "accepted": 39, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 18.928151845932007, "timestamp": 1790414176.629787}
+{"source": "ils", "worker": 1002, "d": 9, "score": 2400, "current": 2400, "accepted": 33, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.797431945800781, "timestamp": 1790414192.400887}
+{"source": "ils", "worker": 1003, "d": 9, "score": 2400, "current": 2400, "accepted": 37, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.81520390510559, "timestamp": 1790414192.416574}
+{"source": "ils", "worker": 1001, "d": 9, "score": 2400, "current": 2400, "accepted": 30, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.809282064437866, "timestamp": 1790414192.439198}
+{"source": "ils", "worker": 1000, "d": 9, "score": 2400, "current": 2400, "accepted": 38, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.828629970550537, "timestamp": 1790414192.439807}
+{"source": "ils", "worker": 1002, "d": 9, "score": 2400, "current": 2400, "accepted": 37, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.902975797653198, "timestamp": 1790414208.3040798}
+{"source": "ils", "worker": 1003, "d": 9, "score": 2400, "current": 2400, "accepted": 32, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.89404582977295, "timestamp": 1790414208.310783}
+{"source": "ils", "worker": 1001, "d": 9, "score": 2400, "current": 2400, "accepted": 31, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.901018857955933, "timestamp": 1790414208.3403509}
+{"source": "ils", "worker": 1000, "d": 9, "score": 2400, "current": 2400, "accepted": 38, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.915684938430786, "timestamp": 1790414208.355644}
+{"source": "ils", "worker": 1002, "d": 9, "score": 2400, "current": 2400, "accepted": 35, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 16.09325075149536, "timestamp": 1790414224.397512}
+{"source": "ils", "worker": 1003, "d": 9, "score": 2400, "current": 2400, "accepted": 32, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 16.09347701072693, "timestamp": 1790414224.40446}
+{"source": "ils", "worker": 1001, "d": 9, "score": 2400, "current": 2400, "accepted": 28, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 16.08431601524353, "timestamp": 1790414224.424808}
+{"source": "ils", "worker": 1000, "d": 9, "score": 2400, "current": 2400, "accepted": 31, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 16.077919960021973, "timestamp": 1790414224.433839}
+{"source": "ils", "worker": 1002, "d": 9, "score": 2400, "current": 2400, "accepted": 34, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.986711025238037, "timestamp": 1790414240.384377}
+{"source": "ils", "worker": 1003, "d": 9, "score": 2400, "current": 2400, "accepted": 39, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 16.010735034942627, "timestamp": 1790414240.415328}
+{"source": "ils", "worker": 1000, "d": 9, "score": 2400, "current": 2400, "accepted": 39, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 16.00062108039856, "timestamp": 1790414240.434585}
+{"source": "ils", "worker": 1001, "d": 9, "score": 2400, "current": 2400, "accepted": 34, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 16.01330590248108, "timestamp": 1790414240.438248}
+{"source": "ils", "worker": 1002, "d": 9, "score": 2400, "current": 2400, "accepted": 34, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.814270973205566, "timestamp": 1790414256.198838}
+{"source": "ils", "worker": 1003, "d": 9, "score": 2400, "current": 2400, "accepted": 29, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.82688283920288, "timestamp": 1790414256.2423968}
+{"source": "ils", "worker": 1000, "d": 9, "score": 2400, "current": 2400, "accepted": 35, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.826313972473145, "timestamp": 1790414256.261081}
+{"source": "ils", "worker": 1001, "d": 9, "score": 2400, "current": 2400, "accepted": 32, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.829485177993774, "timestamp": 1790414256.267939}
+{"source": "ils", "worker": 1002, "d": 9, "score": 2400, "current": 2400, "accepted": 33, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.85508108139038, "timestamp": 1790414272.054124}
+{"source": "ils", "worker": 1003, "d": 9, "score": 2400, "current": 2400, "accepted": 33, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.860800981521606, "timestamp": 1790414272.103488}
+{"source": "ils", "worker": 1000, "d": 9, "score": 2400, "current": 2400, "accepted": 39, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.87425684928894, "timestamp": 1790414272.135486}
+{"source": "ils", "worker": 1001, "d": 9, "score": 2400, "current": 2400, "accepted": 37, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.890228986740112, "timestamp": 1790414272.158317}
+{"source": "ils", "worker": 1002, "d": 9, "score": 2400, "current": 2400, "accepted": 33, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.750640153884888, "timestamp": 1790414287.804975}
+{"source": "ils", "worker": 1003, "d": 9, "score": 2400, "current": 2400, "accepted": 39, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.747119188308716, "timestamp": 1790414287.8507662}
+{"source": "ils", "worker": 1000, "d": 9, "score": 2400, "current": 2400, "accepted": 30, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.737845182418823, "timestamp": 1790414287.8734632}
+{"source": "ils", "worker": 1001, "d": 9, "score": 2400, "current": 2400, "accepted": 31, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.750882148742676, "timestamp": 1790414287.909357}
+{"source": "ils", "worker": 1002, "d": 9, "score": 2400, "current": 2400, "accepted": 38, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.685119152069092, "timestamp": 1790414303.490258}
+{"source": "ils", "worker": 1003, "d": 9, "score": 2400, "current": 2400, "accepted": 35, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.700314044952393, "timestamp": 1790414303.551308}
+{"source": "ils", "worker": 1000, "d": 9, "score": 2400, "current": 2400, "accepted": 38, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.694454908370972, "timestamp": 1790414303.5681942}
+{"source": "ils", "worker": 1001, "d": 9, "score": 2400, "current": 2400, "accepted": 33, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.70005488395691, "timestamp": 1790414303.6095638}
+{"source": "ils", "worker": 1002, "d": 9, "score": 2400, "current": 2400, "accepted": 32, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.761236906051636, "timestamp": 1790414319.251675}
+{"source": "ils", "worker": 1003, "d": 9, "score": 2400, "current": 2400, "accepted": 36, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.784420013427734, "timestamp": 1790414319.335916}
+{"source": "ils", "worker": 1000, "d": 9, "score": 2400, "current": 2400, "accepted": 38, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.784892082214355, "timestamp": 1790414319.35323}
+{"source": "ils", "worker": 1001, "d": 9, "score": 2400, "current": 2400, "accepted": 38, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.791303873062134, "timestamp": 1790414319.401046}
+{"source": "ils", "worker": 1002, "d": 9, "score": 2400, "current": 2400, "accepted": 41, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.770382165908813, "timestamp": 1790414335.0222661}
+{"source": "ils", "worker": 1003, "d": 9, "score": 2400, "current": 2400, "accepted": 33, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.747085809707642, "timestamp": 1790414335.083185}
+{"source": "ils", "worker": 1000, "d": 9, "score": 2400, "current": 2400, "accepted": 33, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.783121824264526, "timestamp": 1790414335.136514}
+{"source": "ils", "worker": 1001, "d": 9, "score": 2400, "current": 2400, "accepted": 30, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.770586013793945, "timestamp": 1790414335.171874}
+{"source": "ils", "worker": 1002, "d": 9, "score": 2400, "current": 2400, "accepted": 33, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.724483728408813, "timestamp": 1790414350.7469099}
+{"source": "ils", "worker": 1003, "d": 9, "score": 2400, "current": 2400, "accepted": 34, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.728389024734497, "timestamp": 1790414350.811732}
+{"source": "ils", "worker": 1000, "d": 9, "score": 2400, "current": 2400, "accepted": 38, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.74212908744812, "timestamp": 1790414350.878786}
+{"source": "ils", "worker": 1001, "d": 9, "score": 2400, "current": 2400, "accepted": 31, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.742962837219238, "timestamp": 1790414350.9149718}
+{"source": "ils", "worker": 1002, "d": 9, "score": 2400, "current": 2400, "accepted": 34, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.836360931396484, "timestamp": 1790414366.58354}
+{"source": "ils", "worker": 1003, "d": 9, "score": 2400, "current": 2400, "accepted": 38, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.82016897201538, "timestamp": 1790414366.632045}
+{"source": "ils", "worker": 1000, "d": 9, "score": 2400, "current": 2400, "accepted": 32, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.812505722045898, "timestamp": 1790414366.6915278}
+{"source": "ils", "worker": 1001, "d": 9, "score": 2400, "current": 2400, "accepted": 37, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.862904071807861, "timestamp": 1790414366.7780302}
+{"source": "ils", "worker": 1002, "d": 9, "score": 2400, "current": 2400, "accepted": 30, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.728941917419434, "timestamp": 1790414382.31269}
+{"source": "ils", "worker": 1003, "d": 9, "score": 2400, "current": 2400, "accepted": 31, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.726013898849487, "timestamp": 1790414382.358219}
+{"source": "ils", "worker": 1000, "d": 9, "score": 2400, "current": 2400, "accepted": 39, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.768862247467041, "timestamp": 1790414382.460581}
+{"source": "ils", "worker": 1001, "d": 9, "score": 2400, "current": 2400, "accepted": 39, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.730272054672241, "timestamp": 1790414382.508558}
+{"source": "ils", "worker": 1002, "d": 9, "score": 2400, "current": 2400, "accepted": 45, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.77859878540039, "timestamp": 1790414398.091532}
+{"source": "ils", "worker": 1003, "d": 9, "score": 2400, "current": 2400, "accepted": 35, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.782610893249512, "timestamp": 1790414398.141011}
+{"source": "ils", "worker": 1000, "d": 9, "score": 2400, "current": 2400, "accepted": 35, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.770657062530518, "timestamp": 1790414398.23145}
+{"source": "ils", "worker": 1001, "d": 9, "score": 2400, "current": 2400, "accepted": 37, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.794930934906006, "timestamp": 1790414398.303636}
+{"source": "ils", "worker": 1002, "d": 9, "score": 2400, "current": 2400, "accepted": 39, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.762875080108643, "timestamp": 1790414413.85472}
+{"source": "ils", "worker": 1003, "d": 9, "score": 2400, "current": 2400, "accepted": 42, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.75638723373413, "timestamp": 1790414413.897599}
+{"source": "ils", "worker": 1000, "d": 9, "score": 2400, "current": 2400, "accepted": 40, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.736547946929932, "timestamp": 1790414413.968179}
+{"source": "ils", "worker": 1001, "d": 9, "score": 2400, "current": 2400, "accepted": 32, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.753397941589355, "timestamp": 1790414414.057204}
+{"source": "ils", "worker": 1002, "d": 9, "score": 2400, "current": 2400, "accepted": 36, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.889748811721802, "timestamp": 1790414429.744719}
+{"source": "ils", "worker": 1003, "d": 9, "score": 2400, "current": 2400, "accepted": 41, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.894721984863281, "timestamp": 1790414429.7925088}
+{"source": "ils", "worker": 1000, "d": 9, "score": 2400, "current": 2400, "accepted": 41, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.902082920074463, "timestamp": 1790414429.870446}
+{"source": "ils", "worker": 1001, "d": 9, "score": 2400, "current": 2400, "accepted": 41, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.896606922149658, "timestamp": 1790414429.953991}
+{"source": "ils", "worker": 1002, "d": 9, "score": 2400, "current": 2400, "accepted": 37, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.766435861587524, "timestamp": 1790414445.51139}
+{"source": "ils", "worker": 1003, "d": 9, "score": 2400, "current": 2400, "accepted": 35, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.783838987350464, "timestamp": 1790414445.576512}
+{"source": "ils", "worker": 1000, "d": 9, "score": 2400, "current": 2400, "accepted": 42, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.759299755096436, "timestamp": 1790414445.6299598}
+{"source": "ils", "worker": 1001, "d": 9, "score": 2400, "current": 2400, "accepted": 31, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.782339811325073, "timestamp": 1790414445.736508}
+{"source": "ils", "worker": 1002, "d": 9, "score": 2400, "current": 2400, "accepted": 34, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.72771406173706, "timestamp": 1790414461.23933}
+{"source": "ils", "worker": 1003, "d": 9, "score": 2400, "current": 2400, "accepted": 41, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.748496055603027, "timestamp": 1790414461.325212}
+{"source": "ils", "worker": 1000, "d": 9, "score": 2400, "current": 2400, "accepted": 35, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.736128091812134, "timestamp": 1790414461.366257}
+{"source": "ils", "worker": 1001, "d": 9, "score": 2400, "current": 2400, "accepted": 36, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.749709129333496, "timestamp": 1790414461.486447}
+{"source": "ils", "worker": 1002, "d": 9, "score": 2400, "current": 2400, "accepted": 38, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.871975898742676, "timestamp": 1790414477.1115022}
+{"source": "ils", "worker": 1003, "d": 9, "score": 2400, "current": 2400, "accepted": 31, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.851523876190186, "timestamp": 1790414477.176904}
+{"source": "ils", "worker": 1000, "d": 9, "score": 2400, "current": 2400, "accepted": 37, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.866976976394653, "timestamp": 1790414477.2334158}
+{"source": "ils", "worker": 1001, "d": 9, "score": 2400, "current": 2400, "accepted": 30, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.890553951263428, "timestamp": 1790414477.377208}
+{"source": "ils", "worker": 1002, "d": 9, "score": 2400, "current": 2400, "accepted": 32, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.76816201210022, "timestamp": 1790414492.879851}
+{"source": "ils", "worker": 1003, "d": 9, "score": 2400, "current": 2400, "accepted": 35, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.768994808197021, "timestamp": 1790414492.946065}
+{"source": "ils", "worker": 1000, "d": 9, "score": 2400, "current": 2400, "accepted": 35, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.785565853118896, "timestamp": 1790414493.019115}
+{"source": "ils", "worker": 1001, "d": 9, "score": 2400, "current": 2400, "accepted": 34, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.768800020217896, "timestamp": 1790414493.146228}
+{"source": "ils", "worker": 1002, "d": 9, "score": 2400, "current": 2400, "accepted": 28, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.709644079208374, "timestamp": 1790414508.589698}
+{"source": "ils", "worker": 1003, "d": 9, "score": 2400, "current": 2400, "accepted": 39, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.738984107971191, "timestamp": 1790414508.685235}
+{"source": "ils", "worker": 1000, "d": 9, "score": 2400, "current": 2400, "accepted": 37, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.72655987739563, "timestamp": 1790414508.7458198}
+{"source": "ils", "worker": 1001, "d": 9, "score": 2400, "current": 2400, "accepted": 32, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.708319902420044, "timestamp": 1790414508.8547661}
+{"source": "ils", "worker": 1002, "d": 9, "score": 2400, "current": 2400, "accepted": 35, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.685971021652222, "timestamp": 1790414524.275939}
+{"source": "ils", "worker": 1003, "d": 9, "score": 2400, "current": 2400, "accepted": 36, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.664139986038208, "timestamp": 1790414524.3495831}
+{"source": "ils", "worker": 1000, "d": 9, "score": 2400, "current": 2400, "accepted": 36, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.696051120758057, "timestamp": 1790414524.442063}
+{"source": "ils", "worker": 1001, "d": 9, "score": 2400, "current": 2400, "accepted": 30, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.671365976333618, "timestamp": 1790414524.526309}
+{"source": "ils", "worker": 1002, "d": 9, "score": 2400, "current": 2400, "accepted": 36, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.845841884613037, "timestamp": 1790414540.1219578}
+{"source": "ils", "worker": 1003, "d": 9, "score": 2400, "current": 2400, "accepted": 33, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.870411157608032, "timestamp": 1790414540.2201521}
+{"source": "ils", "worker": 1000, "d": 9, "score": 2400, "current": 2400, "accepted": 37, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.883081912994385, "timestamp": 1790414540.3252878}
+{"source": "ils", "worker": 1001, "d": 9, "score": 2400, "current": 2400, "accepted": 39, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.895991086959839, "timestamp": 1790414540.422487}
+{"source": "ils", "worker": 1002, "d": 9, "score": 2400, "current": 2400, "accepted": 38, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.93500804901123, "timestamp": 1790414556.057215}
+{"source": "ils", "worker": 1003, "d": 9, "score": 2400, "current": 2400, "accepted": 32, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.902477025985718, "timestamp": 1790414556.1228359}
+{"source": "ils", "worker": 1000, "d": 9, "score": 2400, "current": 2400, "accepted": 38, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.911939144134521, "timestamp": 1790414556.2374122}
+{"source": "ils", "worker": 1001, "d": 9, "score": 2400, "current": 2400, "accepted": 35, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.909204006195068, "timestamp": 1790414556.3321862}
+{"source": "ils", "worker": 1002, "d": 9, "score": 2400, "current": 2400, "accepted": 39, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.817656755447388, "timestamp": 1790414571.8750699}
+{"source": "ils", "worker": 1003, "d": 9, "score": 2400, "current": 2400, "accepted": 35, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.81156611442566, "timestamp": 1790414571.934603}
+{"source": "ils", "worker": 1000, "d": 9, "score": 2400, "current": 2400, "accepted": 36, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.837764024734497, "timestamp": 1790414572.075573}
+{"source": "ils", "worker": 1001, "d": 9, "score": 2400, "current": 2400, "accepted": 30, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.815158605575562, "timestamp": 1790414572.1475468}
+{"source": "ils", "worker": 1002, "d": 9, "score": 2400, "current": 2400, "accepted": 37, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.987801790237427, "timestamp": 1790414587.8631139}
+{"source": "ils", "worker": 1003, "d": 9, "score": 2400, "current": 2400, "accepted": 37, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.972706079483032, "timestamp": 1790414587.907521}
+{"source": "ils", "worker": 1000, "d": 9, "score": 2400, "current": 2400, "accepted": 31, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.98469614982605, "timestamp": 1790414588.0604491}
+{"source": "ils", "worker": 1001, "d": 9, "score": 2400, "current": 2400, "accepted": 34, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.986246109008789, "timestamp": 1790414588.13401}
+{"source": "ils", "worker": 1002, "d": 9, "score": 2400, "current": 2400, "accepted": 37, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.787160873413086, "timestamp": 1790414603.650481}
+{"source": "ils", "worker": 1003, "d": 9, "score": 2400, "current": 2400, "accepted": 30, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.771519899368286, "timestamp": 1790414603.67919}
+{"source": "ils", "worker": 1000, "d": 9, "score": 2400, "current": 2400, "accepted": 31, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.783302783966064, "timestamp": 1790414603.843891}
+{"source": "ils", "worker": 1001, "d": 9, "score": 2400, "current": 2400, "accepted": 39, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.793216943740845, "timestamp": 1790414603.927379}
+{"source": "ils", "worker": 1002, "d": 9, "score": 2400, "current": 2400, "accepted": 36, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.855174779891968, "timestamp": 1790414619.505885}
+{"source": "ils", "worker": 1003, "d": 9, "score": 2400, "current": 2400, "accepted": 33, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.840054988861084, "timestamp": 1790414619.5194108}
+{"source": "ils", "worker": 1000, "d": 9, "score": 2400, "current": 2400, "accepted": 41, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.8594069480896, "timestamp": 1790414619.703496}
+{"source": "ils", "worker": 1001, "d": 9, "score": 2400, "current": 2400, "accepted": 33, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.835638999938965, "timestamp": 1790414619.763206}
+{"source": "ils", "worker": 1002, "d": 9, "score": 2400, "current": 2400, "accepted": 35, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.795316219329834, "timestamp": 1790414635.301711}
+{"source": "ils", "worker": 1003, "d": 9, "score": 2400, "current": 2400, "accepted": 34, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.79228401184082, "timestamp": 1790414635.311918}
+{"source": "ils", "worker": 1000, "d": 9, "score": 2400, "current": 2400, "accepted": 31, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.772742986679077, "timestamp": 1790414635.4764318}
+{"source": "ils", "worker": 1001, "d": 9, "score": 2400, "current": 2400, "accepted": 32, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.798369884490967, "timestamp": 1790414635.56175}
+{"source": "ils", "worker": 2001, "d": 9, "score": 2400, "current": 2400, "accepted": 39, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 18.974601984024048, "timestamp": 1790414676.722016}
+{"source": "ils", "worker": 2000, "d": 9, "score": 2400, "current": 2400, "accepted": 27, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 18.974910020828247, "timestamp": 1790414676.722313}
+{"source": "ils", "worker": 2001, "d": 9, "score": 2400, "current": 2400, "accepted": 34, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.883494853973389, "timestamp": 1790414692.6057339}
+{"source": "ils", "worker": 2000, "d": 9, "score": 2400, "current": 2400, "accepted": 38, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.906508922576904, "timestamp": 1790414692.629122}
+{"source": "ils", "worker": 2001, "d": 9, "score": 2400, "current": 2400, "accepted": 32, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.834344148635864, "timestamp": 1790414708.440284}
+{"source": "ils", "worker": 2000, "d": 9, "score": 2400, "current": 2400, "accepted": 38, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.865613222122192, "timestamp": 1790414708.4948921}
+{"source": "ils", "worker": 2001, "d": 9, "score": 2400, "current": 2400, "accepted": 34, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.869249105453491, "timestamp": 1790414724.309793}
+{"source": "ils", "worker": 2000, "d": 9, "score": 2400, "current": 2400, "accepted": 34, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.862693786621094, "timestamp": 1790414724.357822}
+{"source": "ils", "worker": 2001, "d": 9, "score": 2400, "current": 2400, "accepted": 38, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.89440107345581, "timestamp": 1790414740.20441}
+{"source": "ils", "worker": 2000, "d": 9, "score": 2400, "current": 2400, "accepted": 37, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.890774011611938, "timestamp": 1790414740.248769}
+{"source": "ils", "worker": 2001, "d": 9, "score": 2400, "current": 2400, "accepted": 32, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.895426034927368, "timestamp": 1790414756.1000168}
+{"source": "ils", "worker": 2000, "d": 9, "score": 2400, "current": 2400, "accepted": 38, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.915035963058472, "timestamp": 1790414756.163956}
+{"source": "ils", "worker": 2001, "d": 9, "score": 2400, "current": 2400, "accepted": 32, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.952599048614502, "timestamp": 1790414772.052848}
+{"source": "ils", "worker": 2000, "d": 9, "score": 2400, "current": 2400, "accepted": 39, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.95366096496582, "timestamp": 1790414772.117805}
+{"source": "find_I sat", "d": 5, "k": 13, "result": "UNSAT", "iters": 1, "cuts": 27, "secs": 0.0005881786346435547, "timestamp": 1790414782.27338}
+{"source": "find_I sat", "d": 5, "k": 13, "result": "UNSAT", "iters": 3, "cuts": 73, "secs": 0.0015802383422851562, "timestamp": 1790414782.518517}
+{"source": "find_I sat", "d": 5, "k": 14, "score": 88, "file": "I_Q5_k14_1790414782.json", "timestamp": 1790414782.762559}
+{"source": "find_I sat", "d": 5, "k": 14, "score": 88, "file": "I_Q5_k14_1790414783.json", "timestamp": 1790414783.0049229}
+{"source": "find_I sat", "d": 6, "k": 27, "result": "UNSAT", "iters": 1, "cuts": 109, "secs": 0.0029718875885009766, "timestamp": 1790414783.252897}
+{"source": "find_I sat", "d": 6, "k": 27, "result": "UNSAT", "iters": 1, "cuts": 109, "secs": 0.0077359676361083984, "timestamp": 1790414783.505623}
+{"source": "find_I sat", "d": 6, "k": 28, "score": 204, "file": "I_Q6_k28_1790414783.json", "timestamp": 1790414783.7464058}
+{"source": "find_I sat", "d": 6, "k": 28, "score": 204, "file": "I_Q6_k28_1790414783.json", "timestamp": 1790414783.9905128}
+{"source": "ils", "worker": 2001, "d": 9, "score": 2400, "current": 2400, "accepted": 42, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.873975992202759, "timestamp": 1790414787.9270332}
+{"source": "ils", "worker": 2000, "d": 9, "score": 2400, "current": 2400, "accepted": 40, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.851986169815063, "timestamp": 1790414787.970041}
+{"source": "find_I sat", "d": 7, "k": 55, "result": "UNSAT", "iters": 2, "cuts": 351, "secs": 0.030151844024658203, "timestamp": 1790414793.3681579}
+{"source": "find_I sat", "d": 7, "k": 56, "score": 464, "file": "I_Q7_k56_1790414793.json", "timestamp": 1790414793.621227}
+{"source": "find_I sat", "d": 8, "k": 111, "result": "UNSAT", "iters": 1, "cuts": 703, "secs": 0.4492168426513672, "timestamp": 1790414794.347615}
+{"source": "ils", "worker": 2001, "d": 9, "score": 2400, "current": 2400, "accepted": 32, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.875343322753906, "timestamp": 1790414803.8026502}
+{"source": "ils", "worker": 2000, "d": 9, "score": 2400, "current": 2400, "accepted": 30, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.912132740020752, "timestamp": 1790414803.8823428}
+{"source": "find_I sat", "d": 8, "k": 111, "result": "UNSAT", "iters": 1, "cuts": 802, "secs": 1.2662317752838135, "timestamp": 1790414812.860522}
+{"source": "find_I sat", "d": 8, "k": 112, "score": 1040, "file": "I_Q8_k112_1790414813.json", "timestamp": 1790414813.219261}
+{"source": "find_I sat", "d": 9, "k": 236, "score": 2400, "file": "I_Q9_k236_1790414815.json", "timestamp": 1790414815.0233889}
+{"source": "ils", "worker": 2001, "d": 9, "score": 2400, "current": 2400, "accepted": 38, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.93149209022522, "timestamp": 1790414819.7343569}
+{"source": "ils", "worker": 2000, "d": 9, "score": 2400, "current": 2400, "accepted": 32, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.924194097518921, "timestamp": 1790414819.80671}
+{"source": "ils", "worker": 2001, "d": 9, "score": 2400, "current": 2400, "accepted": 38, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.927648067474365, "timestamp": 1790414835.6622531}
+{"source": "ils", "worker": 2000, "d": 9, "score": 2400, "current": 2400, "accepted": 39, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.919695854187012, "timestamp": 1790414835.7266428}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 0, "cost": 1, "iters": 2000000, "secs": 13.575285196304321, "timestamp": 1790414837.502325}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 1, "cost": 4, "iters": 2000000, "secs": 12.225262641906738, "timestamp": 1790414849.731808}
+{"source": "ils", "worker": 2001, "d": 9, "score": 2400, "current": 2400, "accepted": 38, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.903850078582764, "timestamp": 1790414851.566317}
+{"source": "ils", "worker": 2000, "d": 9, "score": 2400, "current": 2400, "accepted": 36, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.890874147415161, "timestamp": 1790414851.617742}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 2, "cost": 2, "iters": 2000000, "secs": 12.23679804801941, "timestamp": 1790414861.972917}
+{"source": "ils", "worker": 2001, "d": 9, "score": 2400, "current": 2400, "accepted": 35, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.906048059463501, "timestamp": 1790414867.472799}
+{"source": "ils", "worker": 2000, "d": 9, "score": 2400, "current": 2400, "accepted": 30, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.898490190505981, "timestamp": 1790414867.516405}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 3, "cost": 3, "iters": 2000000, "secs": 12.223598957061768, "timestamp": 1790414874.200855}
+{"source": "ils", "worker": 2001, "d": 9, "score": 2400, "current": 2400, "accepted": 35, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.894103050231934, "timestamp": 1790414883.36708}
+{"source": "ils", "worker": 2000, "d": 9, "score": 2400, "current": 2400, "accepted": 34, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.896588802337646, "timestamp": 1790414883.413169}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 4, "cost": 2, "iters": 2000000, "secs": 12.131305932998657, "timestamp": 1790414886.336681}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 5, "cost": 3, "iters": 2000000, "secs": 12.110830783843994, "timestamp": 1790414898.451627}
+{"source": "ils", "worker": 2001, "d": 9, "score": 2400, "current": 2400, "accepted": 36, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.813808917999268, "timestamp": 1790414899.181087}
+{"source": "ils", "worker": 2000, "d": 9, "score": 2400, "current": 2400, "accepted": 41, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.824658155441284, "timestamp": 1790414899.2379992}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 6, "cost": 3, "iters": 2000000, "secs": 11.993303060531616, "timestamp": 1790414910.4492211}
+{"source": "ils", "worker": 2001, "d": 9, "score": 2400, "current": 2400, "accepted": 35, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.724719047546387, "timestamp": 1790414914.905996}
+{"source": "ils", "worker": 2000, "d": 9, "score": 2400, "current": 2400, "accepted": 37, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.735714197158813, "timestamp": 1790414914.97392}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 7, "cost": 3, "iters": 2000000, "secs": 12.09519100189209, "timestamp": 1790414922.548927}
+{"source": "ils", "worker": 2001, "d": 9, "score": 2400, "current": 2400, "accepted": 33, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.774070024490356, "timestamp": 1790414930.6802611}
+{"source": "ils", "worker": 2000, "d": 9, "score": 2400, "current": 2400, "accepted": 29, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.747997999191284, "timestamp": 1790414930.7221131}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 8, "cost": 3, "iters": 2000000, "secs": 11.953074932098389, "timestamp": 1790414934.506428}
+{"source": "ils", "worker": 2001, "d": 9, "score": 2400, "current": 2400, "accepted": 34, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.729196786880493, "timestamp": 1790414946.4096498}
+{"source": "ils", "worker": 2000, "d": 9, "score": 2400, "current": 2400, "accepted": 39, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 15.734653949737549, "timestamp": 1790414946.456946}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 9, "cost": 3, "iters": 2000000, "secs": 12.024685144424438, "timestamp": 1790414946.535346}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 10, "cost": 3, "iters": 2000000, "secs": 12.00948977470398, "timestamp": 1790414958.549105}
+{"source": "ils", "worker": 2001, "d": 9, "score": 2400, "current": 2400, "accepted": 26, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 16.128350973129272, "timestamp": 1790414962.538196}
+{"source": "ils", "worker": 2000, "d": 9, "score": 2400, "current": 2400, "accepted": 32, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 16.087042093276978, "timestamp": 1790414962.544172}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 11, "cost": 2, "iters": 2000000, "secs": 15.880171775817871, "timestamp": 1790414974.4333498}
+{"source": "ils", "worker": 2000, "d": 9, "score": 2400, "current": 2400, "accepted": 30, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 19.89224600791931, "timestamp": 1790414982.436589}
+{"source": "ils", "worker": 2001, "d": 9, "score": 2400, "current": 2400, "accepted": 38, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 19.95186710357666, "timestamp": 1790414982.490669}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 12, "cost": 1, "iters": 2000000, "secs": 14.78201174736023, "timestamp": 1790414989.220067}
+{"source": "ils", "worker": 2000, "d": 9, "score": 2400, "current": 2400, "accepted": 25, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 17.20533299446106, "timestamp": 1790414999.642061}
+{"source": "ils", "worker": 2001, "d": 9, "score": 2400, "current": 2400, "accepted": 35, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 17.283769845962524, "timestamp": 1790414999.774577}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 13, "cost": 3, "iters": 2000000, "secs": 13.795295000076294, "timestamp": 1790415003.020383}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 14, "cost": 3, "iters": 2000000, "secs": 13.69343113899231, "timestamp": 1790415016.7183082}
+{"source": "ils", "worker": 2000, "d": 9, "score": 2400, "current": 2400, "accepted": 36, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 17.181864261627197, "timestamp": 1790415016.8241122}
+{"source": "ils", "worker": 2001, "d": 9, "score": 2400, "current": 2400, "accepted": 36, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 17.24066925048828, "timestamp": 1790415017.015449}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 15, "cost": 1, "iters": 2000000, "secs": 13.266297817230225, "timestamp": 1790415029.989011}
+{"source": "ils", "worker": 2000, "d": 9, "score": 2400, "current": 2400, "accepted": 35, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 16.855926036834717, "timestamp": 1790415033.680248}
+{"source": "ils", "worker": 2001, "d": 9, "score": 2400, "current": 2400, "accepted": 37, "rounds": 50, "polish_iters": 100000, "tabu": 0, "secs": 16.84468722343445, "timestamp": 1790415033.860331}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 16, "cost": 2, "iters": 2000000, "secs": 13.324702978134155, "timestamp": 1790415043.31818}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 17, "cost": 3, "iters": 2000000, "secs": 12.526777267456055, "timestamp": 1790415055.84947}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 18, "cost": 3, "iters": 2000000, "secs": 12.309895038604736, "timestamp": 1790415068.1639712}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 19, "cost": 3, "iters": 2000000, "secs": 12.25632905960083, "timestamp": 1790415080.424639}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 20, "cost": 3, "iters": 2000000, "secs": 12.381537914276123, "timestamp": 1790415092.810781}
+{"source": "find_I sat group=inv1", "d": 5, "k": 14, "score": 88, "file": "I_Q5_k14_1790415099.json", "timestamp": 1790415099.8494751}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 21, "cost": 2, "iters": 2000000, "secs": 12.554634094238281, "timestamp": 1790415105.369879}
+{"source": "find_I sat", "d": 9, "k": 236, "group": "z9", "result": "UNSAT", "iters": 1, "cuts": 2104, "secs": 0.13118195533752441, "timestamp": 1790415107.3910809}
+{"source": "find_I sat group=inv4", "d": 9, "k": 236, "score": 2400, "file": "I_Q9_k236_1790415107.json", "timestamp": 1790415107.979222}
+{"source": "find_I sat", "d": 9, "k": 236, "group": "rot3", "result": "UNSAT", "iters": 1, "cuts": 2104, "secs": 4.747901201248169, "timestamp": 1790415112.008411}
+{"source": "find_I sat", "d": 9, "k": 235, "group": "inv4", "result": "UNSAT", "iters": 1, "cuts": 2104, "secs": 4.433578729629517, "timestamp": 1790415112.8020349}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 22, "cost": 3, "iters": 2000000, "secs": 12.549214839935303, "timestamp": 1790415117.923824}
+{"source": "find_I sat", "d": 9, "k": 236, "group": "inv1", "result": "UNSAT", "iters": 1, "cuts": 2104, "secs": 5.386422157287598, "timestamp": 1790415118.55756}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 23, "cost": 1, "iters": 2000000, "secs": 12.494181871414185, "timestamp": 1790415130.422781}
+{"source": "find_I sat group=test8", "d": 8, "k": 112, "score": 1040, "file": "I_Q8_k112_1790415142.json", "timestamp": 1790415142.2156532}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 24, "cost": 3, "iters": 2000000, "secs": 12.417053937911987, "timestamp": 1790415142.844034}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 25, "cost": 2, "iters": 2000000, "secs": 12.30281114578247, "timestamp": 1790415155.151071}
+{"source": "find_I sat", "d": 9, "k": 236, "group": "inv1", "result": "UNSAT", "iters": 30, "cuts": 1721, "secs": 1.7937512397766113, "timestamp": 1790415157.617491}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 26, "cost": 1, "iters": 2000000, "secs": 12.232542991638184, "timestamp": 1790415167.388461}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 27, "cost": 3, "iters": 2000000, "secs": 12.363631248474121, "timestamp": 1790415179.7563992}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 28, "cost": 3, "iters": 2000000, "secs": 13.143739938735962, "timestamp": 1790415192.904466}
+{"source": "find_I sat group=inv3", "d": 9, "k": 236, "score": 2400, "file": "I_Q9_k236_1790415198.json", "timestamp": 1790415198.9907992}
+{"source": "find_I sat", "d": 9, "k": 235, "group": "inv3", "result": "UNSAT", "iters": 1, "cuts": 2104, "secs": 4.771694898605347, "timestamp": 1790415204.1358469}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 29, "cost": 3, "iters": 2000000, "secs": 12.608356237411499, "timestamp": 1790415205.517119}
+{"source": "find_I sat", "d": 9, "k": 236, "group": "c3x1", "result": "UNSAT", "iters": 1, "cuts": 2104, "secs": 0.831470251083374, "timestamp": 1790415212.897896}
+{"source": "find_I sat", "d": 9, "k": 236, "group": "c3x2", "result": "UNSAT", "iters": 1, "cuts": 2104, "secs": 3.6782898902893066, "timestamp": 1790415216.9294689}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 30, "cost": 2, "iters": 2000000, "secs": 12.47141718864441, "timestamp": 1790415217.992897}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 31, "cost": 3, "iters": 2000000, "secs": 12.282120943069458, "timestamp": 1790415230.279406}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 32, "cost": 3, "iters": 2000000, "secs": 12.2877779006958, "timestamp": 1790415242.57133}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 33, "cost": 1, "iters": 2000000, "secs": 12.211358070373535, "timestamp": 1790415254.787414}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 34, "cost": 2, "iters": 2000000, "secs": 12.370150804519653, "timestamp": 1790415267.161928}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 35, "cost": 2, "iters": 2000000, "secs": 12.306588888168335, "timestamp": 1790415279.4726112}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 36, "cost": 3, "iters": 2000000, "secs": 12.24803614616394, "timestamp": 1790415291.725375}
+{"source": "find_I sat", "d": 9, "k": 236, "group": "inv2", "result": "UNSAT", "iters": 1, "cuts": 2104, "secs": 189.07375812530518, "timestamp": 1790415301.455064}
+{"source": "find_I sat", "d": 9, "k": 236, "group": "c5", "result": "UNSAT", "iters": 1, "cuts": 2104, "secs": 0.10230803489685059, "timestamp": 1790415301.600414}
+{"source": "find_I sat", "d": 9, "k": 236, "group": "c7", "result": "UNSAT", "iters": 1, "cuts": 2104, "secs": 0.13160490989685059, "timestamp": 1790415302.099095}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 37, "cost": 4, "iters": 2000000, "secs": 12.275935888290405, "timestamp": 1790415304.0060391}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 38, "cost": 2, "iters": 2000000, "secs": 12.182023048400879, "timestamp": 1790415316.19254}
+{"source": "find_I sat", "d": 9, "k": 236, "group": "c5", "result": "UNSAT", "iters": 4, "cuts": 497, "secs": 0.05448412895202637, "timestamp": 1790415319.716311}
+{"source": "find_I sat", "d": 9, "k": 236, "group": "c7", "result": "UNSAT", "iters": 6, "cuts": 565, "secs": 0.06582212448120117, "timestamp": 1790415320.110752}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 39, "cost": 2, "iters": 2000000, "secs": 12.202921867370605, "timestamp": 1790415328.399819}

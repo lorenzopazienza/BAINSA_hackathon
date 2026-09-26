@@ -1,0 +1,2 @@
+inv3 k<=236: !!! FOUND Q9: independent decycling set |I| = 236, c = 96, U = 2400 (DP == brute force), saved I_Q9_k236_1790415198.json; store best = 2400
+inv3 k<=235: UNSAT: no independent decycling set of Q9 with |I| <= 235 group=inv3; 1 iterations, 2104 cuts, 5s

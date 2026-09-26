@@ -1,0 +1,4 @@
+c5 k<=236: UNSAT: no independent decycling set of Q9 with |I| <= 236 group=c5; 1 iterations, 2104 cuts, 0s
+c5: skip k<=235 (implied UNSAT)
+c7 k<=236: UNSAT: no independent decycling set of Q9 with |I| <= 236 group=c7; 1 iterations, 2104 cuts, 0s
+c7: skip k<=235 (implied UNSAT)

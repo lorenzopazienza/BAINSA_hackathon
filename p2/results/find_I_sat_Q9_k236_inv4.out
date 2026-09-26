@@ -1,0 +1,4 @@
+group inv4: 272 orbits, sizes [1, 2]
+SAT Q9 |I| <= 236 (c = 96) group=inv4: 4608 4-cycle clauses, fixed [], solver cadical195, card seqcounter
+iter 1: |I| = 171, 245 cycles in complement (lengths [6]), +2104 cuts, total 2104, solve 0.0s, elapsed 0s
+!!! FOUND Q9: independent decycling set |I| = 236, c = 96, U = 2400 (DP == brute force), saved I_Q9_k236_1790415107.json; store best = 2400

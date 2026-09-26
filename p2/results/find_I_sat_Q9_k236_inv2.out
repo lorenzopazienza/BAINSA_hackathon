@@ -1,0 +1,4 @@
+group inv2: 320 orbits, sizes [1, 2]
+SAT Q9 |I| <= 236 (c = 96) group=inv2: 4608 4-cycle clauses, fixed [], solver cadical195, card seqcounter
+iter 1: |I| = 171, 245 cycles in complement (lengths [6]), +2104 cuts, total 2104, solve 0.1s, elapsed 0s
+UNSAT: no independent decycling set of Q9 with |I| <= 236 group=inv2; 1 iterations, 2104 cuts, 189s
