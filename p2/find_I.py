@@ -362,7 +362,13 @@ GROUPS = {
     "inv4": [[1, 0, 3, 2, 5, 4, 7, 6, 8]],                          # (0 1)(2 3)(4 5)(6 7)
     "inv2": [[1, 0, 3, 2, 4, 5, 6, 7, 8]],                          # (0 1)(2 3)
     "inv1": [[1, 0, 2, 3, 4, 5, 6, 7, 8]],                          # (0 1)
+    "inv3": [[1, 0, 3, 2, 5, 4, 6, 7, 8]],                          # (0 1)(2 3)(4 5)
+    "c3x1": [[1, 2, 0, 3, 4, 5, 6, 7, 8]],                          # (0 1 2)
+    "c3x2": [[1, 2, 0, 4, 5, 3, 6, 7, 8]],                          # (0 1 2)(3 4 5)
 }
+# Up to conjugacy in Aut(Q_9), the involutions with fixed points are the coordinate involutions
+# inv1..inv4 (a translation part is either conjugated away or kills all fixed points; groups
+# without fixed points have only even orbits, incompatible with odd |I| = 235).
 # Note: z3blocks = (0 3 6)(1 4 7)(2 5 8) is conjugate to rot3 in S_9 (both are three disjoint
 # 3-cycles), hence equivalent up to an automorphism of Q_9; z9 contains z3blocks (z9^3).
 
