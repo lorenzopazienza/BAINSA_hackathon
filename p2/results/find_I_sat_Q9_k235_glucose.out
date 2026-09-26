@@ -1,0 +1,2 @@
+SAT Q9 |I| <= 235 (c = 88): 4608 4-cycle clauses, fixed [0, 3, 12, 48, 192], solver glucose4, card totalizer
+iter 1: |I| = 171, 185 cycles in complement (lengths [6]), +5293 cuts, total 5293, solve 0.1s, elapsed 0s

@@ -244,3 +244,118 @@
 {"source": "find_I sat", "d": 9, "k": 236, "group": "c5", "result": "UNSAT", "iters": 4, "cuts": 497, "secs": 0.05448412895202637, "timestamp": 1790415319.716311}
 {"source": "find_I sat", "d": 9, "k": 236, "group": "c7", "result": "UNSAT", "iters": 6, "cuts": 565, "secs": 0.06582212448120117, "timestamp": 1790415320.110752}
 {"source": "find_I ls", "d": 9, "k": 235, "restart": 39, "cost": 2, "iters": 2000000, "secs": 12.202921867370605, "timestamp": 1790415328.399819}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 40, "cost": 2, "iters": 2000000, "secs": 12.412690877914429, "timestamp": 1790415340.816652}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 41, "cost": 1, "iters": 2000000, "secs": 13.262758016586304, "timestamp": 1790415354.083612}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 42, "cost": 3, "iters": 2000000, "secs": 13.083757877349854, "timestamp": 1790415367.1722398}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 43, "cost": 2, "iters": 2000000, "secs": 13.416230916976929, "timestamp": 1790415380.593029}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 44, "cost": 1, "iters": 2000000, "secs": 13.17966079711914, "timestamp": 1790415393.778572}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 45, "cost": 3, "iters": 2000000, "secs": 13.246987104415894, "timestamp": 1790415407.030273}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 46, "cost": 1, "iters": 2000000, "secs": 13.317864894866943, "timestamp": 1790415420.352321}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 47, "cost": 3, "iters": 2000000, "secs": 13.173877000808716, "timestamp": 1790415433.530676}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 48, "cost": 2, "iters": 2000000, "secs": 13.214418888092041, "timestamp": 1790415446.750025}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 49, "cost": 1, "iters": 2000000, "secs": 12.845553874969482, "timestamp": 1790415459.599817}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 50, "cost": 3, "iters": 2000000, "secs": 12.300168991088867, "timestamp": 1790415471.904545}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 51, "cost": 2, "iters": 2000000, "secs": 12.188151121139526, "timestamp": 1790415484.0973508}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 52, "cost": 3, "iters": 2000000, "secs": 12.144892930984497, "timestamp": 1790415496.246926}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 53, "cost": 1, "iters": 2000000, "secs": 12.141160249710083, "timestamp": 1790415508.392781}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 54, "cost": 2, "iters": 2000000, "secs": 12.436359882354736, "timestamp": 1790415520.833243}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 55, "cost": 3, "iters": 2000000, "secs": 12.319500923156738, "timestamp": 1790415533.157692}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 56, "cost": 3, "iters": 2000000, "secs": 13.21915078163147, "timestamp": 1790415546.381693}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 57, "cost": 3, "iters": 2000000, "secs": 12.877638101577759, "timestamp": 1790415559.264408}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 58, "cost": 3, "iters": 2000000, "secs": 12.456279993057251, "timestamp": 1790415571.726332}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 59, "cost": 2, "iters": 2000000, "secs": 12.8802649974823, "timestamp": 1790415584.6112268}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 60, "cost": 3, "iters": 2000000, "secs": 12.330890893936157, "timestamp": 1790415596.946686}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 61, "cost": 4, "iters": 2000000, "secs": 12.420533180236816, "timestamp": 1790415609.37158}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 62, "cost": 2, "iters": 2000000, "secs": 12.280279636383057, "timestamp": 1790415621.656103}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 63, "cost": 4, "iters": 2000000, "secs": 12.544843912124634, "timestamp": 1790415634.2055948}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 64, "cost": 1, "iters": 2000000, "secs": 12.651709079742432, "timestamp": 1790415646.862087}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 65, "cost": 3, "iters": 2000000, "secs": 12.566458225250244, "timestamp": 1790415659.432868}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 66, "cost": 3, "iters": 2000000, "secs": 12.339264869689941, "timestamp": 1790415671.776533}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 67, "cost": 3, "iters": 2000000, "secs": 12.271419048309326, "timestamp": 1790415684.052566}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 68, "cost": 3, "iters": 2000000, "secs": 12.19112515449524, "timestamp": 1790415696.2480671}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 69, "cost": 3, "iters": 2000000, "secs": 12.33922815322876, "timestamp": 1790415708.591881}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 70, "cost": 3, "iters": 2000000, "secs": 12.517137050628662, "timestamp": 1790415721.113825}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 71, "cost": 2, "iters": 2000000, "secs": 12.380619049072266, "timestamp": 1790415733.5002382}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 72, "cost": 4, "iters": 2000000, "secs": 12.252135992050171, "timestamp": 1790415745.75685}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 73, "cost": 2, "iters": 2000000, "secs": 12.248869895935059, "timestamp": 1790415758.010278}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 74, "cost": 4, "iters": 2000000, "secs": 12.400143146514893, "timestamp": 1790415770.414998}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 75, "cost": 4, "iters": 2000000, "secs": 12.592260837554932, "timestamp": 1790415783.011425}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 76, "cost": 3, "iters": 2000000, "secs": 12.381274938583374, "timestamp": 1790415795.3969102}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 77, "cost": 4, "iters": 2000000, "secs": 12.28148102760315, "timestamp": 1790415807.6828659}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 78, "cost": 3, "iters": 2000000, "secs": 12.286087274551392, "timestamp": 1790415819.973574}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 79, "cost": 1, "iters": 2000000, "secs": 12.228837966918945, "timestamp": 1790415832.2064981}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 80, "cost": 3, "iters": 2000000, "secs": 12.503363847732544, "timestamp": 1790415844.714723}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 81, "cost": 4, "iters": 2000000, "secs": 12.350636959075928, "timestamp": 1790415857.0700579}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 82, "cost": 3, "iters": 2000000, "secs": 12.28514313697815, "timestamp": 1790415869.359473}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 83, "cost": 3, "iters": 2000000, "secs": 12.165832757949829, "timestamp": 1790415881.530438}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 84, "cost": 3, "iters": 2000000, "secs": 12.16945505142212, "timestamp": 1790415893.704257}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 85, "cost": 2, "iters": 2000000, "secs": 12.240138053894043, "timestamp": 1790415905.948586}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 86, "cost": 3, "iters": 2000000, "secs": 12.27181887626648, "timestamp": 1790415918.225034}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 87, "cost": 1, "iters": 2000000, "secs": 12.202353954315186, "timestamp": 1790415930.431999}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 88, "cost": 3, "iters": 2000000, "secs": 12.351289987564087, "timestamp": 1790415942.787741}
+{"source": "find_I sat relaxed", "d": 5, "k": 15, "Z": 2, "score": 92, "file": "I_Q5_k15_Z2_1790415948.json", "timestamp": 1790415948.136172}
+{"source": "find_I sat-relaxed", "d": 5, "k": 16, "group": null, "result": "UNSAT", "iters": 0, "cuts": 0, "secs": 1.6927719116210938e-05, "timestamp": 1790415948.401336}
+{"source": "find_I sat relaxed", "d": 6, "k": 30, "Z": 1, "score": 214, "file": "I_Q6_k30_Z1_1790415948.json", "timestamp": 1790415948.676992}
+{"source": "find_I sat-relaxed", "d": 6, "k": 30, "group": null, "result": "UNSAT", "iters": 0, "cuts": 0, "secs": 0.0001919269561767578, "timestamp": 1790415948.9409978}
+{"source": "find_I sat relaxed", "d": 7, "k": 58, "Z": 2, "score": 476, "file": "I_Q7_k58_Z2_1790415951.json", "timestamp": 1790415951.083816}
+{"source": "find_I sat-relaxed", "d": 7, "k": 58, "group": null, "result": "UNSAT", "iters": 0, "cuts": 0, "secs": 0.005558013916015625, "timestamp": 1790415951.3779478}
+{"source": "find_I sat-relaxed", "d": 8, "k": 114, "group": null, "result": "UNSAT", "iters": 0, "cuts": 0, "secs": 0.003314971923828125, "timestamp": 1790415951.719347}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 89, "cost": 2, "iters": 2000000, "secs": 12.347661018371582, "timestamp": 1790415955.139532}
+{"source": "find_I sat relaxed", "d": 5, "k": 16, "Z": 2, "score": 96, "file": "I_Q5_k16_Z2_1790415966.json", "timestamp": 1790415966.596742}
+{"source": "find_I sat relaxed", "d": 6, "k": 30, "Z": 3, "score": 214, "file": "I_Q6_k30_Z3_1790415966.json", "timestamp": 1790415966.863606}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 90, "cost": 3, "iters": 2000000, "secs": 12.359364032745361, "timestamp": 1790415967.503427}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 91, "cost": 3, "iters": 2000000, "secs": 12.648607015609741, "timestamp": 1790415980.156636}
+{"source": "find_I sat relaxed", "d": 7, "k": 58, "Z": 2, "score": 476, "file": "I_Q7_k58_Z2_1790415980.json", "timestamp": 1790415980.856008}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 92, "cost": 2, "iters": 2000000, "secs": 12.821043014526367, "timestamp": 1790415992.981856}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 93, "cost": 3, "iters": 2000000, "secs": 12.270741939544678, "timestamp": 1790416005.257716}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 94, "cost": 3, "iters": 2000000, "secs": 12.295562028884888, "timestamp": 1790416017.557528}
+{"source": "find_I sat relaxed", "d": 7, "k": 58, "Z": 3, "score": 476, "file": "I_Q7_k58_Z3_1790416028.json", "timestamp": 1790416028.320781}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 95, "cost": 4, "iters": 2000000, "secs": 12.429413080215454, "timestamp": 1790416029.991515}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 96, "cost": 2, "iters": 2000000, "secs": 12.697689056396484, "timestamp": 1790416042.693559}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 97, "cost": 3, "iters": 2000000, "secs": 12.452990055084229, "timestamp": 1790416055.151138}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 98, "cost": 3, "iters": 2000000, "secs": 12.418220043182373, "timestamp": 1790416067.57374}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 99, "cost": 3, "iters": 2000000, "secs": 12.515991926193237, "timestamp": 1790416080.0943518}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 100, "cost": 3, "iters": 2000000, "secs": 12.593888998031616, "timestamp": 1790416092.692949}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 101, "cost": 3, "iters": 2000000, "secs": 12.371521234512329, "timestamp": 1790416105.0692391}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 102, "cost": 2, "iters": 2000000, "secs": 12.196829080581665, "timestamp": 1790416117.270518}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 103, "cost": 1, "iters": 2000000, "secs": 12.307299137115479, "timestamp": 1790416129.583028}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 104, "cost": 3, "iters": 2000000, "secs": 12.273276805877686, "timestamp": 1790416141.860655}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 105, "cost": 3, "iters": 2000000, "secs": 12.24504280090332, "timestamp": 1790416154.110341}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 106, "cost": 2, "iters": 2000000, "secs": 13.363867998123169, "timestamp": 1790416167.478302}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 107, "cost": 3, "iters": 2000000, "secs": 12.98348593711853, "timestamp": 1790416180.4668171}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 108, "cost": 3, "iters": 2000000, "secs": 12.391113042831421, "timestamp": 1790416192.862132}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 109, "cost": 3, "iters": 2000000, "secs": 12.181867837905884, "timestamp": 1790416205.048243}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 110, "cost": 3, "iters": 2000000, "secs": 12.335469961166382, "timestamp": 1790416217.388247}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 111, "cost": 3, "iters": 2000000, "secs": 12.070225954055786, "timestamp": 1790416229.462959}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 112, "cost": 1, "iters": 2000000, "secs": 12.091243028640747, "timestamp": 1790416241.55865}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 113, "cost": 2, "iters": 2000000, "secs": 12.239930152893066, "timestamp": 1790416253.802639}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 114, "cost": 2, "iters": 2000000, "secs": 12.148492097854614, "timestamp": 1790416265.955334}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 115, "cost": 2, "iters": 2000000, "secs": 12.146433115005493, "timestamp": 1790416278.105841}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 116, "cost": 1, "iters": 2000000, "secs": 12.102494955062866, "timestamp": 1790416290.218302}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 117, "cost": 2, "iters": 2000000, "secs": 12.127013921737671, "timestamp": 1790416302.3497128}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 118, "cost": 1, "iters": 2000000, "secs": 11.992547035217285, "timestamp": 1790416314.3466828}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 119, "cost": 3, "iters": 2000000, "secs": 12.075500011444092, "timestamp": 1790416326.426652}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 120, "cost": 3, "iters": 2000000, "secs": 10.688300848007202, "timestamp": 1790416337.1191812}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 121, "cost": 4, "iters": 2000000, "secs": 9.969460248947144, "timestamp": 1790416347.0922098}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 122, "cost": 2, "iters": 2000000, "secs": 9.997389078140259, "timestamp": 1790416357.095072}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 123, "cost": 3, "iters": 2000000, "secs": 10.00124192237854, "timestamp": 1790416367.100319}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 124, "cost": 3, "iters": 2000000, "secs": 9.917423248291016, "timestamp": 1790416377.021686}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 125, "cost": 1, "iters": 2000000, "secs": 9.911037921905518, "timestamp": 1790416386.936636}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 126, "cost": 4, "iters": 2000000, "secs": 10.152409076690674, "timestamp": 1790416397.0925791}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 127, "cost": 1, "iters": 2000000, "secs": 10.249238014221191, "timestamp": 1790416407.346554}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 128, "cost": 2, "iters": 2000000, "secs": 10.238334894180298, "timestamp": 1790416417.5887208}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 129, "cost": 2, "iters": 2000000, "secs": 10.319512128829956, "timestamp": 1790416427.9121761}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 130, "cost": 3, "iters": 2000000, "secs": 10.028194904327393, "timestamp": 1790416437.944246}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 131, "cost": 1, "iters": 2000000, "secs": 9.961341857910156, "timestamp": 1790416447.909302}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 132, "cost": 1, "iters": 2000000, "secs": 10.750302076339722, "timestamp": 1790416458.663112}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 133, "cost": 3, "iters": 2000000, "secs": 12.23869276046753, "timestamp": 1790416470.9073222}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 134, "cost": 4, "iters": 2000000, "secs": 12.271978855133057, "timestamp": 1790416483.1853828}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 135, "cost": 2, "iters": 2000000, "secs": 11.293795824050903, "timestamp": 1790416494.483167}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 136, "cost": 3, "iters": 2000000, "secs": 11.751966953277588, "timestamp": 1790416506.238824}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 137, "cost": 3, "iters": 2000000, "secs": 12.493488311767578, "timestamp": 1790416518.736224}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 138, "cost": 4, "iters": 2000000, "secs": 12.430057048797607, "timestamp": 1790416531.169933}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 139, "cost": 2, "iters": 2000000, "secs": 11.817007780075073, "timestamp": 1790416542.992755}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 140, "cost": 4, "iters": 2000000, "secs": 11.781527996063232, "timestamp": 1790416554.7779598}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 141, "cost": 2, "iters": 2000000, "secs": 13.271100044250488, "timestamp": 1790416568.052514}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 142, "cost": 3, "iters": 2000000, "secs": 12.461005926132202, "timestamp": 1790416580.51738}
+{"source": "find_I ls", "d": 9, "k": 235, "restart": 143, "cost": 1, "iters": 2000000, "secs": 11.448826789855957, "timestamp": 1790416591.969976}

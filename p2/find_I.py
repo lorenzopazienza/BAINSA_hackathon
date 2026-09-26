@@ -26,6 +26,7 @@ Usage:
   python find_I.py sat --d 9 --k 235
   python find_I.py sat --d 6 --k 27      # validation on small d
   python find_I.py sat --d 9 --k 236 --group z9   # I invariant under a symmetry group
+  python find_I.py sat-relaxed --d 9 --k 235       # Z-relaxed forest class (section 3)
 """
 import argparse
 import json
@@ -86,10 +87,11 @@ def check_I(I, d):
     return independent, acyclic, len({find(v) for v in parent})
 
 
-def forest_labelling(I, d):
-    """Trees of G[V minus I] in BFS order, then I on top (same as the helper in loop.py)."""
-    I = set(I)
-    order, seen = [], set(I)
+def forest_labelling(I, d, Z=()):
+    """Trees of G[V minus (I + Z)] in BFS order, then Z, then I on top. With Z empty this is
+    the helper in loop.py."""
+    I, Z = set(I), set(Z)
+    order, seen = [], I | Z
     for r in range(2 ** d):
         if r in seen:
             continue
@@ -103,24 +105,40 @@ def forest_labelling(I, d):
                 if u not in seen:
                     seen.add(u)
                     queue.append(u)
-    return order + sorted(I)
+    return order + sorted(Z) + sorted(I)
 
 
-def found(I, d, source):
-    """Verify I, build and verify the labelling, store it, export + commit if it is a new best."""
-    I = sorted(int(v) for v in I)
-    independent, acyclic, c = check_I(I, d)
-    assert independent and acyclic, "not an independent decycling set"
-    assert c == forest_c(d, len(I))
-    order = forest_labelling(I, d)
+def check_relaxed(P, Z, d):
+    """Z-relaxed forest class (see section 3): P, Z independent and disjoint, every z has
+    exactly d-2 neighbours in P (so, Z being independent, exactly 2 in T = V minus (P + Z)),
+    G[T] acyclic. Returns (ok, c = #trees of G[T])."""
+    P, Z = set(P), set(Z)
+    nbrs = lambda v: [v ^ (1 << j) for j in range(d)]
+    ok = (not P & Z and all(u not in P for v in P for u in nbrs(v))
+          and all(u not in Z for v in Z for u in nbrs(v))
+          and all(sum(u in P for u in nbrs(z)) == d - 2 for z in Z))
+    _, acyclic, c = check_I(P | Z, d)
+    return ok and acyclic, c
+
+
+def found(I, d, source, Z=()):
+    """Verify (I = P, Z), build and verify the labelling, store it, export + commit if it is a
+    new best. U must equal |E| + c + (d-2)|Z| = 2^d + (d-1)(|I| + |Z|)."""
+    I, Z = sorted(int(v) for v in I), sorted(int(v) for v in Z)
+    ok, c = check_relaxed(I, Z, d)
+    assert ok, "not a valid (P, Z) configuration / independent decycling set"
+    order = forest_labelling(I, d, Z)
     U, bf = count_uphill(order, d), count_uphill_bruteforce(order, d)
-    assert U == bf == d * 2 ** (d - 1) + c, (U, bf, c)
-    path = ROOT / "results" / f"I_Q{d}_k{len(I)}_{int(time.time())}.json"
-    path.write_text(json.dumps({"d": d, "k": len(I), "c": c, "U": U, "source": source, "I": I}))
-    stored = save_if_better(d, order, f"find_I {source} |I|={len(I)}")
-    log({"source": f"find_I {source}", "d": d, "k": len(I), "score": U, "file": path.name})
-    print(f"!!! FOUND Q{d}: independent decycling set |I| = {len(I)}, c = {c}, U = {U} "
-          f"(DP == brute force), saved {path.name}; store best = {load_best(d)['score']}",
+    assert U == bf == d * 2 ** (d - 1) + c + (d - 2) * len(Z) == 2 ** d + (d - 1) * (len(I) + len(Z)), \
+        (U, bf, c, len(Z))
+    k = len(I) + len(Z)
+    path = ROOT / "results" / f"I_Q{d}_k{k}{'_Z' + str(len(Z)) if Z else ''}_{int(time.time())}.json"
+    path.write_text(json.dumps({"d": d, "k": k, "P": len(I), "Z_size": len(Z), "c": c, "U": U,
+                                "source": source, "I": I, "Z": Z}))
+    stored = save_if_better(d, order, f"find_I {source} |D|={k} |Z|={len(Z)}")
+    log({"source": f"find_I {source}", "d": d, "k": k, "Z": len(Z), "score": U, "file": path.name})
+    print(f"!!! FOUND Q{d}: |P| = {len(I)}, |Z| = {len(Z)}, |D| = {k}, c = {c}, U = {U} "
+          f"(DP == brute force == formula), saved {path.name}; store best = {load_best(d)['score']}",
           flush=True)
     if stored == U and load_best(d)["score"] == U:
         try:
@@ -491,9 +509,115 @@ def run_sat(d, k, symmetry, solver_name, encoding, images, minutes, seed, group=
          "iters": it, "cuts": cuts, "secs": time.time() - t0})
 
 
+# ---------------------------------------------------------------- (3) Z-relaxed forest class
+#
+# D = P + Z with P, Z independent, every z in Z having exactly d-2 neighbours in P and 2 in
+# T = V minus D, and G[T] acyclic with c trees. Labelling: trees of T grown outward from one
+# valley each, then Z, then P. N = 1 on T, N(z) = 2, P are peaks, and the excess decomposition
+# gives U = |E| + c + (d-2)|Z|; counting edges, U = 2^d + (d-1)|D| (Q_9: 512 + 8|D|).
+# More generally a vertex z labelled between T and P, with k (higher) P-neighbours and d-k
+# (lower) T-neighbours, adds d-1 + k(d-2-k) to U = 2^d + (d-1)|P| + sum_z cost(z): the same as a
+# P-vertex (d-1) iff k = d-2 (k = 0 is a P-vertex, k = d-1 a tree leaf); otherwise more.
+#
+# Symmetry breaking (sound, proof): P is nonempty (a z needs P-neighbours; D is nonempty since
+# Q_d has cycles), so translate a vertex of P to 0. Case A: some weight-1 vertex e_a is in Z;
+# a coordinate permutation (fixing 0) makes it e_0. Case B: no weight-1 vertex is in Z; none is
+# in P either (adjacent to 0 in P), so all are in T, and the 6-cycle argument of
+# symmetry_fixed_vertices applies verbatim with "in I" replaced by "in D" (coordinate
+# permutations preserve case B). Encoded as: p_0; not z_{e_0} -> not z_{e_a} for all a; and
+# not z_{e_0} -> f in D for the fixed weight-2 vertices f.
+
+def run_sat_relaxed(d, k, symmetry, solver_name, encoding, images, minutes, seed, group=None,
+                    min_z=0):
+    from itertools import combinations
+    from pysat.card import CardEnc, EncType
+    from pysat.formula import IDPool
+    from pysat.solvers import Solver
+
+    rng = random.Random(seed)
+    n = 2 ** d
+    p = lambda v: v + 1
+    z = lambda v: n + v + 1
+    solver = Solver(name=solver_name)
+    for v in range(n):
+        solver.add_clause([-p(v), -z(v)])
+        nb = [v ^ (1 << j) for j in range(d)]
+        for u in nb:
+            if u > v:
+                solver.add_clause([-p(u), -p(v)])
+                solver.add_clause([-z(u), -z(v)])
+        for triple in combinations(nb, 3):  # z_v -> at most 2 neighbours outside P
+            solver.add_clause([-z(v)] + [p(u) for u in triple])
+        for sub in combinations(nb, d - 1):  # z_v -> at most d-2 neighbours in P
+            solver.add_clause([-z(v)] + [-p(u) for u in sub])
+    pool = IDPool(start_from=2 * n + 1)  # shared, so auxiliary variables never collide
+    card = CardEnc.atmost(lits=[p(v) for v in range(n)] + [z(v) for v in range(n)], bound=k,
+                          vpool=pool, encoding=getattr(EncType, encoding))
+    solver.append_formula(card.clauses)
+    if min_z:  # experiments / tests: force |Z| >= min_z (the symmetry fixings stay sound)
+        solver.append_formula(CardEnc.atleast(lits=[z(v) for v in range(n)], bound=min_z,
+                                              vpool=pool, encoding=getattr(EncType, encoding)).clauses)
+    for i in range(d):
+        for j in range(i + 1, d):
+            for v in range(n):
+                if not (v >> i) & 1 and not (v >> j) & 1:
+                    cyc = [v, v ^ 1 << i, v ^ 1 << i ^ 1 << j, v ^ 1 << j]
+                    solver.add_clause([p(u) for u in cyc] + [z(u) for u in cyc])
+    tag = " relaxed" + (f" group={group}" if group else "")
+    if group:  # P and Z unions of orbits; the fixings below would not be sound
+        for g in GROUPS[group]:
+            for v in range(n):
+                solver.add_clause([-p(v), p(permute_coords(v, g))])
+                solver.add_clause([-z(v), z(permute_coords(v, g))])
+        symmetry = False
+    if symmetry:
+        e0 = 1
+        solver.add_clause([p(0)])
+        for a in range(1, d):
+            solver.add_clause([z(e0), -z(1 << a)])
+        for f in symmetry_fixed_vertices(d)[1:]:
+            solver.add_clause([z(e0), p(f), z(f)])
+    print(f"SAT Q{d} |P|+|Z| <= {k} (U = {2 ** d + (d - 1) * k}){tag}, symmetry breaking "
+          f"{symmetry}, solver {solver_name}, card {encoding}", flush=True)
+    deadline, it, cuts, t0, seen = time.time() + 60 * minutes, 0, 0, time.time(), set()
+    while time.time() < deadline:
+        t = time.time()
+        if not solver.solve():
+            print(f"UNSAT: no Z-relaxed configuration of Q{d} with |D| <= {k}{tag}; {it} "
+                  f"iterations, {cuts} cuts, {time.time() - t0:.0f}s", flush=True)
+            log({"source": "find_I sat-relaxed", "d": d, "k": k, "group": group,
+                 "result": "UNSAT", "iters": it, "cuts": cuts, "secs": time.time() - t0})
+            return
+        model = solver.get_model()
+        P = [v for v in range(n) if model[p(v) - 1] > 0]
+        Z = [v for v in range(n) if model[z(v) - 1] > 0]
+        cycles = cycles_in_complement(P + Z, d)
+        if not cycles:
+            found(P, d, f"sat{tag}", Z=Z)
+            return
+        new = 0
+        for cyc in cycles:
+            for m in range(images + 1):  # every cycle of T must meet D, for every valid (P, Z)
+                g = (lambda v: v) if m == 0 else random_automorphism(d, rng)
+                clause = tuple(sorted(g(v) for v in cyc))
+                if clause not in seen:
+                    seen.add(clause)
+                    solver.add_clause([p(v) for v in clause] + [z(v) for v in clause])
+                    new += 1
+        cuts += new
+        it += 1
+        if it % 10 == 0 or it < 10:
+            print(f"iter {it}: |P| = {len(P)}, |Z| = {len(Z)}, {len(cycles)} cycles in T, +{new} "
+                  f"cuts, total {cuts}, solve {time.time() - t:.1f}s, elapsed {time.time() - t0:.0f}s",
+                  flush=True)
+    print(f"timeout after {it} iterations, {cuts} cuts{tag}", flush=True)
+    log({"source": "find_I sat-relaxed", "d": d, "k": k, "group": group, "result": "timeout",
+         "iters": it, "cuts": cuts, "secs": time.time() - t0})
+
+
 if __name__ == "__main__":
     p = argparse.ArgumentParser()
-    p.add_argument("method", choices=["ls", "sat"])
+    p.add_argument("method", choices=["ls", "sat", "sat-relaxed"])
     p.add_argument("--d", type=int, default=9)
     p.add_argument("--k", type=int, default=235, help="target |I|")
     p.add_argument("--minutes", type=float, default=120)
@@ -509,11 +633,15 @@ if __name__ == "__main__":
     p.add_argument("--solver", default="cadical195")
     p.add_argument("--encoding", default="seqcounter")
     p.add_argument("--images", type=int, default=8, help="sat: random automorphic images per cut")
+    p.add_argument("--min-z", type=int, default=0, help="sat-relaxed: require |Z| >= this")
     a = p.parse_args()
     if forest_c(a.d, a.k) < 1:
         sys.exit(f"|I| = {a.k} gives c = {forest_c(a.d, a.k)} < 1: impossible")
     if a.method == "ls":
         run_ls(a.d, a.k, a.minutes, a.seed, a.iters, a.T0, a.T1, a.lam, a.tabu, a.kick)
-    else:
+    elif a.method == "sat":
         run_sat(a.d, a.k, not a.no_symmetry, a.solver, a.encoding, a.images, a.minutes, a.seed,
                 a.group)
+    else:
+        run_sat_relaxed(a.d, a.k, not a.no_symmetry, a.solver, a.encoding, a.images, a.minutes,
+                        a.seed, a.group, a.min_z)
