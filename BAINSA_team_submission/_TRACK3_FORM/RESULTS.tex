@@ -13,7 +13,7 @@ BAINSA Hackathon, Track 3 (Anthropic), 26 September 2026\\
 Team: Lorenzo Pazienza (team lead), Seby, Teo, Niccol\`o
 \end{center}
 
-\noindent\textbf{In one line.} We hand in a write-up for 22 of the 24 cells (P1~C6 and P3~C6 were still being written at the time of this document; see the portal). 16 cells are complete proofs (P2~C5 counts here: both of its bounds are proved), 4 are partial and say exactly which part is proved, and 2 (P4~C4/C5) are computational certificates. Every cell file states \emph{solved} or \emph{partial} on its first page. Anything proved only with a computer is labelled \emph{computer-assisted} and ships with its code and log.
+\noindent\textbf{In one line.} We hand in a write-up for all 24 cells. 16 cells are complete proofs (P2~C5 counts here: both of its bounds are proved), 6 are partial and say exactly which part is proved, and 2 (P4~C4/C5) are computational certificates. Every cell file states \emph{solved} or \emph{partial} on its first page. Anything proved only with a computer is labelled \emph{computer-assisted} and ships with its code and log.
 
 \medskip
 \begin{tabular}{@{}l l p{12.2cm}@{}}
@@ -22,11 +22,11 @@ Cell & Status & What we claim\\
 \midrule
 \multicolumn{3}{@{}l}{\textbf{P1 --- Angles between lines (Fejes T\'oth)}}\\
 C1 & \solved & Planar case, self-contained proof (the result itself is known [FVZ16, BM19]).\\
-C2 & \solved & The orthogonality lemma.\\
+C2 & \solved & The orthogonality (chain) lemma: $\sum\theta(x_i,x_{i+1})\le(m-2)\frac\pi2$ for $m$ unit vectors in $\mathbb R^{m-1}$ orthogonal except to their neighbours.\\
 C3 & \solved & $d+1$ lines in $\mathbb R^d$, via a saturation step and a matching argument.\\
 C4 & \solved & 5 lines in $\mathbb R^3$, 6 in $\mathbb R^4$. The 6-line case is also given a second proof via the C5 cycle lemma.\\
 C5 & \solved & $N=d+2$ lines for \emph{every} $d$. New ingredient: a cycle lemma (tridiagonal/cyclic nullity plus a monotone potential), checked numerically on $4\cdot10^4$ cycles.\\
-C6 & \prog & Partial: $N=6$ in $\mathbb R^3$ by subset averaging; structural reduction for $N=d+3$.\\
+C6 & \partl & $N=6$ lines in $\mathbb R^3$ (new instance, by subset averaging). We prove that averaging from all known cases gives \emph{no} infinite family beyond it. Structural reduction of $N=d+3$ for all $d$: everything is settled except components of rank $\ge4$, nullity $\ge3$ and cyclomatic number $\ge2$ (a new PSD forcing lemma). First open case: 7 lines in $\mathbb R^4$.\\
 \midrule
 \multicolumn{3}{@{}l}{\textbf{P2 --- Uphill paths on the hypercube}}\\
 C1--C4 & \solved & $U(Q_3)=14$, $U(Q_4)=34$, $U(Q_5)=88$, $U(Q_6)=204$, $U(Q_7)=464$, $U(Q_8)=1040$, all \emph{with proofs of optimality}. Key new tool: an exact formula $P(f)=|V|+\sum_{u\in R}(\deg u-1)+\sum_{u\in R}(N(u)-2)\,\mathrm{out}(u)$, which gives $U(G)\ge |V|+(d-1)\nabla(G)$ for $d$-regular $G$ ($\nabla$ = decycling number). Code labellings give the matching upper bound. $\nabla(Q_5)\ge14$ and $\nabla(Q_6)\ge28$ are SAT facts, each checked with two solvers and by a second, independently written program.\\
@@ -35,25 +35,25 @@ C6 & \partl & Reduction: beating 2400 requires a decycling set of $Q_9$ of size 
 \midrule
 \multicolumn{3}{@{}l}{\textbf{P3 --- Bulgarian solitaire}}\\
 C1, C2 & \solved & Cyclic partitions and cycles; $D_B(T_k)$ (reproduces Griggs--Ho, with complete proofs).\\
-C3 & \partl & The general bound and $D_B(T_k-1)$ are proved. The extremal set is given only by an exact dynamical criterion.\\
+C3 & \partl & $D_B(n)\le k^2-2k-1$ for all non-triangular $n$ of rank $k\ge4$, and $D_B(T_k-1)=k^2-2k-1$ exactly, with an explicit extremal family (the portal judge confirmed both as fully proved). \emph{Missing:} a closed form for the \emph{whole} extremal set. We give an exact but dynamical criterion; the set grows fast (1, 6, 34, 175, 831, 3911, 18163 extremal partitions for $k=4,\dots,10$), and we found no static description.\\
 C4 & \solved & $D_B(T_{k-1}+1)=(k-1)(k-3)$ for all $k\ge5$, with no computation. This is the $r=1$ case of Griggs--Ho Conjecture 4.7, which we did not find proved in the literature we checked.\\
 C5 & \partl & $D_B(T_{k-1}+2)=(k-1)(k-4)$ for all $k\ge7$ by one uniform argument (Conj.~4.7, $r=2$), and values $2,3,5,8,12$ for $k=2..6$. One explicit extremal family is given; the full extremal set only via a criterion.\\
-C6 & \prog & Partial: exact values against Conjecture 4.7 for small $n$; the proved families from C2--C5.\\
+C6 & \partl & New: $d_B(1^n)=n-k+1$ for every $n$, with the exact landing cycle, which proves the lower bound of Conj.~4.7 in the two middle columns. $D_B(n)$ computed exactly for all $n\le80$ (300\,s): it equals Conj.~4.7 everywhere, with no disagreement. Four columns ($r=1,2,k-1,k$) are proved in C2--C5.\\
 \midrule
 \multicolumn{3}{@{}l}{\textbf{P4 --- Disjoint congruence classes (Sun's conjecture)}}\\
 C1--C3 & \solved & $k=3$, $k=4$, $k\le 8$ (known from O'Bryant; independent proofs).\\
 C4 & \solved & All $k\le12$. For each $9\le k\le16$ we report exactly what is left undecided, which is nothing: every survivor is decided UNSAT.\\
-C5 & \solved\ (cert.) & Certified boundary $K^\ast=15$, meeting requirements (i)--(v): the vacuity test finds genuine systems; every survivor has an individual decision; exact survivor lists with SHA-256; the extra pruning rule is proved and switching it off leaves the lists unchanged; two independent implementations (SAT and DFS) give elementwise-identical lists for all $k\le16$. $k=16$ is decided by the SAT implementation alone; the DFS cross-check is partial, so we do not claim 16. $k=24$ and $k=30$ are decided by hand (the prime $k-1$ argument).\\
+C5 & \solved\ (cert.) & Certified boundary $K^\ast=14$, meeting requirements (i)--(v): the vacuity test finds genuine systems; every survivor has an individual decision and its minimal forcing part (files attached); exact survivor lists; the extra pruning rule is proved and switching it off leaves the lists unchanged; two independent implementations (SAT and DFS) give elementwise-identical lists. Timed reruns take 193\,s at $k=14$ but 613\,s at $k=15$, just over the 10-minute rule, so $k=15,16$ are reported as \emph{decided beyond the certified boundary} (all UNSAT, no disagreement). $k=24$ and $k=30$ are decided by hand (the prime $k-1$ argument).\\
 C6 & \partl & Part (a), ``decide a size $k\ge25$'': $k=32$, $38$ and $42$ are decided, computer-assisted (O'Bryant's method with new ingredients, finishing with an exhaustive 4\,s check over a finite set of prime distributions, rerun reproduced). $k=44$ is computer-assisted but the certificate is incomplete (runtime estimate $\approx240$ CPU-hours). $k=48$ is open.\\
 \bottomrule
 \end{tabular}
 
 \medskip
-\noindent\textbf{Cells 5 and 6.} All four C5 cells carry a real result: P1~C5 for all $d$; a new lower bound in P2~C5; the $r=2$ case of the Griggs--Ho conjecture in P3~C5; and a certified boundary with two independent implementations in P4~C5. Of the open C6 cells, we hand in partial progress on P2 and P4, and on P1 and P3 as they are completed.
+\noindent\textbf{Cells 5 and 6.} All four C5 cells carry a real result: P1~C5 for all $d$; a new lower bound in P2~C5; the $r=2$ case of the Griggs--Ho conjecture in P3~C5; and a certified boundary with two independent implementations in P4~C5. We hand in partial progress on all four open C6 cells.
 
 \medskip
-\noindent\textbf{What we do \emph{not} claim.} We do not claim the full Fejes T\'oth conjecture, the exact value of $U(Q_9)$, the full function $D_B(n)$, $k=16$ in the certified range, or $k\ge44$ for Sun's conjecture. ``New'' means new relative to the sources we cite (Griggs--Ho 1998, O'Bryant 2007, Bilyk--Matzke 2019); we did not survey the literature exhaustively.
+\noindent\textbf{What we do \emph{not} claim.} We do not claim the full Fejes T\'oth conjecture, the exact value of $U(Q_9)$, the full function $D_B(n)$, $k\ge15$ in the certified range, or $k\ge44$ for Sun's conjecture. ``New'' means new relative to the sources we cite (Griggs--Ho 1998, O'Bryant 2007, Bilyk--Matzke 2019); we did not survey the literature exhaustively.
 
 \medskip
-\noindent\textbf{Where to find it.} One folder per cell (\texttt{P\emph{i}\_C\emph{j}/}) with the PDF, the \LaTeX\ source, code and logs; \texttt{INDEX.md} lists the file handed in for every cell.
+\noindent\textbf{Where to find it.} Repository: \url{https://github.com/lorenzopazienza/HACKATLON}, folder \texttt{BAINSA\_team\_submission/}. There is one folder per cell (\texttt{P\emph{i}\_C\emph{j}/}) with the PDF, the \LaTeX\ source, code and logs. Every cell was also submitted on the portal, with the full argument as text and a link to its folder.
 \end{document}

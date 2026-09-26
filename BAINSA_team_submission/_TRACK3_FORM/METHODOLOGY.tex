@@ -1,7 +1,7 @@
 \documentclass[10pt]{article}
 \usepackage[a4paper,margin=1.8cm]{geometry}
 \usepackage{amsmath,amssymb,booktabs,enumitem}
-\usepackage[hidelinks]{hyperref}
+\usepackage[hidelinks]{hyperref}\usepackage{url}
 \setlist{nosep,leftmargin=1.3em}
 \begin{document}
 \begin{center}
@@ -27,7 +27,7 @@ BAINSA Hackathon, Track 3 (Anthropic), 26 September 2026 --- Team: Lorenzo Pazie
   \item P2's new lower-bound proof was checked step by step, including recomputing the Delsarte table.
   \item A final read-only referee pass (Codex) covered all cells before hand-in. It found packaging and labelling problems (labelling-file format, code not attached to the upload, a ``by hand'' label on a computer-assisted step, missing certificate data for P4), and we fixed them before submitting.
   \end{itemize}
-\item \textbf{Honest labels.} A claim is \emph{solved} only with a complete proof. Everything else is \emph{partial}, with the proved part stated. Every result that depends on a computer says \emph{computer-assisted}, and unfinished runs are reported as unfinished. For example, we claim the certified boundary $K^\ast=15$ rather than 16, because the second implementation had not finished deciding $k=16$. We also say explicitly that a planned $k=14$ rerun was not done.
+\item \textbf{Honest labels.} A claim is \emph{solved} only with a complete proof. Everything else is \emph{partial}, with the proved part stated. Every result that depends on a computer says \emph{computer-assisted}, and unfinished runs are reported as unfinished. For example, we claim the certified boundary $K^\ast=14$ rather than 15 or 16: every survivor up to $k=16$ is decided, but the timed rerun at $k=15$ took 613\,s, just over the 10-minute limit in the rules.
 \end{itemize}
 
 \section*{3. Efficiency (compute and tokens)}
@@ -44,6 +44,9 @@ BAINSA Hackathon, Track 3 (Anthropic), 26 September 2026 --- Team: Lorenzo Pazie
 \item When a teammate's independent work turned out stronger than ours (the P2 lower bound via decycling sets), we switched the hand-in to it after verifying it, rather than keeping our own.
 \end{itemize}
 
-\section*{5. What went wrong, and the fix}
+\section*{5. Hand-in and reproducibility}
+Everything is in \url{https://github.com/lorenzopazienza/HACKATLON} (folder \texttt{BAINSA\_team\_submission/}): one folder per cell with the PDF, the \LaTeX\ source, the code and the logs of every computation used. Code used in a proof runs in under 10 minutes on a laptop, and its timed log is included. On the portal, each cell carries the full argument as text and a link to its folder.
+
+\section*{6. What went wrong, and the fix}
 Around midday several agents and people were working on the same cells, from four copies of the same folder. We fixed this with three rules: one owner per cell, one hand-in folder written by one session only, and a live status table. From then on no cell had two writers.
 \end{document}
